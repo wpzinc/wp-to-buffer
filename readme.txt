@@ -3,7 +3,7 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.8.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -136,6 +136,13 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.7.3 (2021-09-09) =
+* Added: Status: Text: Convert HTML links to plain text with link in brackets, instead of just displaying the unlinked text
+* Added: Status: Text: Convert HTML lists to plain text with hyphens, instead of just displaying plain text
+* Added: Status: Image: Support for .webp images when Use Feat. Image enabled and .webp image used as Featured Image. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/featured-image-settings/#webp-image-support
+* Added: Status: Remove HTML from shortcodes included in status text
+* Fix: Status: Use OpenGraph Settings: Ensure that Post URL is sent to Buffer so that correct OpenGraph metadata is parsed by Buffer
 
 = 3.7.2 (2021-07-15) =
 * Added: New Installations: Clearer workflow for connecting to Buffer and connecting social media profiles to Buffer account.  See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/authentication-settings/

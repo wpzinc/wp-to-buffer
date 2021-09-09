@@ -2,7 +2,7 @@
 /**
 * Plugin Name: WP to Buffer
 * Plugin URI: http://www.wpzinc.com/plugins/wp-to-buffer-pro
-* Version: 3.7.2
+* Version: 3.7.3
 * Author: WP Zinc
 * Author URI: http://www.wpzinc.com
 * Description: Send WordPress Pages, Posts or Custom Post Types to your Buffer (buffer.com) account for scheduled publishing to social networks.
@@ -74,10 +74,10 @@ class WP_To_Buffer {
         
         $this->plugin->settingsName     = 'wp-to-buffer-pro'; // Settings key - used in both Free + Pro, and for oAuth
         $this->plugin->account          = 'Buffer';
-        $this->plugin->version          = '3.7.2';
-        $this->plugin->buildDate        = '2021-07-15 18:00:00';
+        $this->plugin->version          = '3.7.3';
+        $this->plugin->buildDate        = '2021-09-09 18:00:00';
         $this->plugin->requires         = '5.0';
-        $this->plugin->tested           = '5.8';
+        $this->plugin->tested           = '5.8.1';
         $this->plugin->folder           = plugin_dir_path( __FILE__ );
         $this->plugin->url              = plugin_dir_url( __FILE__ );
         $this->plugin->documentation_url= 'https://www.wpzinc.com/documentation/wordpress-buffer-pro';
@@ -183,6 +183,7 @@ class WP_To_Buffer {
         $this->classes->api         = new WP_To_Social_Pro_Buffer_API( self::$instance );
         $this->classes->common      = new WP_To_Social_Pro_Common( self::$instance );
         $this->classes->cron        = new WP_To_Social_Pro_Cron( self::$instance );
+        $this->classes->image     	= new WP_To_Social_Pro_Image( self::$instance );
         $this->classes->install     = new WP_To_Social_Pro_Install( self::$instance );
         $this->classes->log         = new WP_To_Social_Pro_Log( self::$instance ); 
         $this->classes->notices     = new WP_To_Social_Pro_Notices( self::$instance );  

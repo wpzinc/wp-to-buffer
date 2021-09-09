@@ -62,7 +62,7 @@ class WP_To_Social_Pro_Buffer_API {
      */
     private $api_version = '1';
     
-    /**
+	/**
      * Access Token
      *
      * @since   3.0.0
@@ -242,7 +242,7 @@ class WP_To_Social_Pro_Buffer_API {
      *
      * @return  mixed   WP_Error | User object
      */
-    public function user() {
+	public function user() {
 
         // Check access token
         if ( ! $this->check_access_token_exists() ) {
@@ -251,9 +251,9 @@ class WP_To_Social_Pro_Buffer_API {
 
         return $this->get( 'user.json' );
 
-    }
+	}
 
-    /**
+	/**
      * Returns a list of Social Media Profiles attached to the Buffer Account.
      *
      * @since   3.0.0
@@ -262,7 +262,7 @@ class WP_To_Social_Pro_Buffer_API {
      * @param   int     $transient_expiration_time  Transient Expiration Time
      * @return  mixed                               WP_Error | Profiles object
      */
-    public function profiles( $force = false, $transient_expiration_time ) {
+	public function profiles( $force = false, $transient_expiration_time ) {
 
         // Check access token
         if ( ! $this->check_access_token_exists() ) {
@@ -337,10 +337,10 @@ class WP_To_Social_Pro_Buffer_API {
             set_transient( $this->base->plugin->name . '_buffer_api_profiles', $profiles, $transient_expiration_time );
         }
 
-        // Return results
+		// Return results
         return $profiles;
 
-    }
+	}
 
     /**
      * Returns an individual update (status) for the given ID
@@ -414,62 +414,62 @@ class WP_To_Social_Pro_Buffer_API {
 
     }
 
-    /**
-     * Private function to perform a GET request
-     *
+	/**
+	 * Private function to perform a GET request
+	 *
+	 * @since  3.0.0
+	 *
+	 * @param  string  $cmd 	   Command (required)
+	 * @param  array   $params 	   Params (optional)
+	 * @return mixed 		       WP_Error | object
+	 */
+	private function get( $cmd, $params = array() ) {
+
+		return $this->request( $cmd, 'get', $params );
+
+	}
+
+	/**
+	 * Private function to perform a POST request
+	 *
      * @since  3.0.0
      *
      * @param  string  $cmd        Command (required)
      * @param  array   $params     Params (optional)
      * @return mixed               WP_Error | object
      */
-    private function get( $cmd, $params = array() ) {
+	private function post( $cmd, $params = array() ) {
 
-        return $this->request( $cmd, 'get', $params );
+		return $this->request( $cmd, 'post', $params );
 
-    }
+	}
 
-    /**
-     * Private function to perform a POST request
-     *
-     * @since  3.0.0
-     *
-     * @param  string  $cmd        Command (required)
-     * @param  array   $params     Params (optional)
-     * @return mixed               WP_Error | object
-     */
-    private function post( $cmd, $params = array() ) {
-
-        return $this->request( $cmd, 'post', $params );
-
-    }
-
-    /**
+	/**
      * Main function which handles sending requests to the Buffer API
      *
      * @since   3.0.0
      *
      * @param   string  $cmd        Command
-     * @param   string  $method     Method (get|post)
-     * @param   array   $params     Parameters (optional)
+     * @param   string  $method 	Method (get|post)
+     * @param   array   $params 	Parameters (optional)
      * @return  mixed               WP_Error | object
      */
     private function request( $cmd, $method = 'get', $params = array() ) {
 
-        // Check required parameters exist
-        if ( empty( $this->access_token ) ) {
+    	// Check required parameters exist
+    	if ( empty( $this->access_token ) ) {
             return new WP_Error( 'missing_access_token', __( 'No access token was specified', 'wp-to-social-pro' ) );
-        }
+    	}
 
-        // Add access token to command, depending on the command's format
-        if ( strpos ( $cmd, '?' ) !== false ) {
-            $cmd .= '&access_token=' . $this->access_token;
-        } else {
-            $cmd .= '?access_token=' . $this->access_token;
-        }
+    	// Add access token to command, depending on the command's format
+    	if ( strpos ( $cmd, '?' ) !== false ) {
+    		$cmd .= '&access_token=' . $this->access_token;
+    	} else {
+    		$cmd .= '?access_token=' . $this->access_token;
+    	}
 
-        // Build endpoint URL
-        $url = $this->api_endpoint . $this->api_version . '/' . $cmd;
+    	// Build endpoint URL
+    	$url = $this->api_endpoint . $this->api_version . '/' . $cmd;
 
         // Define the timeout
         $timeout = 20;
@@ -545,6 +545,8 @@ class WP_To_Social_Pro_Buffer_API {
                     break;
             }
         }
+
+
 
         // If an error occured, return it now
         if ( is_wp_error( $response ) ) {
@@ -728,30 +730,23 @@ class WP_To_Social_Pro_Buffer_API {
 
             /**
              * Featured Image Missing
+             * Message too long
              */
             case 1004:
-                // If no media parameter was included, no Featured Image was specified
-                // but is required for Instagram / Pinterest
-                if ( ! isset( $params['media'] ) ) {
-                    $message = array(
-                        __( 'A Featured Image is required for this status to be sent.', 'wp-to-social-pro' )
-                    );
-                } else {
-                    if ( strpos( $body->message, 'image' ) !== false ) {
-                        // If the site isn't web accessible, Buffer won't be able to fetch the image, even if it's specified
-                        if ( $this->is_local_host() ) {
-                            $message = array(
-                                sprintf(
-                                    /* translators: Image URL */
-                                    __( 'Buffer can\'t fetch the image %s because your site is running on a local host and not web accessible. Please run the Plugin on a publicly accessible domain.', 'wp-to-social-pro' ),
-                                    $params['media']['picture']
-                                )
-                            );
-                        } else {
-                            $message = array(
-                                __( 'A Featured Image is required for this status to be sent.', 'wp-to-social-pro' )
-                            );
-                        }
+                if ( strpos( $body->message, 'image' ) !== false ) {
+                    // If the site isn't web accessible, Buffer won't be able to fetch the image, even if it's specified
+                    if ( $this->is_local_host() ) {
+                        $message = array(
+                            sprintf(
+                                /* translators: Image URL */
+                                __( 'Buffer can\'t fetch the image %s because your site is running on a local host and not web accessible. Please run the Plugin on a publicly accessible domain.', 'wp-to-social-pro' ),
+                                $params['media']['picture']
+                            )
+                        );
+                    } else {
+                        $message = array(
+                            __( 'A Featured Image is required for this status to be sent.', 'wp-to-social-pro' )
+                        );
                     }
                 }
                 break;
@@ -779,25 +774,42 @@ class WP_To_Social_Pro_Buffer_API {
             /**
              * Media filetype not supported (...)
              * The provided image does not appear to be valid i.e. is a localhost URL or invalid dimensions
+             * Whoops, so sorry! It looks like we had some trouble with your Facebook Page mentions. Would you be up for trying again?
              */
             case 1030:
-                if ( $this->is_local_host() ) {
-                    $message = array(
-                        sprintf(
-                            __( 'Buffer can\'t fetch the image %s because your site is running on a local host and not web accessible. Please run the Plugin on a publicly accessible domain.', 'wp-to-social-pro' ),
-                            $params['media']['picture']
-                        )
-                    );
-                } else {
-                    $message = array(
-                        sprintf(
-                            /* translators: %1$s: Image URL, %2$s: Link to Media File Renamer Plugin */
-                            __( 'Buffer can\'t fetch the image %1$s.  Install %2$s to automatically remove spaces, accented or special characters in image filenames.', 'wp-to-social-pro' ),
-                            $params['media']['picture'],
-                            '<a href="https://wordpress.org/plugins/media-file-renamer/" target="_blank">' . __( 'Media File Renamer Plugin', 'wp-to-social-pro' ) . '</a>'
-                        )
-                    );
-                }
+            	if ( strpos( $body->message, 'Facebook Page mentions' ) !== false ) {
+            		$message = array(
+            			$body->message,
+            		);
+            	}
+
+            	if ( strpos( $body->message, 'image' ) !== false ) {
+	                if ( $this->is_local_host() ) {
+	                	$message = array(
+	                        sprintf(
+	                            __( 'Buffer can\'t fetch the image %s because your site is running on a local host and not web accessible. Please run the Plugin on a publicly accessible domain.', 'wp-to-social-pro' ),
+	                            ( isset( $params['media']['picture'] ) ? $params['media']['picture'] : '' )
+	                        )
+	                    );
+	                } elseif ( strpos( $params['media']['picture'], '.webp' ) !== false ) {
+	                	$message = array(
+	                        sprintf(
+	                            /* translators: Image URL */
+	                            __( 'Buffer can\'t use the image %s, because WebP images are unsupported by Buffer.  The Plugin attempted to convert this image to a supported format, but failed. Consider using a JPEG image instead.', 'wp-to-social-pro' ),
+	                            ( isset( $params['media']['picture'] ) ? $params['media']['picture'] : '' )
+	                        )
+	                    );
+	                } else {
+	                    $message = array(
+	                        sprintf(
+	                            /* translators: %1$s: Image URL, %2$s: Link to Media File Renamer Plugin */
+	                            __( 'Buffer can\'t fetch the image %1$s.  Install %2$s to automatically remove spaces, accented or special characters in image filenames.', 'wp-to-social-pro' ),
+	                            ( isset( $params['media']['picture'] ) ? $params['media']['picture'] : '' ),
+	                            '<a href="https://wordpress.org/plugins/media-file-renamer/" target="_blank">' . __( 'Media File Renamer Plugin', 'wp-to-social-pro' ) . '</a>'
+	                        )
+	                    );
+	                }
+	            }
                 break;
 
             /**
