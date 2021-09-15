@@ -137,6 +137,9 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 
 == Changelog ==
 
+= 3.7.4 (2021-09-16) =
+* Fix: PHP Deprecated notices in PHP 8
+
 = 3.7.3 (2021-09-09) =
 * Added: Status: Text: Convert HTML links to plain text with link in brackets, instead of just displaying the unlinked text
 * Added: Status: Text: Convert HTML lists to plain text with hyphens, instead of just displaying plain text
