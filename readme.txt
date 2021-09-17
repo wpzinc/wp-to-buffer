@@ -137,6 +137,9 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 
 == Changelog ==
 
+= 3.7.5 (2021-09-17) =
+* Fix: Logs: Correctly escape search and form action
+
 = 3.7.4 (2021-09-16) =
 * Fix: PHP Deprecated notices in PHP 8
 
