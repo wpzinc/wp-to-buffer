@@ -137,6 +137,11 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 
 == Changelog ==
 
+= 3.7.6 (2021-12-22) =
+* Added: Support for images added to the Media Library by Plugins that don't store images locally e.g. External Media without Import
+* Added: Status: Tags: {date} uses WordPress Admin > Settings > Site Language and Date Format options.  See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/status-text-tags/#available-tags
+* Fix: Always include WordPress media functions when converting a WebP image to JPEG and storing it in the Media Library to avoid PHP errors
+
 = 3.7.5 (2021-09-17) =
 * Fix: Logs: Correctly escape search and form action
 
