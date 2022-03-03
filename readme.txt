@@ -3,7 +3,7 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 5.9
+Tested up to: 5.9.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -136,6 +136,10 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.7.7 (2022-03-03) =
+* Added: Status: Insert Tags: Insert tag at textarea caret position, with leading/trailing space as applicable
+* Fix: Multisite: Activation: Use wp_insert_site hook when available in WordPress 5.1 and higher
 
 = 3.7.6 (2021-12-22) =
 * Added: Support for images added to the Media Library by Plugins that don't store images locally e.g. External Media without Import
