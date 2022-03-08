@@ -137,6 +137,11 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 
 == Changelog ==
 
+= 3.7.8 (2022-03-08) =
+* Fix: Call to undefined function _disable_block_editor_for_navigation_post_type when creating/updating Post in Gutenberg or via the REST API in WordPress 5.9+
+* Fix: Scheduled Posts: Publish action would not run when using Gutenberg
+* Fix: Customizer: Don't load inline CSS for menu icon when loading WordPress Admin > Theme > Customize
+
 = 3.7.7 (2022-03-03) =
 * Added: Status: Insert Tags: Insert tag at textarea caret position, with leading/trailing space as applicable
 * Fix: Multisite: Activation: Use wp_insert_site hook when available in WordPress 5.1 and higher
