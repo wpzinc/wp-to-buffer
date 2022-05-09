@@ -137,6 +137,9 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 
 == Changelog ==
 
+= 3.8.0 (2022-05-12) =
+* Fix: Multisite: Activation: Conditionally load required hook depending on WordPress version
+
 = 3.7.9 (2022-04-24) =
 * Fix: Upgrade link would incorrectly redirect to WordPress Admin dashboard
 
