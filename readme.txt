@@ -137,6 +137,9 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 
 == Changelog ==
 
+= 3.8.2 (2022-06-21) =
+* Fix: Status: Correctly sanitize and escape status textarea field value to prevent possible XSS
+
 = 3.8.1 (2022-06-09) =
 * Added: Support for WordPress 6.0
 

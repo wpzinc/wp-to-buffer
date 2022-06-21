@@ -2,7 +2,7 @@
 /**
 * Plugin Name: WP to Buffer
 * Plugin URI: http://www.wpzinc.com/plugins/wp-to-buffer-pro
-* Version: 3.8.1
+* Version: 3.8.2
 * Author: WP Zinc
 * Author URI: http://www.wpzinc.com
 * Description: Send WordPress Pages, Posts or Custom Post Types to your Buffer (buffer.com) account for scheduled publishing to social networks.
@@ -74,8 +74,8 @@ class WP_To_Buffer {
         
         $this->plugin->settingsName     = 'wp-to-buffer-pro'; // Settings key - used in both Free + Pro, and for oAuth
         $this->plugin->account          = 'Buffer';
-        $this->plugin->version          = '3.8.1';
-        $this->plugin->buildDate        = '2022-06-09 18:00:00';
+        $this->plugin->version          = '3.8.2';
+        $this->plugin->buildDate        = '2022-06-21 18:00:00';
         $this->plugin->requires         = '5.0';
         $this->plugin->tested           = '6.0';
         $this->plugin->folder           = plugin_dir_path( __FILE__ );
