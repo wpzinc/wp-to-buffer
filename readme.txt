@@ -3,9 +3,9 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 6.0
+Tested up to: 6.0.3
 Requires PHP: 5.6
-Stable tag: trunk
+Stable tag: 3.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,6 +136,9 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.8.3 (2022-10-25) =
+* Fix: Remove unused 1200x1200 registered image size
 
 = 3.8.2 (2022-06-21) =
 * Fix: Status: Correctly sanitize and escape status textarea field value to prevent possible XSS
