@@ -69,7 +69,7 @@
                             $row = $this->base->get_class( 'settings' )->get_status_row( $status, $post_type, $action );
                             
                             // Load sub view
-                            require( $this->base->plugin->folder . 'vendor/views/settings-post-action-status-row.php' );
+                            require( $this->base->plugin->folder . 'lib/views/settings-post-action-status-row.php' );
                         } else {
                             // Iterate through saved statuses
                             foreach ( $statuses as $key => $status ) {
@@ -78,7 +78,7 @@
                                 $row = $this->base->get_class( 'settings' )->get_status_row( $status, $post_type, $action );
 
                                 // Load sub view
-                                require( $this->base->plugin->folder . 'vendor/views/settings-post-action-status-row.php' );
+                                require( $this->base->plugin->folder . 'lib/views/settings-post-action-status-row.php' );
                             }
                         }
                         ?>
@@ -91,7 +91,7 @@
         <?php
         // Upgrade Notice
         if ( class_exists( 'WP_To_Buffer' ) || class_exists( 'WP_To_Hootsuite' ) || class_exists( 'WP_To_SocialPilot' ) ) {
-            require( $this->base->plugin->folder . 'vendor/views/settings-post-action-status-upgrade.php' );
+            require( $this->base->plugin->folder . 'lib/views/settings-post-action-status-upgrade.php' );
         } else {
            ?>
             <div class="wpzinc-option last">

@@ -73,7 +73,7 @@
                     ?>
                     <div id="profile-<?php echo $profile_id; ?>-<?php echo $action; ?>" class="action">
                         <?php
-                        require( $this->base->plugin->folder . 'vendor/views/settings-post-action.php' );
+                        require( $this->base->plugin->folder . 'lib/views/settings-post-action.php' );
                         ?>
                     </div>
                     <?php
@@ -97,7 +97,7 @@
                 ?>
                 <div id="profile-<?php echo $profile_id; ?>" class="profile <?php echo $profile['service']; ?>">
                     <?php
-                    require( $this->base->plugin->folder . 'vendor/views/settings-post-actionheader.php' );
+                    require( $this->base->plugin->folder . 'lib/views/settings-post-actionheader.php' );
                     ?>
                 </div>
                 <?php
@@ -108,7 +108,7 @@
 
         <!-- Status Editor -->
         <?php
-        require( $this->base->plugin->folder . 'vendor/views/settings-post-action-status.php' );
+        require( $this->base->plugin->folder . 'lib/views/settings-post-action-status.php' );
         ?>
 
         <!-- Submitted Form Data -->

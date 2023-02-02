@@ -261,7 +261,7 @@ class WP_To_Social_Pro_Admin {
 	            li.toplevel_page_<?php echo $this->base->plugin->settingsName; ?> a div.wp-menu-image, 
 	            li.toplevel_page_<?php echo $this->base->plugin->name; ?>-settings a div.wp-menu-image,
 	            li.toplevel_page_<?php echo $this->base->plugin->name; ?> a div.wp-menu-image {
-	                background: url(<?php echo $this->base->plugin->url; ?>/vendor/assets/images/icons/<?php echo strtolower( $this->base->plugin->account ); ?>-light.svg) center no-repeat;
+	                background: url(<?php echo $this->base->plugin->url; ?>/lib/assets/images/icons/<?php echo strtolower( $this->base->plugin->account ); ?>-light.svg) center no-repeat;
 	                background-size: 16px 16px;
 	            }
 	            li.toplevel_page_<?php echo $this->base->plugin->settingsName; ?>-settings a div.wp-menu-image img, 
@@ -273,7 +273,7 @@ class WP_To_Social_Pro_Admin {
 	        </style>
 	        <?php
     	}
-        wp_enqueue_style( $this->base->plugin->name, $this->base->plugin->url . 'vendor/assets/css/admin.css', array(), $this->base->plugin->version );
+        wp_enqueue_style( $this->base->plugin->name, $this->base->plugin->url . 'lib/assets/css/admin.css', array(), $this->base->plugin->version );
 
         // Don't load anything else if we're not on a Plugin or Post screen
         if ( ! $screen['screen'] ) {
@@ -284,8 +284,8 @@ class WP_To_Social_Pro_Admin {
         $minified = $this->base->dashboard->should_load_minified_js();
 
         // Define JS and localization
-        wp_register_script( $this->base->plugin->name . '-log', $this->base->plugin->url . 'vendor/assets/js/' . ( $minified ? 'min/' : '' ) . 'log' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
-        wp_register_script( $this->base->plugin->name . '-statuses', $this->base->plugin->url . 'vendor/assets/js/' . ( $minified ? 'min/' : '' ) . 'statuses' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
+        wp_register_script( $this->base->plugin->name . '-log', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'log' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
+        wp_register_script( $this->base->plugin->name . '-statuses', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'statuses' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
 
         $localization = array(
             'ajax'                      => admin_url( 'admin-ajax.php' ),
@@ -450,7 +450,7 @@ class WP_To_Social_Pro_Admin {
     public function admin_menu() {
 
         // Menus
-        add_menu_page( $this->base->plugin->displayName, $this->base->plugin->displayName, 'manage_options', $this->base->plugin->name . '-settings', array( $this, 'settings_screen' ), $this->base->plugin->url . 'vendor/assets/images/icons/' . strtolower( $this->base->plugin->account ) . '-light.svg' );
+        add_menu_page( $this->base->plugin->displayName, $this->base->plugin->displayName, 'manage_options', $this->base->plugin->name . '-settings', array( $this, 'settings_screen' ), $this->base->plugin->url . 'lib/assets/images/icons/' . strtolower( $this->base->plugin->account ) . '-light.svg' );
 
         // Register Submenu Pages
         $settings_page  = add_submenu_page( $this->base->plugin->name . '-settings', __( 'Settings', $this->base->plugin->name ), __( 'Settings', $this->base->plugin->name ), 'manage_options', $this->base->plugin->name . '-settings', array( $this, 'settings_screen' ) );
@@ -617,7 +617,7 @@ class WP_To_Social_Pro_Admin {
         }
 
         // Load View
-        include_once( $this->base->plugin->folder . 'vendor/views/settings.php' );
+        include_once( $this->base->plugin->folder . 'lib/views/settings.php' );
 
         // Add footer action to output overlay modal markup
         add_action( 'admin_footer', array( $this, 'output_modal' ) );
@@ -633,7 +633,7 @@ class WP_To_Social_Pro_Admin {
     public function auth_screen() {
 
         // Load View
-        include_once( $this->base->plugin->folder . 'vendor/views/settings-auth-required.php' );
+        include_once( $this->base->plugin->folder . 'lib/views/settings-auth-required.php' );
 
     }
 
@@ -661,7 +661,7 @@ class WP_To_Social_Pro_Admin {
         $table->prepare_items();
 
         // Load View
-        include_once( $this->base->plugin->folder . 'vendor/views/log.php' ); 
+        include_once( $this->base->plugin->folder . 'lib/views/log.php' ); 
 
     }
 

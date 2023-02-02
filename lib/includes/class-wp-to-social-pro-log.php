@@ -334,7 +334,7 @@ class WP_To_Social_Pro_Log {
         $log = $this->get( $post->ID );
 
         // Load View
-        include_once( $this->base->plugin->folder . 'vendor/views/post-log.php' ); 
+        include_once( $this->base->plugin->folder . 'lib/views/post-log.php' ); 
 
     }
 

@@ -95,7 +95,7 @@
 			            <div id="normal-sortables" class="meta-box-sortables ui-sortable publishing-defaults">  
 			            	<?php
 			            	// Load sub view
-			            	require_once( $this->base->plugin->folder . 'vendor/views/settings-' . $tab . '.php' );
+			            	require_once( $this->base->plugin->folder . 'lib/views/settings-' . $tab . '.php' );
 			            	?>
 						</div>
 						<!-- /normal-sortables -->
