@@ -3,9 +3,9 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 6.0.3
-Requires PHP: 5.6
-Stable tag: 3.8.3
+Tested up to: 6.1.1
+Requires PHP: 7.4
+Stable tag: 3.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,8 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 - WordPress to Twitter Auto Post
 - WordPress to LinkedIn Page Auto Post
 - WordPress to LinkedIn Profile Auto Post
+- WordPress to Google Business Auto Post
+- WordPress to Mastodon Auto Post
 
 === What can I do with WordPress to Buffer Pro? ===
 
@@ -125,6 +127,8 @@ You can post to:
 - WordPress to Twitter
 - WordPress to LinkedIn Page
 - WordPress to LinkedIn Profile
+- WordPress to Google Business Profile
+- WordPress to Mastodon Profile
 
 To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
@@ -136,6 +140,16 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.8.4 (2023-01-26) =
+* Added: Google Business Profile: Support for status type (What's New, Offer, Event) with applicable fields.  See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/status-settings/#status--google-business-profile
+* Added: Status: Text: Facebook: Support for multiple Facebook Page Mentions in a single status
+* Added: Settings: Mastodon Icon
+* Added: Log: Log errors when image operations (resizing, converting, uploading to Media Library) fails
+* Fix: Use get_temp_dir() instead of assumed /tmp folder for writing temporary images when resizing, converting or generating text to image
+* Fix: Status: Clear profiles cache when deauthorizing and authorizing with a different Buffer account
+* Fix: Improved WordPress Coding Standards
+* Fix: Removed clipboard.js, as WordPress provides this library
 
 = 3.8.3 (2022-10-25) =
 * Fix: Remove unused 1200x1200 registered image size
