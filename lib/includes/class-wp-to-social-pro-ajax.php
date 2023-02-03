@@ -1,9 +1,17 @@
 <?php
 /**
- * AJAX class
- * 
+ * AJAX class.
+ *
  * @package WP_To_Social_Pro
- * @author  Tim Carr
+ * @author WP Zinc
+ */
+
+/**
+ * Registers AJAX actions for saving statuses, fetching usernames,
+ * searching Taxonomy Terms etc.
+ *
+ * @package WP_To_Social_Pro
+ * @author  WP Zinc
  * @version 3.0.0
  */
 class WP_To_Social_Pro_Ajax {
@@ -22,14 +30,14 @@ class WP_To_Social_Pro_Ajax {
      *
      * @since   3.0.0
      *
-     * @param   object $base    Base Plugin Class
+     * @param   object $base    Base Plugin Class.
      */
     public function __construct( $base ) {
 
-        // Store base class
+        // Store base class.
         $this->base = $base;
 
-        // Actions
+        // Actions.
         add_action( 'wp_ajax_' . $this->base->plugin->filter_name . '_save_statuses', array( $this, 'save_statuses' ) );
         add_action( 'wp_ajax_' . $this->base->plugin->filter_name . '_get_status_row', array( $this, 'get_status_row' ) );
         add_action( 'wp_ajax_' . $this->base->plugin->filter_name . '_get_log', array( $this, 'get_log' ) );
@@ -47,25 +55,28 @@ class WP_To_Social_Pro_Ajax {
         // Run a security check first.
         check_ajax_referer( $this->base->plugin->name . '-save-statuses', 'nonce' );
 
-        // Parse request
+        // Parse request.
         $post_type = sanitize_text_field( $_REQUEST['post_type'] );
-        $statuses = json_decode( wp_unslash( $_REQUEST['statuses'] ), true );
+        $statuses  = json_decode( wp_unslash( $_REQUEST['statuses'] ), true );
 
-        // Get some other information
-        $post_type_object = get_post_type_object( $post_type );
+        // Get some other information.
+        $post_type_object  = get_post_type_object( $post_type );
         $documentation_url = $this->base->plugin->documentation_url . '/status-settings';
 
-        // Save and return
+        // Save and return.
         $result = $this->base->get_class( 'settings' )->update_settings( $post_type, $statuses );
 
+        // Bail if an error occured.
         if ( is_wp_error( $result ) ) {
             wp_send_json_error( $result->get_error_message() );
         }
 
-        // Return success, with flag denoting if the Post Type is configured to send statuses
-        wp_send_json_success( array(
-            'post_type_enabled' => $this->base->get_class( 'settings' )->is_post_type_enabled( $post_type ),
-        ) );
+        // Return success, with flag denoting if the Post Type is configured to send statuses.
+        wp_send_json_success(
+            array(
+                'post_type_enabled' => $this->base->get_class( 'settings' )->is_post_type_enabled( $post_type ),
+            )
+        );
 
     }
 
@@ -79,12 +90,12 @@ class WP_To_Social_Pro_Ajax {
         // Run a security check first.
         check_ajax_referer( $this->base->plugin->name . '-get-status-row', 'nonce' );
 
-        // Parse request
-        $status = json_decode( wp_unslash( $_REQUEST['status'] ), true );
+        // Parse request.
+        $status    = json_decode( wp_unslash( $_REQUEST['status'] ), true );
         $post_type = sanitize_text_field( $_REQUEST['post_type'] );
-        $action = sanitize_text_field( $_REQUEST['post_action'] );
+        $action    = sanitize_text_field( $_REQUEST['post_action'] );
 
-        // Return array of row data (message, image, schedule)
+        // Return array of row data (message, image, schedule).
         wp_send_json_success( $this->base->get_class( 'settings' )->get_status_row( $status, $post_type, $action ) );
 
     }
@@ -100,12 +111,12 @@ class WP_To_Social_Pro_Ajax {
         // Run a security check first.
         check_ajax_referer( $this->base->plugin->name . '-get-log', 'nonce' );
 
-        // Get Post ID
+        // Get Post ID.
         $post_id = absint( $_REQUEST['post'] );
 
-        // Return log table output
+        // Return log table output.
         wp_send_json_success( $this->base->get_class( 'log' )->build_log_table_output( $this->base->get_class( 'log' )->get( $post_id ) ) );
-        
+
     }
 
     /**
@@ -118,10 +129,10 @@ class WP_To_Social_Pro_Ajax {
         // Run a security check first.
         check_ajax_referer( $this->base->plugin->name . '-clear-log', 'nonce' );
 
-        // Get Post ID
+        // Get Post ID.
         $post_id = absint( $_REQUEST['post'] );
 
-        // Clear log
+        // Clear log.
         $this->base->get_class( 'log' )->delete_by_post_id( $post_id );
 
         wp_send_json_success();
