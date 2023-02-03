@@ -183,6 +183,7 @@ class WP_To_Buffer {
         $this->classes->api         = new WP_To_Social_Pro_Buffer_API( self::$instance );
         $this->classes->common      = new WP_To_Social_Pro_Common( self::$instance );
         $this->classes->cron        = new WP_To_Social_Pro_Cron( self::$instance );
+        $this->classes->date        = new WP_To_Social_Pro_Date( self::$instance );
         $this->classes->image     	= new WP_To_Social_Pro_Image( self::$instance );
         $this->classes->install     = new WP_To_Social_Pro_Install( self::$instance );
         $this->classes->log         = new WP_To_Social_Pro_Log( self::$instance ); 
