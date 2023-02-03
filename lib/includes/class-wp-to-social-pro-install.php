@@ -100,11 +100,6 @@ class WP_To_Social_Pro_Install {
 
         // Reschedule the cron events.
         $this->base->get_class( 'cron' )->reschedule_log_cleanup_event();
-        $this->base->get_class( 'cron' )->reschedule_media_cleanup_event();
-        $this->base->get_class( 'cron' )->reschedule_repost_event();
-
-        // Migrate Bulk Publish Statuses from their own settings to each Post Type.
-        $this->migrate_bulk_publish_statuses_to_post_types();
 
         /**
          * 3.6.2: Migrate Log Level Settings
