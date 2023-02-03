@@ -142,9 +142,11 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 == Changelog ==
 
 = 3.8.4 (2023-01-26) =
+* Added: Settings: Mastodon Icon
+
 * Added: Google Business Profile: Support for status type (What's New, Offer, Event) with applicable fields.  See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/status-settings/#status--google-business-profile
 * Added: Status: Text: Facebook: Support for multiple Facebook Page Mentions in a single status
-* Added: Settings: Mastodon Icon
+
 * Added: Log: Log errors when image operations (resizing, converting, uploading to Media Library) fails
 * Fix: Use get_temp_dir() instead of assumed /tmp folder for writing temporary images when resizing, converting or generating text to image
 * Fix: Status: Clear profiles cache when deauthorizing and authorizing with a different Buffer account
