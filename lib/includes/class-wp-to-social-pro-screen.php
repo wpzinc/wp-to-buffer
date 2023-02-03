@@ -1,9 +1,16 @@
 <?php
 /**
- * Determines which Plugin Screen the User is on
- * 
+ * Screen class
+ *
  * @package WP_To_Social_Pro
- * @author  Tim Carr
+ * @author WP Zinc
+ */
+
+/**
+ * Determines which Plugin Screen the User is on
+ *
+ * @package WP_To_Social_Pro
+ * @author  WP Zinc
  * @version 3.9.6
  */
 class WP_To_Social_Pro_Screen {
@@ -19,14 +26,14 @@ class WP_To_Social_Pro_Screen {
 
     /**
      * Constructor
-     * 
+     *
      * @since   3.9.6
      *
-     * @param   object $base    Base Plugin Class
+     * @param   object $base    Base Plugin Class.
      */
     public function __construct( $base ) {
 
-        // Store base class
+        // Store base class.
         $this->base = $base;
 
     }
@@ -48,35 +55,39 @@ class WP_To_Social_Pro_Screen {
      */
     public function get_current_screen() {
 
-        // Assume we're not on a plugin screen
+        // Assume we're not on a plugin screen.
         $result = array(
             'screen'  => false,
             'section' => false,
         );
 
-        // Early detection of settings page so that early hooks e.g. init can detect if we're on the settings screen
-        if ( isset( $_REQUEST['page'] ) ) {
-            if ( sanitize_text_field( $_REQUEST['page'] ) == $this->base->plugin->name . '-settings' ) {
+        // Early detection of settings page so that early hooks e.g. init can detect if we're on the settings screen.
+        if ( isset( $_REQUEST['page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+            if ( sanitize_text_field( $_REQUEST['page'] ) === $this->base->plugin->name . '-settings' ) { // phpcs:ignore WordPress.Security.NonceVerification
                 return array(
-                    'screen'    => 'settings',
-                    'section'   => ( isset( $_REQUEST['tab'] ) ? sanitize_text_field( $_REQUEST['tab'] ) : 'auth' ),
+                    'screen'  => 'settings',
+                    'section' => ( isset( $_REQUEST['tab'] ) ? sanitize_text_field( $_REQUEST['tab'] ) : 'auth' ), // phpcs:ignore WordPress.Security.NonceVerification
                 );
             }
         }
 
-        // Bail if we can't determine this
+        // Bail if we can't determine this.
         if ( ! function_exists( 'get_current_screen' ) ) {
             return $result;
         }
 
-        // Get screen
+        // Get screen.
         $screen = get_current_screen();
 
-        // Get screen ID without Plugin Display Name, which can be edited by whitelabelling
-        $screen_id = str_replace( array(
-            'toplevel_page_', // licensing = wp-to-xxx-pro
-            sanitize_title( $this->base->plugin->displayName ) . '_page_',
-        ), '',  $screen->base );
+        // Get screen ID without Plugin Display Name, which can be edited by whitelabelling.
+        $screen_id = str_replace(
+            array(
+                'toplevel_page_', // licensing = wp-to-xxx-pro.
+                sanitize_title( $this->base->plugin->displayName ) . '_page_',
+            ),
+            '',
+            $screen->base
+        );
 
         switch ( $screen_id ) {
 
@@ -85,64 +96,58 @@ class WP_To_Social_Pro_Screen {
              */
             case 'edit':
                 return array(
-                    'screen'    => 'post',
-                    'section'   => 'wp_list_table',
+                    'screen'  => 'post',
+                    'section' => 'wp_list_table',
                 );
-                break;
 
             /**
              * Post/Page/CPT Add/Edit
              */
             case 'post':
                 return array(
-                    'screen'    => 'post',
-                    'section'   => 'edit',
+                    'screen'  => 'post',
+                    'section' => 'edit',
                 );
-                break;
 
             /**
              * Settings
              */
             case $this->base->plugin->name . '-settings':
                 return array(
-                    'screen'    => 'settings',
-                    'section'   => ( isset( $_REQUEST['tab'] ) ? sanitize_text_field( $_REQUEST['tab'] ) : 'auth' ),
+                    'screen'  => 'settings',
+                    'section' => ( isset( $_REQUEST['tab'] ) ? sanitize_text_field( $_REQUEST['tab'] ) : 'auth' ), // phpcs:ignore WordPress.Security.NonceVerification
                 );
-                break;
 
             /**
              * Bulk Publish
              */
             case $this->base->plugin->name . '-bulk-publish':
                 return array(
-                    'screen'    => 'bulk_publish',
-                    'section'   => 'bulk_publish',
+                    'screen'  => 'bulk_publish',
+                    'section' => 'bulk_publish',
                 );
-                break;
 
             /**
              * Log
              */
             case $this->base->plugin->name . '-log':
                 return array(
-                    'screen'    => 'log',
-                    'section'   => 'log',
+                    'screen'  => 'log',
+                    'section' => 'log',
                 );
-                break;
 
             /**
              * WordPress Screens
              */
             case 'customize':
-            	return array(
-                    'screen'    => 'customize',
-                    'section'   => 'customize',
+                return array(
+                    'screen'  => 'customize',
+                    'section' => 'customize',
                 );
-                break;
 
         }
 
-        // If here, we couldn't determine the screen
+        // If here, we couldn't determine the screen.
         return $result;
 
     }
