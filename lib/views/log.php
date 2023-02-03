@@ -1,28 +1,37 @@
+<?php
+/**
+ * Outputs the Logs WP_List_Table.
+ *
+ * @package WP_To_Social_Pro
+ * @author  WP Zinc
+ */
+
+?>
 <div class="wrap">
     <h1 class="wp-heading-inline">
-        <?php echo $this->base->plugin->displayName; ?>
+        <?php echo esc_html( $this->base->plugin->displayName ); ?>
 
         <span>
-            <?php _e( 'Logs', 'wp-to-social-pro' ); ?>
+            <?php esc_html_e( 'Logs', 'wp-to-social-pro' ); ?>
         </span>
     </h1>
 
     <?php
-    // Search Subtitle
-    if ( isset( $_REQUEST['s'] ) && ! empty( $_REQUEST['s'] ) ) {
+    // Search Subtitle.
+    if ( $table->is_search() ) {
         ?>
-        <span class="subtitle left"><?php _e( 'Search results for', 'page-generator-pro' ); ?> &#8220;<?php echo esc_html( urldecode( $_REQUEST['s'] ) ); ?>&#8221;</span>
+        <span class="subtitle left"><?php esc_html_e( 'Search results for', 'wp-to-social-pro' ); ?> &#8220;<?php echo esc_html( $table->get_search() ); ?>&#8221;</span>
         <?php
     }
     ?>
 
-    <form action="admin.php?page=<?php echo esc_attr( $_REQUEST['page'] ); ?>" method="post" id="posts-filter">
-        <?php   
-        // Output Search Box
-        $table->search_box( __( 'Search' ), 'wp-to-social-log' );
+    <form action="admin.php?page=<?php echo esc_attr( $this->base->plugin->name ); ?>-log" method="post" id="posts-filter">
+        <?php
+        // Output Search Box.
+        $table->search_box( __( 'Search', 'wp-to-social-pro' ), 'wp-to-social-log' );
 
-        // Output Table
-        $table->display(); 
-        ?>  
+        // Output Table.
+        $table->display();
+        ?>
     </form>
 </div><!-- /.wrap -->
