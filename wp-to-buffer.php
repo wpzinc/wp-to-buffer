@@ -17,7 +17,7 @@
 
 // Bail if Plugin is alread loaded.
 if ( class_exists( 'WP_To_Buffer' ) ) {
-    return;
+	return;
 }
 
 // Define Plugin version and build date.
@@ -35,50 +35,50 @@ define( 'WP_TO_BUFFER_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
  *
  * @param   string $class_name     The class to load.
  */
-function WP_To_Buffer_Autoloader( $class_name ) {
+function WP_To_Buffer_Autoloader( $class_name ) { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName
 
-    // Define the required start of the class name.
-    $class_start_name = 'WP_To_Social_Pro';
+	// Define the required start of the class name.
+	$class_start_name = 'WP_To_Social_Pro';
 
-    // Get the number of parts the class start name has.
-    $class_parts_count = count( explode( '_', $class_start_name ) );
+	// Get the number of parts the class start name has.
+	$class_parts_count = count( explode( '_', $class_start_name ) );
 
-    // Break the class name into an array.
-    $class_path = explode( '_', $class_name );
+	// Break the class name into an array.
+	$class_path = explode( '_', $class_name );
 
-    // Bail if it's not a minimum length (i.e. doesn't potentially have WP_To_Social_Pro).
-    if ( count( $class_path ) < $class_parts_count ) {
-        return;
-    }
+	// Bail if it's not a minimum length (i.e. doesn't potentially have WP_To_Social_Pro).
+	if ( count( $class_path ) < $class_parts_count ) {
+		return;
+	}
 
-    // Build the base class path for this class.
-    $base_class_path = '';
-    for ( $i = 0; $i < $class_parts_count; $i++ ) {
-        $base_class_path .= $class_path[ $i ] . '_';
-    }
-    $base_class_path = trim( $base_class_path, '_' );
+	// Build the base class path for this class.
+	$base_class_path = '';
+	for ( $i = 0; $i < $class_parts_count; $i++ ) {
+		$base_class_path .= $class_path[ $i ] . '_';
+	}
+	$base_class_path = trim( $base_class_path, '_' );
 
-    // Bail if the first parts don't match what we expect.
-    if ( $base_class_path !== $class_start_name ) {
-        return;
-    }
+	// Bail if the first parts don't match what we expect.
+	if ( $base_class_path !== $class_start_name ) {
+		return;
+	}
 
-    // Define the file name.
-    $file_name = 'class-' . str_replace( '_', '-', strtolower( $class_name ) ) . '.php';
+	// Define the file name.
+	$file_name = 'class-' . str_replace( '_', '-', strtolower( $class_name ) ) . '.php';
 
-    // Define the paths to search for the file.
-    $include_paths = array(
-        WP_TO_BUFFER_PLUGIN_PATH . 'lib/includes',
-        WP_TO_BUFFER_PLUGIN_PATH . 'includes',
-    );
+	// Define the paths to search for the file.
+	$include_paths = array(
+		WP_TO_BUFFER_PLUGIN_PATH . 'lib/includes',
+		WP_TO_BUFFER_PLUGIN_PATH . 'includes',
+	);
 
-    // Iterate through the include paths to find the file.
-    foreach ( $include_paths as $path ) {
-        if ( file_exists( $path . '/' . $file_name ) ) {
-            require_once $path . '/' . $file_name;
-            return;
-        }
-    }
+	// Iterate through the include paths to find the file.
+	foreach ( $include_paths as $path ) {
+		if ( file_exists( $path . '/' . $file_name ) ) {
+			require_once $path . '/' . $file_name;
+			return;
+		}
+	}
 
 }
 spl_autoload_register( 'wp_to_buffer_autoloader' );
@@ -89,9 +89,9 @@ require_once WP_TO_BUFFER_PLUGIN_PATH . 'includes/cron.php';
 require_once WP_TO_BUFFER_PLUGIN_PATH . 'includes/deactivation.php';
 register_activation_hook( __FILE__, 'wp_to_buffer_activate' );
 if ( version_compare( get_bloginfo( 'version' ), '5.1', '>=' ) ) {
-    add_action( 'wp_insert_site', 'wp_to_buffer_activate_new_site' );
+	add_action( 'wp_insert_site', 'wp_to_buffer_activate_new_site' );
 } else {
-    add_action( 'wpmu_new_blog', 'wp_to_buffer_activate_new_site' );
+	add_action( 'wpmu_new_blog', 'wp_to_buffer_activate_new_site' );
 }
 add_action( 'activate_blog', 'wp_to_buffer_activate_new_site' );
 register_deactivation_hook( __FILE__, 'wp_to_buffer_deactivate' );
@@ -103,7 +103,7 @@ register_deactivation_hook( __FILE__, 'wp_to_buffer_deactivate' );
  */
 function WP_To_Buffer() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName
 
-    return WP_To_Buffer::get_instance();
+	return WP_To_Buffer::get_instance();
 
 }
 
