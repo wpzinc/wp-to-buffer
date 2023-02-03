@@ -103,42 +103,6 @@
                     <?php
                     require $this->base->plugin->folder . 'lib/views/settings-post-actionheader.php';
                     ?>
-
-                    <div id="<?php echo esc_attr( $post_type ); ?>-<?php echo esc_attr( $profile_id ); ?>-actions-panel">
-                        <!-- Action Tabs -->
-                        <ul class="wpzinc-nav-tabs-horizontal wpzinc-js-tabs" data-panels-container="#profile-<?php echo esc_attr( $profile_id ); ?>-actions-container" data-panel=".action" data-active="wpzinc-nav-tab-horizontal-active">
-                            <?php
-                            foreach ( $post_actions as $post_action => $action_label ) {
-                                $action_enabled = $this->get_setting( $post_type, '[' . $profile_id . '][' . $post_action . '][enabled]', 0 );
-                                ?>
-                                <li class="wpzinc-nav-tab-horizontal <?php echo esc_attr( $post_action ); ?>">
-                                    <a href="#profile-<?php echo esc_attr( $profile_id ); ?>-<?php echo esc_attr( $post_action ); ?>" class="<?php echo esc_attr( $action_enabled ? ' enabled' : '' ) . ( $post_action === 'publish' ? ' wpzinc-nav-tab-horizontal-active' : '' ); ?>">
-                                        <?php
-                                        echo esc_html( $action_label );
-                                        ?>
-                                        <span class="dashicons dashicons-yes"></span>
-                                    </a>
-                                </li>
-                                <?php
-                            }
-                            ?>
-                        </ul>
-
-                        <div id="profile-<?php echo esc_attr( $profile_id ); ?>-actions-container">
-                            <?php
-                            // Iterate through Post Actions (Publish, Update etc).
-                            foreach ( $post_actions as $post_action => $action_label ) {
-                                ?>
-                                <div id="profile-<?php echo esc_attr( $profile_id ); ?>-<?php echo esc_attr( $post_action ); ?>" class="action">
-                                    <?php
-                                    require $this->base->plugin->folder . 'lib/views/settings-post-action.php';
-                                    ?>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
                 </div>
                 <?php
             }
