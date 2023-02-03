@@ -1,9 +1,16 @@
 <?php
 /**
- * API class.  Used by other classes to perform POST and GET requests.
- * 
+ * API class.
+ *
  * @package WP_To_Social_Pro
- * @author  Tim Carr
+ * @author WP Zinc
+ */
+
+/**
+ * Used by other classes which interact with APIs to perform POST and GET requests.
+ *
+ * @package WP_To_Social_Pro
+ * @author  WP Zinc
  * @version 1.0.0
  */
 class WP_To_Social_Pro_API {
@@ -14,7 +21,7 @@ class WP_To_Social_Pro_API {
      *
      * @since   1.0.0
      *
-     * @param   array   $args   Arguments
+     * @param   array $args   Arguments.
      * @return  array           Sanitized Arguments
      */
     public function sanitize_arguments( $args ) {
@@ -26,7 +33,7 @@ class WP_To_Social_Pro_API {
         }
 
         return $args;
-        
+
     }
 
     /**
@@ -34,8 +41,8 @@ class WP_To_Social_Pro_API {
      *
      * @since  1.0.0
      *
-     * @param  string  $cmd        Command (required)
-     * @param  array   $params     Params (optional)
+     * @param  string $cmd        Command (required).
+     * @param  array  $params     Params (optional).
      * @return mixed               WP_Error | object
      */
     public function get( $cmd, $params = array() ) {
@@ -49,8 +56,8 @@ class WP_To_Social_Pro_API {
      *
      * @since  1.0.0
      *
-     * @param  string  $cmd        Command (required)
-     * @param  array   $params     Params (optional)
+     * @param  string $cmd        Command (required).
+     * @param  array  $params     Params (optional).
      * @return mixed               WP_Error | object
      */
     public function post( $cmd, $params = array() ) {
@@ -64,14 +71,14 @@ class WP_To_Social_Pro_API {
      *
      * @since   1.0.0
      *
-     * @param   string  $cmd        Command
-     * @param   string  $method     Method (get|post)
-     * @param   array   $params     Parameters (optional)
+     * @param   string $cmd        Command.
+     * @param   string $method     Method (get|post).
+     * @param   array  $params     Parameters (optional).
      * @return  mixed               WP_Error | object
      */
     private function request( $cmd, $method = 'get', $params = array() ) {
 
-        // Set timeout
+        // Set timeout.
         $timeout = 20;
 
         /**
@@ -79,64 +86,50 @@ class WP_To_Social_Pro_API {
          *
          * @since   3.0.0
          *
-         * @param   int     $timeout    Timeout, in seconds
+         * @param   int     $timeout    Timeout, in seconds.
          */
         $timeout = apply_filters( 'wp_to_social_pro_api_request_timeout', $timeout );
 
-        // Send request
-        $result = $this->request_curl( $this->api_endpoint, $cmd, $method, $params, $timeout );
+        // Send request.
+        $result = $this->request_wordpress( $this->api_endpoint, $cmd, $method, $params, $timeout );
 
-        // Result will be WP_Error or the data we expect
+        // Result will be WP_Error or the data we expect.
         return $result;
 
     }
 
     /**
-     * Performs POST and GET requests through PHP's curl_exec() function.
-     *
-     * If this function is called, request_wordpress() failed, most likely
-     * due to a DNS lookup failure or CloudFlare failing to respond.
+     * Performs POST and GET requests.
      *
      * @since   1.7.1
      *
-     * @param   string  $url        URL
-     * @param   string  $cmd        API Command
-     * @param   string  $method     Method (post|get)
-     * @param   array   $params     Parameters
-     * @param   int     $timeout    Timeout, in seconds (default: 10)
+     * @param   string $url        URL.
+     * @param   string $cmd        API Command.
+     * @param   string $method     Method (post|get).
+     * @param   array  $params     Parameters.
+     * @param   int    $timeout    Timeout, in seconds (default: 10).
      * @return  mixed               WP_Error | object
      */
-    private function request_curl( $url, $cmd, $method, $params, $timeout = 20 ) {
+    private function request_wordpress( $url, $cmd, $method, $params, $timeout = 20 ) {
 
-        // Bail if cURL isn't installed
-        if ( ! function_exists( 'curl_init' ) ) {
-            return new WP_Error( 
-                $this->base->plugin->name . '_api_request_curl',
-                sprintf( 
-                    /* translators: Plugin Name */
-                    __( '%s requires the PHP cURL extension to be installed and enabled by your web host.', 'wp-to-social-pro' ),
-                    $this->base->plugin->displayName
-                )
-            );
-        }
-
-        // Init
-        $ch = curl_init();
-
-        // Set request specific options
+        // Send request.
         switch ( $method ) {
             /**
              * GET
              */
             case 'get':
             case 'GET':
-                curl_setopt_array( $ch, array(
-                    CURLOPT_URL             => $url . '&' . http_build_query( array(
-                        'endpoint'  => $cmd,
-                        'params'    => $params,
-                    ) ),
-                    CURLOPT_RESOLVE         => $this->api_endpoint_resolutions,
-                ) );
+                $response = wp_remote_get(
+                    $url . '&' . http_build_query(
+                        array(
+                            'endpoint' => $cmd,
+                            'params'   => $params,
+                        )
+                    ),
+                    array(
+                        'timeout' => $timeout,
+                    )
+                );
                 break;
 
             /**
@@ -144,43 +137,32 @@ class WP_To_Social_Pro_API {
              */
             case 'post':
             case 'POST':
-                curl_setopt_array( $ch, array(
-                    CURLOPT_URL             => $url,
-                    CURLOPT_POST            => true,
-                    CURLOPT_POSTFIELDS      => http_build_query( array(
-                        'endpoint'  => $cmd,
-                        'params'    => $params,
-                    ) ),
-                    CURLOPT_RESOLVE         => $this->api_endpoint_resolutions,
-                ) );
+                $response = wp_remote_post(
+                    $url,
+                    array(
+                        'body'    => array(
+                            'endpoint' => $cmd,
+                            'params'   => $params,
+                        ),
+                        'timeout' => $timeout,
+                    )
+                );
                 break;
         }
 
-        // Set shared options
-        curl_setopt_array( $ch, array(
-            CURLOPT_RETURNTRANSFER  => true,
-            CURLOPT_HEADER          => false,
-            CURLOPT_FOLLOWLOCATION  => true,
-            CURLOPT_MAXREDIRS       => 10,
-            CURLOPT_CONNECTTIMEOUT  => $timeout,
-            CURLOPT_TIMEOUT         => $timeout,
-        ) );
-
-        // Execute
-        $result     = curl_exec( $ch );
-        $http_code  = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-        $error      = curl_error( $ch );
-        curl_close( $ch );
-
-        // If our error string isn't empty, something went wrong
-        if ( ! empty( $error ) ) {
-            return new WP_Error( 'wp_to_social_pro_api_request_curl', $error );
+        // If an error occured, return it now.
+        if ( is_wp_error( $response ) ) {
+            return $response;
         }
 
-        // Decode the result
-        $result = json_decode( $result );
+        // Fetch HTTP code and body.
+        $http_code = wp_remote_retrieve_response_code( $response );
+        $response  = wp_remote_retrieve_body( $response );
 
-        // If the response is empty or missing the data payload, return a generic error
+        // Decode the result.
+        $result = json_decode( $response );
+
+        // If the response is empty or missing the data payload, return a generic error.
         if ( is_null( $result ) || ! isset( $result->data ) ) {
             return new WP_Error(
                 $http_code,
@@ -188,15 +170,17 @@ class WP_To_Social_Pro_API {
             );
         }
 
-        // If the response's success flag is false, return the data as an error
+        // If the response's success flag is false, return the data as an error.
         if ( ! $result->success ) {
             return new WP_Error( $http_code, $result->data );
         }
 
-        // All OK - return the data
-        unset( $result->data->status ); // This is from the originating API request, and we no longer need it
+        // All OK - return the data.
+        // This is from the originating API request, and we no longer need it.
+        unset( $result->data->status );
 
-        return $result->data; // object comprising of data, links + meta
+        // object comprising of data, links + meta.
+        return $result->data;
 
     }
 
