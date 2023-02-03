@@ -1,9 +1,16 @@
 <?php
 /**
- * Common class
- * 
+ * Common class.
+ *
  * @package WP_To_Social_Pro
- * @author  Tim Carr
+ * @author WP Zinc
+ */
+
+/**
+ * Common functions that don't fit into other classes.
+ *
+ * @package WP_To_Social_Pro
+ * @author  WP Zinc
  * @version 3.0.0
  */
 class WP_To_Social_Pro_Common {
@@ -22,13 +29,13 @@ class WP_To_Social_Pro_Common {
      *
      * @since   3.4.7
      *
-     * @param   object $base    Base Plugin Class
+     * @param   object $base    Base Plugin Class.
      */
     public function __construct( $base ) {
 
-        // Store base class
+        // Store base class.
         $this->base = $base;
-        
+
     }
 
     /**
@@ -36,103 +43,31 @@ class WP_To_Social_Pro_Common {
      *
      * @since   3.0.0
      *
-     * @param   mixed   $post_type          Post Type (false | string)
-     * @param   bool    $is_post_screen     Displaying the Post Screen
+     * @param   mixed $post_type          Post Type (false | string).
+     * @param   bool  $is_post_screen     Displaying the Post Screen.
      * @return  array                       Schedule Options
      */
     public function get_schedule_options( $post_type = false, $is_post_screen = false ) {
 
-        // Build schedule options, depending on the Plugin
+        // Build schedule options, depending on the Plugin.
         switch ( $this->base->plugin->name ) {
 
             case 'wp-to-buffer':
                 $schedule = array(
-                    'queue_bottom'  => sprintf( 
+                    'queue_bottom' => sprintf(
                         /* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
                         __( 'Add to End of %s Queue', 'wp-to-social-pro' ),
                         $this->base->plugin->account
                     ),
                 );
-                break;
-
-            case 'wp-to-buffer-pro':
-                $schedule = array(
-                    'queue_bottom'      => sprintf( 
-                        /* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-                        __( 'Add to End of %s Queue', 'wp-to-social-pro' ),
-                        $this->base->plugin->account
-                    ),
-                    'queue_top'         => sprintf( 
-                        /* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-                        __( 'Add to Start of %s Queue', 'wp-to-social-pro' ),
-                        $this->base->plugin->account
-                    ),
-                    'now'               => __( 'Post Immediately', 'wp-to-social-pro' ),
-                    'custom'            => __( 'Custom Time', 'wp-to-social-pro' ),
-                    'custom_relative'   => __( 'Custom Time (Relative Format)', 'wp-to-social-pro' ),
-                    'custom_field'      => __( 'Custom Time (based on Custom Field / Post Meta Value)', 'wp-to-social-pro' ),
-                );
-
-                // If we're on the Post Screen, add a specific option now
-                if ( $is_post_screen ) {
-                    $schedule['specific'] = __( 'Specific Date and Time', 'wp-to-social-pro');
-                }
                 break;
 
             case 'wp-to-hootsuite':
                 $schedule = array(
-                    'now'           => __( 'Post Immediately', 'wp-to-social-pro' ),
+                    'now' => __( 'Post Immediately', 'wp-to-social-pro' ),
                 );
                 break;
 
-            case 'wp-to-hootsuite-pro':
-                $schedule = array(
-                    'now'               => __( 'Post Immediately', 'wp-to-social-pro' ),
-                    'custom'            => __( 'Custom Time', 'wp-to-social-pro' ),
-                    'custom_relative'   => __( 'Custom Time (Relative Format)', 'wp-to-social-pro' ),
-                    'custom_field'      => __( 'Custom Time (based on Custom Field / Post Meta Value)', 'wp-to-social-pro' ),
-                );
-
-                // If we're on the Post Screen, add a specific option now
-                if ( $is_post_screen ) {
-                    $schedule['specific'] = __( 'Specific Date and Time', 'wp-to-social-pro' );
-                }
-                break;
-
-            case 'wp-to-socialpilot':
-                $schedule = array(
-                    'queue_bottom'  => sprintf( 
-                        /* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-                        __( 'Add to End of %s Queue', 'wp-to-social-pro' ),
-                        $this->base->plugin->account
-                    ),
-                );
-                break;
-
-            case 'wp-to-socialpilot-pro':
-                $schedule = array(
-                    'queue_bottom'      => sprintf( 
-                        /* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-                        __( 'Add to End of %s Queue', 'wp-to-social-pro' ),
-                        $this->base->plugin->account
-                    ),
-                    'queue_top'         => sprintf( 
-                        /* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-                        __( 'Add to Start of %s Queue', 'wp-to-social-pro' ),
-                        $this->base->plugin->account
-                    ),
-                    'now'               => __( 'Post Immediately', 'wp-to-social-pro' ),
-                    'custom'            => __( 'Custom Time', 'wp-to-social-pro' ),
-                    'custom_relative'   => __( 'Custom Time (Relative Format)', 'wp-to-social-pro' ),
-                    'custom_field'      => __( 'Custom Time (based on Custom Field / Post Meta Value)', 'wp-to-social-pro' ),
-                );
-
-                // If we're on the Post Screen, add a specific option now
-                if ( $is_post_screen ) {
-                    $schedule['specific'] = __( 'Specific Date and Time', 'wp-to-social-pro' );
-                }
-                break;
-                
         }
 
         /**
@@ -140,13 +75,71 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.0.0
          *
-         * @param   array   $schedule           Schedule Options
-         * @param   string  $post_type          Post Type
-         * @param   bool    $is_post_screen     On Post Edit Screen
+         * @param   array   $schedule           Schedule Options.
+         * @param   string  $post_type          Post Type.
+         * @param   bool    $is_post_screen     On Post Edit Screen.
          */
         $schedule = apply_filters( $this->base->plugin->filter_name . '_get_schedule_options', $schedule, $post_type, $is_post_screen );
 
-        // Return filtered results
+        // Return filtered results.
+        return $schedule;
+
+    }
+
+    /**
+     * Helper method to retrieve Google Business Start Date options
+     *
+     * @since   4.9.0
+     *
+     * @param   mixed $post_type          Post Type (false | string).
+     * @return  array   Start Date Options
+     */
+    public function get_google_business_start_date_options( $post_type = false ) {
+
+        // Build schedule options.
+        $schedule = array(
+            'custom' => __( 'Custom Field / Post Meta Value', 'wp-to-social-pro' ),
+        );
+
+        /**
+         * Defines the available start date options for a Google Business Profile status.
+         *
+         * @since   4.9.0
+         *
+         * @param   array   $schedule   Schedule Options.
+         */
+        $schedule = apply_filters( $this->base->plugin->filter_name . '_get_google_business_start_date_options', $schedule, $post_type );
+
+        // Return filtered results.
+        return $schedule;
+
+    }
+
+    /**
+     * Helper method to retrieve Google Business Start Date options
+     *
+     * @since   4.9.0
+     *
+     * @param   mixed $post_type          Post Type (false | string).
+     * @return  array   End Date Options
+     */
+    public function get_google_business_end_date_options( $post_type = false ) {
+
+        // Build schedule options.
+        $schedule = array(
+            'custom' => __( 'Custom Field / Post Meta Value', 'wp-to-social-pro' ),
+        );
+
+        /**
+         * Defines the available start date options for a Google Business Profile status.
+         *
+         * @since   4.9.0
+         *
+         * @param   array   $schedule   Schedule Options.
+         */
+        $schedule = apply_filters( $this->base->plugin->filter_name . '_get_google_business_end_date_options', $schedule, $post_type );
+
+        // Return filtered results.
         return $schedule;
 
     }
@@ -160,12 +153,15 @@ class WP_To_Social_Pro_Common {
      */
     public function get_post_types() {
 
-        // Get public Post Types
-        $types = get_post_types( array(
-            'public' => true,
-        ), 'objects' );
+        // Get public Post Types.
+        $types = get_post_types(
+            array(
+                'public' => true,
+            ),
+            'objects'
+        );
 
-        // Filter out excluded post types
+        // Filter out excluded post types.
         $excluded_types = $this->get_excluded_post_types();
         if ( is_array( $excluded_types ) ) {
             foreach ( $excluded_types as $excluded_type ) {
@@ -178,11 +174,11 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.0.0
          *
-         * @param   array   $types  Post Types
+         * @param   array   $types  Post Types.
          */
         $types = apply_filters( $this->base->plugin->filter_name . '_get_post_types', $types );
 
-        // Return filtered results
+        // Return filtered results.
         return $types;
 
     }
@@ -197,7 +193,7 @@ class WP_To_Social_Pro_Common {
      */
     public function get_excluded_post_types() {
 
-        // Get excluded Post Types
+        // Get excluded Post Types.
         $types = array(
             'attachment',
             'revision',
@@ -209,11 +205,11 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.0.0
          *
-         * @param   array   $types  Post Types
+         * @param   array   $types  Post Types.
          */
         $types = apply_filters( $this->base->plugin->filter_name . '_get_excluded_post_types', $types );
 
-        // Return filtered results
+        // Return filtered results.
         return $types;
 
     }
@@ -227,7 +223,7 @@ class WP_To_Social_Pro_Common {
      */
     public function get_excluded_taxonomies() {
 
-        // Get excluded Post Types
+        // Get excluded Post Types.
         $taxonomies = array(
             'post_format',
             'nav_menu',
@@ -238,11 +234,11 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.0.5
          *
-         * @param   array   $taxonomies     Excluded Taxonomies
+         * @param   array   $taxonomies     Excluded Taxonomies.
          */
         $taxonomies = apply_filters( $this->base->plugin->filter_name . '_get_excluded_taxonomies', $taxonomies );
 
-        // Return filtered results
+        // Return filtered results.
         return $taxonomies;
 
     }
@@ -252,18 +248,18 @@ class WP_To_Social_Pro_Common {
      *
      * @since   3.0.0
      *
-     * @param   string  $post_type  Post Type
+     * @param   string $post_type  Post Type.
      * @return  array               Taxonomies
      */
     public function get_taxonomies( $post_type ) {
 
-        // Get Post Type Taxonomies
+        // Get Post Type Taxonomies.
         $taxonomies = get_object_taxonomies( $post_type, 'objects' );
 
-        // Get excluded Taxonomies
+        // Get excluded Taxonomies.
         $excluded_taxonomies = $this->get_excluded_taxonomies();
 
-        // If excluded taxonomies exist, remove them from the taxonomies array now
+        // If excluded taxonomies exist, remove them from the taxonomies array now.
         if ( is_array( $excluded_taxonomies ) && count( $excluded_taxonomies ) > 0 ) {
             foreach ( $excluded_taxonomies as $excluded_taxonomy ) {
                 unset( $taxonomies[ $excluded_taxonomy ] );
@@ -271,17 +267,17 @@ class WP_To_Social_Pro_Common {
         }
 
         /**
-         * Defines available taxonomies for the given Post Type, which are used in the Conditions: Taxonomies dropdowns 
+         * Defines available taxonomies for the given Post Type, which are used in the Conditions: Taxonomies dropdowns
          * for each individual status.
          *
          * @since   3.0.0
          *
-         * @param   array   $taxonomies             Taxonomies
-         * @param   string  $post_type              Post Type
+         * @param   array   $taxonomies             Taxonomies.
+         * @param   string  $post_type              Post Type.
          */
         $taxonomies = apply_filters( $this->base->plugin->filter_name . '_get_taxonomies', $taxonomies, $post_type );
 
-        // Return filtered results
+        // Return filtered results.
         return $taxonomies;
 
     }
@@ -295,13 +291,13 @@ class WP_To_Social_Pro_Common {
      */
     public function get_all_taxonomies() {
 
-        // Get Post Type Taxonomies
+        // Get Post Type Taxonomies.
         $taxonomies = get_taxonomies( false, 'objects' );
 
-        // Get excluded Taxonomies
+        // Get excluded Taxonomies.
         $excluded_taxonomies = $this->get_excluded_taxonomies();
 
-        // If excluded taxonomies exist, remove them from the taxonomies array now
+        // If excluded taxonomies exist, remove them from the taxonomies array now.
         if ( is_array( $excluded_taxonomies ) && count( $excluded_taxonomies ) > 0 ) {
             foreach ( $excluded_taxonomies as $excluded_taxonomy ) {
                 unset( $taxonomies[ $excluded_taxonomy ] );
@@ -309,16 +305,16 @@ class WP_To_Social_Pro_Common {
         }
 
         /**
-         * Defines available taxonomies, regardless of Post Type, which are used in the Conditions: Taxonomies dropdowns 
+         * Defines available taxonomies, regardless of Post Type, which are used in the Conditions: Taxonomies dropdowns
          * for each individual status.
          *
          * @since   3.6.7
          *
-         * @param   array   $taxonomies             Taxonomies
+         * @param   array   $taxonomies             Taxonomies.
          */
         $taxonomies = apply_filters( $this->base->plugin->filter_name . '_get_all_taxonomies', $taxonomies );
 
-        // Return filtered results
+        // Return filtered results.
         return $taxonomies;
 
     }
@@ -328,71 +324,72 @@ class WP_To_Social_Pro_Common {
      *
      * @since   3.0.0
      *
-     * @param   string  $post_type  Post Type
+     * @param   string $post_type  Post Type.
      * @return  array               Tags
      */
     public function get_tags( $post_type ) {
 
-        // Get post type
+        // Get post type.
         $post_types = $this->get_post_types();
 
-        // Build tags array
+        // Build tags array.
         $tags = array(
-            'post' => array(
-                '{sitename}'            => __( 'Site Name', 'wp-to-social-pro' ),
-                '{title}'               => __( 'Post Title', 'wp-to-social-pro' ),
-                '{excerpt}'             => __( 'Post Excerpt (Full)', 'wp-to-social-pro' ),
-                '{excerpt:characters(?)}'           => array(
+            'post'   => array(
+                '{sitename}'              => __( 'Site Name', 'wp-to-social-pro' ),
+                '{title}'                 => __( 'Post Title', 'wp-to-social-pro' ),
+                '{excerpt}'               => __( 'Post Excerpt (Full)', 'wp-to-social-pro' ),
+                '{excerpt:characters(?)}' => array(
                     'question'      => __( 'Enter the maximum number of characters the Post Excerpt should display.', 'wp-to-social-pro' ),
                     'default_value' => '150',
                     'replace'       => '?',
                     'label'         => __( 'Post Excerpt (Character Limited)', 'wp-to-social-pro' ),
                 ),
-                '{excerpt:words(?)}'     => array(
+                '{excerpt:words(?)}'      => array(
                     'question'      => __( 'Enter the maximum number of words the Post Excerpt should display.', 'wp-to-social-pro' ),
                     'default_value' => '55',
                     'replace'       => '?',
                     'label'         => __( 'Post Excerpt (Word Limited)', 'wp-to-social-pro' ),
                 ),
-                '{excerpt:sentences(?)}'     => array(
+                '{excerpt:sentences(?)}'  => array(
                     'question'      => __( 'Enter the maximum number of sentences the Post Excerpt should display.', 'wp-to-social-pro' ),
                     'default_value' => '1',
                     'replace'       => '?',
                     'label'         => __( 'Post Excerpt (Sentence Limited)', 'wp-to-social-pro' ),
                 ),
-                '{content}'             => __( 'Post Content (Full)', 'wp-to-social-pro' ),
-                '{content_more_tag}'    => __( 'Post Content (Up to More Tag)', 'wp-to-social-pro' ),
-                '{content:characters(?)}'           => array(
+                '{content}'               => __( 'Post Content (Full)', 'wp-to-social-pro' ),
+                '{content_more_tag}'      => __( 'Post Content (Up to More Tag)', 'wp-to-social-pro' ),
+                '{content:characters(?)}' => array(
                     'question'      => __( 'Enter the maximum number of characters the Post Content should display.', 'wp-to-social-pro' ),
                     'default_value' => '150',
                     'replace'       => '?',
                     'label'         => __( 'Post Content (Character Limited)', 'wp-to-social-pro' ),
                 ),
-                '{content:words(?)}'     => array(
+                '{content:words(?)}'      => array(
                     'question'      => __( 'Enter the maximum number of words the Post Content should display.', 'wp-to-social-pro' ),
                     'default_value' => '55',
                     'replace'       => '?',
                     'label'         => __( 'Post Content (Word Limited)', 'wp-to-social-pro' ),
                 ),
-                '{content:sentences(?)}'     => array(
+                '{content:sentences(?)}'  => array(
                     'question'      => __( 'Enter the maximum number of sentences the Post Content should display.', 'wp-to-social-pro' ),
                     'default_value' => '1',
                     'replace'       => '?',
                     'label'         => __( 'Post Content (Sentence Limited)', 'wp-to-social-pro' ),
                 ),
-                '{date}'                => __( 'Post Date', 'wp-to-social-pro' ),
-                '{url}'                 => __( 'Post URL', 'wp-to-social-pro' ),
-                '{id}'                  => __( 'Post ID', 'wp-to-social-pro' ),
+                '{date}'                  => __( 'Post Date', 'wp-to-social-pro' ),
+                '{url}'                   => __( 'Post URL', 'wp-to-social-pro' ),
+                '{url_short}'             => __( 'Post URL, Shortened', 'wp-to-social-pro' ),
+                '{id}'                    => __( 'Post ID', 'wp-to-social-pro' ),
             ),
         );
 
-        // Add any taxonomies for the given Post Type, if the Post Type exists
+        // Add any taxonomies for the given Post Type, if the Post Type exists.
         $taxonomies = array();
         if ( isset( $post_types[ $post_type ] ) ) {
-            // Get taxonomies specific to the Post Type
+            // Get taxonomies specific to the Post Type.
             $taxonomies = $this->get_taxonomies( $post_type );
         } else {
-            // We're on the Bulk Publishing Settings, so return all Taxonomies
+            // We're on the Bulk Publishing Settings, so return all Taxonomies.
             $taxonomies = $this->get_all_taxonomies();
         }
 
@@ -400,7 +397,7 @@ class WP_To_Social_Pro_Common {
             $tags['taxonomy'] = array();
 
             foreach ( $taxonomies as $tax => $details ) {
-                $tags['taxonomy']['{taxonomy_' . $tax . '}'] = sprintf( 
+                $tags['taxonomy'][ '{taxonomy_' . $tax . '}' ] = sprintf(
                     /* translators: Taxonomy Name, Singular */
                     __( 'Taxonomy: %s: Hashtag Format', 'wp-to-social-pro' ),
                     $details->labels->singular_name
@@ -414,12 +411,12 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.0.0
          *
-         * @param   array   $tags       Dynamic Status Tags
-         * @param   string  $post_type  Post Type
+         * @param   array   $tags       Dynamic Status Tags.
+         * @param   string  $post_type  Post Type.
          */
         $tags = apply_filters( $this->base->plugin->filter_name . '_get_tags', $tags, $post_type );
 
-        // Return filtered results
+        // Return filtered results.
         return $tags;
 
     }
@@ -430,7 +427,7 @@ class WP_To_Social_Pro_Common {
      *
      * @since   4.5.7
      *
-     * @param   string  $post_type  Post Type
+     * @param   string $post_type  Post Type.
      * @return  array               Tags
      */
     public function get_tags_flat( $post_type ) {
@@ -458,10 +455,10 @@ class WP_To_Social_Pro_Common {
      */
     public function get_post_actions() {
 
-        // Build post actions
+        // Build post actions.
         $actions = array(
-            'publish'       => __( 'Publish', 'wp-to-social-pro' ),
-            'update'        => __( 'Update', 'wp-to-social-pro' ),
+            'publish'      => __( 'Publish', 'wp-to-social-pro' ),
+            'update'       => __( 'Update', 'wp-to-social-pro' ),
         );
 
         /**
@@ -469,11 +466,11 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.0.0
          *
-         * @param   array   $actions    Post Actions
+         * @param   array   $actions    Post Actions.
          */
         $actions = apply_filters( $this->base->plugin->filter_name . '_get_post_actions', $actions );
 
-        // Return filtered results
+        // Return filtered results.
         return $actions;
 
     }
@@ -487,10 +484,10 @@ class WP_To_Social_Pro_Common {
      */
     public function get_post_actions_past_tense() {
 
-        // Build post actions
+        // Build post actions.
         $actions = array(
-            'publish'   => __( 'Published', 'wp-to-social-pro' ),
-            'update'    => __( 'Updated', 'wp-to-social-pro' ),
+            'publish'      => __( 'Published', 'wp-to-social-pro' ),
+            'update'       => __( 'Updated', 'wp-to-social-pro' ),
         );
 
         /**
@@ -499,11 +496,11 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.0.0
          *
-         * @param   array   $actions    Post Actions
+         * @param   array   $actions    Post Actions.
          */
         $actions = apply_filters( $this->base->plugin->filter_name . '_get_post_actions_past_tense', $actions );
 
-        // Return filtered results
+        // Return filtered results.
         return $actions;
 
     }
@@ -513,7 +510,7 @@ class WP_To_Social_Pro_Common {
      *
      * @since   3.7.8
      *
-     * @return  array   Tags
+     * @return  array   Tags.
      */
     public function get_tags_excluded_from_character_limit() {
 
@@ -531,83 +528,12 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.7.8
          *
-         * @param   array   $tags   Tags
+         * @param   array   $tags   Tags.
          */
         $tags = apply_filters( $this->base->plugin->filter_name . '_get_tags_excluded_from_character_limit', $tags );
 
-        // Return filtered results
+        // Return filtered results.
         return $tags;
-
-    }
-
-    /**
-     * Helper method to retrieve character limits
-     *
-     * @since   3.4.2
-     *
-     * @return  array   Character Limits
-     */
-    public function get_character_limits() {
-
-        $character_limits = array(
-            'twitter'   => 280,
-            'pinterest' => 500,
-            'instagram' => 2200,
-            'facebook'  => 5000,
-            'linkedin'  => 700,
-            'google'    => 5000
-        );
-
-        /**
-         * Defines the character limits for status messages for each social network.
-         *
-         * @since   3.4.2
-         *
-         * @param   array   $character_limits   Character Limits
-         */
-        $character_limits = apply_filters( $this->base->plugin->filter_name . '_get_character_limits', $character_limits );
-
-        // Return filtered results
-        return $character_limits;
-
-    }
-
-    /**
-     * Helper method to retrieve the character limit for the given service.
-     *
-     * @since   3.4.2
-     *
-     * @param   string  $service    Social Media Service
-     * @return  int                 Character Limit
-     */
-    public function get_character_limit( $service ) {
-
-        // Assume there is no limit
-        $character_limit = 0;
-
-        // Get character limits for all social networks
-        $character_limits = $this->get_character_limits();
-
-        // Bail if the service doesn't have a character limit defined
-        if ( ! isset( $character_limits[ $service ] ) ) {
-            return $character_limit;
-        }
-
-        // Cast as an integer
-        $character_limit = absint( $character_limits[ $service ] );
-
-        /**
-         * Defines the character limit for the given social media service.
-         *
-         * @since   3.4.2
-         *
-         * @param   int     $character_limit    Character Limit
-         * @param   string  $service            Social Media Service
-         */
-        $character_limit = apply_filters( $this->base->plugin->filter_name . '_get_character_limit', $character_limit, $service );
-
-        // Return filtered result
-        return $character_limit;
 
     }
 
@@ -620,7 +546,7 @@ class WP_To_Social_Pro_Common {
      */
     public function get_transient_expiration_time() {
 
-        // Set expiration time for all transients = 12 hours
+        // Set expiration time for all transients = 12 hours.
         $expiration_time = ( 12 * HOUR_IN_SECONDS );
 
         /**
@@ -628,11 +554,11 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.0.0
          *
-         * @param   int     $expiration_time    Transient Expiration Time, in seconds
+         * @param   int     $expiration_time    Transient Expiration Time, in seconds.
          */
         $expiration_time = apply_filters( $this->base->plugin->filter_name . '_get_transient_expiration_time', $expiration_time );
 
-        // Return filtered results
+        // Return filtered results.
         return $expiration_time;
 
     }
@@ -646,8 +572,8 @@ class WP_To_Social_Pro_Common {
      */
     public function get_log_filters() {
 
-        // Define filters
-        $filters = array( 
+        // Define filters.
+        $filters = array(
             'action',
             'profile_id',
             'result',
@@ -662,70 +588,12 @@ class WP_To_Social_Pro_Common {
          *
          * @since   3.9.8
          *
-         * @param   array   $filters    Filters
+         * @param   array   $filters    Filters.
          */
         $filters = apply_filters( $this->base->plugin->filter_name . '_get_log_filters', $filters );
 
-        // Return filtered results
+        // Return filtered results.
         return $filters;
-
-    }
-
-    /**
-     * Converts WordPress' GMT Offset (e.g. -5, +3.3) to an offset value compatible with
-     * WordPress' DateTime object (e.g. -0500, +0330)
-     *
-     * @since   3.6.2
-     *
-     * @param   float   $gmt_offset     GMT Offset
-     * @return  string                  GMT Offset Value
-     */
-    public function convert_wordpress_gmt_offset_to_offset_value( $gmt_offset ) {
-
-        // Don't do anything if the offset is zero
-        if ( $gmt_offset == 0 ) {
-            return '+0000';
-        }
-
-        // Define the GMT offset string e.g. +0100, -0300 etc.
-        if ( $gmt_offset > 0 ) {
-            if ( $gmt_offset < 10 ) {
-                $gmt_offset = '0' . abs( $gmt_offset );
-            } else {
-                $gmt_offset = abs( $gmt_offset );
-            }
-
-            $gmt_offset = '+' . $gmt_offset;
-        } elseif ( $gmt_offset < 0 ) {
-            if ( $gmt_offset > -10 ) {
-                $gmt_offset = '0' . abs( $gmt_offset );
-            } else {
-                $gmt_offset = abs( $gmt_offset );
-            }
-
-            $gmt_offset = '-' . $gmt_offset;
-        }
-
-        // If the GMT offset contains .5, change this to :30
-        // Otherwise pad the GMT offset
-        if ( strpos( $gmt_offset, '.5' ) !== false ) {
-            $gmt_offset = str_replace( '.5', ':30', $gmt_offset );
-        } else {
-            $gmt_offset .= '00';
-        }
-
-        /**
-         * Converts WordPress' GMT Offset (e.g. -5, +3.3) to an offset value compatible with
-         * WordPress' DateTime object (e.g. -0500, +0330)
-         *
-         * @since   3.6.2
-         *
-         * @param   string      $text   Parsed Text
-         */
-        $gmt_offset = apply_filters( $this->base->plugin->filter_name . '_common_convert_wordpress_gmt_offset_to_offset_value', $gmt_offset );
-
-        // Return
-        return $gmt_offset;
 
     }
 

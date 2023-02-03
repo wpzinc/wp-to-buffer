@@ -12,7 +12,7 @@
  * Author: WP Zinc
  * Author URI: http://www.wpzinc.com
  * Description: Send WordPress Pages, Posts or Custom Post Types to your Buffer (buffer.com) account for scheduled publishing to social networks.
- * Text Domain: wp-to-social-pro
+ * Text Domain: wp-to-buffer
  */
 
 // Bail if Plugin is alread loaded.
