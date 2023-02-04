@@ -67,8 +67,6 @@ class WP_To_Social_Pro_Install {
 
 		// Reschedule the cron events.
 		$this->base->get_class( 'cron' )->schedule_log_cleanup_event();
-		$this->base->get_class( 'cron' )->schedule_media_cleanup_event();
-		$this->base->get_class( 'cron' )->schedule_repost_event();
 
 		// Bail if settings already exist.
 		$settings = $this->base->get_class( 'settings' )->get_settings( 'post' );
@@ -253,8 +251,6 @@ class WP_To_Social_Pro_Install {
 
 		// Unschedule any CRON events.
 		$this->base->get_class( 'cron' )->unschedule_log_cleanup_event();
-		$this->base->get_class( 'cron' )->unschedule_media_cleanup_event();
-		$this->base->get_class( 'cron' )->unschedule_repost_event();
 
 	}
 
