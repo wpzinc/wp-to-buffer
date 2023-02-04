@@ -537,13 +537,13 @@ class WP_To_Social_Pro_Publish {
 			$profile_override = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[' . $profile_id . '][override]', 0 );
 
 			// Use Override Settings.
-            if ( $profile_override ) {
-                $action_enabled = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[' . $profile_id . '][' . $action . '][enabled]', 0 );
-                $status_settings = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[' . $profile_id . '][' . $action . '][status]', array() );
-            } else {
-                $action_enabled = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[default][' . $action . '][enabled]', 0 );
-                $status_settings = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[default][' . $action . '][status]', array() );
-            }
+			if ( $profile_override ) {
+				$action_enabled  = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[' . $profile_id . '][' . $action . '][enabled]', 0 );
+				$status_settings = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[' . $profile_id . '][' . $action . '][status]', array() );
+			} else {
+				$action_enabled  = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[default][' . $action . '][enabled]', 0 );
+				$status_settings = $this->base->get_class( 'settings' )->get_setting( $post->post_type, '[default][' . $action . '][status]', array() );
+			}
 
 			// Check if this profile is enabled.
 			if ( ! $profile_enabled ) {

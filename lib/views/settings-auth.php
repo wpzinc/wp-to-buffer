@@ -1,3 +1,13 @@
+<?php
+/**
+ * Outputs the Settings screen when the Plugin is authenticated with
+ * the third party API service.
+ *
+ * @package WP_To_Social_Pro
+ * @author  WP Zinc
+ */
+
+?>
 <div class="postbox wpzinc-vertical-tabbed-ui">
 	<!-- Second level tabs -->
 	<ul class="wpzinc-nav-tabs wpzinc-js-tabs" data-panels-container="#settings-container" data-panel=".panel" data-active="wpzinc-nav-tab-vertical-active">
@@ -175,10 +185,10 @@
 		<div id="image-settings" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php _e( 'Text to Image Settings', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Text to Image Settings', 'wp-to-buffer' ); ?></h3>
 					<p class="description">
 						<?php
-						_e(
+						esc_html_e(
 							'Provides options for automatically generating images from text, when a Status\' image option is set to Use Text to Image
                         and a status has Text to Image defined.',
 							'wp-to-buffer'
@@ -189,13 +199,23 @@
 
 				<div class="wpzinc-option highlight">
 					<div class="full">
-						<h4><?php echo sprintf( __( 'Need to automatically generate images?', 'wp-to-buffer' ), $this->base->plugin->account ); ?></h4>
+						<h4>
+							<?php
+							esc_html_e( 'Need to automatically generate images?', 'wp-to-buffer' );
+							?>
+						</h4>
 
 						<p>
-							<?php echo sprintf( __( '%s Pro provides options to generate images based on text, which are them submitted with your status message.', 'wp-to-buffer' ), $this->base->plugin->displayName ); ?>
+							<?php
+							echo sprintf(
+								/* translators: Service name (Buffer, Hootsuite, SocialPilot) */
+								esc_html__( '%s Pro provides options to generate images based on text, which are them submitted with your status message.', 'wp-to-buffer' ),
+								esc_html( $this->base->plugin->displayName )
+							);
+							?>
 						</p>
-						
-						<a href="<?php echo $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ); ?>" class="button button-primary" target="_blank"><?php _e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -330,14 +350,14 @@
 		<div id="repost-settings" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php _e( 'Repost Settings', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Repost Settings', 'wp-to-buffer' ); ?></h3>
 					<p class="description">
-						<?php _e( 'Provides options for when to run the WordPress Repost Cron Event on this WordPress installation.', 'wp-to-buffer' ); ?><br />
+						<?php esc_html_e( 'Provides options for when to run the WordPress Repost Cron Event on this WordPress installation.', 'wp-to-buffer' ); ?><br />
 						<?php
 						echo sprintf(
-							__( 'When Post(s) are scheduled on %1$s will depend on the <a href="%2$s/repost-settings" target="_blank">Repost Status Settings</a>.', 'wp-to-buffer' ),
-							$this->base->plugin->account,
-							$this->base->plugin->documentation_url
+							/* translators: Service (Buffer, Hootsuite, SocialPilot) */
+							esc_html__( 'When Post(s) are scheduled on %s will depend on the Repost Status Settings.', 'wp-to-buffer' ),
+							esc_html( $this->base->plugin->displayName )
 						);
 						?>
 					</p>
@@ -345,13 +365,20 @@
 
 				<div class="wpzinc-option highlight">
 					<div class="full">
-						<h4><?php _e( 'Revive Old Posts with Repost', 'wp-to-buffer' ); ?></h4>
+						<h4><?php esc_html_e( 'Revive Old Posts with Repost', 'wp-to-buffer' ); ?></h4>
 
 						<p>
-							<?php echo sprintf( __( 'Automatically schedule old Posts to %1$s with %2$s Pro.', 'wp-to-buffer' ), $this->base->plugin->displayName, $this->base->plugin->displayName ); ?>
+							<?php
+							echo sprintf(
+								/* translators: %1$s: Service (Buffer, Hootsuite, SocialPilot), %2$s: Service (Buffer, Hootsuite, SocialPilot) */
+								esc_html__( 'Automatically schedule old Posts to %1$s with %2$s Pro.', 'wp-to-buffer' ),
+								esc_html( $this->base->plugin->displayName ),
+								esc_html( $this->base->plugin->displayName )
+							);
+							?>
 						</p>
-						
-						<a href="<?php echo $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ); ?>" class="button button-primary" target="_blank"><?php _e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -361,21 +388,27 @@
 		<div id="user-access" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php _e( 'User Access', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'User Access', 'wp-to-buffer' ); ?></h3>
 					<p class="description">
-						<?php _e( 'Optionally define which of your Post Types and connected social media account(s) should be available for configuration based on various WordPress User Roles.', 'wp-to-buffer' ); ?>
+						<?php esc_html_e( 'Optionally define which of your Post Types and connected social media account(s) should be available for configuration based on various WordPress User Roles.', 'wp-to-buffer' ); ?>
 					</p>
 				</header>
 
 				<div class="wpzinc-option highlight">
 					<div class="full">
-						<h4><?php echo sprintf( __( 'Limit Post Types and Social Profiles by WordPress User Role', 'wp-to-buffer' ), $this->base->plugin->account ); ?></h4>
+						<h4><?php esc_html_e( 'Limit Post Types and Social Profiles by WordPress User Role', 'wp-to-buffer' ); ?></h4>
 
 						<p>
-							<?php echo sprintf( __( '%s Pro provides options to limit which Post Types to show in the Settings screens, as well as prevent access to specific social media profiles linked to your Buffer account, on a per-WordPress Role basis.', 'wp-to-buffer' ), $this->base->plugin->displayName ); ?>
+							<?php
+							echo sprintf(
+								/* translators: %1$s: Service (Buffer, Hootsuite, SocialPilot) */
+								esc_html__( '%s Pro provides options to limit which Post Types to show in the Settings screens, as well as prevent access to specific social media profiles linked to your Buffer account, on a per-WordPress Role basis.', 'wp-to-buffer' ),
+								esc_html( $this->base->plugin->displayName )
+							);
+							?>
 						</p>
-						
-						<a href="<?php echo $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ); ?>" class="button button-primary" target="_blank"><?php _e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -385,21 +418,27 @@
 		<div id="custom-tags" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php _e( 'Custom Tags', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Custom Tags', 'wp-to-buffer' ); ?></h3>
 					<p class="description">
-						<?php _e( 'If your site uses Custom Fields, ACF or similar, you can specify additional tags to be added to the "Insert Tag" dropdown for each of your Post Types.  These can then be used by Users, instead of having to remember the template tag text to use.', 'wp-to-buffer' ); ?>
+						<?php esc_html_e( 'If your site uses Custom Fields, ACF or similar, you can specify additional tags to be added to the "Insert Tag" dropdown for each of your Post Types.  These can then be used by Users, instead of having to remember the template tag text to use.', 'wp-to-buffer' ); ?>
 					</p>
 				</header>
 
 				<div class="wpzinc-option highlight">
 					<div class="full">
-						<h4><?php echo sprintf( __( 'Need to define your own Tags to use in status messages?', 'wp-to-buffer' ), $this->base->plugin->account ); ?></h4>
+						<h4><?php esc_html_e( 'Need to define your own Tags to use in status messages?', 'wp-to-buffer' ); ?></h4>
 
 						<p>
-							<?php echo sprintf( __( '%s Pro provides options to define Custom Field / ACF Tags, which will then populate with Post data when used in status messages.  Tags also appear in the Insert Tags dropdown.', 'wp-to-buffer' ), $this->base->plugin->displayName ); ?>
+							<?php
+							echo sprintf(
+								/* translators: %1$s: Service (Buffer, Hootsuite, SocialPilot) */
+								esc_html__( '%s Pro provides options to define Custom Field / ACF Tags, which will then populate with Post data when used in status messages.  Tags also appear in the Insert Tags dropdown.', 'wp-to-buffer' ),
+								esc_html( $this->base->plugin->displayName )
+							);
+							?>
 						</p>
-						
-						<a href="<?php echo $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ); ?>" class="button button-primary" target="_blank"><?php _e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
 					</div>
 				</div>
 			</div>
