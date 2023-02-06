@@ -2,7 +2,7 @@
 /**
  * Defines the deactivation function, which is run when the Plugin is deactivated.
  *
- * @package WP_To_Buffer_Pro
+ * @package WP_To_Buffer
  * @author WP Zinc
  */
 
