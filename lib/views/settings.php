@@ -131,7 +131,7 @@
 				<!-- /Sidebar -->
 			</div>
 		</div> 
-		
+
 		<!-- Upgrade -->
 		<div class="metabox-holder columns-1">
 			<div id="post-body-content">

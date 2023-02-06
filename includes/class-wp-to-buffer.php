@@ -124,7 +124,7 @@ class WP_To_Buffer {
 				__( 'Manually re-share evergreen WordPress content and revive old posts with the Bulk Publish option', 'wp-to-buffer' ),
 			),
 			array(
-				__( 'The Events Calendar and Event Manager Integration', 'wp-to-buffer' ),
+				__( 'The Events Calendar, Event Manager and Modern Events Calendar Integration', 'wp-to-buffer' ),
 				__( 'Schedule Posts to Buffer based on your Event\'s Start or End date, and display Event-specific details in your status updates', 'wp-to-buffer' ),
 			),
 			array(
