@@ -1,6 +1,6 @@
 {
-    "name": "n7studios/wp-to-buffer-pro",
-    "description": "WordPress to Buffer Pro Plugin",
+    "name": "n7studios/wp-to-buffer",
+    "description": "WordPress to Buffer Plugin",
     "type": "project",
     "license": "GPLv3",
     "require-dev": {
