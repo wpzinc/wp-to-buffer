@@ -3,9 +3,9 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 6.0.3
-Requires PHP: 5.6
-Stable tag: 3.8.3
+Tested up to: 6.1.1
+Requires PHP: 7.4
+Stable tag: 3.8.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Auto post Pages, Posts or Custom Post Types to Facebook, Twitter and LinkedIn us
 
 == Description ==
 
-Whenever you schedule, publish or update a Post, Page or Custom Post Type, WordPress to Buffer will auto post your content to your Buffer account (buffer.com), scheduling publication to social media profiles including Facebook, Twitter and LinkedIn.
+Whenever you publish or update a Post, Page or Custom Post Type, WordPress to Buffer will auto post your content to your Buffer account (buffer.com), scheduling publication to social media profiles including Facebook, Twitter, LinkedIn, Google Business and Mastodon.
 
 Don't have a Buffer account? [Sign up for free](https://buffer.com)
 
@@ -23,7 +23,7 @@ Looking to auto post to Instagram and Pinterest? [Upgrade to WordPress to Buffer
 
 WordPress to Buffer isn't another WP to Facebook, WP to Twitter or yet another auto posting plugin.
 
-Our plugin adds your content to your Buffer queue, which is a smart schedule designed to drip feed your content to your Facebook, Twitter, LinkedIn, Pinterest and Instagram social media profiles.
+Our plugin adds your content to your Buffer queue, which is a smart schedule designed to drip feed your content to your Facebook, Twitter, LinkedIn, Google Business and Mastodon social media profiles.
 
 You can use Buffer's default schedule, or set your own social media automation schedule with days and times that work best for your audience.
 
@@ -54,6 +54,8 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 - WordPress to Twitter Auto Post
 - WordPress to LinkedIn Page Auto Post
 - WordPress to LinkedIn Profile Auto Post
+- WordPress to Google Business Auto Post
+- WordPress to Mastodon Auto Post
 
 === What can I do with WordPress to Buffer Pro? ===
 
@@ -68,7 +70,7 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 > - **Per-Post Settings**<br />Override Settings on Individual Posts: Each Post can have its own Buffer settings<br />
 > - **Repost Old Posts**<br />Automatically Revive Old Posts that haven't been updated in a while, choosing the number of days, weeks or years to re-share content on social media.<br />
 > - **Bulk Publish Old Posts**<br />Manually re-share evergreen WordPress content and revive old posts with the Bulk Publish option<br />
-> - **The Events Calendar and Event Manager Integration**<br />Schedule Posts to Buffer based on your Event's Start or End date, and display Event-specific details in your status updates<br />
+> - **The Events Calendar, Event Manager and Modern Events Calendar Integration**<br />Schedule Posts to Buffer based on your Event's Start or End date, and display Event-specific details in your status updates<br />
 > - **SEO Integration**<br />Display SEO-specific information in your status updates from All-In-One SEO Pack, Rank Math, SEOPress and Yoast SEO<br />
 > - **WooCommerce Integration**<br />Display Product-specific information in your status updates<br />
 > - **Autoblogging and Frontend Post Submission Integration**<br />Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager<br />
@@ -125,6 +127,8 @@ You can post to:
 - WordPress to Twitter
 - WordPress to LinkedIn Page
 - WordPress to LinkedIn Profile
+- WordPress to Google Business Profile
+- WordPress to Mastodon Profile
 
 To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
@@ -136,6 +140,14 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.8.4 (2023-01-26) =
+* Added: Settings: Mastodon Icon
+* Added: Log: Log errors when image operations (resizing, converting, uploading to Media Library) fails
+* Fix: Use get_temp_dir() instead of assumed /tmp folder for writing temporary images when resizing, converting or generating text to image
+* Fix: Status: Clear profiles cache when deauthorizing and authorizing with a different Buffer account
+* Fix: Improved WordPress Coding Standards
+* Fix: Removed clipboard.js, as WordPress provides this library
 
 = 3.8.3 (2022-10-25) =
 * Fix: Remove unused 1200x1200 registered image size
