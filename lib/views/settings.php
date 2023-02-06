@@ -124,20 +124,20 @@
 					<!-- /post-body-content -->
 
 					<!-- Sidebar -->
-			    	<div id="postbox-container-1" class="postbox-container">
-			    		<?php require( $this->base->plugin->folder . '/_modules/dashboard/views/sidebar-upgrade.php' ); ?>		
-			    	</div>
-			    	<!-- /Sidebar -->
+					<div id="postbox-container-1" class="postbox-container">
+						<?php require $this->base->plugin->folder . '/_modules/dashboard/views/sidebar-upgrade.php'; ?>		
+					</div>
+					<!-- /Sidebar -->
 				</div>
 			</div> 
 		</form>
 		<!-- /form end -->
-		
+
 		<!-- Upgrade -->
-    	<div class="metabox-holder columns-1">
-    		<div id="post-body-content">
-    			<?php require( $this->base->plugin->folder . '/_modules/dashboard/views/footer-upgrade.php' ); ?>
-    		</div>
-    	</div>
+		<div class="metabox-holder columns-1">
+			<div id="post-body-content">
+				<?php require $this->base->plugin->folder . '/_modules/dashboard/views/footer-upgrade.php'; ?>
+			</div>
+		</div>
 	</div><!-- ./wrap-inner -->         
 </div>

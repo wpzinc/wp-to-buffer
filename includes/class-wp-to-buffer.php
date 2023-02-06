@@ -85,73 +85,73 @@ class WP_To_Buffer {
 		// Default Settings.
 		$this->plugin->default_schedule = 'queue_bottom';
 
-        // Upgrade Reasons.
-        $this->plugin->upgrade_reasons = array(
-            array(
-                __( 'Post to Instagram and Pinterest', 'wp-to-social-pro' ), 
-                __( 'Pro supports Direct Posting to Instagram Business Profiles and Pinterest Boards', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Multiple, Customisable Status Messages', 'wp-to-social-pro' ), 
-                __( 'Each Post Type and Social Network can have multiple, unique status message and settings', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Conditionally send Status Messages', 'wp-to-social-pro' ), 
-                __( 'Only send status(es) to Buffer based on Post Author(s), Taxonomy Term(s) and/or Custom Field Values', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'More Scheduling Options', 'wp-to-social-pro' ), 
-                __( 'Each status update can be added to the start/end of your Buffer queue, posted immediately or scheduled at a specific time', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Dynamic Status Tags', 'wp-to-social-pro' ), 
-                __( 'Dynamically build status updates with data from the Post Author and Custom Fields', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Separate Statuses per Social Network', 'wp-to-social-pro' ), 
-                __( 'Define different statuses for each Post Type and Social Network', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Per-Post Settings', 'wp-to-social-pro' ), 
-                __( 'Override Settings on Individual Posts: Each Post can have its own Buffer settings', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Repost Old Posts', 'wp-to-social-pro' ), 
-                __( 'Automatically Revive Old Posts that haven\'t been updated in a while, choosing the number of days, weeks or years to re-share content on social media.', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Bulk Publish Old Posts', 'wp-to-social-pro' ), 
-                __( 'Manually re-share evergreen WordPress content and revive old posts with the Bulk Publish option', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'The Events Calendar and Event Manager Integration', 'wp-to-social-pro' ), 
-                __( 'Schedule Posts to Buffer based on your Event\'s Start or End date, and display Event-specific details in your status updates', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'SEO Integration', 'wp-to-social-pro' ), 
-                __( 'Display SEO-specific information in your status updates from All-In-One SEO Pack, Rank Math, SEOPress and Yoast SEO', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'WooCommerce Integration', 'wp-to-social-pro' ), 
-                __( 'Display Product-specific information in your status updates', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Autoblogging and Frontend Post Submission Integration', 'wp-to-social-pro' ), 
-                __( 'Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Shortcode Support', 'wp-to-social-pro' ), 
-                __( 'Use shortcodes in status updates', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'Full Image Control', 'wp-to-social-pro' ), 
-                __( 'Choose to display the WordPress Featured Image with your status updates, or define up to 4 custom images for each Post.', 'wp-to-buffer' ),
-            ),
-            array(
-                __( 'WP-Cron and WP-CLI Compatible', 'wp-to-social-pro' ), 
-                __( 'Optionally enable WP-Cron to send status updates via Cron, speeding up UI performance and/or choose to use WP-CLI for reposting old posts', 'wp-to-buffer' ),
-            ),
-        );
+		// Upgrade Reasons.
+		$this->plugin->upgrade_reasons = array(
+			array(
+				__( 'Post to Instagram and Pinterest', 'wp-to-buffer' ),
+				__( 'Pro supports Direct Posting to Instagram Business Profiles and Pinterest Boards', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Multiple, Customisable Status Messages', 'wp-to-buffer' ),
+				__( 'Each Post Type and Social Network can have multiple, unique status message and settings', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Conditionally send Status Messages', 'wp-to-buffer' ),
+				__( 'Only send status(es) to Buffer based on Post Author(s), Taxonomy Term(s) and/or Custom Field Values', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'More Scheduling Options', 'wp-to-buffer' ),
+				__( 'Each status update can be added to the start/end of your Buffer queue, posted immediately or scheduled at a specific time', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Dynamic Status Tags', 'wp-to-buffer' ),
+				__( 'Dynamically build status updates with data from the Post Author and Custom Fields', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Separate Statuses per Social Network', 'wp-to-buffer' ),
+				__( 'Define different statuses for each Post Type and Social Network', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Per-Post Settings', 'wp-to-buffer' ),
+				__( 'Override Settings on Individual Posts: Each Post can have its own Buffer settings', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Repost Old Posts', 'wp-to-buffer' ),
+				__( 'Automatically Revive Old Posts that haven\'t been updated in a while, choosing the number of days, weeks or years to re-share content on social media.', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Bulk Publish Old Posts', 'wp-to-buffer' ),
+				__( 'Manually re-share evergreen WordPress content and revive old posts with the Bulk Publish option', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'The Events Calendar and Event Manager Integration', 'wp-to-buffer' ),
+				__( 'Schedule Posts to Buffer based on your Event\'s Start or End date, and display Event-specific details in your status updates', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'SEO Integration', 'wp-to-buffer' ),
+				__( 'Display SEO-specific information in your status updates from All-In-One SEO Pack, Rank Math, SEOPress and Yoast SEO', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'WooCommerce Integration', 'wp-to-buffer' ),
+				__( 'Display Product-specific information in your status updates', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Autoblogging and Frontend Post Submission Integration', 'wp-to-buffer' ),
+				__( 'Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Shortcode Support', 'wp-to-buffer' ),
+				__( 'Use shortcodes in status updates', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'Full Image Control', 'wp-to-buffer' ),
+				__( 'Choose to display the WordPress Featured Image with your status updates, or define up to 4 custom images for each Post.', 'wp-to-buffer' ),
+			),
+			array(
+				__( 'WP-Cron and WP-CLI Compatible', 'wp-to-buffer' ),
+				__( 'Optionally enable WP-Cron to send status updates via Cron, speeding up UI performance and/or choose to use WP-CLI for reposting old posts', 'wp-to-buffer' ),
+			),
+		);
 
 		// Dashboard Submodule.
 		if ( ! class_exists( 'WPZincDashboardWidget' ) ) {
