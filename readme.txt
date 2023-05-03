@@ -3,9 +3,9 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 6.1.1
+Tested up to: 6.2
 Requires PHP: 7.4
-Stable tag: 3.8.4
+Stable tag: 3.8.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,10 @@ There's no need to mess around with App IDs, authorization tokens or complicated
 Connecting your social media profiles is done in a few clicks through Buffer, taking minutes.
 
 Then just choose which of those profiles to use in the plugin, set your status message and your social media scheduling is set.
+
+=== Jetpack Social Alternative for Twitter ===
+
+If you're a Jetpack Social user looking for a replacement to post to Twitter, WordPress to Buffer may be one of the best auto post to Twitter solutions, and still works in 2023.
 
 === Buffer Partner ===
 
@@ -114,6 +118,10 @@ We **never** store any information on our web site or API during this process.
 
 == Frequently Asked Questions ==
 
+= Can I still auto post to Twitter? =
+
+Yes! Buffer is [not impacted](https://twitter.com/buffer/status/1652659063073783808) by Twitter's recent API changes in 2023. You can still auto post to Twitter with the WordPress to Buffer Plugin.
+
 = Isn't the Buffer API retired? =
  
 No; in October 2020, we're proud to have been selected as a Partner by Buffer.  This ensures continued access to Buffer's API, meaning that WordPress to Buffer will continue to work.
@@ -140,6 +148,9 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.8.5 (2023-05-04) =
+* Added: Status: Image: Use Feat. Image, not Linked to Post: Include alt text 
 
 = 3.8.4 (2023-01-26) =
 * Added: Settings: Mastodon Icon
