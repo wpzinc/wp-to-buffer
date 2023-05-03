@@ -39,9 +39,9 @@ Connecting your social media profiles is done in a few clicks through Buffer, ta
 
 Then just choose which of those profiles to use in the plugin, set your status message and your social media scheduling is set.
 
-=== Jetpack Social Alternative for Twitter ===
+=== Supports Twitter ===
 
-If you're a Jetpack Social user looking for a replacement to post to Twitter, WordPress to Buffer may be one of the best auto post to Twitter solutions, and still works in 2023.
+If you're a Jetpack Social, Blog2Social or NextScripts Social Networks Auto-Poster user looking for a replacement to auto post to Twitter, WordPress to Buffer is one of the best auto post to Twitter solutions that still works in 2023, as Buffer is [not impacted](https://twitter.com/buffer/status/1652659063073783808) by Twitter's recent API changes.
 
 === Buffer Partner ===
 
