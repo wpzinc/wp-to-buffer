@@ -5,7 +5,7 @@ Tags: auto post, auto publish, social media scheduling, social media automation,
 Requires at least: 5.0
 Tested up to: 6.2
 Requires PHP: 7.4
-Stable tag: 3.8.5
+Stable tag: 3.8.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,9 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.8.6 (2023-05-16) =
+* Fix: Post: Log: Export Log: Check user can edit posts to permit export log functionality
 
 = 3.8.5 (2023-05-04) =
 * Added: Status: Image: Use Feat. Image, not Linked to Post: Include alt text 
