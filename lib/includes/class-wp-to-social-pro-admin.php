@@ -54,7 +54,7 @@ class WP_To_Social_Pro_Admin {
 		add_action( 'admin_notices', array( $this, 'admin_notices' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_css' ) );
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		add_action( 'plugins_loaded', array( $this, 'load_language_files' ) );
+		add_filter( 'plugin_action_links_' . $this->base->plugin->name . '/' . $this->base->plugin->name . '.php', array( $this, 'plugin_action_links_settings_page' ) );
 
 	}
 
@@ -486,6 +486,30 @@ class WP_To_Social_Pro_Admin {
 		}
 
 		$upgrade_page = add_submenu_page( $this->base->plugin->name . '-settings', __( 'Upgrade', 'wp-to-buffer' ), __( 'Upgrade', 'wp-to-buffer' ), 'manage_options', $this->base->plugin->name . '-upgrade', array( $this, 'upgrade_screen' ) );
+
+	}
+
+	/**
+	 * Define links to display below the Plugin Name on the WP_List_Table at in the Plugins screen.
+	 *
+	 * @since 	5.0.2
+	 *
+	 * @param   array $links      Links.
+	 * @return  array               Links
+	 */
+	public function plugin_action_links_settings_page( $links ) {
+
+		// Add link to Plugin settings screen.
+		$links['settings'] = sprintf(
+			'<a href="%s">%s</a>',
+			add_query_arg( array(
+				'page' => $this->base->plugin->name . '-settings',
+			), admin_url( 'admin.php' ) ),
+			__( 'Settings', 'wp-to-buffer' )
+		);
+
+		// Return.
+		return $links;
 
 	}
 
