@@ -291,13 +291,6 @@ class WP_To_Social_Pro_Buffer_API {
 
 			// Check data is valid.
 			foreach ( $results as $result ) {
-				// We don't support Instagram or Pinterest in the Free version.
-				if ( class_exists( 'WP_To_Buffer' ) ) {
-					if ( $result->service === 'instagram' || $result->service === 'pinterest' ) {
-						continue;
-					}
-				}
-
 				// Add profile to array.
 				$profiles[ $result->id ] = array(
 					'id'                 => $result->id, // Buffer ID.
