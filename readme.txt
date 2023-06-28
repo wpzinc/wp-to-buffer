@@ -1,4 +1,4 @@
-=== Auto Post to Social Media - WordPress to Buffer ===
+=== Auto Post, Publish & Schedule to Facebook, Twitter, LinkedIn - WP to Buffer ===
 Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
@@ -9,7 +9,7 @@ Stable tag: 3.8.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Auto post Pages, Posts or Custom Post Types to Facebook, Twitter and LinkedIn using your Buffer (buffer.com) account.
+Auto post Pages, Posts or Custom Post Types to Facebook, Twitter, LinkedIn, Google Business and Mastodon using your Buffer (buffer.com) account.
 
 == Description ==
 
@@ -17,15 +17,15 @@ Whenever you publish or update a Post, Page or Custom Post Type, WordPress to Bu
 
 Don't have a Buffer account? [Sign up for free](https://buffer.com)
 
-Looking to auto post to Instagram and Pinterest? [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
+Looking to auto publish to Instagram and Pinterest? [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
 === Smart Social Media Automation ===
 
 WordPress to Buffer isn't another WP to Facebook, WP to Twitter or yet another auto posting plugin.
 
-Our plugin adds your content to your Buffer queue, which is a smart schedule designed to drip feed your content to your Facebook, Twitter, LinkedIn, Google Business and Mastodon social media profiles.
+Our plugin adds your content to your Buffer queue, which is a smart social media scheduling system designed to drip feed your content to your Facebook, Twitter, LinkedIn, Google Business and Mastodon social media profiles.
 
-You can use Buffer's default schedule, or set your own social media automation schedule with days and times that work best for your audience.
+You can use Buffer's default schedule, or set your own social media scheduling with days and times that work best for your audience.
 
 With Dynamic Tags, you can build truly unique status updates, pulling in your WordPress Post's Title, Content, Excerpt and more.
 
@@ -41,7 +41,7 @@ Then just choose which of those profiles to use in the plugin, set your status m
 
 === Supports Twitter ===
 
-If you're a Jetpack Social, Blog2Social or NextScripts Social Networks Auto-Poster user looking for a replacement to auto post to Twitter, WordPress to Buffer is one of the best auto post to Twitter solutions that still works in 2023, as Buffer is [not impacted](https://twitter.com/buffer/status/1652659063073783808) by Twitter's recent API changes.
+If you're a Jetpack Social, Blog2Social or NextScripts Social Networks Auto-Poster user looking for a replacement to auto publish to Twitter, WordPress to Buffer is one of the best auto post to Twitter solutions that still works in 2023, as Buffer is [not impacted](https://twitter.com/buffer/status/1652659063073783808) by Twitter's recent API changes.
 
 === Buffer Partner ===
 
@@ -65,7 +65,7 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 
 > <a href="https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/" rel="friend" title="WordPress to Buffer Pro - Publish to Facebook, Twitter, LinkedIn, Instagram and Pinterest">WordPress to Buffer Pro</a> provides additional functionality:<br />
 >
-> - **Instagram and Pinterest Support**<br />Pro supports Direct Posting to Instagram Business Profiles and Pinterest Boards<br />
+> - **Instagram and Pinterest Support**<br />Pro supports Direct Posting to Instagram Business Profiles (Feed and Stories) and Pinterest Boards<br />
 > - **Multiple, Customisable Status Messages**<br />Each Post Type and Social Network can have multiple, unique status message and settings<br />
 > - **Conditionally send Status Messages**<br />Only send status(es) to Buffer based on Post Author(s), Taxonomy Term(s) and/or Custom Field Values<br />
 > - **More Scheduling Options**<br />Each status update can be added to the start/end of your Buffer queue, posted immediately or scheduled at a specific time<br />
@@ -103,7 +103,7 @@ We connect directly to your Buffer (buffer.com) account, via their API, to:
 - Fetch your social media profile names and IDs, 
 - Send your WordPress Posts to one or more of your social media profiles.  The profiles and content sent will depend on the plugin settings you have configured.
 
-We connect to our own [API](https://www.wpzinc.com/documentation/wordpress-to-buffer-pro/data/) to pass the following requests through to Buffer:
+We connect to our own [API](https://www.wpzinc.com/documentation/wordpress-buffer-pro/data/) to pass the following requests through to Buffer:
 - Connect our Plugin to Buffer, when you click the Authorize button (this obtains an access token from Buffer, once you have approved authorization)
 
 Both of these are done via our own API, to ensure that no secret data (such as oAuth client secret keys) are included in this Plugin's code or made public.
@@ -118,9 +118,9 @@ We **never** store any information on our web site or API during this process.
 
 == Frequently Asked Questions ==
 
-= Can I still auto post to Twitter? =
+= Can I still auto publish to Twitter? =
 
-Yes! Buffer is [not impacted](https://twitter.com/buffer/status/1652659063073783808) by Twitter's recent API changes in 2023. You can still auto post to Twitter with the WordPress to Buffer Plugin.
+Yes! Buffer is [not impacted](https://twitter.com/buffer/status/1652659063073783808) by Twitter's recent API changes in 2023. You can still auto publish to Twitter with the WordPress to Buffer Plugin.
 
 = Isn't the Buffer API retired? =
  
@@ -138,7 +138,7 @@ You can post to:
 - WordPress to Google Business Profile
 - WordPress to Mastodon Profile
 
-To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
+To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
 == Screenshots ==
 
