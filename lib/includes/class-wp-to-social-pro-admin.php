@@ -176,9 +176,10 @@ class WP_To_Social_Pro_Admin {
 			$this->base->get_class( 'notices' )->enable_store();
 			$this->base->get_class( 'notices' )->add_success_notice(
 				sprintf(
-					/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-					__( 'Thanks! You\'ve connected our Plugin to %1$s.', 'wp-to-buffer' ),
-					$this->base->plugin->account
+					/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+					__( 'Thanks! You\'ve connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s', 'wp-to-buffer' ),
+					$this->base->plugin->account,
+					$this->base->plugin->account	
 				)
 			);
 

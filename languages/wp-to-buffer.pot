@@ -933,7 +933,7 @@ msgid "Account Enabled"
 msgstr ""
 
 #: lib/views/settings-post-actionheader.php:54
-msgid "Enabling this social media account means that Posts will be sent to this social media account, if the conditions in the Settings are met."
+msgid "Enabling this social media account means that Posts will be sent to this social media account."
 msgstr ""
 
 #: lib/views/settings-post.php:95
