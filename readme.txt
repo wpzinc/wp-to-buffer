@@ -149,7 +149,7 @@ To auto post to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro]
 
 == Changelog ==
 
-= 3.8.7 (2023-06-29) =
+= 3.8.7 (2023-06-28) =
 * Added: Plugins: Link to settings screen
 * Fix: Remove duplicate call to load_language_files()
 

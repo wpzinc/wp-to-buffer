@@ -179,7 +179,7 @@ class WP_To_Social_Pro_Admin {
 					/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
 					__( 'Thanks! You\'ve connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s', 'wp-to-buffer' ),
 					$this->base->plugin->account,
-					$this->base->plugin->account	
+					$this->base->plugin->account
 				)
 			);
 
@@ -493,7 +493,7 @@ class WP_To_Social_Pro_Admin {
 	/**
 	 * Define links to display below the Plugin Name on the WP_List_Table at in the Plugins screen.
 	 *
-	 * @since 	5.0.2
+	 * @since   5.0.2
 	 *
 	 * @param   array $links      Links.
 	 * @return  array               Links
@@ -503,9 +503,12 @@ class WP_To_Social_Pro_Admin {
 		// Add link to Plugin settings screen.
 		$links['settings'] = sprintf(
 			'<a href="%s">%s</a>',
-			add_query_arg( array(
-				'page' => $this->base->plugin->name . '-settings',
-			), admin_url( 'admin.php' ) ),
+			add_query_arg(
+				array(
+					'page' => $this->base->plugin->name . '-settings',
+				),
+				admin_url( 'admin.php' )
+			),
 			__( 'Settings', 'wp-to-buffer' )
 		);
 
