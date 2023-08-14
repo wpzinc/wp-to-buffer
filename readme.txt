@@ -3,7 +3,7 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 6.2.2
+Tested up to: 6.3
 Requires PHP: 7.4
 Stable tag: 3.8.8
 License: GPLv2 or later
