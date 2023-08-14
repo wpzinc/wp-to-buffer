@@ -19,6 +19,8 @@ Don't have a Buffer account? [Sign up for free](https://buffer.com)
 
 Looking to auto publish to Instagram and Pinterest? [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
+[youtube https://www.youtube.com/watch?v=GESEMwKSSQg]
+
 === Smart Social Media Automation ===
 
 WordPress to Buffer isn't another WP to Facebook, WP to Twitter or yet another auto posting plugin.
@@ -84,8 +86,6 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 > - **Support, Documentation and Updates**<br />Access to one on one email support, plus detailed documentation on how to install and configure the plugin and one click update notifications, right within the WordPress Administration panel.<br />
 >
 > [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
-
-[youtube https://www.youtube.com/watch?v=PgXYH-f95Ow]
 
 === Support ===
 
