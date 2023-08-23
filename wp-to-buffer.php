@@ -22,7 +22,7 @@ if ( class_exists( 'WP_To_Buffer' ) ) {
 
 // Define Plugin version and build date.
 define( 'WP_TO_BUFFER_PLUGIN_VERSION', '3.8.9' );
-define( 'WP_TO_BUFFER_PLUGIN_BUILD_DATE', '2023-08-24 18:00:00' );
+define( 'WP_TO_BUFFER_PLUGIN_BUILD_DATE', '2023-08-23 18:00:00' );
 
 // Define Plugin paths.
 define( 'WP_TO_BUFFER_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
