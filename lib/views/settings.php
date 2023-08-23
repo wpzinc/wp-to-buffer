@@ -59,10 +59,8 @@
 					$icon = '';
 					if ( ! empty( $post_type_obj->menu_icon ) ) {
 						$icon = 'dashicons ' . $post_type_obj->menu_icon;
-					} else {
-						if ( $public_post_type === 'post' || $public_post_type === 'page' ) {
+					} elseif ( $public_post_type === 'post' || $public_post_type === 'page' ) {
 							$icon = 'dashicons dashicons-admin-' . $public_post_type;
-						}
 					}
 
 					// Determine if the Post Type is set to post.
