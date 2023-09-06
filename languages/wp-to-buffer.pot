@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WP to Buffer plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP to Buffer 3.8.4\n"
+"Project-Id-Version: WP to Buffer 3.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-to-buffer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-02-06T14:43:13+00:00\n"
+"POT-Creation-Date: 2023-09-06T13:20:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: wp-to-buffer\n"
@@ -39,13 +39,141 @@ msgstr ""
 msgid "Thanks for using %s to schedule your social media statuses on Buffer!"
 msgstr ""
 
+#: includes/class-wp-to-buffer.php:94
+msgid "Post to Instagram and Pinterest"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:95
+msgid "Pro supports Direct Posting to Instagram Business Profiles and Pinterest Boards"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:98
+msgid "Multiple, Customisable Status Messages"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:99
+msgid "Each Post Type and Social Network can have multiple, unique status message and settings"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:102
+msgid "Conditionally send Status Messages"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:103
+msgid "Only send status(es) to Buffer based on Post Author(s), Taxonomy Term(s) and/or Custom Field Values"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:106
+msgid "More Scheduling Options"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:107
+msgid "Each status update can be added to the start/end of your Buffer queue, posted immediately or scheduled at a specific time"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:110
+msgid "Dynamic Status Tags"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:111
+msgid "Dynamically build status updates with data from the Post Author and Custom Fields"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:114
+msgid "Separate Statuses per Social Network"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:115
+msgid "Define different statuses for each Post Type and Social Network"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:118
+msgid "Per-Post Settings"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:119
+msgid "Override Settings on Individual Posts: Each Post can have its own Buffer settings"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:122
+msgid "Repost Old Posts"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:123
+msgid "Automatically Revive Old Posts that haven't been updated in a while, choosing the number of days, weeks or years to re-share content on social media."
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:126
+msgid "Bulk Publish Old Posts"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:127
+msgid "Manually re-share evergreen WordPress content and revive old posts with the Bulk Publish option"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:130
+msgid "The Events Calendar, Event Manager and Modern Events Calendar Integration"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:131
+msgid "Schedule Posts to Buffer based on your Event's Start or End date, and display Event-specific details in your status updates"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:134
+msgid "SEO Integration"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:135
+msgid "Display SEO-specific information in your status updates from All-In-One SEO Pack, Rank Math, SEOPress and Yoast SEO"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:138
+msgid "WooCommerce Integration"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:139
+msgid "Display Product-specific information in your status updates"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:142
+msgid "Autoblogging and Frontend Post Submission Integration"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:143
+msgid "Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:146
+msgid "Shortcode Support"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:147
+msgid "Use shortcodes in status updates"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:150
+msgid "Full Image Control"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:151
+msgid "Choose to display the WordPress Featured Image with your status updates, or define up to 4 custom images for each Post."
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:154
+msgid "WP-Cron and WP-CLI Compatible"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:155
+msgid "Optionally enable WP-Cron to send status updates via Cron, speeding up UI performance and/or choose to use WP-CLI for reposting old posts"
+msgstr ""
+
 #. translators: %1$s: Plugin Name, %2$s: PHP class name
-#: includes/class-wp-to-buffer.php:178
+#: includes/class-wp-to-buffer.php:249
 msgid "%1$s: Error: Could not load Plugin class %2$s"
 msgstr ""
 
 #. translators: Plugin Name
-#: includes/class-wp-to-buffer.php:191
+#: includes/class-wp-to-buffer.php:262
 msgid "%s: Error"
 msgstr ""
 
@@ -53,67 +181,67 @@ msgstr ""
 msgid "Authorize Plugin"
 msgstr ""
 
-#: includes/class-wp-to-social-pro-buffer-api.php:468
+#: includes/class-wp-to-social-pro-buffer-api.php:461
 msgid "No access token was specified"
 msgstr ""
 
 #. translators: HTTP Response Code
-#: includes/class-wp-to-social-pro-buffer-api.php:596
+#: includes/class-wp-to-social-pro-buffer-api.php:589
 msgid "Buffer API Error: HTTP Code %s. Sorry, we don't have any more information about this error. Please try again."
 msgstr ""
 
-#: includes/class-wp-to-social-pro-buffer-api.php:624
+#: includes/class-wp-to-social-pro-buffer-api.php:617
 msgid "Click the \"Deauthorize Plugin\" button, and then the \"Authorize Plugin\" button on the Plugin's Settings screen"
 msgstr ""
 
-#: includes/class-wp-to-social-pro-buffer-api.php:631
+#: includes/class-wp-to-social-pro-buffer-api.php:624
 msgid "Run this Plugin on a publicly accessible domain that does not have password protection."
 msgstr ""
 
-#: includes/class-wp-to-social-pro-buffer-api.php:641
+#: includes/class-wp-to-social-pro-buffer-api.php:634
 msgid "A Featured Image is required for this status to be sent."
 msgstr ""
 
 #. translators: %1$s: Social Media Account Service/Type (e.g. Facebook, Twitter), %2$s: Social Media Account Name
-#: includes/class-wp-to-social-pro-buffer-api.php:656
+#: includes/class-wp-to-social-pro-buffer-api.php:649
 msgid "Pinterest: Choose a Pinterest board in the status settings.  Otherwise, reconnect the %1$s Account %2$s in Buffer."
 msgstr ""
 
-#: includes/class-wp-to-social-pro-buffer-api.php:667
+#: includes/class-wp-to-social-pro-buffer-api.php:660
 msgid "Change the status text using the Per-Post Settings, to ensure it is slightly different from the last status."
 msgstr ""
 
 #. translators: Image URL
-#: includes/class-wp-to-social-pro-buffer-api.php:687
+#: includes/class-wp-to-social-pro-buffer-api.php:680
 msgid "Buffer can't fetch the image %s because your site is running on a local host and not web accessible. Please run the Plugin on a publicly accessible domain."
 msgstr ""
 
 #. translators: Image URL
-#: includes/class-wp-to-social-pro-buffer-api.php:695
+#: includes/class-wp-to-social-pro-buffer-api.php:688
 msgid "Buffer can't use the image %s, because WebP images are unsupported by Buffer.  The Plugin attempted to convert this image to a supported format, but failed. Consider using a JPEG image instead."
 msgstr ""
 
 #. translators: %1$s: Image URL, %2$s: Link to Media File Renamer Plugin
-#: includes/class-wp-to-social-pro-buffer-api.php:703
+#: includes/class-wp-to-social-pro-buffer-api.php:696
 msgid "Buffer can't fetch the image %1$s.  Install %2$s to automatically remove spaces, accented or special characters in image filenames."
 msgstr ""
 
-#: includes/class-wp-to-social-pro-buffer-api.php:705
+#: includes/class-wp-to-social-pro-buffer-api.php:698
 msgid "Media File Renamer Plugin"
 msgstr ""
 
 #. translators: Scheduled Date and Time
-#: includes/class-wp-to-social-pro-buffer-api.php:720
+#: includes/class-wp-to-social-pro-buffer-api.php:713
 msgid "The Custom Time (based on Custom Field / Post Meta Value) field cannot be %s, which is a date in the past."
 msgstr ""
 
 #. translators: %1$s: Link to WordPress General Settings, %2$s: Link to Social Media Scheduling Timezone Settings Screen, %3$s: Social Media Scheduler Name (Buffer, Hootsuite, SocialPilot)
-#: includes/class-wp-to-social-pro-buffer-api.php:726
+#: includes/class-wp-to-social-pro-buffer-api.php:719
 msgid "<a href=\"%1$s\">WordPress</a> and <a href=\"%2$s\">%3$s</a> timezones must match."
 msgstr ""
 
 #. translators: %1$s: API Error Code, %2$s: API Error Message
-#: includes/class-wp-to-social-pro-buffer-api.php:741
+#: includes/class-wp-to-social-pro-buffer-api.php:734
 msgid "Buffer API Error: #%1$s: %2$s"
 msgstr ""
 
@@ -140,97 +268,99 @@ msgstr ""
 msgid "if this issue persists."
 msgstr ""
 
-#. translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot)
+#. translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot)
 #: lib/includes/class-wp-to-social-pro-admin.php:180
-msgid "Thanks! You've connected our Plugin to %1$s."
+msgid "Thanks! You've connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s"
 msgstr ""
 
 #. translators: Plugin Name
-#: lib/includes/class-wp-to-social-pro-admin.php:207
+#: lib/includes/class-wp-to-social-pro-admin.php:208
 msgid "%s requires the PHP cURL extension to be installed and enabled by your web host."
 msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s, %3$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %4$s: URL to Authorize Plugin Screen, %5$s: URL to Register Account with Service
-#: lib/includes/class-wp-to-social-pro-admin.php:227
+#: lib/includes/class-wp-to-social-pro-admin.php:228
 msgid "%1$s needs to be authorized with %2$s before you can start sending Posts to %3$s."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:233
+#: lib/includes/class-wp-to-social-pro-admin.php:234
 msgid "Click here to Authorize."
 msgstr ""
 
 #. translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot)
-#: lib/includes/class-wp-to-social-pro-admin.php:313
-#: lib/includes/class-wp-to-social-pro-log.php:939
+#: lib/includes/class-wp-to-social-pro-admin.php:314
+#: lib/includes/class-wp-to-social-pro-log.php:947
 msgid "No log entries exist, or no status updates have been sent to %s."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:319
+#: lib/includes/class-wp-to-social-pro-admin.php:320
 msgid "Are you sure you want to delete this condition?"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:320
+#: lib/includes/class-wp-to-social-pro-admin.php:321
 msgid "Are you sure you want to delete this status?"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:394
+#: lib/includes/class-wp-to-social-pro-admin.php:395
 msgid "Saving"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:395
+#: lib/includes/class-wp-to-social-pro-admin.php:396
 msgid "Saved!"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:480
+#: lib/includes/class-wp-to-social-pro-admin.php:481
+#: lib/includes/class-wp-to-social-pro-admin.php:512
 #: lib/views/settings.php:15
 #: lib/views/settings.php:35
 #: lib/views/settings.php:49
 msgid "Settings"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:484
+#: lib/includes/class-wp-to-social-pro-admin.php:485
 #: lib/views/log.php:15
 msgid "Logs"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:488
+#: lib/includes/class-wp-to-social-pro-admin.php:489
 #: lib/views/settings-auth.php:218
 #: lib/views/settings-auth.php:381
 #: lib/views/settings-auth.php:411
 #: lib/views/settings-auth.php:441
 #: lib/views/settings-post-action-status-upgrade.php:37
+#: lib/views/settings-post-actionheader-upgrade-profile.php:26
 #: lib/views/settings-post-actionheader-upgrade.php:26
 msgid "Upgrade"
 msgstr ""
 
 #. translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot)
-#: lib/includes/class-wp-to-social-pro-admin.php:517
+#: lib/includes/class-wp-to-social-pro-admin.php:545
 msgid "%s account disconnected successfully."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:530
+#: lib/includes/class-wp-to-social-pro-admin.php:558
 msgid "Settings saved successfully."
 msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot)
-#: lib/includes/class-wp-to-social-pro-admin.php:560
+#: lib/includes/class-wp-to-social-pro-admin.php:588
 msgid "Hmm, it looks like you revoked access to %1$s through your %2$s account, or your account no longer exists. This means we can no longer post updates to your social networks.  To re-authorize, click the Authorize Plugin button."
 msgstr ""
 
 #. translators: %1$s: Post Type, %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %3$s: Documentation URL
-#: lib/includes/class-wp-to-social-pro-admin.php:636
+#: lib/includes/class-wp-to-social-pro-admin.php:664
 msgid "To send %1$s to %2$s, at least one action on the Defaults tab must be enabled with a status defined, and at least one social media profile must be enabled below by clicking the applicable profile name and ticking the \"Account Enabled\" box."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:641
+#: lib/includes/class-wp-to-social-pro-admin.php:669
 msgid "See Documentation"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:771
+#: lib/includes/class-wp-to-social-pro-admin.php:799
 msgid "Nonce field is missing. Settings NOT saved."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:779
+#: lib/includes/class-wp-to-social-pro-admin.php:807
 msgid "Invalid nonce specified. Settings NOT saved."
 msgstr ""
 
@@ -482,45 +612,45 @@ msgstr ""
 msgid "%s Log"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:493
+#: lib/includes/class-wp-to-social-pro-log.php:501
 msgid "Unknown"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:511
-#: lib/includes/class-wp-to-social-pro-log.php:542
+#: lib/includes/class-wp-to-social-pro-log.php:519
+#: lib/includes/class-wp-to-social-pro-log.php:550
 msgid "Success"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:512
+#: lib/includes/class-wp-to-social-pro-log.php:520
 msgid "Test"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:513
+#: lib/includes/class-wp-to-social-pro-log.php:521
 msgid "Warning"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:514
+#: lib/includes/class-wp-to-social-pro-log.php:522
 msgid "Error"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:543
+#: lib/includes/class-wp-to-social-pro-log.php:551
 msgid "Tests"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:544
+#: lib/includes/class-wp-to-social-pro-log.php:552
 msgid "Pending"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:545
+#: lib/includes/class-wp-to-social-pro-log.php:553
 msgid "Warnings"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:546
+#: lib/includes/class-wp-to-social-pro-log.php:554
 msgid "Errors"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-log.php:972
-#: lib/includes/class-wp-to-social-pro-log.php:973
+#: lib/includes/class-wp-to-social-pro-log.php:980
+#: lib/includes/class-wp-to-social-pro-log.php:981
 msgid "N/A"
 msgstr ""
 
@@ -564,17 +694,17 @@ msgstr ""
 msgid "No WordPress Post could be found for Post ID %s"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-publish.php:1879
+#: lib/includes/class-wp-to-social-pro-publish.php:1881
 msgid "Plugin Error"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-settings.php:324
+#: lib/includes/class-wp-to-social-pro-settings.php:333
 #: lib/views/settings-post.php:21
 msgid "Defaults"
 msgstr ""
 
 #. translators: %1$s: Post Type Name, Plural, %2$s: Social Media Profile Name, %3$s: Action (Publish, Update, Repost, Bulk Publish), %4$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot)
-#: lib/includes/class-wp-to-social-pro-settings.php:336
+#: lib/includes/class-wp-to-social-pro-settings.php:345
 msgid "Two or more statuses defined in %1$s > %2$s > %3$s are the same. Please correct this to ensure each status update is unique, otherwise your status updates will NOT publish to %4$s as they will be seen as duplicates, which violate Facebook and Twitter's Terms of Service."
 msgstr ""
 
@@ -890,7 +1020,7 @@ msgstr ""
 
 #. translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %2$s: Post Type, Singular, %3$s: Translated Action (Publish, Update, Repost, Bulk Publish), %4$s: Additional Translated Message
 #: lib/views/settings-post-action.php:39
-msgid "If enabled, any status(es) defined here will be sent to %1$s when a %2$s is %3$s %4$s"
+msgid "If enabled, any status(es) defined here will be sent to %1$s when a WordPress %2$s is %3$s %4$s"
 msgstr ""
 
 #. translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot)
@@ -914,6 +1044,15 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
+#: lib/views/settings-post-actionheader-upgrade-profile.php:12
+msgid "Want to post to Instagram or Pinterest?"
+msgstr ""
+
+#. translators: Plugin Name
+#: lib/views/settings-post-actionheader-upgrade-profile.php:19
+msgid "%s Pro allows you to post to Instagram (Stories and Posts) and Pinterest boards, with advanced controls for conditional publishing, tags and scheduling."
+msgstr ""
+
 #: lib/views/settings-post-actionheader-upgrade.php:12
 msgid "Want to define different Status for each Social Media Account?"
 msgstr ""
@@ -928,11 +1067,11 @@ msgstr ""
 msgid "%1$s: %2$s: Settings"
 msgstr ""
 
-#: lib/views/settings-post-actionheader.php:50
+#: lib/views/settings-post-actionheader.php:56
 msgid "Account Enabled"
 msgstr ""
 
-#: lib/views/settings-post-actionheader.php:54
+#: lib/views/settings-post-actionheader.php:60
 msgid "Enabling this social media account means that Posts will be sent to this social media account."
 msgstr ""
 
@@ -963,15 +1102,15 @@ msgstr ""
 msgid "Connect Profiles"
 msgstr ""
 
+#: lib/views/settings.php:82
 #: lib/views/settings.php:84
-#: lib/views/settings.php:86
 msgid "Documentation"
 msgstr ""
 
-#: lib/views/settings.php:89
+#: lib/views/settings.php:87
 msgid "Docs"
 msgstr ""
 
-#: lib/views/settings.php:118
+#: lib/views/settings.php:116
 msgid "Save"
 msgstr ""
