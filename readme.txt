@@ -15,7 +15,7 @@ Auto post Pages, Posts or Custom Post Types to Facebook, Twitter, LinkedIn, Goog
 
 Whenever you publish or update a Post, Page or Custom Post Type, WordPress to Buffer will auto post your content to your Buffer account (buffer.com), scheduling publication to social media profiles including Facebook, Twitter, LinkedIn, Google Business and Mastodon.
 
-Don't have a Buffer account? [Sign up for free](https://buffer.com)
+Don't have a Buffer account? [Sign up for free](https://buffer.com/join/6392aeec568614de895ed38fafa7784b8718c77dc7800419bdfbbacaaaa793d8)
 
 Looking to auto publish to Instagram and Pinterest? [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
@@ -97,7 +97,7 @@ If you require one to one email support, consider <a href="http://www.wpzinc.com
 
 === Data ===
 
-Our [API](https://www.wpzinc.com/documentation/wordpress-buffer-pro/data/) connects your website to [Buffer](https://buffer.com). An account with Buffer is required.
+Our [API](https://www.wpzinc.com/documentation/wordpress-buffer-pro/data/) connects your website to [Buffer](https://buffer.com/join/6392aeec568614de895ed38fafa7784b8718c77dc7800419bdfbbacaaaa793d8). An account with Buffer is required.
 
 We connect directly to your Buffer (buffer.com) account, via their API, to:
 - Fetch your social media profile names and IDs, 
