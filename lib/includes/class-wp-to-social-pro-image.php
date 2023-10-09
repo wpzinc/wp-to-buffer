@@ -273,40 +273,7 @@ class WP_To_Social_Pro_Image {
 				break;
 		}
 
-		switch ( $service ) {
-
-			/**
-			 * Instagram
-			 */
-			case 'instagram':
-				// Get image.
-				$image_path_and_file = get_attached_file( $image_id );
-
-				// Just return the original image ID if we couldn't get the image path and file.
-				if ( empty( $image_path_and_file ) || ! file_exists( $image_path_and_file ) ) {
-					return $this->get_image_source_by_size( $image_id, $source, 'large' );
-				}
-
-				// Get image aspect ratio.
-				$size         = getimagesize( $image_path_and_file );
-				$aspect_ratio = $size[0] / $size[1];
-
-				// If the aspect ratio of the image falls within the required limits, just return the image.
-				if ( $aspect_ratio >= 0.8 && $aspect_ratio <= 1.91 ) {
-					return $this->get_image_source_by_size( $image_id, $source, 'large' );
-				}
-
-				// If here, the image's aspect ratio would cause posting to Instagram to fail.
-				// Produce a resized copy that meets the required aspect ratio.
-				return $this->get_resized_image_sources( $image_id, $source, $size, $aspect_ratio, 1.91, 0.8 );
-
-			/**
-			 * Other Social Networks
-			 */
-			default:
-				return $this->get_image_source_by_size( $image_id, $source, 'large' );
-
-		}
+		return $this->get_image_source_by_size( $image_id, $source, 'large' );
 
 	}
 
