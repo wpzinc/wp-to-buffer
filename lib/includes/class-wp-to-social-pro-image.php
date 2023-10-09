@@ -39,11 +39,6 @@ class WP_To_Social_Pro_Image {
 		// Store base class.
 		$this->base = $base;
 
-		// Load WordPress image libraries.
-		require_once ABSPATH . WPINC . '/class-wp-image-editor.php';
-		require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
-		require_once ABSPATH . WPINC . '/class-wp-image-editor-imagick.php';
-
 	}
 
 	/**

@@ -150,7 +150,7 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 == Changelog ==
 
 = 3.9.1 (2023-10-09) =
-* Added: Don't convert webp images, as these are now supported by Buffer.  See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/featured-image-settings/#webp-image-support
+* Added: Don't convert webp images, as these are now supported by Buffer
 * Fix: Correctly detect and differentiate REST API requests from Gutenberg REST API requests, ensuring REST API requests trigger status(es)
 
 = 3.9.0 (2023-09-07) =
