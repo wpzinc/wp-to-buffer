@@ -63,7 +63,7 @@ class WP_To_Social_Pro_Image_GD extends WP_Image_Editor_GD {
 			return true;
 		}
 
-		return new WP_Error( 'image_crop_error', __( 'Image crop failed.', 'wp-to-social-pro' ), $this->file );
+		return new WP_Error( 'image_crop_error', __( 'Image crop failed.', 'wp-to-buffer' ), $this->file );
 
 	}
 

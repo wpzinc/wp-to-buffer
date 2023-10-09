@@ -196,10 +196,9 @@ class WP_To_Social_Pro_Image {
 	 * @param   int         $image_id   Image ID.
 	 * @param   string      $source     Source Image ID was derived from (plugin, featured_image, post_content, text_to_image).
 	 * @param   bool|string $service    Social Media Service the image is for. If not defined, just return the large version.
-	 * @param   bool|string $format     Status format (for example, 'story' or 'post' for Instagram).
 	 * @return  array|WP_Error              Image ID, Image URLs, Source
 	 */
-	public function get_image_sources( $image_id, $source, $service = false, $format = false ) {
+	public function get_image_sources( $image_id, $source, $service = false ) {
 
 		$image_mime_type = get_post_mime_type( $image_id );
 
