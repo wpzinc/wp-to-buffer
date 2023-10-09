@@ -278,6 +278,27 @@ class WP_To_Buffer {
 	}
 
 	/**
+	 * Helper method to determine whether this Plugin supports a specific feature.
+	 *
+	 * Typically used by the lib/ classes.
+	 *
+	 * @since   3.5.5
+	 *
+	 * @param   string $feature    Feature.
+	 * @return  bool                Feature Supported
+	 */
+	public function supports( $feature ) {
+
+		// Define supported featured.
+		$supported_features = array(
+			'webp',
+		);
+
+		return in_array( $feature, $supported_features, true );
+
+	}
+
+	/**
 	 * Returns the singleton instance of the class.
 	 *
 	 * @since   3.1.4

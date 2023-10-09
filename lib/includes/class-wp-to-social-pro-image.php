@@ -39,6 +39,11 @@ class WP_To_Social_Pro_Image {
 		// Store base class.
 		$this->base = $base;
 
+		// Load WordPress image libraries.
+		require_once ABSPATH . WPINC . '/class-wp-image-editor.php';
+		require_once ABSPATH . WPINC . '/class-wp-image-editor-gd.php';
+		require_once ABSPATH . WPINC . '/class-wp-image-editor-imagick.php';
+
 	}
 
 	/**
@@ -188,12 +193,13 @@ class WP_To_Social_Pro_Image {
 	 *
 	 * @since   4.6.6
 	 *
-	 * @param   int    $image_id   Image ID.
-	 * @param   string $source     Source Image ID was derived from (plugin, featured_image, post_content, text_to_image).
-	 * @param   string $service    Social Media Service the image is for. If not defined, just return the large version.
-	 * @return  array|WP_Error     Image ID, Image URLs, Source
+	 * @param   int         $image_id   Image ID.
+	 * @param   string      $source     Source Image ID was derived from (plugin, featured_image, post_content, text_to_image).
+	 * @param   bool|string $service    Social Media Service the image is for. If not defined, just return the large version.
+	 * @param   bool|string $format     Status format (for example, 'story' or 'post' for Instagram).
+	 * @return  array|WP_Error              Image ID, Image URLs, Source
 	 */
-	public function get_image_sources( $image_id, $source, $service = false ) {
+	public function get_image_sources( $image_id, $source, $service = false, $format = false ) {
 
 		$image_mime_type = get_post_mime_type( $image_id );
 
@@ -205,8 +211,23 @@ class WP_To_Social_Pro_Image {
 			 * Webp
 			 */
 			case 'image/webp':
+				// Don't do anything if the service supports webp and the image isn't for Instagram.
+				// If it is for Instagram, we want to convert to a JPEG as we might need to resize/crop
+				// later in this function.
+				if ( $this->base->supports( 'webp' ) && $service !== 'instagram' ) {
+					break;
+				}
+
+				// Get image.
+				$image_path_and_file = get_attached_file( $image_id );
+
+				// Just return the original image ID if we couldn't get the image path and file.
+				if ( empty( $image_path_and_file ) || ! file_exists( $image_path_and_file ) ) {
+					return $image_id;
+				}
+
 				// Load webp image.
-				$image = wp_get_image_editor( get_attached_file( $image_id ) );
+				$image = wp_get_image_editor( $image_path_and_file );
 
 				// Bail if an error occured.
 				if ( is_wp_error( $image ) ) {
@@ -253,12 +274,213 @@ class WP_To_Social_Pro_Image {
 				break;
 		}
 
-		return $this->get_image_source_by_size( $image_id, $source, 'large' );
+		switch ( $service ) {
+
+			/**
+			 * Instagram
+			 */
+			case 'instagram':
+				// Get image.
+				$image_path_and_file = get_attached_file( $image_id );
+
+				// Just return the original image ID if we couldn't get the image path and file.
+				if ( empty( $image_path_and_file ) || ! file_exists( $image_path_and_file ) ) {
+					return $this->get_image_source_by_size( $image_id, $source, 'large' );
+				}
+
+				// Get image aspect ratio.
+				$size         = getimagesize( $image_path_and_file );
+				$aspect_ratio = $size[0] / $size[1];
+
+				// If the aspect ratio of the image falls within the required limits, just return the image.
+				if ( $aspect_ratio >= 0.8 && $aspect_ratio <= 1.91 ) {
+					return $this->get_image_source_by_size( $image_id, $source, 'large' );
+				}
+
+				// If here, the image's aspect ratio would cause posting to Instagram to fail.
+				// Produce a resized copy that meets the required aspect ratio.
+				return $this->get_resized_image_sources( $image_id, $source, $size, $aspect_ratio, 1.91, 0.8 );
+
+			/**
+			 * Other Social Networks
+			 */
+			default:
+				return $this->get_image_source_by_size( $image_id, $source, 'large' );
+
+		}
 
 	}
 
 	/**
-	 * Returns an array comprising of the image ID, image URL for the requested size, thumbnail size
+	 * Returns the image for the given Attachment ID, resized to meet the provided aspect ratio requirements.
+	 *
+	 * @since   4.6.6
+	 *
+	 * @param   int    $image_id                           Image ID.
+	 * @param   string $source                             Source Image ID was derived from (plugin, featured_image, post_content, text_to_image).
+	 * @param   array  $size                               getimagesize() result.
+	 * @param   float  $aspect_ratio                       Image's current aspect ratio.
+	 * @param   float  $required_aspect_ratio_landscape    Image's required aspect ratio, if the image is landscape.
+	 * @param   float  $required_aspect_ratio_portrait     Image's required aspect ratio, if the image is portrait.
+	 * @return  WP_Error|array                              Image ID, Image URLs, Source
+	 */
+	private function get_resized_image_sources( $image_id, $source, $size, $aspect_ratio, $required_aspect_ratio_landscape = 1.91, $required_aspect_ratio_portrait = 0.8 ) {
+
+		if ( $aspect_ratio > 1 ) {
+			// Original image is landscape.
+			$width  = $size[1] * $required_aspect_ratio_landscape;
+			$height = $size[1];
+
+			// If the resulting width is greater than the original, cropping won't give us the required aspect ratio.
+			// Instead, pad the left and right of the image to achieve the required aspect ratio.
+			if ( $width > $size[0] ) {
+				$resized_image_id = $this->pad( $image_id, $width, $height );
+			} else {
+				$resized_image_id = $this->crop( $image_id, $width, $height );
+			}
+		} else {
+			// Origina image is portrait.
+			$width  = $size[0];
+			$height = $size[0] / $required_aspect_ratio_portrait;
+
+			// If the resulting height is greater than the original, cropping won't give us the required aspect ratio.
+			// Instead, pad the top and bottom of the image to achieve the required aspect ratio.
+			if ( $height > $size[1] ) {
+				$resized_image_id = $this->pad( $image_id, $width, $height );
+			} else {
+				$resized_image_id = $this->crop( $image_id, $width, $height );
+			}
+		}
+
+		// Bail if an error occured.
+		if ( is_wp_error( $resized_image_id ) ) {
+			return $resized_image_id;
+		}
+
+		// Return Resized Image.
+		return $this->get_image_source_by_size( $resized_image_id, $source, 'full' );
+
+	}
+
+	/**
+	 * Crops the given image to the given width and height.
+	 *
+	 * @since   5.0.0
+	 *
+	 * @param   int   $image_id   Image ID.
+	 * @param   float $width      Required Width.
+	 * @param   float $height     Required Height.
+	 * @return  WP_Error|int                Error | Resized Image ID.
+	 */
+	private function crop( $image_id, $width, $height ) {
+
+		// Get image.
+		$image_path_and_file = get_attached_file( $image_id );
+
+		// Just return the original image ID if we couldn't get the image path and file.
+		if ( empty( $image_path_and_file ) || ! file_exists( $image_path_and_file ) ) {
+			return $image_id;
+		}
+
+		// Load image into image editor.
+		$image = wp_get_image_editor( $image_path_and_file );
+
+		// Bail if an error occured.
+		if ( is_wp_error( $image ) ) {
+			return $image;
+		}
+
+		// Resize image, using cropping.
+		$resize_result = $image->resize( $width, $height, true );
+
+		// Bail if an error occured.
+		if ( is_wp_error( $resize_result ) ) {
+			return $resize_result;
+		}
+
+		// Save to temporary file on disk.
+		$resized_image = $image->save( get_temp_dir() . 'wp-to-social-pro-resized-' . bin2hex( random_bytes( 5 ) ) );
+
+		// Bail if an error occured.
+		if ( is_wp_error( $resized_image ) ) {
+			return $resized_image;
+		}
+
+		// Upload to Media Library, returning the result.
+		return $this->base->get_class( 'media_library' )->upload_local_image( $resized_image['path'] );
+
+	}
+
+	/**
+	 * Pads the given image to the give width and height.
+	 *
+	 * @since   5.0.0
+	 *
+	 * @param   int   $image_id   Image ID.
+	 * @param   float $width      Required Width.
+	 * @param   float $height     Required Height.
+	 * @return  WP_Error|int                Error | Resized Image ID.
+	 */
+	private function pad( $image_id, $width, $height ) {
+
+		// Get image.
+		$image_path_and_file = get_attached_file( $image_id );
+
+		// Just return the original image ID if we couldn't get the image path and file.
+		if ( empty( $image_path_and_file ) || ! file_exists( $image_path_and_file ) ) {
+			return $image_id;
+		}
+
+		// Load image into image editor.
+		$image = wp_get_image_editor( $image_path_and_file );
+
+		// Bail if an error occured.
+		if ( is_wp_error( $image ) ) {
+			return $image;
+		}
+
+		// Load image into our extended editor class, depending on the class
+		// WordPress originally used.
+		switch ( get_class( $image ) ) {
+			case 'WP_Image_Editor_GD':
+				$image  = new WP_To_Social_Pro_Image_GD( $image_path_and_file );
+				$loaded = $image->load();
+				break;
+
+			case 'WP_Image_Editor_Imagick':
+				$image  = new WP_To_Social_Pro_Image_Imagick( $image_path_and_file );
+				$loaded = $image->load();
+				break;
+		}
+
+		// Bail if an error occured.
+		if ( is_wp_error( $loaded ) ) {
+			return $loaded;
+		}
+
+		// Resize image, using padding.
+		$resize_result = $image->pad( $width, $height );
+
+		// Bail if an error occured.
+		if ( is_wp_error( $resize_result ) ) {
+			return $resize_result;
+		}
+
+		// Save to temporary file on disk.
+		$resized_image = $image->save( get_temp_dir() . 'wp-to-social-pro-resized-' . bin2hex( random_bytes( 5 ) ) );
+
+		// Bail if an error occured.
+		if ( is_wp_error( $resized_image ) ) {
+			return $resized_image;
+		}
+
+		// Upload to Media Library, returning the result.
+		return $this->base->get_class( 'media_library' )->upload_local_image( $resized_image['path'] );
+
+	}
+
+	/**
+	 * Returns an array comprising of the image ID, image URL and alt text for the requested size, thumbnail size
 	 * and the source of the image.
 	 *
 	 * @since   4.6.6
