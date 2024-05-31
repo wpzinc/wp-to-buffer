@@ -1,11 +1,11 @@
-=== Auto Post, Auto Publish and Schedule to Facebook, Twitter, LinkedIn - WP to Buffer ===
+=== Auto Post, Auto Publish and Schedule to Twitter, LinkedIn and Social Media - WP to Buffer ===
 Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 6.3.1
+Tested up to: 6.5.3
 Requires PHP: 7.4
-Stable tag: 3.9.1
+Stable tag: 3.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,9 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.9.2 (2024-05-31) =
+* Fix: Removed Facebook in Plugin name
 
 = 3.9.1 (2023-10-09) =
 * Added: Don't convert webp images, as these are now supported by Buffer
