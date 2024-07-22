@@ -1,17 +1,17 @@
-# Copyright (C) 2023 WP Zinc
+# Copyright (C) 2024 WP Zinc
 # This file is distributed under the same license as the WP to Buffer plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP to Buffer 3.9.0\n"
+"Project-Id-Version: WP to Buffer 3.9.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-to-buffer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-09-06T13:20:04+00:00\n"
+"POT-Creation-Date: 2024-07-22T10:03:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.7.1\n"
+"X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: wp-to-buffer\n"
 
 #. Plugin Name of the plugin
@@ -670,31 +670,31 @@ msgid "%1$s: Some status(es) could not be sent to %2$s"
 msgstr ""
 
 #. translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %2$s: Plugin Name
-#: lib/includes/class-wp-to-social-pro-publish.php:492
+#: lib/includes/class-wp-to-social-pro-publish.php:496
 msgid "The Plugin has not been authorized with %1$s! Go to %2$s > Settings to setup the plugin."
 msgstr ""
 
 #. translators: %1$s: Post Type Name, Singular, %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %3$s: Action (Publish, Update, Repost, Bulk Publish), %4$s, %5$s, %6$s: Post Type Name, Singular, %7$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %8$s: Plugin URL, %9$s: Plugin Name, %10$s: Post Type Name, Singular, %11$s: Action (Publish, Update, Repost, Bulk Publish)
-#: lib/includes/class-wp-to-social-pro-publish.php:601
+#: lib/includes/class-wp-to-social-pro-publish.php:605
 msgid "Status(es) exist for sending this %1$s to %2$s when you %3$s a %4$s, but no status was sent because the %5$s did not meet the status conditions. If you want this %6$s to be sent to %7$s, navigate to <a href=\"%8$s\" target=\"_blank\">%9$s > Settings > %10$s Tab > %11$s Action Tab</a>, ensuring that no Conditions are set on the defined statuses."
 msgstr ""
 
 #. translators: %1$s: Post Type Name, Singular, %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %3$s: Action (Publish, Update, Repost, Bulk Publish), %4$s, %5$s, %6$s: Post Type Name, Singular, %7$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %8$s: Plugin URL, %9$s: Plugin Name, %10$s: Post Type Name, Singular, %11$s: Action (Publish, Update, Repost, Bulk Publish)
-#: lib/includes/class-wp-to-social-pro-publish.php:624
+#: lib/includes/class-wp-to-social-pro-publish.php:628
 msgid "No Plugin Settings are defined for sending %1$s to %2$s when you %3$s a %4$s. To send statuses to %5$s on %6$s, navigate to <a href=\"%7$s\" target=\"_blank\">%8$s > Settings > %9$s Tab > %10$s Action Tab</a>, tick \"Enabled\", and also enable at least one social media profile."
 msgstr ""
 
 #. translators: Action
-#: lib/includes/class-wp-to-social-pro-publish.php:693
+#: lib/includes/class-wp-to-social-pro-publish.php:697
 msgid "The %s action is not supported."
 msgstr ""
 
 #. translators: Post ID
-#: lib/includes/class-wp-to-social-pro-publish.php:706
+#: lib/includes/class-wp-to-social-pro-publish.php:710
 msgid "No WordPress Post could be found for Post ID %s"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-publish.php:1881
+#: lib/includes/class-wp-to-social-pro-publish.php:1907
 msgid "Plugin Error"
 msgstr ""
 

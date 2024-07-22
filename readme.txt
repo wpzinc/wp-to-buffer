@@ -3,17 +3,17 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 6.5.3
+Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 3.9.2
+Stable tag: 3.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Auto post Pages, Posts or Custom Post Types to Facebook, Twitter, LinkedIn, Google Business and Mastodon using your Buffer (buffer.com) account.
+Auto post Pages, Posts or Custom Post Types to Facebook, Twitter, Threads, LinkedIn, Google Business, Mastodon and Bluesky using your Buffer (buffer.com) account.
 
 == Description ==
 
-Whenever you publish or update a Post, Page or Custom Post Type, WordPress to Buffer will auto post your content to your Buffer account (buffer.com), scheduling publication to social media profiles including Facebook, Twitter, LinkedIn, Google Business and Mastodon.
+Whenever you publish or update a Post, Page or Custom Post Type, WordPress to Buffer will auto post your content to your Buffer account (buffer.com), scheduling publication to social media profiles including Facebook, Twitter, Threads, LinkedIn, Google Business, Mastodon and Bluesky.
 
 Don't have a Buffer account? [Sign up for free](https://buffer.com/join/6392aeec568614de895ed38fafa7784b8718c77dc7800419bdfbbacaaaa793d8)
 
@@ -23,9 +23,9 @@ Looking to auto publish to Instagram and Pinterest? [Upgrade to WordPress to Buf
 
 === Smart Social Media Automation ===
 
-WordPress to Buffer isn't another WP to Facebook, WP to Twitter or yet another auto posting plugin.
+WordPress to Buffer isn't another WP to Facebook, WP to Twitter / X or yet another auto posting plugin.
 
-Our plugin adds your content to your Buffer queue, which is a smart social media scheduling system designed to drip feed your content to your Facebook, Twitter, LinkedIn, Google Business and Mastodon social media profiles.
+Our plugin adds your content to your Buffer queue, which is a smart social media scheduling system designed to drip feed your content to your Facebook, Threads, Twitter / X, LinkedIn, Google Business, Mastodon and Bluesky social media profiles.
 
 You can use Buffer's default schedule, or set your own social media scheduling with days and times that work best for your audience.
 
@@ -41,9 +41,9 @@ Connecting your social media profiles is done in a few clicks through Buffer, ta
 
 Then just choose which of those profiles to use in the plugin, set your status message and your social media scheduling is set.
 
-=== Supports Twitter ===
+=== Supports Twitter / X ===
 
-If you're a Jetpack Social, Blog2Social or NextScripts Social Networks Auto-Poster user looking for a replacement to auto publish to Twitter, WordPress to Buffer is one of the best auto post to Twitter solutions that still works in 2023, as Buffer is [not impacted](https://twitter.com/buffer/status/1652659063073783808) by Twitter's recent API changes.
+If you're a Jetpack Social, Blog2Social or NextScripts Social Networks Auto-Poster user looking for a replacement to auto publish to Twitter / X, WordPress to Buffer is one of the best auto post to Twitter / X solutions that still works in 2023, as Buffer is [not impacted](https://x.com/buffer/status/1652659063073783808) by Twitter's recent API changes.
 
 === Buffer Partner ===
 
@@ -57,15 +57,17 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 - Define the status text dynamically, pulling in your WordPress Post's Title, Content, Excerpt and more
 - WordPress to Facebook Page Auto Post
 - WordPress to Facebook Group Auto Post
-- WordPress to Twitter Auto Post
+- WordPress to Threads Auto Post
+- WordPress to Twitter / X Auto Post
 - WordPress to LinkedIn Page Auto Post
 - WordPress to LinkedIn Profile Auto Post
 - WordPress to Google Business Auto Post
 - WordPress to Mastodon Auto Post
+- WordPress to Bluesky Auto Post
 
 === What can I do with WordPress to Buffer Pro? ===
 
-> <a href="https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/" rel="friend" title="WordPress to Buffer Pro - Publish to Facebook, Twitter, LinkedIn, Instagram and Pinterest">WordPress to Buffer Pro</a> provides additional functionality:<br />
+> <a href="https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/" rel="friend" title="WordPress to Buffer Pro - Publish to Facebook, Threads, Twitter / X, LinkedIn, Instagram and Pinterest">WordPress to Buffer Pro</a> provides additional functionality:<br />
 >
 > - **Instagram and Pinterest Support**<br />Pro supports Direct Posting to Instagram Business Profiles (Feed and Stories) and Pinterest Boards<br />
 > - **Multiple, Customisable Status Messages**<br />Each Post Type and Social Network can have multiple, unique status message and settings<br />
@@ -118,9 +120,9 @@ We **never** store any information on our web site or API during this process.
 
 == Frequently Asked Questions ==
 
-= Can I still auto publish to Twitter? =
+= Can I still auto publish to Twitter / X? =
 
-Yes! Buffer is [not impacted](https://twitter.com/buffer/status/1652659063073783808) by Twitter's recent API changes in 2023. You can still auto publish to Twitter with the WordPress to Buffer Plugin.
+Yes! Buffer is [not impacted](https://x.com/buffer/status/1652659063073783808) by Twitter's recent API changes in 2023. You can still auto publish to Twitter with the WordPress to Buffer Plugin.
 
 = Isn't the Buffer API retired? =
  
@@ -132,11 +134,13 @@ You can post to:
 
 - WordPress to Facebook Page
 - WordPress to Facebook Group
-- WordPress to Twitter
+- WordPress to Threads
+- WordPress to Twitter / X
 - WordPress to LinkedIn Page
 - WordPress to LinkedIn Profile
 - WordPress to Google Business Profile
 - WordPress to Mastodon Profile
+- WordPress to Bluesky Profile
 
 To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
@@ -148,6 +152,11 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.9.3 (2024-07-22) =
+* Added: Settings: Icons for Threads and Bluesky
+* Added: Status: Text: Convert HTML links to plain text without link in brackets when using {excerpt}.
+* Fix: Status: Strip inline styles when using {content}
 
 = 3.9.2 (2024-05-31) =
 * Fix: Removed Facebook in Plugin name
