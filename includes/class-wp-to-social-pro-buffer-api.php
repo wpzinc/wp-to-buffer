@@ -648,8 +648,18 @@ class WP_To_Social_Pro_Buffer_API {
 					/* translators: %1$s: Social Media Account Service/Type (e.g. Facebook, Twitter), %2$s: Social Media Account Name */
 					__( 'Pinterest: Choose a Pinterest board in the status settings.  Otherwise, reconnect the %1$s Account %2$s in Buffer.', 'wp-to-buffer' ),
 					$profile['formatted_service'],
-					$profile['formatted_username'],
-					'https://faq.buffer.com/article/294-publish-reconnect-social-account'
+					$profile['formatted_username']
+				);
+				break;
+
+			/**
+			 * Queue limit reached.
+			 */
+			case 1023:
+				$message[] = sprintf(
+					'<a href="https://buffer.com/pricing">%s</a> %s',
+					__( 'Upgrade your Buffer plan', 'wp-to-buffer' ),
+					__( 'or change status schedule = Post Immediately in the Plugin status settings.', 'wp-to-buffer' )
 				);
 				break;
 
@@ -677,26 +687,34 @@ class WP_To_Social_Pro_Buffer_API {
 						$message = array(
 							sprintf(
 								/* translators: Image URL */
-								__( 'Buffer can\'t fetch the image %s because your site is running on a local host and not web accessible. Please run the Plugin on a publicly accessible domain.', 'wp-to-buffer' ),
-								( isset( $params['media']['picture'] ) ? $params['media']['picture'] : '' )
-							),
-						);
-					} elseif ( strpos( $params['media']['picture'], '.webp' ) !== false ) {
-						$message = array(
-							sprintf(
-								/* translators: Image URL */
-								__( 'Buffer can\'t use the image %s, because WebP images are unsupported by Buffer.  The Plugin attempted to convert this image to a supported format, but failed. Consider using a JPEG image instead.', 'wp-to-buffer' ),
+								__( 'Buffer could not fetch the image %s because your site is running on a local host and not web accessible. Please run the Plugin on a publicly accessible domain.', 'wp-to-buffer' ),
 								( isset( $params['media']['picture'] ) ? $params['media']['picture'] : '' )
 							),
 						);
 					} else {
 						$message = array(
 							sprintf(
-								/* translators: %1$s: Image URL, %2$s: Link to Media File Renamer Plugin */
-								__( 'Buffer can\'t fetch the image %1$s.  Install %2$s to automatically remove spaces, accented or special characters in image filenames.', 'wp-to-buffer' ),
-								( isset( $params['media']['picture'] ) ? $params['media']['picture'] : '' ),
+								/* translators: Image URL */
+								__( 'Buffer could not fetch the image `%1$s`.  Check:', 'wp-to-buffer' ),
+								( isset( $params['media']['picture'] ) ? $params['media']['picture'] : '' )
+							),
+							sprintf(
+								/* translators: Link to Cloudflare Docs */
+								__( '- For Cloudflare, that %s, or configured to allow the required image(s) to be fetched by Buffer', 'wp-to-buffer' ),
+								'<a href="https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/" target="_blank">' . __( 'Hotlink Protection is disabled', 'wp-to-buffer' ) . '</a>'
+							),
+							__( '- The Feature Image URL is directly accessible through your web browser, as a non-logged in WordPress User, with no force login, HTTP basic auth or fiewall / bot limiter preventing access.', 'wp-to-buffer' ),
+							sprintf(
+								/* translators: Link to Media File Renamer Plugin */
+								__( '- Install %s to automatically remove spaces, accented or special characters in image filenames.', 'wp-to-buffer' ),
 								'<a href="https://wordpress.org/plugins/media-file-renamer/" target="_blank">' . __( 'Media File Renamer Plugin', 'wp-to-buffer' ) . '</a>'
 							),
+							sprintf(
+								/* translators: Link to SSL Labs Checker */
+								__( '- %s, with no warnings of chain issues / intermediate certificate failures', 'wp-to-buffer' ),
+								'<a href="https://www.ssllabs.com/ssltest/" target="_blank">' . __( 'Your site passes SSL tests', 'wp-to-buffer' ) . '</a>'
+							),
+							__( 'If the issue persists, please work with Buffer to resolve.', 'wp-to-buffer' ),
 						);
 					}
 				}
