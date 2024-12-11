@@ -5,7 +5,7 @@ Tags: auto post, auto publish, social media scheduling, social media automation,
 Requires at least: 5.0
 Tested up to: 6.7.1
 Requires PHP: 7.4
-Stable tag: 3.9.5
+Stable tag: 3.9.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -152,6 +152,9 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.9.6 (2024-12-11) =
+* Fix: Bluesky: Include image `width` and `height` properties in API call to ensure image aspect ratio maintained
 
 = 3.9.5 (2024-11-25) =
 * Fix: Notice: Function _load_textdomain_just_in_time was called incorrectly in WordPress 6.7 and higher

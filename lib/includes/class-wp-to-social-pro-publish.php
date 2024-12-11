@@ -852,6 +852,8 @@ class WP_To_Social_Pro_Publish {
 							'title'       => $this->get_title( $post ),
 							'picture'     => $image['image'],
 							'alt_text'    => $image['alt_text'],
+							'width'       => $image['width'],
+							'height'      => $image['height'],
 
 							// Dashboard Thumbnail.
 							// Supplied, as required when specifying media with no link.
