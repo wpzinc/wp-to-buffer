@@ -5,7 +5,7 @@ Tags: auto post, auto publish, social media scheduling, social media automation,
 Requires at least: 5.0
 Tested up to: 6.7.1
 Requires PHP: 7.4
-Stable tag: 3.9.6
+Stable tag: 3.9.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Auto post Pages, Posts or Custom Post Types to Facebook, Twitter, Threads, Linke
 
 == Description ==
 
-Whenever you publish or update a Post, Page or Custom Post Type, WordPress to Buffer will auto post your content to your Buffer account (buffer.com), scheduling publication to social media profiles including Facebook, Twitter, Threads, LinkedIn, Google Business, Mastodon and Bluesky.
+Whenever you publish or update a Post, Page or Custom Post Type, WordPress to Buffer will auto post your content to your Buffer account (buffer.com), scheduling publication to social media profiles including Facebook, X / Twitter, Threads, LinkedIn, Google Business, Mastodon and Bluesky.
 
 Don't have a Buffer account? [Sign up for free](https://buffer.com/join/6392aeec568614de895ed38fafa7784b8718c77dc7800419bdfbbacaaaa793d8)
 
@@ -83,7 +83,7 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 > - **WooCommerce Integration**<br />Display Product-specific information in your status updates<br />
 > - **Autoblogging and Frontend Post Submission Integration**<br />Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager<br />
 > - **Shortcode Support**<br />Use shortcodes in status updates<br />
-> - **Full Image Control**<br />Choose to display the WordPress Featured Image with your status updates, or define up to 4 custom images for each Post.<br />
+> - **Full Image Control**<br />Choose to display the WordPress Featured Image with your status updates, or define up to 10 custom images for each Post.<br />
 > - **WP-Cron and WP-CLI Compatible**<br />Optionally enable WP-Cron to send status updates via Cron, speeding up UI performance and/or choose to use WP-CLI for reposting old posts<br />
 > - **Support, Documentation and Updates**<br />Access to one on one email support, plus detailed documentation on how to install and configure the plugin and one click update notifications, right within the WordPress Administration panel.<br />
 >
@@ -152,6 +152,9 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 4. Post-level Logging.
 
 == Changelog ==
+
+= 3.9.7 (2025-01-27) =
+* Fix: Status: Tags: Character Limit, Sentence Limit, Word Limit: Ensure status is not blank when emojis are included in text
 
 = 3.9.6 (2024-12-11) =
 * Fix: Bluesky: Include image `width` and `height` properties in API call to ensure image aspect ratio maintained

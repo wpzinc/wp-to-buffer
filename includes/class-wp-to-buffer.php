@@ -148,7 +148,7 @@ class WP_To_Buffer {
 			),
 			array(
 				__( 'Full Image Control', 'wp-to-buffer' ),
-				__( 'Choose to display the WordPress Featured Image with your status updates, or define up to 4 custom images for each Post.', 'wp-to-buffer' ),
+				__( 'Choose to display the WordPress Featured Image with your status updates, or define up to 10 custom images for each Post.', 'wp-to-buffer' ),
 			),
 			array(
 				__( 'WP-Cron and WP-CLI Compatible', 'wp-to-buffer' ),
