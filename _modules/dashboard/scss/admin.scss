@@ -98,19 +98,19 @@ body.wpzinc {
 			}
 
 			/**
-			 * Notices
-			 */
-			div.notice {
-				&:not(.hidden) {
-					display: block;
-				}
-			}
-		
-			/**
 			 * Content Wrap
 			 */
 			.wrap {
 				margin: 0;
+
+				/**
+				 * Notices immediately inside the .wrap have incorrect margins
+				 * applied to them in WordPress.
+				 */
+				> .notice,
+				> .js-notices > .notice {
+					margin: 5px 15px 2px 15px;
+				}
 
 				@import "custom-post-tax-types";
 
