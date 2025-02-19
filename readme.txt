@@ -3,7 +3,7 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: auto post, auto publish, social media scheduling, social media automation, buffer
 Requires at least: 5.0
-Tested up to: 6.7.1
+Tested up to: 6.7.2
 Requires PHP: 7.4
 Stable tag: 3.9.7
 License: GPLv2 or later
@@ -153,7 +153,8 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 
 == Changelog ==
 
-= 3.9.7 (2025-01-27) =
+= 3.9.7 (2025-02-19) =
+* Added: New UI
 * Fix: Status: Tags: Character Limit, Sentence Limit, Word Limit: Ensure status is not blank when emojis are included in text
 
 = 3.9.6 (2024-12-11) =

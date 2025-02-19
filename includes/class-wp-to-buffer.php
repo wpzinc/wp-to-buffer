@@ -68,13 +68,12 @@ class WP_To_Buffer {
 		$this->plugin->account           = 'Buffer';
 		$this->plugin->version           = WP_TO_BUFFER_PLUGIN_VERSION;
 		$this->plugin->buildDate         = WP_TO_BUFFER_PLUGIN_BUILD_DATE;
-		$this->plugin->requires          = '5.0';
-		$this->plugin->tested            = '6.1.1';
 		$this->plugin->folder            = WP_TO_BUFFER_PLUGIN_PATH;
 		$this->plugin->url               = WP_TO_BUFFER_PLUGIN_URL;
 		$this->plugin->documentation_url = 'https://www.wpzinc.com/documentation/wordpress-buffer-pro';
 		$this->plugin->support_url       = 'https://www.wpzinc.com/support';
 		$this->plugin->upgrade_url       = 'https://www.wpzinc.com/plugins/wordpress-to-buffer-pro';
+		$this->plugin->logo              = WP_TO_BUFFER_PLUGIN_URL . 'lib/assets/images/icons/buffer-dark.svg';
 		$this->plugin->review_name       = 'wp-to-buffer';
 		$this->plugin->review_notice     = sprintf(
 			/* translators: Plugin Name */
@@ -166,8 +165,36 @@ class WP_To_Buffer {
 		add_action( 'init', array( $this, 'initialize' ), 1 );
 		add_action( 'init', array( $this, 'upgrade' ), 2 );
 
+		// Admin Menus.
+		add_action( $this->plugin->filter_name . '_admin_admin_menu', array( $this, 'admin_menus' ) );
+
 		// Localization.
 		add_action( 'init', array( $this, 'load_language_files' ) );
+
+	}
+
+	/**
+	 * Register menus and submenus.
+	 *
+	 * @since   3.9.7
+	 *
+	 * @param   string $minimum_capability     Minimum required capability.
+	 */
+	public function admin_menus( $minimum_capability ) {
+
+		// Menus.
+		add_menu_page( $this->plugin->displayName, $this->plugin->displayName, $minimum_capability, $this->plugin->name . '-settings', array( $this->get_class( 'admin' ), 'settings_screen' ), $this->plugin->url . 'lib/assets/images/icons/' . strtolower( $this->plugin->account ) . '-light.svg' );
+
+		// Register Submenu Pages.
+		$settings_page = add_submenu_page( $this->plugin->name . '-settings', __( 'Settings', 'wp-to-buffer' ), __( 'Settings', 'wp-to-buffer' ), $minimum_capability, $this->plugin->name . '-settings', array( $this->get_class( 'admin' ), 'settings_screen' ) );
+
+		// Logs.
+		if ( $this->get_class( 'log' )->is_enabled() ) {
+			$log_page = add_submenu_page( $this->plugin->name . '-settings', __( 'Logs', 'wp-to-buffer' ), __( 'Logs', 'wp-to-buffer' ), $minimum_capability, $this->plugin->name . '-log', array( $this->get_class( 'admin' ), 'log_screen' ) );
+			add_action( "load-$log_page", array( $this->get_class( 'log' ), 'add_screen_options' ) );
+		}
+
+		$upgrade_page = add_submenu_page( $this->plugin->name . '-settings', __( 'Upgrade', 'wp-to-buffer' ), __( 'Upgrade', 'wp-to-buffer' ), $minimum_capability, $this->plugin->name . '-upgrade', array( $this->get_class( 'admin' ), 'upgrade_screen' ) );
 
 	}
 
