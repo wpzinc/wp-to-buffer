@@ -67,6 +67,7 @@ jobs:
               }
             ]
           }
+          EOF
 
           # Create ZIP file
           git archive --format=zip -o ${{ env.PLUGIN_SLUG }}.zip HEAD
