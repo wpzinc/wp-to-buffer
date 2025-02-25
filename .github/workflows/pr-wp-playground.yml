@@ -45,7 +45,7 @@ jobs:
       - name: Create ZIP File and Blueprint JSON
         run: |
           # Create ZIP file
-          zip -r ${{ env.PLUGIN_SLUG }}.zip . -x "tests/*"
+          zip -r ${{ env.PLUGIN_SLUG }}.zip . -x "ACTIONS-FILTERS.md"
 
           # Create blueprint.json
           cat > blueprint.json << EOF
