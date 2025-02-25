@@ -44,8 +44,8 @@ jobs:
 
       - name: Create ZIP File and Blueprint JSON
         run: |
-          # Create ZIP file
-          zip -r ${{ env.PLUGIN_SLUG }}.zip .
+          # Create ZIP file, excluding files and folders listed in .distignore
+          zip -r ${{ env.PLUGIN_SLUG }}.zip . -x $(cat .distignore | xargs)
 
           # Create blueprint.json
           cat > blueprint.json << EOF
