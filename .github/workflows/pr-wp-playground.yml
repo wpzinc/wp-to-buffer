@@ -39,18 +39,13 @@ jobs:
       # as specified in composer.json's "require" section.
       # "require-dev" is ignored by design, as these are only needed for
       # testing
-      #- name: Run Composer
-      #  run: composer install --no-dev
+      - name: Run Composer
+        run: composer install --no-dev
 
-      # Create Temporary Branch
-      - name: Create Temporary Branch for Playground
+      - name: Create ZIP File and Blueprint JSON
         run: |
-          # Create branch specifically for PR artifacts
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          
-          # Create new branch if it doesn't exist, or reset it if it does
-          git checkout -B ${{ env.PLAYGROUND_BRANCH_NAME }}
+          # Create ZIP file
+          zip -r ${{ env.PLUGIN_SLUG }}.zip . -x "tests/*"
 
           # Create blueprint.json
           cat > blueprint.json << EOF
@@ -69,14 +64,21 @@ jobs:
           }
           EOF
 
-          # Create ZIP file
-          git archive --format=zip -o ${{ env.PLUGIN_SLUG }}.zip HEAD
+      # Create Temporary Branch
+      - name: Create Temporary Branch for Playground
+        run: |
+          # Create branch specifically for PR artifacts
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          
+          # Create new branch if it doesn't exist, or reset it if it does
+          git checkout -B ${{ env.PLAYGROUND_BRANCH_NAME }}
 
           # Clean the branch to avoid keeping old files
-          # git rm -rf .
+          git rm -rf .
 
           # Add and commit all files to the branch
-          git add -f ${{ env.PLUGIN_SLUG }}.zip blueprint.json
+          git add ${{ env.PLUGIN_SLUG }}.zip blueprint.json
           git commit -m "Add plugin ZIP and blueprint for PR #${{ github.event.pull_request.number }}"
           git push -f origin ${{ env.PLAYGROUND_BRANCH_NAME }}
       
