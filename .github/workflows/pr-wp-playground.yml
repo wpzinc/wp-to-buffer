@@ -44,6 +44,9 @@ jobs:
 
       - name: Create ZIP File and Blueprint JSON
         run: |
+          # View folder contents
+          ls
+
           # Create ZIP file
           zip -r ${{ env.PLUGIN_SLUG }}.zip . -x "*.git*" ".github/*" ".scripts/*" ".wordpress-org/*" "log/*" "tests/*"
 
@@ -63,6 +66,9 @@ jobs:
             ]
           }
           EOF
+
+          # View folder contents
+          ls
 
       # Create Temporary Branch
       - name: Create Temporary Branch for Playground
