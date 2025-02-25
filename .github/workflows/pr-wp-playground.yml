@@ -74,6 +74,9 @@ jobs:
           # Create new branch if it doesn't exist, or reset it if it does
           git checkout -B ${{ env.PLAYGROUND_BRANCH_NAME }}
 
+          # Clean the branch to avoid keeping old files
+          git rm -rf .
+
           # Add and commit all files to the branch
           git add -f ${{ env.PLUGIN_SLUG }}.zip blueprint.json
           git commit -m "Add plugin ZIP and blueprint for PR #${{ github.event.pull_request.number }}"
