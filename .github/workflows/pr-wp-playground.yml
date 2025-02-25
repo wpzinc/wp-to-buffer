@@ -42,19 +42,6 @@ jobs:
       - name: Run Composer
         run: composer install --no-dev
 
-      # Create Temporary Branch
-      - name: Create Temporary Branch for Playground
-        run: |
-          # Create branch specifically for PR artifacts
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          
-          # Create new branch if it doesn't exist, or reset it if it does
-          git checkout -B ${{ env.PLAYGROUND_BRANCH_NAME }}
-
-          # Clean the branch to avoid keeping old files
-          git rm -rf .
-      
       - name: Create ZIP File and Blueprint JSON
         run: |
           # Create ZIP file
@@ -76,6 +63,19 @@ jobs:
             ]
           }
           EOF
+
+      # Create Temporary Branch
+      - name: Create Temporary Branch for Playground
+        run: |
+          # Create branch specifically for PR artifacts
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          
+          # Create new branch if it doesn't exist, or reset it if it does
+          git checkout -B ${{ env.PLAYGROUND_BRANCH_NAME }}
+
+          # Clean the branch to avoid keeping old files
+          git rm -rf .
 
           # Add and commit all files to the branch
           git add ${{ env.PLUGIN_SLUG }}.zip blueprint.json
