@@ -39,18 +39,18 @@ jobs:
       # as specified in composer.json's "require" section.
       # "require-dev" is ignored by design, as these are only needed for
       # testing
-      - name: Run Composer
-        run: composer install --no-dev
+      #- name: Run Composer
+      #  run: composer install --no-dev
 
       - name: Create ZIP File and Blueprint JSON
         run: |
           # Create ZIP file
-          zip -r ${{ env.PLUGIN_SLUG }}.zip . -x "ACTIONS-FILTERS.md"
+          zip -r ${{ env.PLUGIN_SLUG }}.zip . -x ".git/*" ".github/*" ".scripts/*" ".wordpress-org/*" "log/*" "tests/*" "vendor/*"
 
           # Create blueprint.json
           cat > blueprint.json << EOF
           {
-            "landingPage": "/wp-admin/index.php",
+            "landingPage": "/wp-admin/plugins.php",
             "login": true,
             "steps": [
               {
