@@ -26,13 +26,9 @@ jobs:
     # Use ${{ secrets.NAME }} to include any GitHub Secrets in ${{ env.NAME }}
     # The base folder will always be /home/runner/work/github-repo-name/github-repo-name
     env:
-      PLUGIN_SLUG: "wp-to-buffer"
-      PLAYGROUND_BRANCH_NAME: "pr-playground-${{ github.event.pull_request.number }}"
-      PLAYGROUND_BRANCH_RAW_URL: "https://raw.githubusercontent.com/${{ github.repository }}/${{ env.PLAYGROUND_BRANCH_NAME }}/"
-      PLAYGROUND_BRANCH_RAW_URL_PLUGIN: "https://raw.githubusercontent.com/${{ github.repository }}/${{ env.PLAYGROUND_BRANCH_NAME }}/${{ env.PLUGIN_SLUG }}.zip"
-      PLAYGROUND_BRANCH_RAW_URL_BLUEPRINT: "https://raw.githubusercontent.com/${{ github.repository }}/${{ env.PLAYGROUND_BRANCH_NAME }}/blueprint.json"
-      PLAYGROUND_URL: "https://playground.wordpress.net/?blueprint-url=${{ env.PLAYGROUND_BRANCH_RAW_URL_BLUEPRINT }}"
-      
+      PLUGIN_SLUG: "wp-to-buffer" # The plugin's slug
+      PLAYGROUND_BRANCH_NAME: "pr-playground-${{ github.event.pull_request.number }}" # The branch to create from this PR which will have the built Plugin ZIP and blueprint.json added
+ 
     # Steps to build and provide the Playground URL
     steps:
       # Checkout (copy) this repository's Plugin to this VM.
@@ -74,7 +70,7 @@ jobs:
                 "step": "installPlugin",
                 "pluginData": {
                   "resource": "url",
-                  "url": "${{ env.PLAYGROUND_BRANCH_RAW_URL_PLUGIN }}"
+                  "url": "https://raw.githubusercontent.com/${{ github.repository }}/${{ env.PLAYGROUND_BRANCH_NAME }}/${{ env.PLUGIN_SLUG }}.zip"
                 }
               }
             ]
@@ -99,5 +95,5 @@ jobs:
               
               :rocket: Your PR has been built and is ready for testing in WordPress Playground!
               
-              [Click here to test your changes in WordPress Playground](${{ env.PLAYGROUND_URL }})`
+              [Click here to test your changes in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/${{ github.repository }}/${{ env.PLAYGROUND_BRANCH_NAME }}/blueprint.json)`
             })
