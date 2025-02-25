@@ -75,7 +75,7 @@ jobs:
           git checkout -B ${{ env.PLAYGROUND_BRANCH_NAME }}
 
           # Add and commit all files to the branch
-          git add ${{ env.PLUGIN_SLUG }}.zip blueprint.json
+          git add -f ${{ env.PLUGIN_SLUG }}.zip blueprint.json
           git commit -m "Add plugin ZIP and blueprint for PR #${{ github.event.pull_request.number }}"
           git push -f origin ${{ env.PLAYGROUND_BRANCH_NAME }}
       
