@@ -153,7 +153,7 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 
 == Changelog ==
 
-= 3.9.9 (2025-02-26) =
+= 3.9.9 (2025-02-27) =
 * Added: Optimized admin CSS for better performance
 
 = 3.9.8 (2025-02-19) =
