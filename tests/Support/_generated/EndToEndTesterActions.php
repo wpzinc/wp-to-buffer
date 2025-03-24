@@ -1,4 +1,4 @@
-<?php  //[STAMP] 61c12bbfcbd66331a98bbda4102a15ba
+<?php  //[STAMP] 5cef5d4084866f51f6584d51169d27d9
 // phpcs:ignoreFile
 namespace Tests\Support\_generated;
 
@@ -11897,10 +11897,10 @@ trait EndToEndTesterActions
 	 * @since   3.8.4
 	 *
 	 * @param   AcceptanceTester $I  Tester.
-     * @see \Tests\Support\Helper\Plugin::activateWPToBufferProPlugin()
+     * @see \Tests\Support\Helper\Plugin::activateWPToBufferPlugin()
      */
-    public function activateWPToBufferProPlugin($I) {
-        return $this->getScenario()->runStep(new \Codeception\Step\Action('activateWPToBufferProPlugin', func_get_args()));
+    public function activateWPToBufferPlugin($I) {
+        return $this->getScenario()->runStep(new \Codeception\Step\Action('activateWPToBufferPlugin', func_get_args()));
     }
 
  
@@ -11913,10 +11913,10 @@ trait EndToEndTesterActions
 	 * @since   3.8.4
 	 *
 	 * @param   AcceptanceTester $I  Tester.
-     * @see \Tests\Support\Helper\Plugin::deactivateWPToBufferProPlugin()
+     * @see \Tests\Support\Helper\Plugin::deactivateWPToBufferPlugin()
      */
-    public function deactivateWPToBufferProPlugin($I) {
-        return $this->getScenario()->runStep(new \Codeception\Step\Action('deactivateWPToBufferProPlugin', func_get_args()));
+    public function deactivateWPToBufferPlugin($I) {
+        return $this->getScenario()->runStep(new \Codeception\Step\Action('deactivateWPToBufferPlugin', func_get_args()));
     }
 
  
