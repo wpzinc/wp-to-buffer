@@ -518,13 +518,11 @@ class WP_To_Social_Pro_Settings {
 	 * @param   string $action     Action (publish,update,repost,bulk_publish).
 	 * @return  array               Table Row Cell Status (message, image, schedule)
 	 */
-	public function get_status_row( $status, $post_type, $action ) {
+	public function get_status_row( $status, $post_type, $action ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
 
 		// Get Options.
-		$featured_image_options   = $this->base->get_class( 'image' )->get_featured_image_options( $post_type );
-		$schedule                 = $this->base->get_class( 'common' )->get_schedule_options( $post_type, true );
-		$schedule_relative_days   = $this->base->get_class( 'common' )->get_schedule_relative_days();
-		$schedule_custom_relation = $this->base->get_class( 'common' )->get_schedule_custom_relation_options();
+		$featured_image_options = $this->base->get_class( 'image' )->get_featured_image_options( $post_type );
+		$schedule               = $this->base->get_class( 'common' )->get_schedule_options( $post_type, true );
 
 		// Define row.
 		$row = array(
@@ -534,78 +532,7 @@ class WP_To_Social_Pro_Settings {
 		);
 
 		// Define row schedule text.
-		switch ( $status['schedule'] ) {
-			/**
-			 * Add to End of Queue
-			 * Add to Start of Queue
-			 * Post Immediately
-			 */
-			case 'queue_bottom':
-			case 'queue_top':
-			case 'now':
-				$row['schedule'] = $schedule[ $status['schedule'] ];
-				break;
-
-			/**
-			 * Custom Time
-			 */
-			case 'custom':
-				$row['schedule'] = sprintf(
-					/* translators: %1$s: Number of Days, %2$s: Number of Hours, %3$s: Number of Minutes, %4$s: Translated 'before' or 'after' string, %5$s: Translated string */
-					__( '%1$s days, %2$s hours, %3$s minutes after %4$s %5$s', 'wp-to-buffer' ),
-					$status['days'],
-					$status['hours'],
-					$status['minutes'],
-					$post_type,
-					ucwords( str_replace( '_', ' ', $action ) )
-				);
-				break;
-
-			/**
-			 * Custom Time (Relative Format)
-			 */
-			case 'custom_relative':
-				$row['schedule'] = sprintf(
-					/* translators: %1$s: Day of Week, %2$s: Time */
-					__( '%1$s at %2$s', 'wp-to-buffer' ),
-					$schedule_relative_days[ $status['schedule_relative_day'] ],
-					$status['schedule_relative_time']
-				);
-				break;
-
-			case 'custom_field':
-				$row['schedule'] = sprintf(
-					/* translators: %1$s: Custom Field, %2$s: Custom Field Name */
-					'%1$s %2$s',
-					$schedule_custom_relation[ $status['schedule_custom_field_relation'] ],
-					$status['schedule_custom_field_name']
-				);
-				break;
-
-			/**
-			 * Specific Date and Time
-			 */
-			case 'specific':
-				$row['schedule'] = date_i18n( get_option( 'date_format' ) . ' H:i:s', strtotime( $status['schedule_specific'] ) );
-				break;
-
-			default:
-				$output = '';
-
-				/**
-				 * Output Schedule settings for Integrations / Third Party Plugins
-				 *
-				 * @since   4.4.0
-				 *
-				 * @param   string  $output     Output.
-				 * @param   array   $status     Status.
-				 * @param   string  $action     Action.
-				 * @param   string  $post_type  Post Type.
-				 * @param   array   $schedule   Schedule Options.
-				 */
-				$row['schedule'] = apply_filters( $this->base->plugin->filter_name . '_settings_get_status_row_schedule', $output, $status, $action, $post_type, $schedule );
-				break;
-		}
+		$row['schedule'] = $schedule[ $status['schedule'] ];
 
 		return $row;
 
