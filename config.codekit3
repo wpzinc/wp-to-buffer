@@ -3036,17 +3036,6 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/_modules\/dashboard\/js\/deactivation.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/_modules\/dashboard\/js\/deactivation-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/_modules\/dashboard\/js\/inline-search.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -3135,17 +3124,6 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/_modules\/dashboard\/js\/min\/deactivation-min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/_modules\/dashboard\/js\/min\/deactivation-min-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/_modules\/dashboard\/js\/min\/inline-search-min.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -3197,6 +3175,17 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/_modules\/dashboard\/js\/min\/notification-min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/_modules\/dashboard\/js\/min\/review-notice-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/_modules\/dashboard\/js\/min\/review-notice-min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -3307,6 +3296,17 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/_modules\/dashboard\/js\/notification-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/_modules\/dashboard\/js\/review-notice.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/_modules\/dashboard\/js\/review-notice-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -3488,14 +3488,6 @@
       "oS" : 0,
       "pg" : 0,
       "sct" : 0
-    },
-    "\/_modules\/dashboard\/views\/deactivation-modal.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/_modules\/dashboard\/views\/deactivation-modal.php",
-      "oF" : 0
     },
     "\/_modules\/dashboard\/views\/footer-upgrade-embedded.php" : {
       "cB" : 0,

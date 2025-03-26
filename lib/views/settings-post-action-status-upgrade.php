@@ -15,7 +15,7 @@
 			echo esc_html(
 				sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-					__( 'Want to Publish multiple Status Updates to %s?', 'wp-to-buffer' ),
+					__( 'Want to Publish multiple Status Updates to %s Pro?', 'wp-to-buffer' ),
 					$this->base->plugin->account
 				)
 			);

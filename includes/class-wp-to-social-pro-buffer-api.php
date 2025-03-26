@@ -725,7 +725,6 @@ class WP_To_Social_Pro_Buffer_API {
 			 */
 			case 1034:
 				if ( isset( $params['scheduled_at'] ) ) {
-					// @TODO This message is misleading, as it could be the 'Custom Time' setting that was used, but the timezone is wrong.
 					$message[] = sprintf(
 						/* translators: Scheduled Date and Time */
 						__( 'The Custom Time (based on Custom Field / Post Meta Value) field cannot be %s, which is a date in the past.', 'wp-to-buffer' ),
