@@ -246,17 +246,6 @@ class WP_To_Buffer {
 	}
 
 	/**
-	 * Loads plugin textdomain
-	 *
-	 * @since   3.8.4
-	 */
-	public function load_language_files() {
-
-		load_plugin_textdomain( 'wp-to-buffer', false, $this->plugin->name . '/languages/' );
-
-	}
-
-	/**
 	 * Returns the given class
 	 *
 	 * @since   3.4.9
