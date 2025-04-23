@@ -118,7 +118,7 @@ class WP_To_Buffer {
 	public function initialize() {
 
 		// Define translation strings.
-		$this->plugin->review_notice     = sprintf(
+		$this->plugin->review_notice = sprintf(
 			/* translators: Plugin Name */
 			__( 'Thanks for using %s to schedule your social media statuses on Buffer!', 'wp-to-buffer' ),
 			$this->plugin->displayName
