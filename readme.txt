@@ -5,11 +5,11 @@ Tags: auto post, auto publish, social media scheduling, social media automation,
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Auto post Pages, Posts or Custom Post Types to Facebook, Twitter, Threads, LinkedIn, Google Business, Mastodon and Bluesky using your Buffer (buffer.com) account.
+Auto post Pages, Posts or Custom Post Types to Facebook, Twitter, Threads, LinkedIn, Google Business, Mastodon, Bluesky and TikTok using your Buffer (buffer.com) account.
 
 == Description ==
 
@@ -64,6 +64,7 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 - WordPress to Google Business Auto Post
 - WordPress to Mastodon Auto Post
 - WordPress to Bluesky Auto Post
+- WordPress to TikTok Auto Post
 
 === What can I do with WordPress to Buffer Pro? ===
 
@@ -141,6 +142,7 @@ You can post to:
 - WordPress to Google Business Profile
 - WordPress to Mastodon Profile
 - WordPress to Bluesky Profile
+- WordPress to TikTok Profile
 
 To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
