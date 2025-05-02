@@ -153,6 +153,9 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 
 == Changelog ==
 
+= 4.0.3 (2025-05-02) =
+* Added: Support for TikTok Images
+
 = 4.0.2 (2025-04-23) =
 * Fix: Notice: Function `_load_textdomain_just_in_time` was called incorrectly in WordPress 6.8 and higher
 

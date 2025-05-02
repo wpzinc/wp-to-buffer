@@ -769,13 +769,14 @@ class WP_To_Social_Pro_Publish {
 				break;
 
 			/**
-			 * Pinterest, Instagram, Google Business, Mastodon
+			 * Pinterest, Instagram, Google Business, TikTok
 			 * - Force No Image, OpenGraph and Use Feat. Image, Linked to Post = Use Feat. Image, not Linked to Post.
 			 * - Force Use Text to Image, Linked to Post = Use Text to Image, not Linked to Post.
 			 */
 			case 'pinterest':
 			case 'instagram':
 			case 'googlebusiness':
+			case 'tiktok':
 				// Set No Image, OpenGraph and Use Feat. Image, Linked to Post = Use Feat. Image, not Linked to Post.
 				if ( $status['image'] == -1 || $status['image'] == 0 || $status['image'] == 1 ) {  // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual
 					$status['image'] = 2;
