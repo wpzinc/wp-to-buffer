@@ -5,7 +5,7 @@ Tags: auto post, auto publish, social media scheduling, social media automation,
 Requires at least: 5.0
 Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 4.0.3.1
+Stable tag: 4.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,7 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 > <a href="https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/" rel="friend" title="WordPress to Buffer Pro - Publish to Facebook, Threads, Twitter / X, LinkedIn, Instagram and Pinterest">WordPress to Buffer Pro</a> provides additional functionality:<br />
 >
 > - **Instagram and Pinterest Support**<br />Pro supports Direct Posting to Instagram Business Profiles (Feed and Stories) and Pinterest Boards<br />
+> - **Multiple Buffer Account Support**<br />Pro supports connecting multiple Buffer accounts to a single WordPress site<br />
 > - **Multiple, Customisable Status Messages**<br />Each Post Type and Social Network can have multiple, unique status message and settings<br />
 > - **Conditionally send Status Messages**<br />Only send status(es) to Buffer based on Post Author(s), Taxonomy Term(s) and/or Custom Field Values<br />
 > - **More Scheduling Options**<br />Each status update can be added to the start/end of your Buffer queue, posted immediately or scheduled at a specific time<br />
@@ -84,7 +85,7 @@ This ensures continued access to Buffer's API, meaning that WordPress to Buffer 
 > - **WooCommerce Integration**<br />Display Product-specific information in your status updates<br />
 > - **Autoblogging and Frontend Post Submission Integration**<br />Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager<br />
 > - **Shortcode Support**<br />Use shortcodes in status updates<br />
-> - **Full Image Control**<br />Choose to display the WordPress Featured Image with your status updates, or define up to 10 custom images for each Post.<br />
+> - **Full Image Control**<br />Choose to display one or more images in your status updates, from the Post\'s Featured Image, the Media Gallery, the Post Content or an Advanced Custom Fields Image or Gallery<br />
 > - **WP-Cron and WP-CLI Compatible**<br />Optionally enable WP-Cron to send status updates via Cron, speeding up UI performance and/or choose to use WP-CLI for reposting old posts<br />
 > - **Support, Documentation and Updates**<br />Access to one on one email support, plus detailed documentation on how to install and configure the plugin and one click update notifications, right within the WordPress Administration panel.<br />
 >
@@ -154,6 +155,9 @@ To auto publish to Instagram and/or Pinterest, [Upgrade to WordPress to Buffer P
 4. Post-level Logging.
 
 == Changelog ==
+
+= 4.0.4 =
+* Fix: Remove unnecessary `migrate_settings` routine 
 
 = 4.0.3.1 (2025-05-02) =
 * Added: Support for TikTok Images

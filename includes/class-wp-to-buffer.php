@@ -137,6 +137,10 @@ class WP_To_Buffer {
 				__( 'Pro supports Direct Posting to Instagram Business Profiles and Pinterest Boards', 'wp-to-buffer' ),
 			),
 			array(
+				__( 'Multiple Buffer Account Support', 'wp-to-buffer' ),
+				__( 'Pro supports connecting multiple Buffer accounts to a single WordPress site', 'wp-to-buffer' ),
+			),
+			array(
 				__( 'Multiple, Customisable Status Messages', 'wp-to-buffer' ),
 				__( 'Each Post Type and Social Network can have multiple, unique status message and settings', 'wp-to-buffer' ),
 			),
@@ -190,7 +194,7 @@ class WP_To_Buffer {
 			),
 			array(
 				__( 'Full Image Control', 'wp-to-buffer' ),
-				__( 'Choose to display the WordPress Featured Image with your status updates, or define up to 10 custom images for each Post.', 'wp-to-buffer' ),
+				__( 'Choose to display one or more images in your status updates, from the Post\'s Featured Image, the Media Gallery, the Post Content or an Advanced Custom Fields Image or Gallery.', 'wp-to-buffer' ),
 			),
 			array(
 				__( 'WP-Cron and WP-CLI Compatible', 'wp-to-buffer' ),
@@ -225,11 +229,6 @@ class WP_To_Buffer {
 		$this->classes->settings      = new WP_To_Social_Pro_Settings( self::$instance );
 		$this->classes->twitter_api   = new WP_To_Social_Pro_Twitter_API( self::$instance );
 		$this->classes->validation    = new WP_To_Social_Pro_Validation( self::$instance );
-
-		// Run the migration routine from Free + Pro v2.x --> Pro v3.x.
-		if ( is_admin() ) {
-			$this->classes->settings->migrate_settings();
-		}
 
 	}
 

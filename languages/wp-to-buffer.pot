@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WP to Buffer plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP to Buffer 4.0.3\n"
+"Project-Id-Version: WP to Buffer 4.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-to-buffer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-02T12:58:27+00:00\n"
+"POT-Creation-Date: 2025-06-30T09:07:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: wp-to-buffer\n"
@@ -78,132 +78,140 @@ msgid "Pro supports Direct Posting to Instagram Business Profiles and Pinterest 
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:140
-msgid "Multiple, Customisable Status Messages"
+msgid "Multiple Buffer Account Support"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:141
-msgid "Each Post Type and Social Network can have multiple, unique status message and settings"
+msgid "Pro supports connecting multiple Buffer accounts to a single WordPress site"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:144
-msgid "Conditionally send Status Messages"
+msgid "Multiple, Customisable Status Messages"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:145
-msgid "Only send status(es) to Buffer based on Post Author(s), Taxonomy Term(s) and/or Custom Field Values"
+msgid "Each Post Type and Social Network can have multiple, unique status message and settings"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:148
-msgid "More Scheduling Options"
+msgid "Conditionally send Status Messages"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:149
-msgid "Each status update can be added to the start/end of your Buffer queue, posted immediately or scheduled at a specific time"
+msgid "Only send status(es) to Buffer based on Post Author(s), Taxonomy Term(s) and/or Custom Field Values"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:152
-msgid "Dynamic Status Tags"
+msgid "More Scheduling Options"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:153
-msgid "Dynamically build status updates with data from the Post Author and Custom Fields"
+msgid "Each status update can be added to the start/end of your Buffer queue, posted immediately or scheduled at a specific time"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:156
-msgid "Separate Statuses per Social Network"
+msgid "Dynamic Status Tags"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:157
-msgid "Define different statuses for each Post Type and Social Network"
+msgid "Dynamically build status updates with data from the Post Author and Custom Fields"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:160
-msgid "Per-Post Settings"
+msgid "Separate Statuses per Social Network"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:161
-msgid "Override Settings on Individual Posts: Each Post can have its own Buffer settings"
+msgid "Define different statuses for each Post Type and Social Network"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:164
-msgid "Repost Old Posts"
+msgid "Per-Post Settings"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:165
-msgid "Automatically Revive Old Posts that haven't been updated in a while, choosing the number of days, weeks or years to re-share content on social media."
+msgid "Override Settings on Individual Posts: Each Post can have its own Buffer settings"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:168
-msgid "Bulk Publish Old Posts"
+msgid "Repost Old Posts"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:169
-msgid "Manually re-share evergreen WordPress content and revive old posts with the Bulk Publish option"
+msgid "Automatically Revive Old Posts that haven't been updated in a while, choosing the number of days, weeks or years to re-share content on social media."
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:172
-msgid "The Events Calendar, Event Manager and Modern Events Calendar Integration"
+msgid "Bulk Publish Old Posts"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:173
-msgid "Schedule Posts to Buffer based on your Event's Start or End date, and display Event-specific details in your status updates"
+msgid "Manually re-share evergreen WordPress content and revive old posts with the Bulk Publish option"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:176
-msgid "SEO Integration"
+msgid "The Events Calendar, Event Manager and Modern Events Calendar Integration"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:177
-msgid "Display SEO-specific information in your status updates from All-In-One SEO Pack, Rank Math, SEOPress and Yoast SEO"
+msgid "Schedule Posts to Buffer based on your Event's Start or End date, and display Event-specific details in your status updates"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:180
-msgid "WooCommerce Integration"
+msgid "SEO Integration"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:181
-msgid "Display Product-specific information in your status updates"
+msgid "Display SEO-specific information in your status updates from All-In-One SEO Pack, Rank Math, SEOPress and Yoast SEO"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:184
-msgid "Autoblogging and Frontend Post Submission Integration"
+msgid "WooCommerce Integration"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:185
-msgid "Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager"
+msgid "Display Product-specific information in your status updates"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:188
-msgid "Shortcode Support"
+msgid "Autoblogging and Frontend Post Submission Integration"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:189
-msgid "Use shortcodes in status updates"
+msgid "Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:192
-msgid "Full Image Control"
+msgid "Shortcode Support"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:193
-msgid "Choose to display the WordPress Featured Image with your status updates, or define up to 10 custom images for each Post."
+msgid "Use shortcodes in status updates"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:196
-msgid "WP-Cron and WP-CLI Compatible"
+msgid "Full Image Control"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:197
+msgid "Choose to display one or more images in your status updates, from the Post's Featured Image, the Media Gallery, the Post Content or an Advanced Custom Fields Image or Gallery."
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:200
+msgid "WP-Cron and WP-CLI Compatible"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:201
 msgid "Optionally enable WP-Cron to send status updates via Cron, speeding up UI performance and/or choose to use WP-CLI for reposting old posts"
 msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s: PHP class name
-#: includes/class-wp-to-buffer.php:265
+#: includes/class-wp-to-buffer.php:264
 msgid "%1$s: Error: Could not load Plugin class %2$s"
 msgstr ""
 
 #. translators: Plugin Name
-#: includes/class-wp-to-buffer.php:278
+#: includes/class-wp-to-buffer.php:277
 msgid "%s: Error"
 msgstr ""
 
@@ -764,13 +772,13 @@ msgstr ""
 msgid "Plugin Error"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-settings.php:333
+#: lib/includes/class-wp-to-social-pro-settings.php:152
 #: lib/views/settings-post.php:21
 msgid "Defaults"
 msgstr ""
 
 #. translators: %1$s: Post Type Name, Plural, %2$s: Social Media Profile Name, %3$s: Action (Publish, Update, Repost, Bulk Publish), %4$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot)
-#: lib/includes/class-wp-to-social-pro-settings.php:345
+#: lib/includes/class-wp-to-social-pro-settings.php:164
 msgid "Two or more statuses defined in %1$s > %2$s > %3$s are the same. Please correct this to ensure each status update is unique, otherwise your status updates will NOT publish to %4$s as they will be seen as duplicates, which violate Facebook and Twitter's Terms of Service."
 msgstr ""
 
