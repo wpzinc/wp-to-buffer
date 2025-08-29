@@ -305,10 +305,7 @@ class WP_To_Social_Pro_Admin {
 		$minified = $this->base->dashboard->should_load_minified_js();
 
 		// Define JS and localization.
-		wp_register_script( $this->base->plugin->name . '-bulk-publish', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'bulk-publish' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
 		wp_register_script( $this->base->plugin->name . '-log', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'log' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
-		wp_register_script( $this->base->plugin->name . '-quick-edit', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'quick-edit' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
-		wp_register_script( $this->base->plugin->name . '-settings', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'settings' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery', 'wp-color-picker' ), $this->base->plugin->version, true );
 		wp_register_script( $this->base->plugin->name . '-statuses', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'statuses' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
 
 		// Define localization for statuses.

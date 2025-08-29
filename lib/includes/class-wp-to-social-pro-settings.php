@@ -390,7 +390,6 @@ class WP_To_Social_Pro_Settings {
 			'schedule_relative_time'         => '00:00:00',
 			'schedule_custom_field_name'     => '',
 			'schedule_custom_field_relation' => 'after',
-			'schedule_tec_relation'          => 'after',
 			'schedule_specific'              => '',
 
 			// Profiles: Pinterest.
@@ -846,66 +845,6 @@ class WP_To_Social_Pro_Settings {
 		update_option( $this->base->plugin->settingsName . '-' . $key, $value );
 
 		return true;
-
-	}
-
-	/**
-	 * Helper method to return all key/value pairs stored in the options table
-	 *
-	 * @since   3.5.0
-	 *
-	 * @return  array   Data
-	 */
-	public function get_all() {
-
-		// Build array of option keys to export.
-		$keys = array(
-			$this->base->plugin->settingsName . '-access-token',
-			$this->base->plugin->settingsName . '-custom_tags',
-			$this->base->plugin->settingsName . '-cron',
-			$this->base->plugin->settingsName . '-disable_excerpt_fallback',
-			$this->base->plugin->settingsName . '-disable_url_shortening',
-			$this->base->plugin->settingsName . '-force_trailing_forwardslash',
-			$this->base->plugin->settingsName . '-hide_meta_box_by_roles',
-			$this->base->plugin->settingsName . '-image_custom',
-			$this->base->plugin->settingsName . '-image_dimensions',
-			$this->base->plugin->settingsName . '-log',
-			$this->base->plugin->settingsName . '-override',
-			$this->base->plugin->settingsName . '-proxy',
-			$this->base->plugin->settingsName . '-refresh-token',
-			$this->base->plugin->settingsName . '-repost',
-			$this->base->plugin->settingsName . '-repost_disable_cron',
-			$this->base->plugin->settingsName . '-repost_time',
-			$this->base->plugin->settingsName . '-restrict_post_types',
-			$this->base->plugin->settingsName . '-restrict_roles',
-			$this->base->plugin->settingsName . '-roles',
-			$this->base->plugin->settingsName . '-test_mode',
-			$this->base->plugin->settingsName . '-text_to_image',
-			$this->base->plugin->settingsName . '-token-expires',
-		);
-
-		// Add Post Type keys.
-		$post_types = $this->base->get_class( 'common' )->get_post_types();
-		foreach ( $post_types as $type => $post_type_obj ) {
-			$keys[] = $this->base->plugin->settingsName . '-' . $type;
-		}
-
-		/**
-		 * Filters the keys that are used to store Plugin data in the options table.
-		 *
-		 * @since   3.5.0
-		 *
-		 * @param   array   $keys           Option Keys.
-		 * @param   array   $post_types     Post Types.
-		 */
-		$keys = apply_filters( $this->base->plugin->filter_name . '_get_all', $keys, $post_types );
-
-		// Iterate through keys, fetching settings.
-		foreach ( $keys as $key ) {
-			$data[ $key ] = get_option( $key );
-		}
-
-		return $data;
 
 	}
 
