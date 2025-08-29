@@ -39,7 +39,7 @@ jobs:
     strategy:
       matrix:
         wp-versions: [ 'latest' ]
-        php-versions: [ '8.1', '8.2', '8.3' ]
+        php-versions: [ '8.1', '8.2', '8.3', '8.4' ]
 
         # Folder names within the 'tests' folder to run tests in parallel.
         test-groups: [
@@ -183,6 +183,16 @@ jobs:
           export DISPLAY=:99
           chromedriver --port=9515 --url-base=/wd/hub &
           sudo Xvfb -ac :99 -screen 0 1920x1080x24 > /dev/null 2>&1 & # optional
+
+      # Write any secrets, such as API keys, to the .env.testing file now.
+      - name: Define GitHub Secrets in .env.testing
+        uses: DamianReeves/write-file-action@v1.3
+        with:
+          path: ${{ env.PLUGIN_DIR }}/.env.testing
+          contents: |
+            WORDPRESS_TO_BUFFER_PRO_LICENSE_KEY=12345
+            
+          write-mode: append
 
       # Installs wp-browser, Codeception, PHP CodeSniffer and anything else needed to run tests.
       - name: Run Composer
