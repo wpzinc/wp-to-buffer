@@ -157,7 +157,7 @@ class WP_To_Social_Pro_Settings {
 						$this->base->plugin->filter_name . '_settings_update_settings_db_collation_error',
 						sprintf(
 							/* translators: %1$s: Documentation URL */
-							__( 'Unable to save settings due to an invalid database collation and charset on the options table. Please refer to the <a href="%1$s" target="_blank">Documentation</a>.', 'wp-to-social-pro' ),
+							__( 'Unable to save settings due to an invalid database collation and charset on the options table. Please refer to the <a href="%1$s" target="_blank">Documentation</a>.', 'wp-to-buffer' ),
 							'https://www.wpzinc.com/documentation/wordpress-buffer-pro/debugging-issues/#unable-to-save-settings-due-to-an-invalid-database-collation-and-charset-on-the-options-table'
 						),
 					);
@@ -166,7 +166,7 @@ class WP_To_Social_Pro_Settings {
 				// No changes were made to the settings.
 				return new WP_Error(
 					$this->base->plugin->filter_name . '_settings_update_settings_no_changes',
-					__( 'Unable to save settings due to an error. Please try again.', 'wp-to-social-pro' )
+					__( 'Unable to save settings due to an error. Please try again.', 'wp-to-buffer' )
 				);
 			}
 		}
