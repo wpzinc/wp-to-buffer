@@ -75,6 +75,7 @@ class WP_To_Buffer {
 		$this->plugin->upgrade_url       = 'https://www.wpzinc.com/plugins/wordpress-to-buffer-pro';
 		$this->plugin->logo              = WP_TO_BUFFER_PLUGIN_URL . 'lib/assets/images/icons/buffer-dark.svg';
 		$this->plugin->review_name       = 'wp-to-buffer';
+		$this->plugin->about_hook        = 'wpzinc_settings_footer_upgrade';
 
 		// Defer loading of Plugin Classes.
 		add_action( 'init', array( $this, 'initialize' ), 1 );

@@ -3,9 +3,9 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: social media automation, auto post, buffer, social media scheduler, auto publish
 Requires at least: 5.0
-Tested up to: 6.8.3
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 4.0.7
+Stable tag: 4.0.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -316,6 +316,10 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 4.0.8 (2026-03-31) =
+* Added: Status: Display notice if settings do not save and WordPress options table charset and default collation are invalid
+* Updated: Dashboard submodule
 
 = 4.0.7 (2026-02-12) =
 * Updated: Dashboard submodule

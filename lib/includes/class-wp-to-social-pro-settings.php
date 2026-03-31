@@ -127,6 +127,9 @@ class WP_To_Social_Pro_Settings {
 	 */
 	public function update_settings( $type, $settings ) {
 
+		// Get old settings.
+		$existing_settings = $this->get_settings( $type );
+
 		// Iterate through array of Post Type Settings to strip HTML tags.
 		$settings = $this->strip_tags_deep( $settings );
 
@@ -141,7 +144,32 @@ class WP_To_Social_Pro_Settings {
 		$settings = apply_filters( $this->base->plugin->filter_name . '_update_settings', $settings, $type );
 
 		// Save.
-		$this->update_option( $type, $settings );
+		$result = $this->update_option( $type, $settings );
+
+		// If update_option failed, either no settings were changed, or they were changeed but the DB collation is wrong.
+		if ( ! $result ) {
+			// Check if the existing and new settings differ i.e. the user actually made a change.
+			if ( md5( maybe_serialize( $existing_settings ) ) !== md5( maybe_serialize( $settings ) ) ) {
+				// Settings were changed, but could not be saved using update_option.
+				// Check the DB collation.
+				if ( ! $this->base->get_class( 'common' )->is_table_charset_and_collation_correct( 'options', 'utf8mb4' ) ) {
+					return new WP_Error(
+						$this->base->plugin->filter_name . '_settings_update_settings_db_collation_error',
+						sprintf(
+							/* translators: %1$s: Documentation URL */
+							__( 'Unable to save settings due to an invalid database collation and charset on the options table. Please refer to the <a href="%1$s" target="_blank">Documentation</a>.', 'wp-to-social-pro' ),
+							'https://www.wpzinc.com/documentation/wordpress-buffer-pro/debugging-issues/#unable-to-save-settings-due-to-an-invalid-database-collation-and-charset-on-the-options-table'
+						),
+					);
+				}
+
+				// No changes were made to the settings.
+				return new WP_Error(
+					$this->base->plugin->filter_name . '_settings_update_settings_no_changes',
+					__( 'Unable to save settings due to an error. Please try again.', 'wp-to-social-pro' )
+				);
+			}
+		}
 
 		// Check for duplicate statuses.
 		$duplicates = $this->base->get_class( 'validation' )->check_for_duplicates( $settings );
