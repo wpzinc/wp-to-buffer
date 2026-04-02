@@ -317,7 +317,7 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 
 == Changelog ==
 
-= 4.0.8 (2026-03-31) =
+= 4.0.8 (2026-04-02) =
 * Added: Status: Display notice if settings do not save and WordPress options table charset and default collation are invalid
 * Updated: Dashboard submodule
 
