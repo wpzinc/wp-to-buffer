@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 4.0.8
+Stable tag: 4.0.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -316,6 +316,9 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 4.0.9 (2026-04-08) =
+* Removed: Settings: Products section
 
 = 4.0.8 (2026-04-02) =
 * Added: Status: Display notice if settings do not save and WordPress options table charset and default collation are invalid
