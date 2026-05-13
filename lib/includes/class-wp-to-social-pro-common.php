@@ -87,11 +87,8 @@ class WP_To_Social_Pro_Common {
 		switch ( $this->base->plugin->name ) {
 
 			case 'wp-to-buffer':
-				// @TODO Decide what to keep.
 				$schedule = array(
 					'queue_end'   => __( 'Add to End of Queue', 'wp-to-buffer' ),
-					'queue_start' => __( 'Add to Start of Queue', 'wp-to-buffer' ),
-					'immediate'   => __( 'Post Immediately', 'wp-to-buffer' ),
 				);
 				break;
 
