@@ -88,6 +88,11 @@ class WP_To_Social_Pro_Install {
 	 */
 	public function upgrade() {
 
+		// These sit outside of version checks, to ensure they run regardless of version.
+		// Otherwise, Free to Free Plugin updates for the multi account result in losing
+		// account data because there's also an API version switch.
+		// At a later relase, we'll need to remove these so they don't run on every upgrade.
+
 		// Migrate Access Tokens to multi account settings.
 		$this->migrate_access_tokens_to_new_multi_account_settings();
 
