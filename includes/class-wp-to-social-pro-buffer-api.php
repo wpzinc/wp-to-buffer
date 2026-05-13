@@ -124,7 +124,7 @@ class WP_To_Social_Pro_Buffer_API {
 		<div class="wpzinc-option">
 			<div class="full">
 				<a href="<?php echo esc_attr( $this->get_oauth_url() ); ?>" class="button button-primary">
-					<?php esc_html_e( 'Connect a Buffer Account', 'wp-to-social-pro' ); ?>
+					<?php esc_html_e( 'Connect a Buffer Account', 'wp-to-buffer' ); ?>
 				</a>
 			</div>
 		</div>
@@ -386,7 +386,7 @@ class WP_To_Social_Pro_Buffer_API {
 		if ( empty( $this->refresh_token ) ) {
 			return new WP_Error(
 				'wp_to_buffer_pro_api_refresh_token_error',
-				__( 'No refresh token available; cannot refresh access token.', 'wp-to-social-pro' )
+				__( 'No refresh token available; cannot refresh access token.', 'wp-to-buffer' )
 			);
 		}
 
@@ -1157,7 +1157,7 @@ mutation CreatePost(
 					'buffer_api_error',
 					sprintf(
 						/* translators: %1$s: Plugin Name, %2$s: Plugin Name */
-						__( '%1$s uses a new API. Please click the `Reconnect` button at %2$s Settings > Authentication to reconnect your account. You won\'t need to do this again.', 'wp-to-social-pro' ),
+						__( '%1$s uses a new API. Please click the `Reconnect` button at %2$s Settings > Authentication to reconnect your account. You won\'t need to do this again.', 'wp-to-buffer' ),
 						$this->base->plugin->displayName,
 						$this->base->plugin->displayName
 					)

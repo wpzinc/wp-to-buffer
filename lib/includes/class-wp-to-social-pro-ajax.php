@@ -38,7 +38,6 @@ class WP_To_Social_Pro_Ajax {
 		$this->base = $base;
 
 		// Actions.
-		// @TODO DO we need this?
 		add_action( 'wp_ajax_' . $this->base->plugin->filter_name . '_username_save_twitter', array( $this, 'username_save_twitter' ) );
 		add_action( 'wp_ajax_' . $this->base->plugin->filter_name . '_save_statuses', array( $this, 'save_statuses' ) );
 		add_action( 'wp_ajax_' . $this->base->plugin->filter_name . '_get_status_row', array( $this, 'get_status_row' ) );

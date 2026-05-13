@@ -420,7 +420,6 @@ class WP_To_Social_Pro_Admin {
 			'status_form'              => '#' . $this->base->plugin->name . '-status-form',
 
 			// status.js appends profile service to this e.g. twitter,facebook.
-			// @TODO Do we need this?
 			'usernames_search_action'  => $this->base->plugin->filter_name . '_usernames_search_',
 		);
 
@@ -482,7 +481,6 @@ class WP_To_Social_Pro_Admin {
 						wp_enqueue_script( $this->base->plugin->name . '-statuses' );
 
 						// Add Twitter Username Save Action and Nonce.
-						// @TODO Do we need this?
 						$localization['username_save_twitter_action'] = $this->base->plugin->filter_name . '_username_save_twitter';
 						$localization['username_save_twitter_nonce']  = wp_create_nonce( $this->base->plugin->name . '-username-save-twitter' );
 
