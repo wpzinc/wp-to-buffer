@@ -797,28 +797,6 @@ class WP_To_Social_Pro_Publish {
 			'text'        => $this->parse_text( $post, $status['message'], ( $service === 'instagram' ? true : false ) ),
 		);
 
-		// First Comment.
-		switch ( $service ) {
-			case 'mastodon':
-			case 'tiktok':
-			case 'googlebusiness':
-			case 'pinterest':
-				// First comment is not supported.
-				break;
-
-			default:
-				$first_comment = $this->parse_text( $post, $status['first_comment'], ( $service === 'instagram' ? true : false ) );
-
-				// If the account's plan is free, first comment is not supported.
-				if ( $account['plan'] === 'free' ) {
-					break;
-				}
-
-				// Add first comment to args.
-				$args['first_comment'] = $first_comment;
-				break;
-		}
-
 		// Shorten URLs.
 		if ( $this->base->supports( 'url_shortening' ) ) {
 			$args['shorten'] = ( $this->base->get_class( 'settings' )->get_option( 'disable_url_shortening', false ) ? false : true );
@@ -847,14 +825,6 @@ class WP_To_Social_Pro_Publish {
 
 				// Add URL to args.
 				$args['url'] = $url;
-				break;
-
-			/**
-			 * IG Story
-			 * - Remove first comment.
-			 */
-			case 'story':
-				unset( $args['first_comment'] );
 				break;
 		}
 
@@ -927,12 +897,6 @@ class WP_To_Social_Pro_Publish {
 	 * @return  bool|array
 	 */
 	private function get_post_image( $post, $service, $format = false ) {
-
-		// Plugin's First (Featured) Image.
-		$image_id = $this->base->get_class( 'post' )->get_setting_by_post_id( $post->ID, 'featured_image' );
-		if ( $image_id > 0 ) {
-			return $this->base->get_class( 'image' )->get_image_sources( $image_id, 'plugin', $service, $format );
-		}
 
 		// Featured Image.
 		$image_id = get_post_thumbnail_id( $post->ID );
