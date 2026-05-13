@@ -88,6 +88,13 @@ class WP_To_Social_Pro_Install {
 	 */
 	public function upgrade() {
 
+		// Migrate Access Tokens to multi account settings.
+		$this->migrate_access_tokens_to_new_multi_account_settings();
+
+		// Migrate Status Settings to new format that supports "Type"
+		// instead of a numerical setting for the status' index.
+		$this->migrate_status_settings_to_new_format();
+
 		// Get current installed version number.
 		// false | 1.1.7.
 		$installed_version = get_option( $this->base->plugin->name . '-version' );
@@ -100,13 +107,6 @@ class WP_To_Social_Pro_Install {
 		// Reschedule the cron events.
 		$this->base->get_class( 'cron' )->reschedule_log_cleanup_event();
 		$this->base->get_class( 'cron' )->reschedule_media_cleanup_event();
-
-		// Migrate Access Tokens to multi account settings.
-		$this->migrate_access_tokens_to_new_multi_account_settings();
-
-		// Migrate Status Settings to new format that supports "Type"
-		// instead of a numerical setting for the status' index.
-		$this->migrate_status_settings_to_new_format();
 
 		// Update the version number.
 		update_option( $this->base->plugin->name . '-version', $this->base->plugin->version );
