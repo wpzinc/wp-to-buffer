@@ -92,7 +92,7 @@ class WP_To_Buffer {
 		$this->plugin->convertkit_form_uid = '71346c6086';
 
 		// Default Settings.
-		$this->plugin->default_schedule = 'queue_bottom';
+		$this->plugin->default_schedule = 'queue_end';
 
 		// Defer loading of Plugin Classes.
 		add_action( 'init', array( $this, 'initialize' ), 1 );
