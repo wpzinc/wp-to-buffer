@@ -304,11 +304,6 @@ class WP_To_Social_Pro_Admin {
 			);
 		}
 
-		// Bail if the product is not licensed.
-		if ( ! $this->base->licensing->check_license_key_valid() ) {
-			return;
-		}
-
 		// Check the API is connected.
 		if ( ! $this->base->get_class( 'settings' )->account_connected() ) {
 			// Don't display the notice if this request is for the settings auth screen.
