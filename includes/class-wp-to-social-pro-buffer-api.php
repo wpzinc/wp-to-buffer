@@ -49,7 +49,7 @@ class WP_To_Social_Pro_Buffer_API {
 	 *
 	 * @var     string.
 	 */
-	private $redirect_uri = 'https://wpzinc.local/?oauth=bufferv2';
+	private $redirect_uri = 'https://www.wpzinc.com/?oauth=bufferv2';
 
 	/**
 	 * Holds the Proxy endpoint, which might be used to pass requests through
