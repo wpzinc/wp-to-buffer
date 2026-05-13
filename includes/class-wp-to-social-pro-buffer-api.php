@@ -665,7 +665,9 @@ query GetChannels($organizationId: OrganizationId!) {
 		}
 
 		// Draft.
-		$variables['saveToDraft'] = $params['is_draft'];
+		if ( array_key_exists( 'is_draft', $params ) ) {
+			$variables['saveToDraft'] = $params['is_draft'];
+		}
 
 		// Metadata.
 		$metadata = array();
