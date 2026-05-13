@@ -12,14 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="wpzinc-option highlight">
 	<div class="full">
-		<h4><?php esc_html_e( 'Want to post to Instagram or Pinterest?', 'wp-to-buffer' ); ?></h4>
+		<h4><?php esc_html_e( 'Want to post to Instagram, Pinterest or Google My Business?', 'wp-to-buffer' ); ?></h4>
 
 		<p>
 			<?php
 			echo esc_html(
 				sprintf(
 				/* translators: Plugin Name */
-					__( '%s Pro allows you to post to Instagram (Stories and Posts) and Pinterest boards, with advanced controls for conditional publishing, tags and scheduling.', 'wp-to-buffer' ),
+					__( '%s Pro allows you to post to Instagram (Stories and Posts), Pinterest boards and Google My Business, with advanced controls for conditional publishing, tags and scheduling.', 'wp-to-buffer' ),
 					$this->base->plugin->displayName
 				)
 			);

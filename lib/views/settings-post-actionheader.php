@@ -60,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php
 	if ( ( class_exists( 'WP_To_Buffer' ) || class_exists( 'WP_To_Hootsuite' ) ) &&
-		( $profile['service'] === 'instagram' || $profile['service'] === 'pinterest' ) ) {
+		( $profile['service'] === 'instagram' || $profile['service'] === 'pinterest' || $profile['service'] === 'googlebusiness' ) ) {
 		require $this->base->plugin->folder . 'lib/views/settings-post-actionheader-upgrade-profile.php';
 	} else {
 		?>

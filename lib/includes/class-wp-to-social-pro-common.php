@@ -48,14 +48,10 @@ class WP_To_Social_Pro_Common {
 	public function get_status_post_type_options() {
 
 		// Build status post type options.
-		// @TODO Decide what to keep.
 		$status_post_type_options = array(
-			'text'           => __( 'Text', 'wp-to-buffer' ),
-			'link'           => __( 'Link', 'wp-to-buffer' ),
-			'image'          => __( 'Image', 'wp-to-buffer' ),
-			'story'          => __( 'Story', 'wp-to-buffer' ),
-			'pin'            => __( 'Pin', 'wp-to-buffer' ),
-			'googlebusiness' => __( 'Google Business', 'wp-to-buffer' ),
+			'text'  => __( 'Text', 'wp-to-buffer' ),
+			'link'  => __( 'Link', 'wp-to-buffer' ),
+			'image' => __( 'Image', 'wp-to-buffer' ),
 		);
 
 		/**
@@ -88,7 +84,7 @@ class WP_To_Social_Pro_Common {
 
 			case 'wp-to-buffer':
 				$schedule = array(
-					'queue_end'   => __( 'Add to End of Queue', 'wp-to-buffer' ),
+					'queue_end' => __( 'Add to End of Queue', 'wp-to-buffer' ),
 				);
 				break;
 

@@ -530,17 +530,7 @@ class WP_To_Social_Pro_Admin {
 			array(
 				'fields'   => array(
 					'textarea.message',
-					'textarea.first_comment',
-					'textarea.text-to-image',
 					'input.url',
-
-					// Pinterest.
-					'input#pinterest_title',
-
-					// Google Business.
-					'input#googlebusiness_title',
-					'input#googlebusiness_code',
-					'input#googlebusiness_terms',
 				),
 				'triggers' => array(
 					// Tags.
