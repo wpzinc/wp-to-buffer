@@ -599,11 +599,6 @@ class WP_To_Social_Pro_Admin {
 	 */
 	public function plugin_action_links_settings_page( $links ) {
 
-		// Bail if user access doesn't permit access to settings.
-		if ( ! $this->base->get_class( 'access' )->can_access( 'show_menu_settings' ) ) {
-			return $links;
-		}
-
 		// Add link to Plugin settings screen.
 		$links['settings'] = sprintf(
 			'<a href="%s">%s</a>',
