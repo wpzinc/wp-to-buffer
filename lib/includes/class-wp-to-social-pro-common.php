@@ -39,6 +39,40 @@ class WP_To_Social_Pro_Common {
 	}
 
 	/**
+	 * Helper method to retrieve status post type options
+	 *
+	 * @since   6.0.0
+	 *
+	 * @return  array   Status Post Type Options
+	 */
+	public function get_status_post_type_options() {
+
+		// Build status post type options.
+		// @TODO Decide what to keep.
+		$status_post_type_options = array(
+			'text'           => __( 'Text', 'wp-to-buffer' ),
+			'link'           => __( 'Link', 'wp-to-buffer' ),
+			'image'          => __( 'Image', 'wp-to-buffer' ),
+			'story'          => __( 'Story', 'wp-to-buffer' ),
+			'pin'            => __( 'Pin', 'wp-to-buffer' ),
+			'googlebusiness' => __( 'Google Business', 'wp-to-buffer' ),
+		);
+
+		/**
+		 * Defines the available status post type options.
+		 *
+		 * @since   6.0.0
+		 *
+		 * @param   array   $status_post_type_options   Status Post Type Options.
+		 */
+		$status_post_type_options = apply_filters( $this->base->plugin->filter_name . '_get_status_post_type_options', $status_post_type_options );
+
+		// Return filtered results.
+		return $status_post_type_options;
+
+	}
+
+	/**
 	 * Helper method to retrieve schedule options
 	 *
 	 * @since   3.0.0
@@ -53,18 +87,17 @@ class WP_To_Social_Pro_Common {
 		switch ( $this->base->plugin->name ) {
 
 			case 'wp-to-buffer':
+				// @TODO Decide what to keep.
 				$schedule = array(
-					'queue_bottom' => sprintf(
-						/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-						__( 'Add to End of %s Queue', 'wp-to-buffer' ),
-						$this->base->plugin->account
-					),
+					'queue_end'   => __( 'Add to End of Queue', 'wp-to-buffer' ),
+					'queue_start' => __( 'Add to Start of Queue', 'wp-to-buffer' ),
+					'immediate'   => __( 'Post Immediately', 'wp-to-buffer' ),
 				);
 				break;
 
 			case 'wp-to-hootsuite':
 				$schedule = array(
-					'now' => __( 'Post Immediately', 'wp-to-buffer' ),
+					'immediate' => __( 'Post Immediately', 'wp-to-buffer' ),
 				);
 				break;
 

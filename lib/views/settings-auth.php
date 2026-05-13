@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</li>
 		<?php
 		// Only display if we've auth'd and have profiles.
-		if ( ! empty( $access_token ) ) {
+		if ( $this->base->get_class( 'settings' )->account_connected() ) {
 			?>
 			<li class="wpzinc-nav-tab users">
 				<a href="#user-access" data-documentation="<?php echo esc_attr( $this->base->plugin->documentation_url ); ?>/user-access-settings/">
@@ -59,47 +59,56 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</ul>
 
 	<!-- Content -->
-	<div id="settings-container" class="wpzinc-nav-tabs-content no-padding">
+	<div id="settings-container" class="wpzinc-nav-tabs-content">
 		<!-- Authentication -->
 		<div id="authentication" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php esc_html_e( 'Authentication', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Connected Accounts', 'wp-to-buffer' ); ?></h3>
 
 					<p class="description">
 						<?php
 						echo esc_html(
 							sprintf(
-							/* translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-								__( 'Authentication allows %1$s to post to %2$s', 'wp-to-buffer' ),
-								$this->base->plugin->displayName,
-								$this->base->plugin->account
+								/* translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite) */
+								__( 'A list of %1$s accounts that are connected to %2$s.', 'wp-to-buffer' ),
+								$this->base->plugin->account,
+								$this->base->plugin->displayName
 							)
 						);
 						?>
 					</p>
 				</header>
 
-				<div class="wpzinc-option">
-					<div class="full">
-						<?php
-						echo esc_html(
-							sprintf(
-							/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
-								__( 'Thanks - you\'ve authorized the plugin to post updates to your %s account.', 'wp-to-buffer' ),
-								$this->base->plugin->account
-							)
-						);
-						?>
+				<?php
+				// List connected accounts.
+				foreach ( $this->base->get_class( 'settings' )->get_accounts() as $account_id => $account ) {
+					$reconnect_url  = $this->base->get_class( 'api' )->get_oauth_url();
+					$disconnect_url = add_query_arg(
+						array(
+							'page'  => $this->base->plugin->name . '-settings',
+							$this->base->plugin->name . '-disconnect' => $account_id,
+							'nonce' => wp_create_nonce( $this->base->plugin->name . '-disconnect' ),
+						),
+						admin_url( 'admin.php' )
+					);
+					?>
+					<div class="wpzinc-option">
+						<div class="left">
+							<strong><?php echo esc_html( $account['name'] ); ?></strong>
+						</div>
+						<div class="right">
+							<a href="<?php echo esc_url( $reconnect_url ); ?>" class="button button-secondary">
+								<?php esc_html_e( 'Reconnect', 'wp-to-buffer' ); ?>
+							</a>
+							<a href="<?php echo esc_url( $disconnect_url ); ?>" class="button wpzinc-button-red">
+								<?php esc_html_e( 'Disconnect', 'wp-to-buffer' ); ?>
+							</a>
+						</div>
 					</div>
-				</div>
-				<div class="wpzinc-option">
-					<div class="full">
-						<a href="admin.php?page=<?php echo esc_attr( $this->base->plugin->name ); ?>-settings&amp;<?php echo esc_attr( $this->base->plugin->name ); ?>-disconnect=1" class="button wpzinc-button-red">
-							<?php esc_html_e( 'Deauthorize Plugin', 'wp-to-buffer' ); ?>
-						</a>
-					</div>
-				</div>
+					<?php
+				}
+				?>
 			</div>   
 		</div>
 
@@ -124,7 +133,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php
 							echo esc_html(
 								sprintf(
-								/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+								/* translators: Social Media Service Name (Buffer, Hootsuite) */
 									__( 'If enabled, status(es) are not sent to %s, but will appear in the Log, if logging is enabled. This is useful to test status text, conditions etc.', 'wp-to-buffer' ),
 									$this->base->plugin->account
 								)
@@ -169,7 +178,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php
 							echo esc_html(
 								sprintf(
-								/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+								/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite) */
 									__( 'If enabled, statuses sent to %1$s are performed through our proxy. This is useful if your ISP or host\'s country prevents access to %1$s.', 'wp-to-buffer' ),
 									$this->base->plugin->account,
 									$this->base->plugin->account
