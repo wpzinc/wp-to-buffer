@@ -242,13 +242,25 @@ class WP_To_Social_Pro_Buffer_API {
 	 *
 	 * @since   3.3.3
 	 *
+	 * @param   string $account_id     Existing Account ID (if included, is passed in the `state` parameter and ultimately back to the WordPress site to replace an account later on).
 	 * @return  string  oAuth URL
 	 */
-	public function get_oauth_url() {
+	public function get_oauth_url( $account_id = '' ) {
 
 		// Generate and store code verifier and challenge.
 		$code_verifier  = $this->generate_and_store_code_verifier();
 		$code_challenge = $this->generate_code_challenge( $code_verifier );
+
+		// Generate return URL.
+		$return_url = admin_url( 'admin.php?page=' . $this->base->plugin->name . '-settings' );
+		if ( ! empty( $account_id ) ) {
+			$return_url = add_query_arg(
+				array(
+					'account_id' => $account_id,
+				),
+				$return_url
+			);
+		}
 
 		// Build args.
 		$args = array(
@@ -256,7 +268,7 @@ class WP_To_Social_Pro_Buffer_API {
 			'redirect_uri'          => $this->redirect_uri,
 			'response_type'         => 'code',
 			'scope'                 => 'posts:write posts:read ideas:read ideas:write account:read account:write offline_access',
-			'state'                 => rawurlencode( admin_url( 'admin.php?page=' . $this->base->plugin->name . '-settings' ) ),
+			'state'                 => rawurlencode( $return_url ),
 			'code_challenge'        => $code_challenge,
 			'code_challenge_method' => 'S256',
 			'prompt'                => 'consent',

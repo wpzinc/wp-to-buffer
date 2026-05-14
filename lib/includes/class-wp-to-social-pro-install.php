@@ -132,54 +132,18 @@ class WP_To_Social_Pro_Install {
 		$refresh_token = get_option( $this->base->plugin->settingsName . '-refresh-token' );
 		$token_expires = get_option( $this->base->plugin->settingsName . '-token-expires' );
 
-		// Bail if no access token exists - the Plugin isn't connected.
+		// Bail if no access token exists - either the Plugin isn't connected, or it has
+		// already been migrated to the new multi account settings.
 		if ( empty( $access_token ) ) {
 			return;
 		}
 
-		// Get the account information and its profiles.
-		$this->base->get_class( 'api' )->set_tokens( $access_token, $refresh_token, $token_expires );
-		$account = $this->base->get_class( 'api' )->account();
-
-		// Bail if an error occured.
-		if ( is_wp_error( $account ) ) {
-			// Delete old settings.
-			delete_option( $this->base->plugin->settingsName . '-access-token' );
-			delete_option( $this->base->plugin->settingsName . '-refresh-token' );
-			delete_option( $this->base->plugin->settingsName . '-token-expires' );
-
-			// Delete old transient for profiles, as they're now stored against the account.
-			delete_transient( $this->base->plugin->name . '_' . $this->base->plugin->account . '_api_profiles' );
-
-			// Bail.
-			return;
-		}
-
-		// Fetch profiles.
-		$profiles = $this->base->get_class( 'api' )->profiles( true, $this->base->get_class( 'common' )->get_transient_expiration_time(), $account['id'] );
-
-		if ( is_wp_error( $profiles ) ) {
-			// Delete old settings.
-			delete_option( $this->base->plugin->settingsName . '-access-token' );
-			delete_option( $this->base->plugin->settingsName . '-refresh-token' );
-			delete_option( $this->base->plugin->settingsName . '-token-expires' );
-
-			// Delete old transient for profiles, as they're now stored against the account.
-			delete_transient( $this->base->plugin->name . '_' . $this->base->plugin->account . '_api_profiles' );
-
-			// Bail.
-			return;
-		}
-
-		// Store tokens and profile IDs against account.
+		// Store tokens in new multi account settings.
+		// This will be stored under the ID 'default'.
 		$this->base->get_class( 'settings' )->update_account(
 			$access_token,
 			$refresh_token,
-			$token_expires,
-			$account['id'],
-			$account['name'],
-			$account['plan'],
-			array_keys( $profiles )
+			$token_expires
 		);
 
 		// Delete old settings.
@@ -210,7 +174,7 @@ class WP_To_Social_Pro_Install {
 			return;
 		}
 
-		// Build array of all profiles across all accounts connected to the Plugin.
+		// Get accounts.
 		$accounts = $this->base->get_class( 'settings' )->get_accounts();
 
 		// Bail if no accounts exist.
@@ -218,6 +182,7 @@ class WP_To_Social_Pro_Install {
 			return;
 		}
 
+		// Build array of all profiles across all accounts connected to the Plugin.
 		$profiles = array();
 		foreach ( $accounts as $account_id => $account ) {
 			$account_profiles = get_transient( $this->base->plugin->name . '_' . strtolower( $this->base->plugin->account ) . '_api_profiles_' . $account_id );
@@ -225,6 +190,11 @@ class WP_To_Social_Pro_Install {
 				continue;
 			}
 			$profiles = array_merge( $profiles, $account_profiles );
+		}
+
+		// If no profiles exist, bail.
+		if ( empty( $profiles ) ) {
+			return;
 		}
 
 		// Fetch actions (publish, update, repost, bulk publish).

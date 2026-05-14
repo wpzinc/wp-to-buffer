@@ -83,7 +83,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 				// List connected accounts.
 				foreach ( $this->base->get_class( 'settings' )->get_accounts() as $account_id => $account ) {
-					$reconnect_url  = $this->base->get_class( 'api' )->get_oauth_url();
+					$reconnect_url  = $this->base->get_class( 'api' )->get_oauth_url( $account_id );
 					$disconnect_url = add_query_arg(
 						array(
 							'page'  => $this->base->plugin->name . '-settings',
