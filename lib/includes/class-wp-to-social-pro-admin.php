@@ -108,7 +108,13 @@ class WP_To_Social_Pro_Admin {
 			return;
 		}
 
-		// Test worked! Save Tokens and Expiry.
+		// If an account ID is included in the request, delete that account before adding the account.
+		// This handles account re-connection where we're coming from the old API.
+		if ( filter_has_var( INPUT_GET, 'account_id' ) ) {
+			$this->base->get_class( 'settings' )->delete_account( filter_input( INPUT_GET, 'account_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS ) );
+		}
+
+		// Update account.
 		$this->base->get_class( 'settings' )->update_account(
 			$tokens['access_token'],
 			$tokens['refresh_token'],
