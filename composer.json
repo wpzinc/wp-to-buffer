@@ -2,7 +2,6 @@
     "name": "n7studios/wp-to-buffer",
     "description": "WordPress to Buffer Plugin",
     "type": "project",
-    "license": "GPLv3",
     "require-dev": {
         "php-webdriver/webdriver": "^1.0",
         "wp-coding-standards/wpcs": "^3.0.0",

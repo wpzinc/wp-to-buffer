@@ -30,7 +30,7 @@ add_action( 'wp_to_buffer_log_cleanup_cron', 'wp_to_buffer_log_cleanup_cron' );
  * Define the WP Cron function to perform the Media Library cleanup
  * of Text to Image generations
  *
- * @since   4.2.0
+ * @since   4.1.0
  */
 function wp_to_buffer_media_cleanup_cron() {
 

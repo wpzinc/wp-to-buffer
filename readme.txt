@@ -3,9 +3,13 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: social media automation, auto post, buffer, social media scheduler, auto publish
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
+<<<<<<< HEAD
 Stable tag: 6.0.0
+=======
+Stable tag: 4.1.0
+>>>>>>> origin/release-4.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -323,6 +327,11 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 * Fix: Settings: Authentication: Align account name with Reconnect + Disconnect buttons
 * Removed: Status: Image: No Image, OpenGraph and Feat. Image, Linked to Post. See Docs: []
 * Removed: Settings: General Settings: URL Shortening: This will be reinstated in a future update when Buffer's API supports this
+
+= 4.1.0 (2026-05-20) =
+* Fix: Automatically delete temporary images
+* Updated: Coding standards
+* Updated: Sanitization
 
 = 4.0.9 (2026-04-08) =
 * Removed: Settings: Products section
