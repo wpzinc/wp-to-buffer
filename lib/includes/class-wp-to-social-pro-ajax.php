@@ -49,7 +49,7 @@ class WP_To_Social_Pro_Ajax {
 	/**
 	 * Saves the given Twitter username and user ID to the API.
 	 *
-	 * @since   ?
+	 * @since   4.1.0
 	 */
 	public function username_save_twitter() {
 
