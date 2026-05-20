@@ -547,11 +547,11 @@ class WP_To_Social_Pro_Log_Table extends WP_List_Table {
 			return '';
 		}
 
-		if ( ! array_key_exists( 'request_sent_end_date', $_REQUEST ) ) {
+		if ( ! array_key_exists( 'get_request_sent_end_date', $_REQUEST ) ) {
 			return '';
 		}
 
-		return sanitize_text_field( wp_unslash( $_REQUEST['request_sent_end_date'] ) );
+		return sanitize_text_field( wp_unslash( $_REQUEST['get_request_sent_end_date'] ) );
 
 	}
 
