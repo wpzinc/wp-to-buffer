@@ -104,7 +104,7 @@ class WP_To_Social_Pro_Admin {
 						sprintf(
 							'%1$s <a href="%2$s" target="_blank">%3$s</a>',
 							sprintf(
-								/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+								/* translators: Social Media Service Name (Buffer, Hootsuite) */
 								__( 'We were unable to complete authentication with %s.  Please try again, or', 'wp-to-buffer' ),
 								$this->base->plugin->account
 							),
@@ -170,7 +170,7 @@ class WP_To_Social_Pro_Admin {
 			$this->base->get_class( 'notices' )->enable_store();
 			$this->base->get_class( 'notices' )->add_success_notice(
 				sprintf(
-					/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+					/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite) */
 					__( 'Thanks! You\'ve connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s', 'wp-to-buffer' ),
 					$this->base->plugin->account,
 					$this->base->plugin->account
@@ -218,7 +218,7 @@ class WP_To_Social_Pro_Admin {
 				sprintf(
 					'%1$s <a href="%2$s">%3$s</a>',
 					sprintf(
-						/* translators: %1$s: Plugin Name, %2$s, %3$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %4$s: URL to Authorize Plugin Screen, %5$s: URL to Register Account with Service */
+						/* translators: %1$s: Plugin Name, %2$s, %3$s: Social Media Service Name (Buffer, Hootsuite), %4$s: URL to Authorize Plugin Screen, %5$s: URL to Register Account with Service */
 						esc_html__( '%1$s needs to be authorized with %2$s before you can start sending Posts to %3$s.', 'wp-to-buffer' ),
 						$this->base->plugin->displayName,
 						$this->base->plugin->account,
@@ -314,7 +314,7 @@ class WP_To_Social_Pro_Admin {
 
 			'clear_log_nonce'          => wp_create_nonce( $this->base->plugin->name . '-clear-log' ),
 			'clear_log_completed'      => sprintf(
-				/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+				/* translators: Social Media Service Name (Buffer, Hootsuite) */
 				__( 'No log entries exist, or no status updates have been sent to %s.', 'wp-to-buffer' ),
 				$this->base->plugin->account
 			),
@@ -597,7 +597,7 @@ class WP_To_Social_Pro_Admin {
 				// Error notice.
 				$this->base->get_class( 'notices' )->add_error_notice(
 					sprintf(
-						/* translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+						/* translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite) */
 						__( 'Hmm, it looks like you revoked access to %1$s through your %2$s account, or your account no longer exists. This means we can no longer post updates to your social networks.  To re-authorize, click the Authorize Plugin button.', 'wp-to-buffer' ),
 						$this->base->plugin->displayName,
 						$this->base->plugin->account
@@ -673,7 +673,7 @@ class WP_To_Social_Pro_Admin {
 						sprintf(
 							'%1$s <a href="%2$s" target="_blank">%3$s</a>',
 							sprintf(
-								/* translators: %1$s: Post Type, %2$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot), %3$s: Documentation URL */
+								/* translators: %1$s: Post Type, %2$s: Social Media Service Name (Buffer, Hootsuite), %3$s: Documentation URL */
 								__( 'To send %1$s to %2$s, at least one action on the Defaults tab must be enabled with a status defined, and at least one social media profile must be enabled below by clicking the applicable profile name and ticking the "Account Enabled" box.', 'wp-to-buffer' ),
 								$post_type_object->label,
 								$this->base->plugin->account

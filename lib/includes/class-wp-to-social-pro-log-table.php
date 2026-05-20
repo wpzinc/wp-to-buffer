@@ -216,12 +216,12 @@ class WP_To_Social_Pro_Log_Table extends WP_List_Table {
 			'result'            => __( 'Result', 'wp-to-buffer' ),
 			'result_message'    => __( 'Response', 'wp-to-buffer' ),
 			'status_created_at' => sprintf(
-				/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+				/* translators: Social Media Service Name (Buffer, Hootsuite) */
 				__( '%s: Status Created At', 'wp-to-buffer' ),
 				$this->base->plugin->account
 			),
 			'status_due_at'     => sprintf(
-				/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+				/* translators: Social Media Service Name (Buffer, Hootsuite) */
 				__( '%s: Status Scheduled For', 'wp-to-buffer' ),
 				$this->base->plugin->account
 			),

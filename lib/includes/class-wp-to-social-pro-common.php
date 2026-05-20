@@ -55,7 +55,7 @@ class WP_To_Social_Pro_Common {
 			case 'wp-to-buffer':
 				$schedule = array(
 					'queue_bottom' => sprintf(
-						/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+						/* translators: Social Media Service Name (Buffer, Hootsuite) */
 						__( 'Add to End of %s Queue', 'wp-to-buffer' ),
 						$this->base->plugin->account
 					),

@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 						echo esc_html(
 							sprintf(
-							/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+							/* translators: Social Media Service Name (Buffer, Hootsuite) */
 								__( '%s: Status Created At', 'wp-to-buffer' ),
 								$this->base->plugin->account
 							)
@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php
 						echo esc_html(
 							sprintf(
-								/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+								/* translators: Social Media Service Name (Buffer, Hootsuite) */
 								__( '%s: Status Scheduled For', 'wp-to-buffer' ),
 								$this->base->plugin->account
 							)

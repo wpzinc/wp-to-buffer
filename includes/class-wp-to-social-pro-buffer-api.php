@@ -732,7 +732,7 @@ class WP_To_Social_Pro_Buffer_API {
 					);
 				} else {
 					$message[] = sprintf(
-						/* translators: %1$s: Link to WordPress General Settings, %2$s: Link to Social Media Scheduling Timezone Settings Screen, %3$s: Social Media Scheduler Name (Buffer, Hootsuite, SocialPilot) */
+						/* translators: %1$s: Link to WordPress General Settings, %2$s: Link to Social Media Scheduling Timezone Settings Screen, %3$s: Social Media Scheduler Name (Buffer, Hootsuite) */
 						__( '<a href="%1$s">WordPress</a> and <a href="%2$s">%3$s</a> timezones must match.', 'wp-to-buffer' ),
 						admin_url( 'options-general.php' ),
 						$this->get_timezone_settings_url( $params['profile_ids'][0] ),
