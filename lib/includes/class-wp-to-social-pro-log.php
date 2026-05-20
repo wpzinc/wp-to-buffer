@@ -486,7 +486,8 @@ class WP_To_Social_Pro_Log {
 		// Get log.
 		$log = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT * FROM {$wpdb->prefix}{$this->table} WHERE post_id = %d ORDER BY id DESC", // phpcs:ignore WordPress.DB.PreparedSQL
+				'SELECT * FROM %i WHERE post_id = %d ORDER BY id DESC',
+				$wpdb->prefix . $this->table,
 				absint( $post_id )
 			),
 			ARRAY_A

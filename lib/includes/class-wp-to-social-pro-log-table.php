@@ -520,7 +520,16 @@ class WP_To_Social_Pro_Log_Table extends WP_List_Table {
 	 */
 	private function get_request_sent_start_date() {
 
-		return ( isset( $_REQUEST['request_sent_start_date'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['request_sent_start_date'] ) ) : '' );  // phpcs:ignore WordPress.Security.NonceVerification
+		// Bail if nonce is not valid.
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_REQUEST['_wpnonce'] ) ), 'bulk-wp-to-social-log' ) ) {
+			return '';
+		}
+
+		if ( ! array_key_exists( 'request_sent_start_date', $_REQUEST ) ) {
+			return '';
+		}
+
+		return sanitize_text_field( wp_unslash( $_REQUEST['request_sent_start_date'] ) );
 
 	}
 
@@ -538,11 +547,11 @@ class WP_To_Social_Pro_Log_Table extends WP_List_Table {
 			return '';
 		}
 
-		if ( ! array_key_exists( 'request_sent_start_date', $_REQUEST ) ) {
+		if ( ! array_key_exists( 'get_request_sent_end_date', $_REQUEST ) ) {
 			return '';
 		}
 
-		return sanitize_text_field( wp_unslash( $_REQUEST['request_sent_start_date'] ) );
+		return sanitize_text_field( wp_unslash( $_REQUEST['get_request_sent_end_date'] ) );
 
 	}
 
@@ -555,16 +564,12 @@ class WP_To_Social_Pro_Log_Table extends WP_List_Table {
 	 */
 	private function get_order_by() {
 
-		// Bail if nonce is not valid.
-		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_REQUEST['_wpnonce'] ) ), 'bulk-wp-to-social-log' ) ) {
-			return '';
+		// Don't nonce check because order by may not include a nonce if no search performed.
+		if ( ! filter_has_var( INPUT_GET, 'orderby' ) ) {
+			return 'request_sent';
 		}
 
-		if ( ! array_key_exists( 'request_sent_end_date', $_REQUEST ) ) {
-			return '';
-		}
-
-		return sanitize_text_field( wp_unslash( $_REQUEST['request_sent_end_date'] ) );
+		return filter_input( INPUT_GET, 'orderby', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 
 	}
 
@@ -577,12 +582,12 @@ class WP_To_Social_Pro_Log_Table extends WP_List_Table {
 	 */
 	private function get_order() {
 
-		// Don't nonce check because order by may not include a nonce if no search performed.
-		if ( ! filter_has_var( INPUT_GET, 'orderby' ) ) {
-			return 'request_sent';
+		// Don't nonce check because order may not include a nonce if no search performed.
+		if ( ! filter_has_var( INPUT_GET, 'order' ) ) {
+			return 'DESC';
 		}
 
-		return filter_input( INPUT_GET, 'orderby', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+		return filter_input( INPUT_GET, 'order', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 
 	}
 

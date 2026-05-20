@@ -421,7 +421,7 @@ class WP_To_Social_Pro_Notices {
 			?>
 			<div class="notice notice-success is-dismissible">
 				<p>
-				<?php
+					<?php
 					echo wp_kses(
 						implode( '<br />', $this->notices['success'] ),
 						array(
@@ -432,7 +432,7 @@ class WP_To_Social_Pro_Notices {
 							'br' => array(),
 						)
 					);
-				?>
+					?>
 				</p>
 			</div>
 			<?php
