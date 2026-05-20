@@ -95,7 +95,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<div class="wpzinc-option">
 					<div class="full">
-						<a href="admin.php?page=<?php echo esc_attr( $this->base->plugin->name ); ?>-settings&amp;<?php echo esc_attr( $this->base->plugin->name ); ?>-disconnect=1" class="button wpzinc-button-red">
+						<?php
+						$disconnect_url = add_query_arg(
+							array(
+								'page'  => $this->base->plugin->name . '-settings',
+								$this->base->plugin->name . '-disconnect' => 1,
+								'nonce' => wp_create_nonce( $this->base->plugin->name . '-disconnect' ),
+							),
+							admin_url( 'admin.php' )
+						);
+						?>
+						<a href="<?php echo esc_url( $disconnect_url ); ?>" class="button wpzinc-button-red">
 							<?php esc_html_e( 'Deauthorize Plugin', 'wp-to-buffer' ); ?>
 						</a>
 					</div>
