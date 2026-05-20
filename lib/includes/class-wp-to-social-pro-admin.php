@@ -785,7 +785,7 @@ class WP_To_Social_Pro_Admin {
 	 *
 	 * @return  string Result
 	 */
-	public function disconnect() {
+	public function maybe_disconnect_account() {
 
 		// Bail if no nonce.
 		if ( ! isset( $_GET['nonce'] ) ) {
