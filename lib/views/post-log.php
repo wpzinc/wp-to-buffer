@@ -55,13 +55,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 </div>
 <div class="wpzinc-option">
 	<div class="full">
-		<a href="post.php?post=<?php echo esc_attr( $post->ID ); ?>&action=edit&<?php echo esc_attr( $this->base->plugin->name ); ?>-refresh-log=1" class="<?php echo esc_attr( $this->base->plugin->name ); ?>-refresh-log button" data-action="<?php echo esc_attr( $this->base->plugin->filter_name ); ?>_get_log" data-target="#<?php echo esc_attr( $this->base->plugin->name ); ?>-log">
+		<a href="<?php echo esc_attr( $urls['refresh'] ); ?>" class="<?php echo esc_attr( $this->base->plugin->name ); ?>-refresh-log button" data-action="<?php echo esc_attr( $this->base->plugin->filter_name ); ?>_get_log" data-target="#<?php echo esc_attr( $this->base->plugin->name ); ?>-log">
 			<?php esc_html_e( 'Refresh Log', 'wp-to-buffer' ); ?>
 		</a>
-		<a href="post.php?post=<?php echo esc_attr( $post->ID ); ?>&action=edit&<?php echo esc_attr( $this->base->plugin->name ); ?>-export-log=1" class="<?php echo esc_attr( $this->base->plugin->name ); ?>-export-log button">
+		<a href="<?php echo esc_attr( $urls['export'] ); ?>" class="<?php echo esc_attr( $this->base->plugin->name ); ?>-export-log button">
 			<?php esc_html_e( 'Export Log', 'wp-to-buffer' ); ?>
 		</a>
-		<a href="post.php?post=<?php echo esc_attr( $post->ID ); ?>&action=edit&<?php echo esc_attr( $this->base->plugin->name ); ?>-clear-log=1" class="<?php echo esc_attr( $this->base->plugin->name ); ?>-clear-log button wpzinc-button-red" data-action="<?php echo esc_attr( $this->base->plugin->filter_name ); ?>_clear_log" data-target="#<?php echo esc_attr( $this->base->plugin->name ); ?>-log" data-message="<?php esc_attr_e( 'Are you sure you want to clear the logs associated with this Post?', 'wp-to-buffer' ); ?>">
+		<a href="<?php echo esc_attr( $urls['clear'] ); ?>" class="<?php echo esc_attr( $this->base->plugin->name ); ?>-clear-log button wpzinc-button-red" data-action="<?php echo esc_attr( $this->base->plugin->filter_name ); ?>_clear_log" data-target="#<?php echo esc_attr( $this->base->plugin->name ); ?>-log" data-message="<?php esc_attr_e( 'Are you sure you want to clear the logs associated with this Post?', 'wp-to-buffer' ); ?>">
 			<?php esc_html_e( 'Clear Log', 'wp-to-buffer' ); ?>
 		</a>
 	</div>

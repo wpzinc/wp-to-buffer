@@ -3,9 +3,9 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: social media automation, auto post, buffer, social media scheduler, auto publish
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 4.0.9
+Stable tag: 4.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -316,6 +316,11 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 4.1.0 (2026-05-20) =
+* Fix: Automatically delete temporary images
+* Updated: Coding standards
+* Updated: Sanitization
 
 = 4.0.9 (2026-04-08) =
 * Removed: Settings: Products section
