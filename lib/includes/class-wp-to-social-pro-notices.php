@@ -432,7 +432,7 @@ class WP_To_Social_Pro_Notices {
 							'br' => array(),
 						)
 					);
-					?>
+				?>
 				</p>
 			</div>
 			<?php

@@ -393,7 +393,7 @@ class WP_To_Social_Pro_Log_Table extends WP_List_Table {
 		if ( ! filter_has_var( INPUT_GET, 's' ) ) {
 			return $params;
 		}
-		
+
 		// Get search.
 		$search = filter_input( INPUT_GET, 's', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 

@@ -635,7 +635,7 @@ class WP_To_Social_Pro_Log {
 			$wpdb->prefix . $this->table,
 			$wpdb->posts
 		);
-		
+
 		// Add where clauses.
 		if ( $where !== false ) {
 			$query .= ' WHERE ' . $where;
