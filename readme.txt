@@ -318,7 +318,9 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 == Changelog ==
 
 = 4.1.0 (2026-05-20) =
-* 
+* Fix: Automatically delete temporary images
+* Updated: Coding standards
+* Updated: Sanitization
 
 = 4.0.9 (2026-04-08) =
 * Removed: Settings: Products section
