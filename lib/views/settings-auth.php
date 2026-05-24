@@ -220,7 +220,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<p>
 							<?php
 							printf(
-								/* translators: Service name (Buffer, Hootsuite, SocialPilot) */
+								/* translators: Service name (Buffer, Hootsuite) */
 								esc_html__( '%s Pro provides options to generate images based on text, which are them submitted with your status message.', 'wp-to-buffer' ),
 								esc_html( $this->base->plugin->displayName )
 							);
@@ -259,7 +259,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									esc_html__( 'Plugin Logs', 'wp-to-buffer' ),
 									esc_html(
 										sprintf(
-											/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+											/* translators: Social Media Service Name (Buffer, Hootsuite) */
 											__( 'will detail status(es) sent to %s, including any errors or reasons why no status(es) were sent.', 'wp-to-buffer' ),
 											$this->base->plugin->account
 										)
@@ -269,7 +269,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								// Don't link "Plugin Log" text, as Logs are disabled so it won't show anything.
 								echo esc_html(
 									sprintf(
-									/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+									/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite) */
 										__( 'If enabled, the Plugin Logs will detail status(es) sent to %1$s, including any errors or reasons why no status(es) were sent.', 'wp-to-buffer' ),
 										$this->base->plugin->account
 									)
@@ -367,7 +367,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php esc_html_e( 'Provides options for when to run the WordPress Repost Cron Event on this WordPress installation.', 'wp-to-buffer' ); ?><br />
 						<?php
 						printf(
-							/* translators: Service (Buffer, Hootsuite, SocialPilot) */
+							/* translators: Service (Buffer, Hootsuite) */
 							esc_html__( 'When Post(s) are scheduled on %s will depend on the Repost Status Settings.', 'wp-to-buffer' ),
 							esc_html( $this->base->plugin->displayName )
 						);
@@ -382,7 +382,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<p>
 							<?php
 							printf(
-								/* translators: %1$s: Service (Buffer, Hootsuite, SocialPilot), %2$s: Service (Buffer, Hootsuite, SocialPilot) */
+								/* translators: %1$s: Service (Buffer, Hootsuite), %2$s: Service (Buffer, Hootsuite) */
 								esc_html__( 'Automatically schedule old Posts to %1$s with %2$s Pro.', 'wp-to-buffer' ),
 								esc_html( $this->base->plugin->displayName ),
 								esc_html( $this->base->plugin->displayName )
@@ -413,7 +413,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<p>
 							<?php
 							printf(
-								/* translators: %1$s: Service (Buffer, Hootsuite, SocialPilot) */
+								/* translators: %1$s: Service (Buffer, Hootsuite) */
 								esc_html__( '%s Pro provides options to limit which Post Types to show in the Settings screens, as well as prevent access to specific social media profiles linked to your Buffer account, on a per-WordPress Role basis.', 'wp-to-buffer' ),
 								esc_html( $this->base->plugin->displayName )
 							);
@@ -443,7 +443,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<p>
 							<?php
 							printf(
-								/* translators: %1$s: Service (Buffer, Hootsuite, SocialPilot) */
+								/* translators: %1$s: Service (Buffer, Hootsuite) */
 								esc_html__( '%s Pro provides options to define Custom Field / ACF Tags, which will then populate with Post data when used in status messages.  Tags also appear in the Insert Tags dropdown.', 'wp-to-buffer' ),
 								esc_html( $this->base->plugin->displayName )
 							);
