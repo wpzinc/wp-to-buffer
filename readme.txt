@@ -31,7 +31,7 @@ This plugin eliminates repetitive social media posting by automatically adding y
 
 **Dynamic Content Templates** - Customize each social media post using template tags that pull your post title, excerpt, content, featured image, categories, tags, and custom fields.
 
-Don't have a Buffer account? [Sign up for free](https://buffer.com/join/6392aeec568614de895ed38fafa7784b8718c77dc7800419bdfbbacaaaa793d8)
+Don't have a Buffer account? [Sign up for free](https://join.buffer.com/wpzinc)
 
 [youtube https://www.youtube.com/watch?v=GESEMwKSSQg]
 

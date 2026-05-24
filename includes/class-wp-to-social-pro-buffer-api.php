@@ -291,7 +291,7 @@ class WP_To_Social_Pro_Buffer_API {
 	 */
 	public function get_registration_url() {
 
-		return 'https://login.buffer.com/signup?product=publish&plan=free';
+		return 'https://join.buffer.com/wpzinc';
 
 	}
 
