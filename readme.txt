@@ -5,11 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-<<<<<<< HEAD
 Stable tag: 6.0.0
-=======
-Stable tag: 4.1.0
->>>>>>> origin/release-4.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -321,11 +317,11 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 
 == Changelog ==
 
-= 6.0.0 (2026-05-28) =
-* Added: Status: Type. See Docs: []
-* Added: Support for Buffer's new API. See Docs: []
+= 6.0.0 (2026-05-26) =
+* Added: Status: Type. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/status-settings/#type
+* Added: Support for Buffer's new API.
 * Fix: Settings: Authentication: Align account name with Reconnect + Disconnect buttons
-* Removed: Status: Image: No Image, OpenGraph and Feat. Image, Linked to Post. See Docs: []
+* Removed: Status: Image: No Image, OpenGraph and Feat. Image, Linked to Post. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/featured-image-settings/
 * Removed: Settings: General Settings: URL Shortening: This will be reinstated in a future update when Buffer's API supports this
 
 = 4.1.0 (2026-05-20) =
