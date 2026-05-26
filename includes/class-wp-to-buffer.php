@@ -73,8 +73,26 @@ class WP_To_Buffer {
 		$this->plugin->documentation_url = 'https://www.wpzinc.com/documentation/wordpress-buffer-pro';
 		$this->plugin->support_url       = 'https://www.wpzinc.com/support';
 		$this->plugin->upgrade_url       = 'https://www.wpzinc.com/plugins/wordpress-to-buffer-pro';
-		$this->plugin->logo              = WP_TO_BUFFER_PLUGIN_URL . 'lib/assets/images/icons/buffer-dark.svg';
-		$this->plugin->review_name       = 'wp-to-buffer';
+
+		// Logo.
+		$this->plugin->logo                        = WP_TO_BUFFER_PLUGIN_URL . 'lib/assets/images/icons/buffer-dark.svg';
+		$this->plugin->header_background_color     = '#ffffff';
+		$this->plugin->header_primary_text_color   = '#3d3d3d';
+		$this->plugin->header_secondary_text_color = '#6e6e6e';
+
+		// Review.
+		$this->plugin->review_name   = 'wp-to-buffer';
+		$this->plugin->review_notice = sprintf(
+			'Thanks for using %s to schedule your social media statuses on %s!',
+			$this->plugin->displayName,
+			$this->plugin->account
+		);
+
+		// ConvertKit Form UID.
+		$this->plugin->convertkit_form_uid = '71346c6086';
+
+		// Default Settings.
+		$this->plugin->default_schedule = 'queue_end';
 
 		// Defer loading of Plugin Classes.
 		add_action( 'init', array( $this, 'initialize' ), 1 );
@@ -123,12 +141,6 @@ class WP_To_Buffer {
 			__( 'Thanks for using %s to schedule your social media statuses on Buffer!', 'wp-to-buffer' ),
 			$this->plugin->displayName
 		);
-
-		// ConvertKit Form UID.
-		$this->plugin->convertkit_form_uid = '71346c6086';
-
-		// Default Settings.
-		$this->plugin->default_schedule = 'queue_bottom';
 
 		// Upgrade Reasons.
 		$this->plugin->upgrade_reasons = array(

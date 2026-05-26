@@ -350,7 +350,7 @@ class WP_To_Social_Pro_Log {
 			add_meta_box(
 				$this->base->plugin->name . '-log',
 				sprintf(
-					/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+					/* translators: Social Media Service Name (Buffer, Hootsuite) */
 					__( '%s Log', 'wp-to-buffer' ),
 					$this->base->plugin->displayName
 				),
@@ -1056,7 +1056,7 @@ class WP_To_Social_Pro_Log {
                     <tr>
                         <td colspan="' . $colspan . '">' .
 							sprintf(
-								/* translators: Social Media Service Name (Buffer, Hootsuite, SocialPilot) */
+								/* translators: Social Media Service Name (Buffer, Hootsuite) */
 								__( 'No log entries exist, or no status updates have been sent to %s.', 'wp-to-buffer' ),
 								$this->base->plugin->account
 							)
