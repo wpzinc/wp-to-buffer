@@ -456,14 +456,13 @@ class WP_To_Social_Pro_Buffer_API {
 	}
 
 	/**
-	 * Returns the account ID and name for the current account, and
-	 * whether the account is on a free plan.
+	 * Returns the organizations the current account is a member of.
 	 *
-	 * @since   6.0.0
+	 * @since   6.0.1
 	 *
 	 * @return  WP_Error|array
 	 */
-	public function account() {
+	public function organizations() {
 
 		// Build GraphQL query.
 		$query = '
@@ -487,14 +486,41 @@ query {
 			return $result;
 		}
 
-		// Return the first organization's ID and name,
-		// as it's the organization ID that is used for fetching profiles.
-		// In the future, we'll need to figure out how to support multiple orgs.
-		return array(
-			'id'   => $result['data']['account']['organizations'][0]['id'],
-			'name' => $result['data']['account']['organizations'][0]['name'],
-			'plan' => $result['data']['account']['organizations'][0]['limits']['scheduledPosts'] === 10 ? 'free' : 'paid',
-		);
+		foreach ( $result['data']['account']['organizations'] as $organization ) {
+			$organizations[ $organization['id'] ] = array(
+				'id'   => $organization['id'],
+				'name' => $organization['name'],
+				'plan' => $organization['limits']['scheduledPosts'] === 10 ? 'free' : 'paid',
+			);
+		}
+
+		return $organizations;
+
+	}
+
+	/**
+	 * Returns the account within the organization with the given ID.
+	 *
+	 * @since   6.0.0
+	 *
+	 * @param   string $account_id     Account ID.
+	 * @return  WP_Error|array
+	 */
+	public function account( $account_id = '' ) {
+
+		$organizations = $this->organizations();
+
+		// Bail if an error occurred.
+		if ( is_wp_error( $organizations ) ) {
+			return $organizations;
+		}
+
+		// Bail if the organization is not found.
+		if ( ! array_key_exists( $account_id, $organizations ) ) {
+			return new WP_Error( 'organization_not_found', __( 'Organization not found.', 'wp-to-buffer' ) );
+		}
+
+		return $organizations[ $account_id ];
 
 	}
 
@@ -678,7 +704,7 @@ query GetChannels($organizationId: OrganizationId!) {
 
 		// Draft.
 		if ( array_key_exists( 'is_draft', $params ) ) {
-			$variables['saveToDraft'] = $params['is_draft'];
+			$variables['saveToDraft'] = (bool) $params['is_draft'];
 		}
 
 		// Metadata.
@@ -983,8 +1009,8 @@ mutation CreatePost(
 			return $result;
 		}
 
-		// Parse response body and return.
-		return $this->parse_response( wp_remote_retrieve_body( $result ) );
+		// Parse response and return.
+		return $this->parse_response( $result );
 
 	}
 
@@ -1026,8 +1052,8 @@ mutation CreatePost(
 			return $result;
 		}
 
-		// Parse response body.
-		$response = $this->parse_response( wp_remote_retrieve_body( $result ) );
+		// Parse result.
+		$response = $this->parse_response( $result );
 
 		// If this is a retry, return the parsed response.
 		// This prevents an infinite loop of retries when a token refresh fails.
@@ -1125,7 +1151,7 @@ mutation CreatePost(
 	}
 
 	/**
-	 * Gets a customized version of the WordPress default user agent; includes WP Version, PHP version, and ConvertKit plugin version.
+	 * Gets a customized version of the WordPress default user agent.
 	 *
 	 * @since   6.0.0
 	 *
@@ -1133,11 +1159,7 @@ mutation CreatePost(
 	 */
 	private function get_user_agent() {
 
-		return sprintf(
-			'%1$s;%2$s',
-			$this->base->plugin->name,
-			$this->base->plugin->version
-		);
+		return 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36';
 
 	}
 
@@ -1152,8 +1174,21 @@ mutation CreatePost(
 	 */
 	private function parse_response( $response ) {
 
+		// Get HTTP code and body.
+		$http_code = wp_remote_retrieve_response_code( $response );
+		$http_body = wp_remote_retrieve_body( $response );
+
+		// Handle HTTP errors.
+		switch ( $http_code ) {
+			case 403:
+				return new WP_Error(
+					'buffer_api_error',
+					'403 Forbidden'
+				);
+		}
+
 		// Decode response.
-		$body = json_decode( $response, true );
+		$body = json_decode( $http_body, true );
 
 		// If an error is detected, return it.
 		if ( array_key_exists( 'error', $body ) ) {
