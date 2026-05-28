@@ -862,6 +862,10 @@ class WP_To_Social_Pro_Publish {
 			case 'immediate':
 				$args['schedule_type'] = $status['schedule'];
 				break;
+
+			default:
+				$args['schedule_type'] = 'queue_end';
+				break;
 		}
 
 		/**
