@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.0.0
+Stable tag: 6.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -316,6 +316,11 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.0.1 (2026-05-28) =
+* Added: Connect a Buffer Account: Connect all organizations the Buffer account is a team member of
+* Fix: Status: Variable "$saveToDraft" got invalid value "1"; Boolean cannot represent a non boolean value: "1"
+* Fix: PHP Warning: Attempt to read property "base" on null
 
 = 6.0.0 (2026-05-26) =
 * Added: Status: Type. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/status-settings/#type

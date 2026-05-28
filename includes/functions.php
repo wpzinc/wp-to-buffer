@@ -7,8 +7,8 @@
  */
 
 /**
- * Saves the new access token, refresh token and its expiry, and schedules
- * a WordPress Cron event to refresh the token on expiry.
+ * Saves the new access token, refresh token and its expiry against
+ * all accounts that have the existing access token.
  *
  * @since   6.0.0
  *
@@ -21,21 +21,23 @@ function wp_to_buffer_update_credentials( $result, $client_id, $existing_access_
 	// Get Plugin instance.
 	$wp_to_buffer = WP_To_Buffer::get_instance();
 
-	// Get the account ID based on the existing access token.
-	$account_id = $wp_to_buffer->get_class( 'settings' )->get_account_id_by_access_token( $existing_access_token );
+	// Get the account IDs based on the existing access token.
+	$account_id = $wp_to_buffer->get_class( 'settings' )->get_account_ids_by_access_token( $existing_access_token );
 
-	// Bail if the account ID is not found.
-	if ( empty( $account_id ) ) {
+	// Bail if no accounts are found.
+	if ( count( $account_ids ) === 0 ) {
 		return;
 	}
 
-	// Update the access and refresh tokens in the Plugin settings.
-	$wp_to_buffer->get_class( 'settings' )->update_account_credentials(
-		$result['access_token'],
-		$result['refresh_token'],
-		$result['token_expires'],
-		$account_id
-	);
+	// Update the access and refresh tokens for each account.
+	foreach ( $account_ids as $account_id ) {
+		$wp_to_buffer->get_class( 'settings' )->update_account_credentials(
+			$result['access_token'],
+			$result['refresh_token'],
+			$result['token_expires'],
+			$account_id
+		);
+	}
 
 }
 
