@@ -745,7 +745,19 @@ query GetChannels($organizationId: OrganizationId!) {
 
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$metadata['linkAttachment'] = array( 'url' => $params['url'] );
+					$metadata['linkAttachment'] = array(
+						'url' => $params['url'],
+					);
+					$assets                     = array(
+						array(
+							'link' => array(
+								'url'          => $params['url'],
+								'title'        => $params['opengraph']['title'],
+								'description'  => $params['opengraph']['description'],
+								'thumbnailUrl' => $params['opengraph']['thumbnail'],
+							),
+						),
+					);
 				}
 
 				// Annotations.
@@ -762,7 +774,19 @@ query GetChannels($organizationId: OrganizationId!) {
 
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$metadata['linkAttachment'] = array( 'url' => $params['url'] );
+					$metadata['linkAttachment'] = array(
+						'url' => $params['url'],
+					);
+					$assets                     = array(
+						array(
+							'link' => array(
+								'url'          => $params['url'],
+								'title'        => $params['opengraph']['title'],
+								'description'  => $params['opengraph']['description'],
+								'thumbnailUrl' => $params['opengraph']['thumbnail'],
+							),
+						),
+					);
 				}
 
 				// Annotations.
@@ -833,7 +857,19 @@ query GetChannels($organizationId: OrganizationId!) {
 			case 'threads':
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$metadata['linkAttachment'] = array( 'url' => $params['url'] );
+					$metadata['linkAttachment'] = array(
+						'url' => $params['url'],
+					);
+					$assets                     = array(
+						array(
+							'link' => array(
+								'url'          => $params['url'],
+								'title'        => $params['opengraph']['title'],
+								'description'  => $params['opengraph']['description'],
+								'thumbnailUrl' => $params['opengraph']['thumbnail'],
+							),
+						),
+					);
 				}
 
 				// First Comment.
@@ -851,7 +887,19 @@ query GetChannels($organizationId: OrganizationId!) {
 			case 'bluesky':
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$metadata['linkAttachment'] = array( 'url' => $params['url'] );
+					$metadata['linkAttachment'] = array(
+						'url' => $params['url'],
+					);
+					$assets                     = array(
+						array(
+							'link' => array(
+								'url'          => $params['url'],
+								'title'        => $params['opengraph']['title'],
+								'description'  => $params['opengraph']['description'],
+								'thumbnailUrl' => $params['opengraph']['thumbnail'],
+							),
+						),
+					);
 				}
 
 				// First Comment.
@@ -915,15 +963,12 @@ query GetChannels($organizationId: OrganizationId!) {
 						),
 					);
 				}
-
-				// Bail if no assets were added to the array.
-				if ( empty( $assets ) ) {
-					break;
-				}
-
-				// Include assets.
-				$variables['assets'] = $assets;
 				break;
+		}
+
+		// Include assets.
+		if ( isset( $assets ) && ! empty( $assets ) ) {
+			$variables['assets'] = $assets;
 		}
 
 		// Build GraphQL query.
