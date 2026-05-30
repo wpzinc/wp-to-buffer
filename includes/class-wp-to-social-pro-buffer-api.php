@@ -697,6 +697,16 @@ query GetChannels($organizationId: OrganizationId!) {
 				break;
 
 			default:
+				// If no scheduled_at is set, add to end of queue.
+				if ( ! array_key_exists( 'scheduled_at', $params ) ) {
+					$variables['mode'] = 'addToQueue';
+					break;
+				}
+				if ( empty( $params['scheduled_at'] ) ) {
+					$variables['mode'] = 'addToQueue';
+					break;
+				}
+
 				$variables['mode']  = 'customScheduled';
 				$variables['dueAt'] = gmdate( 'Y-m-d\TH:i:s\Z', strtotime( $params['scheduled_at'] ) );
 				break;

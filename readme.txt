@@ -317,7 +317,7 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 
 == Changelog ==
 
-= 6.0.3 (2026-05-28) =
+= 6.0.3 (2026-05-30) =
 * Fix: Status: Scheduling: Add to End of Queue when no scheduling setting defined, avoiding "dueAt must be in the future" errors
 
 = 6.0.2 (2026-05-28) =
