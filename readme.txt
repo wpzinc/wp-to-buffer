@@ -320,6 +320,8 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 = 6.0.3 (2026-05-30) =
 * Fix: Status: Scheduling: Add to End of Queue when no scheduling setting defined, avoiding "dueAt must be in the future" errors
 * Fix: Status: Link: Include Title, Description and Thumbnail in Link Preview
+* Fix: Status: Link: X/Twitter: Include URL in text
+* Fix: Status: Link: Mastodon: Include URL in text
 
 = 6.0.2 (2026-05-28) =
 * Fix: Store refreshed tokens, resolving "Grant request is invalid" errors

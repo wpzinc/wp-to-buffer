@@ -124,7 +124,7 @@ class WP_To_Social_Pro_Buffer_API {
 		<div class="wpzinc-option">
 			<div class="full">
 				<a href="<?php echo esc_attr( $this->get_oauth_url() ); ?>" class="button button-primary">
-					<?php esc_html_e( 'Connect a Buffer Account', 'wp-to-buffer' ); ?>
+					<?php esc_html_e( 'Connect a Buffer Account', 'wp-to-social-pro' ); ?>
 				</a>
 			</div>
 		</div>
@@ -398,7 +398,7 @@ class WP_To_Social_Pro_Buffer_API {
 		if ( empty( $this->refresh_token ) ) {
 			return new WP_Error(
 				'wp_to_buffer_pro_api_refresh_token_error',
-				__( 'No refresh token available; cannot refresh access token.', 'wp-to-buffer' )
+				__( 'No refresh token available; cannot refresh access token.', 'wp-to-social-pro' )
 			);
 		}
 
@@ -517,7 +517,7 @@ query {
 
 		// Bail if the organization is not found.
 		if ( ! array_key_exists( $account_id, $organizations ) ) {
-			return new WP_Error( 'organization_not_found', __( 'Organization not found.', 'wp-to-buffer' ) );
+			return new WP_Error( 'organization_not_found', __( 'Organization not found.', 'wp-to-social-pro' ) );
 		}
 
 		return $organizations[ $account_id ];
@@ -806,6 +806,11 @@ query GetChannels($organizationId: OrganizationId!) {
 						),
 					);
 				}
+
+				// OpenGraph / Link Attachment.
+				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
+					$variables['text'] .= ' ' . $params['url'];
+				}
 				break;
 
 			case 'pinterest':
@@ -924,6 +929,11 @@ query GetChannels($organizationId: OrganizationId!) {
 							),
 						),
 					);
+				}
+
+				// OpenGraph / Link Attachment.
+				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
+					$variables['text'] .= ' ' . $params['url'];
 				}
 				break;
 		}
