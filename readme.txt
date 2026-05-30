@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.0.2
+Stable tag: 6.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -316,6 +316,12 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.0.3 (2026-05-30) =
+* Fix: Status: Scheduling: Add to End of Queue when no scheduling setting defined, avoiding "dueAt must be in the future" errors
+* Fix: Status: Link: Include Title, Description and Thumbnail in Link Preview
+* Fix: Status: Link: X/Twitter: Include URL in text
+* Fix: Status: Link: Mastodon: Include URL in text
 
 = 6.0.2 (2026-05-28) =
 * Fix: Store refreshed tokens, resolving "Grant request is invalid" errors

@@ -790,11 +790,17 @@ class WP_To_Social_Pro_Publish {
 		}
 
 		// Build API compatible arguments.
-		$args = array(
+		$thumbnail = $this->get_post_image( $post, $service, $status['post_type'] );
+		$args      = array(
 			'account'     => $account,
 			'post_type'   => $status['post_type'],
 			'profile_ids' => array( $profile_id ),
 			'text'        => $this->parse_text( $post, $status['message'], ( $service === 'instagram' ? true : false ) ),
+			'opengraph'   => array(
+				'title'       => $this->get_title( $post ),
+				'description' => $this->get_excerpt( $post ),
+				'thumbnail'   => is_array( $thumbnail ) ? $thumbnail['thumbnail'] : '',
+			),
 		);
 
 		// Shorten URLs.
@@ -861,6 +867,10 @@ class WP_To_Social_Pro_Publish {
 			case 'queue_start':
 			case 'immediate':
 				$args['schedule_type'] = $status['schedule'];
+				break;
+
+			default:
+				$args['schedule_type'] = 'queue_end';
 				break;
 		}
 
