@@ -572,8 +572,8 @@ class WP_To_Social_Pro_Common {
 	 */
 	public function get_transient_expiration_time() {
 
-		// Set expiration time for all transients = 12 hours.
-		$expiration_time = ( 12 * HOUR_IN_SECONDS );
+		// Set expiration time for all transients = 1 week.
+		$expiration_time = ( 7 * DAY_IN_SECONDS );
 
 		/**
 		 * Defines the number of seconds before expiring transients.
