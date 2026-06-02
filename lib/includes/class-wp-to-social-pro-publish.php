@@ -502,7 +502,7 @@ class WP_To_Social_Pro_Publish {
 		foreach ( $this->base->get_class( 'settings' )->get_accounts() as $account_id => $account ) {
 			// Configure API for this account and fetch its profiles.
 			$this->base->get_class( 'api' )->set_tokens( $account['access_token'], $account['refresh_token'], $account['token_expires'] );
-			$account_profiles = $this->base->get_class( 'api' )->profiles( true, $this->base->get_class( 'common' )->get_transient_expiration_time(), $account_id );
+			$account_profiles = $this->base->get_class( 'api' )->profiles( false, $this->base->get_class( 'common' )->get_transient_expiration_time(), $account_id );
 
 			// Display an error.
 			if ( is_wp_error( $account_profiles ) ) {

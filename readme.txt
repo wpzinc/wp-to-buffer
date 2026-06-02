@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.0.3
+Stable tag: 6.0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -316,6 +316,10 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.0.4 (2026-06-02) =
+* Fix: API: Profiles: Increase transient expiry from 12 hours to 1 week
+* Fix: API: Profiles: Don't forcibly fetch profiles on every `publish()` call
 
 = 6.0.3 (2026-05-30) =
 * Fix: Status: Scheduling: Add to End of Queue when no scheduling setting defined, avoiding "dueAt must be in the future" errors
