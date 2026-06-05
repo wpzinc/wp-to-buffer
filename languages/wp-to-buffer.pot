@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP to Buffer 6.0.2\n"
+"Project-Id-Version: WP to Buffer 6.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-to-buffer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-28T07:28:11+00:00\n"
+"POT-Creation-Date: 2026-06-05T09:50:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-to-buffer\n"
@@ -58,7 +58,7 @@ msgstr ""
 #: lib/views/settings-auth.php:403
 #: lib/views/settings-auth.php:433
 #: lib/views/settings-auth.php:463
-#: lib/views/settings-post-action-status-upgrade.php:40
+#: lib/views/settings-post-action-status-upgrade.php:41
 #: lib/views/settings-post-actionheader-upgrade-profile.php:29
 #: lib/views/settings-post-actionheader-upgrade.php:29
 msgid "Upgrade"
@@ -207,13 +207,13 @@ msgid "Optionally enable WP-Cron to send status updates via Cron, speeding up UI
 msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s: PHP class name
-#: includes/class-wp-to-buffer.php:276
+#: includes/class-wp-to-buffer.php:282
 #, php-format
 msgid "%1$s: Error: Could not load Plugin class %2$s"
 msgstr ""
 
 #. translators: Plugin Name
-#: includes/class-wp-to-buffer.php:289
+#: includes/class-wp-to-buffer.php:295
 #, php-format
 msgid "%s: Error"
 msgstr ""
@@ -232,7 +232,7 @@ msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s: Plugin Name
 #. translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite)
-#: includes/class-wp-to-social-pro-buffer-api.php:1209
+#: includes/class-wp-to-social-pro-buffer-api.php:1274
 #: lib/includes/class-wp-to-social-pro-admin.php:357
 #, php-format
 msgid "%1$s uses a new API. Please click the `Reconnect` button at %2$s Settings > Authentication to reconnect your account. You won't need to do this again."
@@ -314,30 +314,30 @@ msgid "Settings saved successfully."
 msgstr ""
 
 #. translators: %1$s: Post Type, %2$s: Social Media Service Name (Buffer, Hootsuite), %3$s: Documentation URL
-#: lib/includes/class-wp-to-social-pro-admin.php:794
+#: lib/includes/class-wp-to-social-pro-admin.php:762
 #, php-format
 msgid "To send %1$s to %2$s, at least one action on the Defaults tab must be enabled with a status defined, and at least one social media profile must be enabled below by clicking the applicable profile name and ticking the \"Account Enabled\" box."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:799
+#: lib/includes/class-wp-to-social-pro-admin.php:767
 msgid "See Documentation"
 msgstr ""
 
 #. translators: Social Media Service Name (Buffer, Hootsuite)
-#: lib/includes/class-wp-to-social-pro-admin.php:915
+#: lib/includes/class-wp-to-social-pro-admin.php:883
 #, php-format
 msgid "%s account disconnected successfully."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:940
+#: lib/includes/class-wp-to-social-pro-admin.php:908
 msgid "Nonce field is missing. Settings NOT saved."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:948
+#: lib/includes/class-wp-to-social-pro-admin.php:916
 msgid "Invalid nonce specified. Settings NOT saved."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:998
+#: lib/includes/class-wp-to-social-pro-admin.php:966
 msgid "Statuses field is missing. Settings NOT saved."
 msgstr ""
 
@@ -714,7 +714,7 @@ msgstr ""
 msgid "No WordPress Post could be found for Post ID %s"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-publish.php:2091
+#: lib/includes/class-wp-to-social-pro-publish.php:2158
 msgid "Plugin Error"
 msgstr ""
 
@@ -754,6 +754,36 @@ msgstr ""
 #: lib/includes/class-wp-to-social-pro-validation.php:91
 #: lib/includes/class-wp-to-social-pro-validation.php:96
 msgid "Fix"
+msgstr ""
+
+#: lib/includes/integrations/class-wp-to-social-pro-aioseo.php:72
+#: lib/includes/integrations/class-wp-to-social-pro-rank-math.php:72
+#: lib/includes/integrations/class-wp-to-social-pro-seopress.php:72
+#: lib/includes/integrations/class-wp-to-social-pro-yoast-seo.php:72
+msgid "Meta Title"
+msgstr ""
+
+#: lib/includes/integrations/class-wp-to-social-pro-aioseo.php:73
+#: lib/includes/integrations/class-wp-to-social-pro-rank-math.php:73
+#: lib/includes/integrations/class-wp-to-social-pro-seopress.php:73
+#: lib/includes/integrations/class-wp-to-social-pro-yoast-seo.php:73
+msgid "Meta Description"
+msgstr ""
+
+#: lib/includes/integrations/class-wp-to-social-pro-yoast-seo.php:74
+msgid "Twitter Title"
+msgstr ""
+
+#: lib/includes/integrations/class-wp-to-social-pro-yoast-seo.php:75
+msgid "Twitter Description"
+msgstr ""
+
+#: lib/includes/integrations/class-wp-to-social-pro-yoast-seo.php:76
+msgid "Facebook Title"
+msgstr ""
+
+#: lib/includes/integrations/class-wp-to-social-pro-yoast-seo.php:77
+msgid "Facebook Description"
 msgstr ""
 
 #: lib/views/log.php:30
@@ -1043,11 +1073,11 @@ msgstr ""
 #. translators: Social Media Service Name (Buffer, Hootsuite)
 #: lib/views/settings-post-action-status-upgrade.php:21
 #, php-format
-msgid "Want to Publish multiple Status Updates to %s Pro?"
+msgid "Want to %1$s multiple status updates to %2$s?"
 msgstr ""
 
 #. translators: Plugin Name
-#: lib/views/settings-post-action-status-upgrade.php:33
+#: lib/views/settings-post-action-status-upgrade.php:34
 #, php-format
 msgid "Define additional unique statuses, each with publishing conditions and custom scheduling, per social network with %s."
 msgstr ""

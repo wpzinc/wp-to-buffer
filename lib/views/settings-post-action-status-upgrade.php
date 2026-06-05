@@ -18,8 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			echo esc_html(
 				sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-					__( 'Want to Publish multiple Status Updates to %s Pro?', 'wp-to-buffer' ),
-					$this->base->plugin->account
+					__( 'Want to %1$s multiple status updates to %2$s?', 'wp-to-buffer' ),
+					$post_action,
+					$this->base->plugin->displayName
 				)
 			);
 			?>
