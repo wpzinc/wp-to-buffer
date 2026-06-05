@@ -75,6 +75,7 @@ function WP_To_Buffer_Autoloader( $class_name ) { // phpcs:ignore WordPress.Nami
 	// Define the paths to search for the file.
 	$include_paths = array(
 		WP_TO_BUFFER_PLUGIN_PATH . 'lib/includes',
+		WP_TO_BUFFER_PLUGIN_PATH . 'lib/includes/integrations',
 		WP_TO_BUFFER_PLUGIN_PATH . 'includes',
 	);
 

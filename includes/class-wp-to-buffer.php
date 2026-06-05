@@ -242,6 +242,12 @@ class WP_To_Buffer {
 		$this->classes->twitter_api   = new WP_To_Social_Pro_Twitter_API( self::$instance );
 		$this->classes->validation    = new WP_To_Social_Pro_Validation( self::$instance );
 
+		// Integrations.
+		$this->classes->aioseo    = new WP_To_Social_Pro_AIOSEO( self::$instance );
+		$this->classes->rank_math = new WP_To_Social_Pro_Rank_Math( self::$instance );
+		$this->classes->seopress  = new WP_To_Social_Pro_SEOPress( self::$instance );
+		$this->classes->yoast_seo = new WP_To_Social_Pro_Yoast_SEO( self::$instance );
+
 	}
 
 	/**

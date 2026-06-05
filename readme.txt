@@ -318,6 +318,11 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 == Changelog ==
 
 = 6.0.5 (2026-06-05) =
+* Added: Status: Insert Tags: All in One SEO Pack Title and Description
+* Added: Status: Insert Tags: Rank Math Title and Description
+* Added: Status: Insert Tags: SEOPress Title and Description
+* Added: Status: Insert Tags: Yoast SEO Title and Description
+* Fix: Status: Link: Read Meta Title and Description from AIOSEO, Rank Math, SEOPress and Yoast SEO
 * Fix: Settings: Post Types: Improve performance by using cached profile data
 
 = 6.0.4 (2026-06-02) =
