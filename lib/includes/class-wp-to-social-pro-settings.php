@@ -658,18 +658,22 @@ class WP_To_Social_Pro_Settings {
 	 * @param   bool|int $token_expires   Token Expires (false | timestamp).
 	 * @param   string   $account_id      Account ID.
 	 * @param   string   $account_name    Account Name.
+	 * @param   string   $account_email   Account Email.
+	 * @param   int      $account_channel_limit Account Channel Limit.
 	 * @param   string   $plan            Plan Name.
 	 * @param   array    $profile_ids     Profile IDs.
 	 */
-	public function update_account( $access_token = '', $refresh_token = '', $token_expires = false, $account_id = 'default', $account_name = 'Default', $plan = 'free', $profile_ids = array() ) {
+	public function update_account( $access_token = '', $refresh_token = '', $token_expires = false, $account_id = 'default', $account_name = 'Default', $account_email = '', $account_channel_limit = 0, $plan = 'free', $profile_ids = array() ) {
 
 		// Get existing accounts.
 		$accounts = $this->get_accounts();
 
-		// Add new account.
+		// Update account.
 		$accounts[ $account_id ] = array(
 			'id'            => $account_id,
 			'name'          => $account_name,
+			'email'         => $account_email,
+			'channel_limit' => $account_channel_limit,
 			'plan'          => $plan,
 			'access_token'  => $access_token,
 			'refresh_token' => $refresh_token,
@@ -717,12 +721,14 @@ class WP_To_Social_Pro_Settings {
 	 *
 	 * @since   6.0.0
 	 *
-	 * @param   string $account_id      Account ID.
-	 * @param   string $account_name    Account Name.
-	 * @param   string $plan            Plan Name.
-	 * @param   array  $profile_ids     Profile IDs.
+	 * @param   string $account_id            Account ID.
+	 * @param   string $account_name          Account Name.
+	 * @param   string $account_email         Account Email.
+	 * @param   int    $account_channel_limit Account Channel Limit.
+	 * @param   string $plan                  Plan Name.
+	 * @param   array  $profile_ids           Profile IDs.
 	 */
-	public function update_account_information( $account_id = 'default', $account_name = 'Default', $plan = 'free', $profile_ids = array() ) {
+	public function update_account_information( $account_id = 'default', $account_name = 'Default', $account_email = '', $account_channel_limit = 0, $plan = 'free', $profile_ids = array() ) {
 
 		// Get existing accounts.
 		$accounts = $this->get_accounts();
@@ -733,9 +739,11 @@ class WP_To_Social_Pro_Settings {
 		}
 
 		// Update the account information.
-		$accounts[ $account_id ]['name']        = $account_name;
-		$accounts[ $account_id ]['plan']        = $plan;
-		$accounts[ $account_id ]['profile_ids'] = $profile_ids;
+		$accounts[ $account_id ]['name']          = $account_name;
+		$accounts[ $account_id ]['plan']          = $plan;
+		$accounts[ $account_id ]['email']         = $account_email;
+		$accounts[ $account_id ]['channel_limit'] = $account_channel_limit;
+		$accounts[ $account_id ]['profile_ids']   = $profile_ids;
 
 		// Update the accounts.
 		update_option( $this->base->plugin->settingsName . '-accounts', $accounts );

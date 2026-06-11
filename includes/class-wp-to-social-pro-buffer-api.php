@@ -460,38 +460,55 @@ class WP_To_Social_Pro_Buffer_API {
 	 *
 	 * @since   6.0.1
 	 *
+	 * @param   bool $force                      Force API call (false = use WordPress transient).
+	 * @param   int  $transient_expiration_time  Transient Expiration Time, in seconds (default: 12 hours).
+	 *
 	 * @return  WP_Error|array
 	 */
-	public function organizations() {
+	public function organizations( $force = false, $transient_expiration_time = 43200 ) {
 
-		// Build GraphQL query.
-		$query = '
+		$organizations = array();
+
+		// Check if our WordPress transient already has this data.
+		// This reduces the number of times we query the API.
+		$organizations = get_transient( $this->base->plugin->name . '_buffer_api_organizations' );
+		if ( $force || false === $organizations ) {
+			// Build GraphQL query.
+			$query = '
 query {
-  account {
-	organizations {
-      id
-	  name
-	  limits {
-		scheduledPosts
-	  }
-    }
-  }
+	account {
+		organizations {
+		id
+		name
+		ownerEmail
+			limits {
+				channels
+				scheduledPosts
+			}
+		}
+	}
 }';
 
-		// Query API.
-		$result = $this->graphql_query( $query );
+			// Query API.
+			$result = $this->graphql_query( $query );
 
-		// Bail if an error occurred.
-		if ( is_wp_error( $result ) ) {
-			return $result;
-		}
+			// Bail if an error occurred.
+			if ( is_wp_error( $result ) ) {
+				return $result;
+			}
 
-		foreach ( $result['data']['account']['organizations'] as $organization ) {
-			$organizations[ $organization['id'] ] = array(
-				'id'   => $organization['id'],
-				'name' => $organization['name'],
-				'plan' => $organization['limits']['scheduledPosts'] === 10 ? 'free' : 'paid',
-			);
+			foreach ( $result['data']['account']['organizations'] as $organization ) {
+				$organizations[ $organization['id'] ] = array(
+					'id'            => $organization['id'],
+					'name'          => $organization['name'],
+					'email'         => $organization['ownerEmail'],
+					'channel_limit' => $organization['limits']['channels'],
+					'plan'          => $organization['limits']['scheduledPosts'] === 10 ? 'free' : 'paid',
+				);
+			}
+
+			// Store organizations in transient.
+			set_transient( $this->base->plugin->name . '_buffer_api_organizations', $organizations, $transient_expiration_time );
 		}
 
 		return $organizations;
@@ -508,7 +525,7 @@ query {
 	 */
 	public function account( $account_id = '' ) {
 
-		$organizations = $this->organizations();
+		$organizations = $this->organizations( false, $this->base->get_class( 'common' )->get_transient_expiration_time() );
 
 		// Bail if an error occurred.
 		if ( is_wp_error( $organizations ) ) {
