@@ -720,6 +720,9 @@ class WP_To_Social_Pro_Admin {
 			 * Settings
 			 */
 			case 'auth':
+				// Accounts.
+				$accounts = $this->base->get_class( 'settings' )->get_accounts();
+
 				// Log Settings.
 				$log_levels = $this->base->get_class( 'log' )->get_level_options();
 

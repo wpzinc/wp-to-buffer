@@ -135,7 +135,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$upgrade_content = esc_html__( 'Subscribe to the newsletter and receive updates on our WordPress Plugins.', 'wp-to-buffer' ) . '<script async data-uid="' . $this->base->plugin->convertkit_form_uid . '" src="https://dedicated-crafter-4782.ck.page/' . $this->base->plugin->convertkit_form_uid . '/index.js"></script>';
 
 					// If a free Buffer account is connected, show the switch to Social Post Flow upgrade.
-					$accounts = $this->base->get_class( 'settings' )->get_accounts();
 					foreach ( $accounts as $account ) {
 						if ( $account['plan'] === 'free' ) {
 							$upgrade_title       = esc_html__( 'Switch to Social Post Flow', 'wp-to-buffer' );
@@ -148,7 +147,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					require $this->base->plugin->folder . '/_modules/dashboard/views/sidebar-upgrade.php';
 					?>
-									</div>
+				</div>
 				<!-- /Sidebar -->
 			</div>
 		</div> 
