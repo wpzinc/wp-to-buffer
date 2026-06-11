@@ -94,7 +94,10 @@ class WP_To_Social_Pro_Admin {
 		$this->base->get_class( 'notices' )->enable_store();
 
 		// Fetch Organizations.
-		$organizations = $this->base->get_class( 'api' )->organizations();
+		$organizations = $this->base->get_class( 'api' )->organizations(
+			true,
+			$this->base->get_class( 'common' )->get_transient_expiration_time()
+		);
 
 		// If an error occured, add it to the notices.
 		if ( is_wp_error( $organizations ) ) {
@@ -133,6 +136,8 @@ class WP_To_Social_Pro_Admin {
 				$tokens['token_expires'],
 				$account['id'],
 				$account['name'],
+				$account['email'],
+				$account['channel_limit'],
 				$account['plan'],
 				array_keys( $profiles )
 			);
@@ -264,7 +269,11 @@ class WP_To_Social_Pro_Admin {
 			}
 
 			// Fetch Profiles.
-			$profiles = $this->base->get_class( 'api' )->profiles( true, $this->base->get_class( 'common' )->get_transient_expiration_time(), $account['id'] );
+			$profiles = $this->base->get_class( 'api' )->profiles(
+				true,
+				$this->base->get_class( 'common' )->get_transient_expiration_time(),
+				$account['id']
+			);
 
 			// If something went wrong, show an error.
 			if ( is_wp_error( $profiles ) ) {
@@ -279,6 +288,8 @@ class WP_To_Social_Pro_Admin {
 				$expiry,
 				$account['id'],
 				$account['name'],
+				$account['email'],
+				$account['channel_limit'],
 				$account['plan'],
 				array_keys( $profiles )
 			);
@@ -691,6 +702,7 @@ class WP_To_Social_Pro_Admin {
 		if ( $this->get_tab() === 'auth' ) {
 			$profiles = $this->get_profiles();
 		} else {
+			// Get profiles from cache.
 			$profiles = $this->get_cached_profiles();
 		}
 
@@ -708,6 +720,9 @@ class WP_To_Social_Pro_Admin {
 			 * Settings
 			 */
 			case 'auth':
+				// Accounts.
+				$accounts = $this->base->get_class( 'settings' )->get_accounts();
+
 				// Log Settings.
 				$log_levels = $this->base->get_class( 'log' )->get_level_options();
 
@@ -1057,6 +1072,8 @@ class WP_To_Social_Pro_Admin {
 			$this->base->get_class( 'settings' )->update_account_information(
 				$account_id,
 				$account_information['name'],
+				$account_information['email'],
+				$account_information['channel_limit'],
 				$account_information['plan'],
 				array_keys( $account_profiles )
 			);

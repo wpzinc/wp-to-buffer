@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.0.5
+Stable tag: 6.0.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -316,6 +316,9 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.0.6 (2026-06-11) =
+* Fix: Settings: Improve performance by using cached organization data
 
 = 6.0.5 (2026-06-05) =
 * Added: Status: Insert Tags: All in One SEO Pack Title and Description

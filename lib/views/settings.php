@@ -129,7 +129,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<!-- Sidebar -->
 				<div id="postbox-container-1" class="postbox-container">
-					<?php require $this->base->plugin->folder . '/_modules/dashboard/views/sidebar-upgrade.php'; ?>		
+					<?php
+					// Define the default upgrade content.
+					$upgrade_title   = __( 'Keep Updated', 'wp-to-buffer' );
+					$upgrade_content = esc_html__( 'Subscribe to the newsletter and receive updates on our WordPress Plugins.', 'wp-to-buffer' ) . '<script async data-uid="' . $this->base->plugin->convertkit_form_uid . '" src="https://dedicated-crafter-4782.ck.page/' . $this->base->plugin->convertkit_form_uid . '/index.js"></script>';
+
+					// If a free Buffer account is connected, show the switch to Social Post Flow upgrade.
+					foreach ( $accounts as $account ) {
+						if ( $account['plan'] === 'free' ) {
+							$upgrade_title       = esc_html__( 'Switch to Social Post Flow', 'wp-to-buffer' );
+							$upgrade_content     = esc_html__( 'Up to 5 channels for $49/year. Our own scheduling tool replaces Buffer entirely. The same 5 channels on Buffer\'s paid plan would cost around $360/year, so you save over $300 a year and remove the per channel fee for good.', 'wp-to-buffer' );
+							$upgrade_url         = 'https://wordpress.org/plugins/social-post-flow/';
+							$upgrade_button_text = esc_html__( 'Try Social Post Flow', 'wp-to-buffer' );
+							break;
+						}
+					}
+
+					require $this->base->plugin->folder . '/_modules/dashboard/views/sidebar-upgrade.php';
+					?>
 				</div>
 				<!-- /Sidebar -->
 			</div>
