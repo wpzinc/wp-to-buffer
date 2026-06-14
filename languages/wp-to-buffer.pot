@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP to Buffer 6.0.5\n"
+"Project-Id-Version: WP to Buffer 6.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-to-buffer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-05T09:50:03+00:00\n"
+"POT-Creation-Date: 2026-06-14T09:13:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-to-buffer\n"
@@ -40,7 +40,7 @@ msgid "http://www.wpzinc.com"
 msgstr ""
 
 #: includes/class-wp-to-buffer.php:119
-#: lib/includes/class-wp-to-social-pro-admin.php:644
+#: lib/includes/class-wp-to-social-pro-admin.php:655
 #: lib/views/settings-auth-required.php:19
 #: lib/views/settings.php:18
 #: lib/views/settings.php:40
@@ -226,118 +226,118 @@ msgstr ""
 msgid "No refresh token available; cannot refresh access token."
 msgstr ""
 
-#: includes/class-wp-to-social-pro-buffer-api.php:520
+#: includes/class-wp-to-social-pro-buffer-api.php:537
 msgid "Organization not found."
 msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s: Plugin Name
 #. translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite)
-#: includes/class-wp-to-social-pro-buffer-api.php:1274
-#: lib/includes/class-wp-to-social-pro-admin.php:357
+#: includes/class-wp-to-social-pro-buffer-api.php:1291
+#: lib/includes/class-wp-to-social-pro-admin.php:368
 #, php-format
 msgid "%1$s uses a new API. Please click the `Reconnect` button at %2$s Settings > Authentication to reconnect your account. You won't need to do this again."
 msgstr ""
 
 #. translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite)
-#: lib/includes/class-wp-to-social-pro-admin.php:145
-#: lib/includes/class-wp-to-social-pro-admin.php:291
+#: lib/includes/class-wp-to-social-pro-admin.php:150
+#: lib/includes/class-wp-to-social-pro-admin.php:302
 #, php-format
 msgid "Thanks! You've connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s"
 msgstr ""
 
 #. translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite)
-#: lib/includes/class-wp-to-social-pro-admin.php:191
+#: lib/includes/class-wp-to-social-pro-admin.php:196
 #, php-format
 msgid "You did not grant our Plugin access to your %1$s account. We are unable to post to %2$s until you do this. Please click on the Authorize Plugin button."
 msgstr ""
 
 #. translators: Social Media Service Name (Buffer, Hootsuite)
-#: lib/includes/class-wp-to-social-pro-admin.php:208
+#: lib/includes/class-wp-to-social-pro-admin.php:213
 #, php-format
 msgid "We were unable to complete authentication with %s.  Please try again, or"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:212
-#: lib/includes/class-wp-to-social-pro-admin.php:227
+#: lib/includes/class-wp-to-social-pro-admin.php:217
+#: lib/includes/class-wp-to-social-pro-admin.php:232
 msgid "contact us for support"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:225
+#: lib/includes/class-wp-to-social-pro-admin.php:230
 msgid "The oAuth process has expired.  Please try again, or"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:228
+#: lib/includes/class-wp-to-social-pro-admin.php:233
 msgid "if this issue persists."
 msgstr ""
 
 #. translators: Plugin Name
-#: lib/includes/class-wp-to-social-pro-admin.php:319
+#: lib/includes/class-wp-to-social-pro-admin.php:330
 #, php-format
 msgid "%s requires the PHP cURL extension to be installed and enabled by your web host."
 msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s, %3$s: Social Media Service Name (Buffer, Hootsuite), %4$s: URL to Authorize Plugin Screen, %5$s: URL to Register Account with Service
-#: lib/includes/class-wp-to-social-pro-admin.php:339
+#: lib/includes/class-wp-to-social-pro-admin.php:350
 #, php-format
 msgid "%1$s needs to be authorized with %2$s before you can start sending Posts to %3$s."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:345
+#: lib/includes/class-wp-to-social-pro-admin.php:356
 msgid "Click here to Authorize."
 msgstr ""
 
 #. translators: Social Media Service Name (Buffer, Hootsuite)
-#: lib/includes/class-wp-to-social-pro-admin.php:430
+#: lib/includes/class-wp-to-social-pro-admin.php:441
 #: lib/includes/class-wp-to-social-pro-log.php:1060
 #, php-format
 msgid "No log entries exist, or no status updates have been sent to %s."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:436
+#: lib/includes/class-wp-to-social-pro-admin.php:447
 msgid "Are you sure you want to delete this condition?"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:437
+#: lib/includes/class-wp-to-social-pro-admin.php:448
 msgid "Are you sure you want to delete this status?"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:523
+#: lib/includes/class-wp-to-social-pro-admin.php:534
 msgid "Saving"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:524
+#: lib/includes/class-wp-to-social-pro-admin.php:535
 msgid "Saved!"
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:681
+#: lib/includes/class-wp-to-social-pro-admin.php:692
 msgid "Settings saved successfully."
 msgstr ""
 
 #. translators: %1$s: Post Type, %2$s: Social Media Service Name (Buffer, Hootsuite), %3$s: Documentation URL
-#: lib/includes/class-wp-to-social-pro-admin.php:762
+#: lib/includes/class-wp-to-social-pro-admin.php:777
 #, php-format
 msgid "To send %1$s to %2$s, at least one action on the Defaults tab must be enabled with a status defined, and at least one social media profile must be enabled below by clicking the applicable profile name and ticking the \"Account Enabled\" box."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:767
+#: lib/includes/class-wp-to-social-pro-admin.php:782
 msgid "See Documentation"
 msgstr ""
 
 #. translators: Social Media Service Name (Buffer, Hootsuite)
-#: lib/includes/class-wp-to-social-pro-admin.php:883
+#: lib/includes/class-wp-to-social-pro-admin.php:898
 #, php-format
 msgid "%s account disconnected successfully."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:908
+#: lib/includes/class-wp-to-social-pro-admin.php:923
 msgid "Nonce field is missing. Settings NOT saved."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:916
+#: lib/includes/class-wp-to-social-pro-admin.php:931
 msgid "Invalid nonce specified. Settings NOT saved."
 msgstr ""
 
-#: lib/includes/class-wp-to-social-pro-admin.php:966
+#: lib/includes/class-wp-to-social-pro-admin.php:981
 msgid "Statuses field is missing. Settings NOT saved."
 msgstr ""
 
@@ -1321,4 +1321,24 @@ msgstr ""
 
 #: lib/views/settings.php:121
 msgid "Save"
+msgstr ""
+
+#: lib/views/settings.php:134
+msgid "Keep Updated"
+msgstr ""
+
+#: lib/views/settings.php:135
+msgid "Subscribe to the newsletter and receive updates on our WordPress Plugins."
+msgstr ""
+
+#: lib/views/settings.php:140
+msgid "Switch to Social Post Flow"
+msgstr ""
+
+#: lib/views/settings.php:141
+msgid "Up to 5 channels for $49/year. Our own scheduling tool replaces Buffer entirely. The same 5 channels on Buffer's paid plan would cost around $360/year, so you save over $300 a year and remove the per channel fee for good."
+msgstr ""
+
+#: lib/views/settings.php:143
+msgid "Try Social Post Flow"
 msgstr ""
