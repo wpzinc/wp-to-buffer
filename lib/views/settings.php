@@ -139,7 +139,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						if ( $account['plan'] === 'free' ) {
 							$upgrade_title       = esc_html__( 'Switch to Social Post Flow', 'wp-to-buffer' );
 							$upgrade_content     = esc_html__( 'Up to 5 channels for $49/year. Our own scheduling tool replaces Buffer entirely. The same 5 channels on Buffer\'s paid plan would cost around $360/year, so you save over $300 a year and remove the per channel fee for good.', 'wp-to-buffer' );
-							$upgrade_url         = 'https://wordpress.org/plugins/social-post-flow/';
+							$upgrade_url         = 'https://www.socialpostflow.com/?utm_source=wp-to-buffer&utm_medium=settings&utm_campaign=sidebar-upgrade';
 							$upgrade_button_text = esc_html__( 'Try Social Post Flow', 'wp-to-buffer' );
 							break;
 						}
