@@ -814,7 +814,7 @@ class WP_To_Social_Pro_Publish {
 		}
 
 		// URL.
-		switch ( $args['post_type'] ) {
+		switch ( $status['post_type'] ) {
 			/**
 			 * Link
 			 */
@@ -835,7 +835,7 @@ class WP_To_Social_Pro_Publish {
 		}
 
 		// Image(s).
-		switch ( $args['post_type'] ) {
+		switch ( $status['post_type'] ) {
 			case 'pin':
 			case 'googlebusiness':
 			case 'story':
@@ -843,8 +843,11 @@ class WP_To_Social_Pro_Publish {
 				switch ( $status['image'] ) {
 					/**
 					 * Featured, Additional or Content Image
+					 * 1 and 2 are used for backward compatibility where settings are not updated.
 					 */
 					case 'featured_image':
+					case '1':
+					case '2':
 						// Plugin's First (Featured) Image, Post's Featured Image or Post Content's First Image.
 						$image = $this->get_post_image( $post, $service, $status['post_type'] );
 
