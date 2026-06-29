@@ -796,11 +796,6 @@ class WP_To_Social_Pro_Publish {
 			'post_type'   => $status['post_type'],
 			'profile_ids' => array( $profile_id ),
 			'text'        => $this->parse_text( $post, $status['message'], ( $service === 'instagram' ? true : false ) ),
-			'opengraph'   => array(
-				'title'       => $this->get_opengraph_title( $post ),
-				'description' => $this->get_opengraph_excerpt( $post ),
-				'thumbnail'   => is_array( $thumbnail ) ? $thumbnail['image'] : '',
-			),
 		);
 
 		// Shorten URLs.
@@ -1589,33 +1584,6 @@ class WP_To_Social_Pro_Publish {
 	}
 
 	/**
-	 * Returns the OpenGraph title to be used on the Link Post Type.
-	 *
-	 * @since   6.0.5
-	 *
-	 * @param   WP_Post $post               WordPress Post.
-	 * @return  string
-	 */
-	private function get_opengraph_title( $post ) {
-
-		$title = $this->get_title( $post );
-
-		/**
-		 * Filters the OpenGraph title to be used on the Link Post Type.
-		 *
-		 * @since   6.0.5
-		 *
-		 * @param   string      $title      Post Title.
-		 * @param   WP_Post     $post       WordPress Post.
-		 */
-		$title = apply_filters( $this->base->plugin->filter_name . '_publish_get_opengraph_title', $title, $post );
-
-		// Return.
-		return $title;
-
-	}
-
-	/**
 	 * Safely generate an excerpt, stripping tags, shortcodes, falling back
 	 * to the content if the Post Type doesn't have excerpt support, and applying filters so that
 	 * third party plugins (such as translation plugins) can determine the final output.
@@ -1654,36 +1622,6 @@ class WP_To_Social_Pro_Publish {
 		 * @param   WP_Post     $post       WordPress Post.
 		 */
 		$excerpt = apply_filters( $this->base->plugin->filter_name . '_publish_get_excerpt', $excerpt, $post );
-
-		// Return.
-		return $excerpt;
-
-	}
-
-	/**
-	 * Returns the OpenGraph excerpt to be used on the Link Post Type.
-	 *
-	 * @since   6.0.5
-	 *
-	 * @param   WP_Post $post               WordPress Post.
-	 * @return  string
-	 */
-	private function get_opengraph_excerpt( $post ) {
-
-		$excerpt = $this->get_excerpt( $post, true );
-
-		/**
-		 * Filters the OpenGraph excerpt to be used on the Link Post Type.
-		 *
-		 * @since   6.0.5
-		 *
-		 * @param   string      $excerpt      Post Excerpt.
-		 * @param   WP_Post     $post       WordPress Post.
-		 */
-		$excerpt = apply_filters( $this->base->plugin->filter_name . '_publish_get_opengraph_excerpt', $excerpt, $post );
-
-		// Limit to 300 characters.
-		$excerpt = substr( $excerpt, 0, 300 );
 
 		// Return.
 		return $excerpt;

@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.0.8
+Stable tag: 6.0.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -316,6 +316,9 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.0.9 (2026-06-29) =
+* Fix: Status: Link: Revert reading Meta Title and Description from AIOSEO, Rank Math, SEOPress and Yoast SEO, using Buffer's assets[].link.url instead. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/debugging-issues/#link-posts
 
 = 6.0.8 (2026-06-20) =
 * Fix: Status: Set image when Status' Type is not 'Image' and posting to a network that only supports images

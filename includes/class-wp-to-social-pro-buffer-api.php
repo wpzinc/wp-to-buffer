@@ -762,16 +762,10 @@ query GetChannels($organizationId: OrganizationId!) {
 
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$metadata['linkAttachment'] = array(
-						'url' => $params['url'],
-					);
-					$assets                     = array(
+					$assets = array(
 						array(
 							'link' => array(
-								'url'          => $params['url'],
-								'title'        => $params['opengraph']['title'],
-								'description'  => $params['opengraph']['description'],
-								'thumbnailUrl' => $params['opengraph']['thumbnail'],
+								'url' => $params['url'],
 							),
 						),
 					);
@@ -791,16 +785,10 @@ query GetChannels($organizationId: OrganizationId!) {
 
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$metadata['linkAttachment'] = array(
-						'url' => $params['url'],
-					);
-					$assets                     = array(
+					$assets = array(
 						array(
 							'link' => array(
-								'url'          => $params['url'],
-								'title'        => $params['opengraph']['title'],
-								'description'  => $params['opengraph']['description'],
-								'thumbnailUrl' => $params['opengraph']['thumbnail'],
+								'url' => $params['url'],
 							),
 						),
 					);
@@ -879,16 +867,10 @@ query GetChannels($organizationId: OrganizationId!) {
 			case 'threads':
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$metadata['linkAttachment'] = array(
-						'url' => $params['url'],
-					);
-					$assets                     = array(
+					$assets = array(
 						array(
 							'link' => array(
-								'url'          => $params['url'],
-								'title'        => $params['opengraph']['title'],
-								'description'  => $params['opengraph']['description'],
-								'thumbnailUrl' => $params['opengraph']['thumbnail'],
+								'url' => $params['url'],
 							),
 						),
 					);
@@ -909,16 +891,10 @@ query GetChannels($organizationId: OrganizationId!) {
 			case 'bluesky':
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$metadata['linkAttachment'] = array(
-						'url' => $params['url'],
-					);
-					$assets                     = array(
+					$assets = array(
 						array(
 							'link' => array(
-								'url'          => $params['url'],
-								'title'        => $params['opengraph']['title'],
-								'description'  => $params['opengraph']['description'],
-								'thumbnailUrl' => $params['opengraph']['thumbnail'],
+								'url' => $params['url'],
 							),
 						),
 					);
