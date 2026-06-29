@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.0.8
+Stable tag: 6.0.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -71,10 +71,6 @@ Unlike direct posting plugins (WP to Facebook, WP to Twitter clones), this plugi
 **Cross-Network Management** - Manage all social networks from one Buffer dashboard
 **No API Complications** - Buffer handles all social network API connections and changes
 **Duplicate Prevention** - Built-in protection ensures you never post the same content twice
-
-=== Trusted Buffer API Partner ===
-
-We're an official Buffer Partner (since October 2020), ensuring reliable access to Buffer's API for seamless social media automation.
 
 === Pro Version Features ===
 
@@ -169,7 +165,7 @@ We **never** store any information on our web site or API during this process.
 
 = Can I still auto post to Twitter / X with this plugin? =
 
-Yes! Buffer is [not impacted](https://x.com/buffer/status/1652659063073783808) by Twitter's 2023 API changes. You can continue using this plugin to auto post to Twitter (now called X) without interruption. Buffer maintains its Twitter API access as an approved partner.
+Yes! Buffer is [not impacted](https://x.com/buffer/status/1652659063073783808) by Twitter's 2023 API changes. You can continue using this plugin to auto post to Twitter (now called X) without interruption.
 
 = Which social media platforms are supported for auto posting? =
 
@@ -184,10 +180,6 @@ The free version supports:
 * TikTok
 
 [Pro version](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) adds Instagram and Pinterest support.
-
-= Is the Buffer API still available for this plugin? =
-
-Yes. We're an official Buffer Partner (since October 2020), which guarantees continued API access. The plugin is actively maintained and fully compatible with Buffer's current API.
 
 = Do I need a paid Buffer account? =
 
@@ -316,6 +308,9 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.0.9 (2026-06-29) =
+* Fix: Status: Link: Revert reading Meta Title and Description from AIOSEO, Rank Math, SEOPress and Yoast SEO, using Buffer's assets[].link.url instead. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/debugging-issues/#link-posts
 
 = 6.0.8 (2026-06-20) =
 * Fix: Status: Set image when Status' Type is not 'Image' and posting to a network that only supports images
