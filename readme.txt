@@ -72,10 +72,6 @@ Unlike direct posting plugins (WP to Facebook, WP to Twitter clones), this plugi
 **No API Complications** - Buffer handles all social network API connections and changes
 **Duplicate Prevention** - Built-in protection ensures you never post the same content twice
 
-=== Trusted Buffer API Partner ===
-
-We're an official Buffer Partner (since October 2020), ensuring reliable access to Buffer's API for seamless social media automation.
-
 === Pro Version Features ===
 
 > <a href="https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/" rel="friend" title="WordPress to Buffer Pro">WordPress to Buffer Pro</a> includes advanced social media automation features:<br />
@@ -169,7 +165,7 @@ We **never** store any information on our web site or API during this process.
 
 = Can I still auto post to Twitter / X with this plugin? =
 
-Yes! Buffer is [not impacted](https://x.com/buffer/status/1652659063073783808) by Twitter's 2023 API changes. You can continue using this plugin to auto post to Twitter (now called X) without interruption. Buffer maintains its Twitter API access as an approved partner.
+Yes! Buffer is [not impacted](https://x.com/buffer/status/1652659063073783808) by Twitter's 2023 API changes. You can continue using this plugin to auto post to Twitter (now called X) without interruption.
 
 = Which social media platforms are supported for auto posting? =
 
@@ -184,10 +180,6 @@ The free version supports:
 * TikTok
 
 [Pro version](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) adds Instagram and Pinterest support.
-
-= Is the Buffer API still available for this plugin? =
-
-Yes. We're an official Buffer Partner (since October 2020), which guarantees continued API access. The plugin is actively maintained and fully compatible with Buffer's current API.
 
 = Do I need a paid Buffer account? =
 
