@@ -816,6 +816,9 @@ class WP_To_Social_Pro_Publish {
 			case 'link':
 			case 'pin':
 			case 'googlebusiness':
+				// If no URL is specified in the status, use the Post's URL.
+				$status['url'] = empty( $status['url'] ) ? '{url}' : $status['url'];
+
 				// Get URL.
 				$url = $this->parse_text( $post, $status['url'] );
 
