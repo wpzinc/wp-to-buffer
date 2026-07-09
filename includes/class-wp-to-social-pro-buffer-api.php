@@ -691,13 +691,17 @@ query GetChannels($organizationId: OrganizationId!) {
 	public function updates_create( $params, $service ) {
 
 		// Build GraphQL variables.
+		// assets defaults to an empty array; Buffer's schema requires a
+		// non-null list even for text-only posts, so we always send this key.
 		$variables = array(
 			'channelId'      => $params['profile_ids'][0],
 			'text'           => $params['text'],
 			'schedulingType' => 'automatic',
 			'mode'           => 'addToQueue',
 			'source'         => 'wp-buffer',
+			'assets'         => array(),
 		);
+		$assets    = array();
 
 		// Scheduling.
 		switch ( $params['schedule_type'] ) {
@@ -969,8 +973,9 @@ query GetChannels($organizationId: OrganizationId!) {
 				break;
 		}
 
-		// Include assets.
-		if ( isset( $assets ) && ! empty( $assets ) ) {
+		// Include assets. Always overwrites the default empty array
+		// initialised above, if the service branch built any.
+		if ( ! empty( $assets ) ) {
 			$variables['assets'] = $assets;
 		}
 
@@ -984,7 +989,7 @@ mutation CreatePost(
     $source: String
     $dueAt: DateTime
     $saveToDraft: Boolean
-    $assets: [AssetInput!]
+    $assets: [AssetInput!]!
     $metadata: PostInputMetaData
 ) {
     createPost(input: {
