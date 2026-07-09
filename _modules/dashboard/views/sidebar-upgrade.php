@@ -1,6 +1,7 @@
 <?php
 /**
- * Outputs settings screen sidebar for free plugins.
+ * Outputs settings screen sidebar for free plugins with
+ * an email newsletter form.
  *
  * @package WPZincDashboardWidget
  * @author WP Zinc
@@ -11,27 +12,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-
+<!-- Keep Updated -->
 <div class="postbox">
 	<h3 class="hndle">
-		<?php echo esc_html( $upgrade_title ); ?>
+		<?php esc_html_e( 'Keep Updated', $this->base->plugin->name ); // phpcs:ignore WordPress.WP.I18n ?>
 	</h3>
 
 	<div class="wpzinc-option">
 		<p class="description">
-			<?php echo $upgrade_content; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			<?php esc_html_e( 'Subscribe to the newsletter and receive updates on our WordPress Plugins.', $this->base->plugin->name ); // phpcs:ignore WordPress.WP.I18n ?>
 		</p>
 	</div>
 
-	<?php
-	if ( isset( $upgrade_url ) && isset( $upgrade_button_text ) ) {
-		?>
-		<div class="wpzinc-option">
-			<a href="<?php echo esc_url( $upgrade_url ); ?>" class="button button-primary" target="_blank">
-				<?php echo esc_html( $upgrade_button_text ); ?>
-			</a>
-		</div>
-		<?php
-	}
-	?>
+	<script async data-uid="<?php echo esc_attr( $this->base->plugin->convertkit_form_uid ); ?>" src="https://dedicated-crafter-4782.ck.page/<?php echo esc_attr( $this->base->plugin->convertkit_form_uid ); ?>/index.js"></script>
 </div>
