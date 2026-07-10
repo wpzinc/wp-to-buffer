@@ -83,8 +83,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php
 				// List connected accounts.
 				foreach ( $this->base->get_class( 'settings' )->get_accounts() as $account_id => $account ) {
-					$reconnect_url  = $this->base->get_class( 'api' )->get_oauth_url( $account_id );
-					$disconnect_url = add_query_arg(
+					$reconnect_url        = $this->base->get_class( 'api' )->get_oauth_url( $account_id );
+					$refresh_profiles_url = add_query_arg(
+						array(
+							'page'  => $this->base->plugin->name . '-settings',
+							$this->base->plugin->name . '-refresh-profiles' => $account_id,
+							'nonce' => wp_create_nonce( $this->base->plugin->name . '-refresh-profiles' ),
+						),
+						admin_url( 'admin.php' )
+					);
+					$disconnect_url       = add_query_arg(
 						array(
 							'page'  => $this->base->plugin->name . '-settings',
 							$this->base->plugin->name . '-disconnect' => $account_id,
@@ -98,6 +106,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<strong><?php echo esc_html( $account['name'] ); ?></strong>
 						</div>
 						<div class="right">
+							<a href="<?php echo esc_url( $refresh_profiles_url ); ?>" class="button button-secondary">
+								<?php esc_html_e( 'Refresh Profiles', 'wp-to-buffer' ); ?>
+							</a>
 							<a href="<?php echo esc_url( $reconnect_url ); ?>" class="button button-secondary">
 								<?php esc_html_e( 'Reconnect', 'wp-to-buffer' ); ?>
 							</a>

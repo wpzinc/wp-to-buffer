@@ -502,19 +502,13 @@ class WP_To_Social_Pro_Publish {
 		foreach ( $this->base->get_class( 'settings' )->get_accounts() as $account_id => $account ) {
 			// Configure API for this account and fetch its profiles.
 			$this->base->get_class( 'api' )->set_tokens( $account['access_token'], $account['refresh_token'], $account['token_expires'] );
-			$account_profiles = $this->base->get_class( 'api' )->profiles( false, $this->base->get_class( 'common' )->get_transient_expiration_time(), $account_id );
+			$account_profiles = $this->base->get_class( 'api' )->profiles( false, $account_id );
 
 			// Display an error.
 			if ( is_wp_error( $account_profiles ) ) {
 				$this->base->get_class( 'notices' )->add_error_notice( $account_profiles->get_error_message() );
 				continue;
 			}
-
-			// Store profile IDs against account.
-			$this->base->get_class( 'settings' )->update_account_profile_ids(
-				$account_id,
-				array_keys( $account_profiles )
-			);
 
 			// Merge profiles with existing profiles from other accounts.
 			// array_merge() is not used here as it will re-index numeric keys.

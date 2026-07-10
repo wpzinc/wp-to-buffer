@@ -544,24 +544,27 @@ query {
 	/**
 	 * Returns a list of Social Media Profiles attached to the Buffer Account.
 	 *
+	 * Profiles are cached in a non-autoloaded option. Persistence survives
+	 * object cache eviction. Callers force a refresh via the Refresh Profiles
+	 * button in Settings > Authentication.
+	 *
 	 * @since   3.0.0
 	 *
-	 * @param   bool   $force                      Force API call (false = use WordPress transient).
-	 * @param   int    $transient_expiration_time  Transient Expiration Time, in seconds (default: 12 hours).
-	 * @param   string $account_id                 Account ID.
+	 * @param   bool   $force        Force API call (false = use stored option).
+	 * @param   string $account_id   Account ID.
 	 * @return  WP_Error|array
 	 */
-	public function profiles( $force = false, $transient_expiration_time = 43200, $account_id = 'default' ) {
+	public function profiles( $force = false, $account_id = 'default' ) {
 
-		// Setup profiles array.
-		$profiles = array();
+		// Return stored profiles if available and not forcing a refresh.
+		$option_name = $this->base->plugin->name . '-profiles-' . $account_id;
+		$profiles    = get_option( $option_name );
+		if ( ! $force && is_array( $profiles ) ) {
+			return $profiles;
+		}
 
-		// Check if our WordPress transient already has this data.
-		// This reduces the number of times we query the API.
-		$profiles = get_transient( $this->base->plugin->name . '_buffer_api_profiles_' . $account_id );
-		if ( $force || false === $profiles ) {
-			// Build GraphQL query.
-			$query = '
+		// Build GraphQL query.
+		$query = '
 query GetChannels($organizationId: OrganizationId!) {
     channels(input: { organizationId: $organizationId }) {
         id
@@ -582,54 +585,50 @@ query GetChannels($organizationId: OrganizationId!) {
     }
 }';
 
-			// Get profiles.
-			$results = $this->graphql_query(
-				$query,
-				array(
-					'organizationId' => $account_id,
-				)
-			);
+		// Get profiles.
+		$results = $this->graphql_query(
+			$query,
+			array(
+				'organizationId' => $account_id,
+			)
+		);
 
-			// Check for errors.
-			if ( is_wp_error( $results ) ) {
-				return $results;
-			}
-
-			// Define profiles as a blank array.
-			$profiles = array();
-
-			// Check data is valid.
-			foreach ( $results['data']['channels'] as $channel ) {
-				// Add profile to array.
-				$profiles[ $channel['id'] ] = array(
-					'id'                 => $channel['id'], // Buffer ID. Buffer uses this for the ID when creating a post.
-					'formatted_service'  => $channel['descriptor'],
-					'formatted_username' => $channel['name'],
-					'service'            => $channel['service'],
-					'timezone'           => $channel['timezone'],
-					'can_be_subprofile'  => false, // For pinterest, the profile is the account, not the board.
-				);
-
-				// Pinterest: Add Boards as Subprofiles.
-				switch ( $channel['service'] ) {
-					case 'pinterest':
-						$profiles[ $channel['id'] ]['subprofiles'] = array();
-						foreach ( $channel['metadata']['boards'] as $board ) {
-							$profiles[ $channel['id'] ]['subprofiles'][ $board['serviceId'] ] = array(
-								'id'      => $board['serviceId'], // Social Network (Pinterest) ID. Buffer uses this for the ID when creating a Pin. Yes, it's different from ['id'] above.
-								'name'    => $board['name'],
-								'service' => $channel['service'],
-							);
-						}
-						break;
-				}
-			}
-
-			// Store profiles in transient.
-			set_transient( $this->base->plugin->name . '_buffer_api_profiles_' . $account_id, $profiles, $transient_expiration_time );
+		// Check for errors.
+		if ( is_wp_error( $results ) ) {
+			return $results;
 		}
 
-		// Return results.
+		// Build profiles array from results.
+		$profiles = array();
+		foreach ( $results['data']['channels'] as $channel ) {
+			$profiles[ $channel['id'] ] = array(
+				'id'                 => $channel['id'], // Buffer ID. Buffer uses this for the ID when creating a post.
+				'formatted_service'  => $channel['descriptor'],
+				'formatted_username' => $channel['name'],
+				'service'            => $channel['service'],
+				'timezone'           => $channel['timezone'],
+				'can_be_subprofile'  => false, // For pinterest, the profile is the account, not the board.
+			);
+
+			// Pinterest: Add Boards as Subprofiles.
+			switch ( $channel['service'] ) {
+				case 'pinterest':
+					$profiles[ $channel['id'] ]['subprofiles'] = array();
+					foreach ( $channel['metadata']['boards'] as $board ) {
+						$profiles[ $channel['id'] ]['subprofiles'][ $board['serviceId'] ] = array(
+							'id'      => $board['serviceId'], // Social Network (Pinterest) ID. Buffer uses this for the ID when creating a Pin. Yes, it's different from ['id'] above.
+							'name'    => $board['name'],
+							'service' => $channel['service'],
+						);
+					}
+					break;
+			}
+		}
+
+		// Store profiles in a non-autoloaded option so they persist across
+		// object cache eviction, and don't load on every WP request.
+		update_option( $option_name, $profiles, false );
+
 		return $profiles;
 
 	}
@@ -1222,7 +1221,13 @@ mutation CreatePost(
 	 */
 	private function get_user_agent() {
 
-		return 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36';
+		return sprintf(
+			'%1$s/%2$s (WordPress/%3$s; PHP/%4$s)',
+			$this->base->plugin->name,
+			$this->base->plugin->version,
+			get_bloginfo( 'version' ),
+			PHP_VERSION
+		);
 
 	}
 

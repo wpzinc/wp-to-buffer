@@ -121,7 +121,7 @@ class WP_To_Social_Pro_Admin {
 			}
 
 			// Fetch Profiles.
-			$profiles = $this->base->get_class( 'api' )->profiles( true, $this->base->get_class( 'common' )->get_transient_expiration_time(), $account['id'] );
+			$profiles = $this->base->get_class( 'api' )->profiles( true, $account['id'] );
 
 			// If something went wrong, show an error.
 			if ( is_wp_error( $profiles ) ) {
@@ -269,11 +269,7 @@ class WP_To_Social_Pro_Admin {
 			}
 
 			// Fetch Profiles.
-			$profiles = $this->base->get_class( 'api' )->profiles(
-				true,
-				$this->base->get_class( 'common' )->get_transient_expiration_time(),
-				$account['id']
-			);
+			$profiles = $this->base->get_class( 'api' )->profiles( true, $account['id'] );
 
 			// If something went wrong, show an error.
 			if ( is_wp_error( $profiles ) ) {
@@ -372,7 +368,6 @@ class WP_To_Social_Pro_Admin {
 				);
 			}
 		}
-
 	}
 
 	/**
@@ -574,7 +569,17 @@ class WP_To_Social_Pro_Admin {
 			array(
 				'fields'   => array(
 					'textarea.message',
+					'textarea.first_comment',
+					'textarea.text-to-image',
 					'input.url',
+
+					// Pinterest.
+					'input#pinterest_title',
+
+					// Google Business.
+					'input#googlebusiness_title',
+					'input#googlebusiness_code',
+					'input#googlebusiness_terms',
 				),
 				'triggers' => array(
 					// Tags.
@@ -682,6 +687,9 @@ class WP_To_Social_Pro_Admin {
 		// Maybe disconnect an account.
 		$this->maybe_disconnect_account();
 
+		// Maybe refresh profiles.
+		$this->maybe_refresh_profiles();
+
 		// Maybe save settings.
 		$result = $this->save_settings();
 		if ( is_wp_error( $result ) ) {
@@ -699,12 +707,7 @@ class WP_To_Social_Pro_Admin {
 		}
 
 		// Get Profiles for accounts.
-		if ( $this->get_tab() === 'auth' ) {
-			$profiles = $this->get_profiles();
-		} else {
-			// Get profiles from cache.
-			$profiles = $this->get_cached_profiles();
-		}
+		$profiles = $this->get_cached_profiles();
 
 		// Get Settings Tab and Post Type we're managing settings for.
 		$tab                 = $this->get_tab( $profiles );
@@ -869,6 +872,59 @@ class WP_To_Social_Pro_Admin {
 	}
 
 	/**
+	 * Fetches fresh profiles from the API for the given account, if the
+	 * user clicks the refresh profiles link. Bypasses the transient cache
+	 * and updates the stored profile IDs on the account.
+	 *
+	 * @since   6.1.2
+	 */
+	private function maybe_refresh_profiles() {
+
+		// Bail if no nonce.
+		if ( ! isset( $_GET['nonce'] ) ) {
+			return;
+		}
+
+		// Bail if nonce is invalid.
+		if ( ! wp_verify_nonce( sanitize_key( $_GET['nonce'] ), $this->base->plugin->name . '-refresh-profiles' ) ) {
+			return;
+		}
+
+		// Bail if account ID is not set.
+		if ( ! isset( $_GET[ $this->base->plugin->name . '-refresh-profiles' ] ) ) {
+			return;
+		}
+
+		// Get account.
+		$account_id = sanitize_text_field( wp_unslash( $_GET[ $this->base->plugin->name . '-refresh-profiles' ] ) );
+		$accounts   = $this->base->get_class( 'settings' )->get_accounts();
+		if ( ! isset( $accounts[ $account_id ] ) ) {
+			return;
+		}
+		$account = $accounts[ $account_id ];
+
+		// Configure API for this account.
+		$this->base->get_class( 'api' )->set_tokens( $account['access_token'], $account['refresh_token'], $account['token_expires'] );
+
+		// Fetch fresh profiles from the API.
+		$profiles = $this->base->get_class( 'api' )->profiles( true, $account_id );
+
+		// Display error and bail.
+		if ( is_wp_error( $profiles ) ) {
+			$this->base->get_class( 'notices' )->add_error_notice( $profiles->get_error_message() );
+			return;
+		}
+
+		// Update the stored profile IDs on the account.
+		$this->base->get_class( 'settings' )->update_account_profile_ids( $account_id, array_keys( $profiles ) );
+
+		$this->base->get_class( 'notices' )->add_success_notice(
+			__( 'Profiles refreshed successfully.', 'wp-to-buffer' )
+		);
+
+	}
+
+	/**
 	 * Disconnects an account if the user clicks the disconnect link.
 	 *
 	 * @since   5.4.0
@@ -1008,75 +1064,13 @@ class WP_To_Social_Pro_Admin {
 			$this->base->get_class( 'api' )->set_tokens( $account['access_token'], $account['refresh_token'], $account['token_expires'] );
 
 			// Get account profiles.
-			$account_profiles = $this->base->get_class( 'api' )->profiles(
-				false,
-				$this->base->get_class( 'common' )->get_transient_expiration_time(),
-				$account_id
-			);
+			$account_profiles = $this->base->get_class( 'api' )->profiles( false, $account_id );
 
 			// Display an error.
 			if ( is_wp_error( $account_profiles ) ) {
 				$this->base->get_class( 'notices' )->add_error_notice( $account_profiles->get_error_message() );
 				continue;
 			}
-
-			// Merge profiles with existing profiles from other accounts.
-			// array_merge() is not used here as it will re-index numeric keys.
-			foreach ( $account_profiles as $profile ) {
-				$profiles[ $profile['id'] ] = $profile;
-			}
-		}
-
-		return $profiles;
-
-	}
-
-	/**
-	 * Returns the profiles for all accounts, querying the API.
-	 *
-	 * @since   6.0.5
-	 *
-	 * @return  array
-	 */
-	private function get_profiles() {
-
-		$profiles = array();
-
-		foreach ( $this->base->get_class( 'settings' )->get_accounts() as $account_id => $account ) {
-			// Configure API for this account.
-			$this->base->get_class( 'api' )->set_tokens( $account['access_token'], $account['refresh_token'], $account['token_expires'] );
-
-			// Fetch account information.
-			$account_information = $this->base->get_class( 'api' )->account( $account_id );
-
-			// Display an error.
-			if ( is_wp_error( $account_information ) ) {
-				$this->base->get_class( 'notices' )->add_error_notice( $account_information->get_error_message() );
-				continue;
-			}
-
-			// Fetch account profiles.
-			$account_profiles = $this->base->get_class( 'api' )->profiles(
-				true,
-				$this->base->get_class( 'common' )->get_transient_expiration_time(),
-				$account_id
-			);
-
-			// Display an error.
-			if ( is_wp_error( $account_profiles ) ) {
-				$this->base->get_class( 'notices' )->add_error_notice( $account_profiles->get_error_message() );
-				continue;
-			}
-
-			// Update account information.
-			$this->base->get_class( 'settings' )->update_account_information(
-				$account_id,
-				$account_information['name'],
-				$account_information['email'],
-				$account_information['channel_limit'],
-				$account_information['plan'],
-				array_keys( $account_profiles )
-			);
 
 			// Merge profiles with existing profiles from other accounts.
 			// array_merge() is not used here as it will re-index numeric keys.
