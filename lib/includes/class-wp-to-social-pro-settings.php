@@ -792,8 +792,8 @@ class WP_To_Social_Pro_Settings {
 		// Delete the account.
 		unset( $accounts[ $account_id ] );
 
-		// Delete the profile transient for this account.
-		delete_transient( $this->base->plugin->name . '_' . $this->base->plugin->account . '_api_profiles_' . $account_id );
+		// Delete the stored profiles for this account.
+		delete_option( $this->base->plugin->name . '-profiles-' . $account_id );
 
 		// Update the accounts.
 		return update_option( $this->base->plugin->settingsName . '-accounts', $accounts );

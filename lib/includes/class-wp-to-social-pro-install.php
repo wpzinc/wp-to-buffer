@@ -151,9 +151,6 @@ class WP_To_Social_Pro_Install {
 		delete_option( $this->base->plugin->settingsName . '-refresh-token' );
 		delete_option( $this->base->plugin->settingsName . '-token-expires' );
 
-		// Delete old transient for profiles, as they're now stored against the account.
-		delete_transient( $this->base->plugin->name . '_' . $this->base->plugin->account . '_api_profiles' );
-
 	}
 
 	/**
