@@ -75,7 +75,7 @@ class WP_To_Social_Pro_Date {
 				break;
 		}
 
-		return date( 'Y-m-d H:i:s', $date ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+		return gmdate( 'Y-m-d H:i:s', $date );
 	}
 
 	/**
@@ -125,7 +125,7 @@ class WP_To_Social_Pro_Date {
 	public function convert_wordpress_gmt_offset_to_offset_value( $gmt_offset ) {
 
 		// Don't do anything if the offset is zero.
-		if ( $gmt_offset == 0 ) { // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual
+		if ( (float) $gmt_offset === 0.0 ) {
 			return '+0000';
 		}
 

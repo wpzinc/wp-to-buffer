@@ -149,7 +149,7 @@ class WP_To_Social_Pro_Validation {
 					}
 
 					// Add the status compare to the serialized array.
-					$statuses_serialized[] = serialize( $status_compare ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions
+					$statuses_serialized[] = wp_json_encode( $status_compare );
 				}
 
 				// Check if any two values in our array are the same.

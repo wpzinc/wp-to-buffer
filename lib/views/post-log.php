@@ -47,7 +47,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</thead>
 			<tbody>
 				<?php
-				echo $this->base->get_class( 'log' )->build_log_table_output( $log ); // phpcs:ignore WordPress.Security.EscapeOutput
+				echo wp_kses(
+					$this->base->get_class( 'log' )->build_log_table_output( $log ),
+					array(
+						'tr' => array(
+							'class' => array(),
+						),
+						'td' => array(
+							'class' => array(),
+						),
+						'a'  => array(
+							'href'   => array(),
+							'target' => array(),
+						),
+						'br' => array(),
+					)
+				);
 				?>
 			</tbody>
 		</table>

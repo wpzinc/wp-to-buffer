@@ -383,7 +383,7 @@ class WP_To_Social_Pro_Publish {
 			$post_id,
 			array(
 				'action'         => 'publish',
-				'request_sent'   => date( 'Y-m-d H:i:s' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+				'request_sent'   => gmdate( 'Y-m-d H:i:s' ),
 				'result'         => 'warning',
 				'result_message' => $results->get_error_message(),
 			)
@@ -405,7 +405,7 @@ class WP_To_Social_Pro_Publish {
 		// causing statuses to send multiple times.
 		$last_sent = get_post_meta( $post_id, '_' . $this->base->plugin->filter_name . '_last_sent', true );
 		if ( ! empty( $last_sent ) ) {
-			$difference = ( current_time( 'timestamp' ) - $last_sent ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp
+			$difference = ( time() - $last_sent );
 			if ( $difference < 5 ) {
 				return;
 			}
@@ -439,7 +439,7 @@ class WP_To_Social_Pro_Publish {
 			$post_id,
 			array(
 				'action'         => 'update',
-				'request_sent'   => date( 'Y-m-d H:i:s' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+				'request_sent'   => gmdate( 'Y-m-d H:i:s' ),
 				'result'         => 'warning',
 				'result_message' => $results->get_error_message(),
 			)
@@ -565,7 +565,7 @@ class WP_To_Social_Pro_Publish {
 
 			// Determine which social media service this profile ID belongs to.
 			foreach ( $profiles as $profile ) {
-				if ( $profile['id'] == $profile_id ) { // phpcs:ignore Universal.Operators.StrictComparisons.LooseEqual
+				if ( (string) $profile['id'] === (string) $profile_id ) {
 					$service = $profile['service'];
 					break;
 				}
@@ -1169,7 +1169,7 @@ class WP_To_Social_Pro_Publish {
 					case 'custom':
 						// If no custom field key is set, set the start date to now.
 						if ( empty( $status['googlebusiness']['start_date'] ) ) {
-							$date = date( 'Y-m-d H:i:s' ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+							$date = gmdate( 'Y-m-d H:i:s' );
 						} else {
 							// Fetch the Post's Meta Value based on the given Custom Field Key.
 							$date = get_post_meta( $post->ID, $status['googlebusiness']['start_date'], true );
@@ -1177,13 +1177,13 @@ class WP_To_Social_Pro_Publish {
 							// If the post date is numeric, it's most likely a timestamp
 							// Convert it to a date and time.
 							if ( is_numeric( $date ) ) {
-								$date = date( 'Y-m-d H:i:s', $date ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+								$date = gmdate( 'Y-m-d H:i:s', $date );
 							}
 						}
 
 						// Set start date.
 						$google_business_args['start_date'] = strtotime( $date );
-						$google_business_args['start_time'] = date( 'H:i', strtotime( $date ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+						$google_business_args['start_time'] = gmdate( 'H:i', strtotime( $date ) );
 						break;
 
 					/**
@@ -1217,7 +1217,7 @@ class WP_To_Social_Pro_Publish {
 
 						// Set start date.
 						$google_business_args['start_date'] = strtotime( $date );
-						$google_business_args['start_time'] = date( 'H:i', strtotime( $date ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+						$google_business_args['start_time'] = gmdate( 'H:i', strtotime( $date ) );
 						break;
 				}
 
@@ -1229,7 +1229,7 @@ class WP_To_Social_Pro_Publish {
 					case 'custom':
 						// If no custom field key is set, set the end date to now.
 						if ( empty( $status['googlebusiness']['end_date'] ) ) {
-							$date = date( 'Y-m-d H:i:s' ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+							$date = gmdate( 'Y-m-d H:i:s' );
 						} else {
 							// Fetch the Post's Meta Value based on the given Custom Field Key.
 							$date = get_post_meta( $post->ID, $status['googlebusiness']['end_date'], true );
@@ -1237,13 +1237,13 @@ class WP_To_Social_Pro_Publish {
 							// If the post date is numeric, it's most likely a timestamp
 							// Convert it to a date and time.
 							if ( is_numeric( $date ) ) {
-								$date = date( 'Y-m-d H:i:s', $date ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+								$date = gmdate( 'Y-m-d H:i:s', $date );
 							}
 						}
 
 						// Set end date.
 						$google_business_args['end_date'] = strtotime( $date );
-						$google_business_args['end_time'] = date( 'H:i', strtotime( $date ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+						$google_business_args['end_time'] = gmdate( 'H:i', strtotime( $date ) );
 						break;
 
 					/**
@@ -1277,7 +1277,7 @@ class WP_To_Social_Pro_Publish {
 
 						// Set end date.
 						$google_business_args['end_date'] = strtotime( $date );
-						$google_business_args['end_time'] = date( 'H:i', strtotime( $date ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+						$google_business_args['end_time'] = gmdate( 'H:i', strtotime( $date ) );
 						break;
 				}
 				break;
@@ -2086,7 +2086,7 @@ class WP_To_Social_Pro_Publish {
 				$errors      = true;
 				$logs[]      = array(
 					'action'         => $action,
-					'request_sent'   => date( 'Y-m-d H:i:s' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+					'request_sent'   => gmdate( 'Y-m-d H:i:s' ),
 					'profile_id'     => $status['profile_ids'][0],
 					'profile_name'   => $profiles[ $status['profile_ids'][0] ]['formatted_service'] . ': ' . $profiles[ $status['profile_ids'][0] ]['formatted_username'],
 					'result'         => 'error',
@@ -2106,13 +2106,13 @@ class WP_To_Social_Pro_Publish {
 			if ( $test_mode ) {
 				$logs[] = array(
 					'action'            => $action,
-					'request_sent'      => date( 'Y-m-d H:i:s' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+					'request_sent'      => gmdate( 'Y-m-d H:i:s' ),
 					'profile_id'        => $status['profile_ids'][0],
 					'profile_name'      => $profiles[ $status['profile_ids'][0] ]['formatted_service'] . ': ' . $profiles[ $status['profile_ids'][0] ]['formatted_username'],
 					'result'            => 'test',
 					'result_message'    => '',
 					'status_text'       => $status['text'],
-					'status_created_at' => date( 'Y-m-d H:i:s', strtotime( 'now' ) ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+					'status_created_at' => gmdate( 'Y-m-d H:i:s', strtotime( 'now' ) ),
 					'status_due_at'     => ( isset( $status['scheduled_at'] ) ? $status['scheduled_at'] : '' ),
 				);
 
@@ -2135,7 +2135,7 @@ class WP_To_Social_Pro_Publish {
 				$errors      = true;
 				$logs[]      = array(
 					'action'         => $action,
-					'request_sent'   => date( 'Y-m-d H:i:s' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+					'request_sent'   => gmdate( 'Y-m-d H:i:s' ),
 					'profile_id'     => $status['profile_ids'][0],
 					'profile_name'   => $profiles[ $status['profile_ids'][0] ]['formatted_service'] . ': ' . $profiles[ $status['profile_ids'][0] ]['formatted_username'],
 					'result'         => 'error',
@@ -2147,20 +2147,20 @@ class WP_To_Social_Pro_Publish {
 				// OK.
 				$logs[] = array(
 					'action'            => $action,
-					'request_sent'      => date( 'Y-m-d H:i:s' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+					'request_sent'      => gmdate( 'Y-m-d H:i:s' ),
 					'profile_id'        => $result['profile_id'],
 					'profile_name'      => $profiles[ $status['profile_ids'][0] ]['formatted_service'] . ': ' . $profiles[ $status['profile_ids'][0] ]['formatted_username'],
 					'result'            => 'success',
 					'result_message'    => $result['message'],
 					'status_text'       => $result['status_text'],
-					'status_created_at' => date( 'Y-m-d H:i:s', $result['status_created_at'] ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-					'status_due_at'     => ( $result['due_at'] !== '0000-00-00 00:00:00' ? date( 'Y-m-d H:i:s', $result['due_at'] ) : '0000-00-00 00:00:00' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+					'status_created_at' => gmdate( 'Y-m-d H:i:s', $result['status_created_at'] ),
+					'status_due_at'     => ( $result['due_at'] !== '0000-00-00 00:00:00' ? gmdate( 'Y-m-d H:i:s', $result['due_at'] ) : '0000-00-00 00:00:00' ),
 				);
 			}
 		}
 
 		// Set the last sent timestamp, which we may use to prevent duplicate statuses.
-		update_post_meta( $post_id, '_' . $this->base->plugin->filter_name . '_last_sent', current_time( 'timestamp' ) ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp
+		update_post_meta( $post_id, '_' . $this->base->plugin->filter_name . '_last_sent', time() );
 
 		// If we're reposting, update the last reposted date against the Post.
 		// We do this here to ensure the Post isn't reposting again where e.g. one profile status worked + one profile status failed,
