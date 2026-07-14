@@ -574,7 +574,7 @@ class WP_To_Social_Pro_Publish {
 			// Iterate through each Status.
 			foreach ( $status_settings as $index => $status ) {
 				// Add the status to our array for it to be sent to the API.
-				$status = $this->build_args( $post, $profile_id, $service, $status, $action, $account );
+				$status = $this->build_args( $post, $profile_id, $service, $status, $action );
 
 				// If the status built is a WP_Error, something went wrong with e.g. the image.
 				// Include the error object and the profile ID, so the error is logged.
@@ -735,15 +735,14 @@ class WP_To_Social_Pro_Publish {
 	 *
 	 * @since   3.0.0
 	 *
-	 * @param   WP_Post    $post                       Post.
-	 * @param   string     $profile_id                 Profile ID.
-	 * @param   string     $service                    Service.
-	 * @param   array      $status                     Status Settings.
-	 * @param   string     $action                     Action (publish|update|repost|bulk_publish).
-	 * @param   bool|array $account                    Account.
+	 * @param   WP_Post $post                       Post.
+	 * @param   string  $profile_id                 Profile ID.
+	 * @param   string  $service                    Service.
+	 * @param   array   $status                     Status Settings.
+	 * @param   string  $action                     Action (publish|update|repost|bulk_publish).
 	 * @return  bool
 	 */
-	private function build_args( $post, $profile_id, $service, $status, $action, $account = false ) {
+	private function build_args( $post, $profile_id, $service, $status, $action ) {
 
 		// For some services, the post_type may need to be changed to a supported post type.
 		// This might happen if e.g. only defaults are set, and per-profile settings are not defined.
@@ -786,7 +785,6 @@ class WP_To_Social_Pro_Publish {
 		// Build API compatible arguments.
 		$thumbnail = $this->get_post_image( $post, $service, $status['post_type'] );
 		$args      = array(
-			'account'     => $account,
 			'post_type'   => $status['post_type'],
 			'profile_ids' => array( $profile_id ),
 			'text'        => $this->parse_text( $post, $status['message'], ( $service === 'instagram' ? true : false ) ),

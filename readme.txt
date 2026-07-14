@@ -13,7 +13,7 @@ Automatically post and schedule your WordPress content to Facebook, X/Twitter, L
 
 == Description ==
 
-Social Media Auto Poster connects your WordPress site to Buffer, enabling automatic social media publishing whenever you create or update content. Share your blog posts, pages, and custom post types to multiple social networks without manual posting.
+Unofficial Social Media Auto Poster to connect your WordPress site to Buffer, enabling automatic social media publishing whenever you create or update content. Share your blog posts, pages, and custom post types to multiple social networks without manual posting.
 
 === Why Choose This Social Media Automation Plugin? ===
 
@@ -309,8 +309,9 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 
 == Changelog ==
 
-== 6.1.3 (2026-07-13) =
+== 6.1.3 (2026-07-14) =
 * Updated: Improved Coding Standards on dates
+* Removed: Unused `account` parameter on status
 
 = 6.1.2 (2026-07-10) =
 * Added: Settings: Authentication: Refresh Profiles button. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/manage-account-connections/#refresh-profiles
