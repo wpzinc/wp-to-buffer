@@ -81,18 +81,10 @@ class Common {
 	 */
 	public function get_schedule_options( $post_type = false, $is_post_screen = false ) {
 
-		// Available schedule option labels, shared across all services.
-		$labels = array(
-			'queue_end' => __( 'Add to End of Queue', 'wp-to-buffer' ),
+		// Immediate posting is supported by every service, so it is always available.
+		$schedule = array(
 			'immediate' => __( 'Post Immediately', 'wp-to-buffer' ),
-			'now'       => __( 'Post Now', 'wp-to-buffer' ),
 		);
-
-		// The free version offers the plugin's single default schedule option.
-		$schedule = array();
-		if ( isset( $labels[ $this->base->plugin->default_schedule ] ) ) {
-			$schedule[ $this->base->plugin->default_schedule ] = $labels[ $this->base->plugin->default_schedule ];
-		}
 
 		/**
 		 * Defines the available schedule options for each individual status.

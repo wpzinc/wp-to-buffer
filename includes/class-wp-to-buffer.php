@@ -101,6 +101,26 @@ class WP_To_Buffer {
 		// Admin Menus.
 		add_action( $this->plugin->filter_name . '_admin_admin_menu', array( $this, 'admin_menus' ) );
 
+		// Schedule options available for statuses in this Plugin.
+		add_filter( $this->plugin->filter_name . '_get_schedule_options', array( $this, 'get_schedule_options' ) );
+
+	}
+
+	/**
+	 * Defines the schedule options available for statuses in WP to Buffer (Free).
+	 *
+	 * @since   6.2.0
+	 *
+	 * @param   array $schedule   Schedule Options.
+	 * @return  array               Schedule Options
+	 */
+	public function get_schedule_options( $schedule ) {
+
+		// Buffer supports a queue, in addition to the always-available immediate option.
+		$schedule['queue_end'] = __( 'Add to End of Queue', 'wp-to-buffer' );
+
+		return $schedule;
+
 	}
 
 	/**
@@ -216,7 +236,7 @@ class WP_To_Buffer {
 		);
 
 		// Shared admin module (autoloaded from lib/shared).
-		$this->dashboard = new \WPZinc\Shared\Admin_UI( $this->plugin, 'https://www.wpzinc.com/wp-content/plugins/lum-deactivation' );
+		$this->dashboard = new \WPZinc\Shared\Admin_UI( $this->plugin );
 
 		// Initialize Plugin classes.
 		$this->classes = new stdClass();
