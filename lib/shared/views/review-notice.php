@@ -25,20 +25,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php
 		printf(
 			/* translators: Plugin Name */
-			esc_html__( 'We\'d be super grateful if you could spread the word about %s and give it a 5 star rating on WordPress?', $this->plugin->name ), // phpcs:ignore WordPress.WP.I18n 
+			esc_html__( 'We\'d be super grateful if you could spread the word about %s and give it a 5 star rating on WordPress?', 'wp-to-buffer' ),
 			esc_html( $this->plugin->displayName )
 		);
 		?>
 	</p>
 	<p>
 		<a href="<?php echo esc_url( $this->get_review_url() ); ?>" class="button button-primary" target="_blank">
-			<?php esc_html_e( 'Yes, Leave Review', $this->plugin->name ); // phpcs:ignore WordPress.WP.I18n ?>
+			<?php esc_html_e( 'Yes, Leave Review', 'wp-to-buffer' ); ?>
 		</a>
 		<a href="<?php echo esc_url( $this->plugin->support_url ); ?>" class="button" rel="noopener" target="_blank">
 			<?php
 			printf(
 				/* translators: Plugin Name */
-				esc_html__( 'No, I\'m having issues with %s', $this->plugin->name ), // phpcs:ignore WordPress.WP.I18n
+				esc_html__( 'No, I\'m having issues with %s', 'wp-to-buffer' ),
 				esc_html( $this->plugin->displayName )
 			);
 			?>

@@ -1,9 +1,6 @@
 <?php
 /**
- * Provides common functionality, styling and views for Plugins.
- *
- * Historically named dashboard, as it used to provide a widget
- * on the WordPress Admin Dashboard.
+ * Provides common functionality, styling and views for WP Zinc Plugins.
  *
  * @package WPZinc\Shared
  * @author WP Zinc
@@ -17,10 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Provides common functionality, styling and views for Plugins.
- *
- * Historically named dashboard, as it used to provide a widget
- * on the WordPress Admin Dashboard.
+ * Provides common functionality, styling and views for WP Zinc Plugins.
  */
 class Admin_UI {
 
@@ -464,7 +458,7 @@ class Admin_UI {
 		 */
 		$minimum_capability = apply_filters( str_replace( '-', '_', $this->plugin->name ) . '_admin_admin_menu_minimum_capability', 'manage_options' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName
 
-		add_submenu_page( $slug, __( 'Import & Export', $this->plugin->name ), __( 'Import & Export', $this->plugin->name ), $minimum_capability, $this->plugin->name . '-import-export', array( $this, 'import_export_screen' ) ); // phpcs:ignore WordPress.WP.I18n
+		add_submenu_page( $slug, __( 'Import & Export', 'wp-to-buffer' ), __( 'Import & Export', 'wp-to-buffer' ), $minimum_capability, $this->plugin->name . '-import-export', array( $this, 'import_export_screen' ) );
 
 	}
 
@@ -495,7 +489,7 @@ class Admin_UI {
 		 */
 		$minimum_capability = apply_filters( str_replace( '-', '_', $this->plugin->name ) . '_admin_admin_menu_minimum_capability', 'manage_options' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName
 
-		add_submenu_page( $slug, __( 'Support', $this->plugin->name ), __( 'Support', $this->plugin->name ), $minimum_capability, $this->plugin->name . '-support', array( $this, 'support_screen' ) ); // phpcs:ignore WordPress.WP.I18n
+		add_submenu_page( $slug, __( 'Support', 'wp-to-buffer' ), __( 'Support', 'wp-to-buffer' ), $minimum_capability, $this->plugin->name . '-support', array( $this, 'support_screen' ) );
 
 	}
 
@@ -526,7 +520,7 @@ class Admin_UI {
 		 */
 		$minimum_capability = apply_filters( str_replace( '-', '_', $this->plugin->name ) . '_admin_admin_menu_minimum_capability', 'manage_options' ); // phpcs:ignore WordPress.NamingConventions.ValidHookName
 
-		add_submenu_page( $slug, __( 'Upgrade', $this->plugin->name ), __( 'Upgrade', $this->plugin->name ), $minimum_capability, $this->plugin->name . '-upgrade', array( $this, 'upgrade_screen' ) ); // phpcs:ignore WordPress.WP.I18n
+		add_submenu_page( $slug, __( 'Upgrade', 'wp-to-buffer' ), __( 'Upgrade', 'wp-to-buffer' ), $minimum_capability, $this->plugin->name . '-upgrade', array( $this, 'upgrade_screen' ) );
 
 	}
 
@@ -573,7 +567,7 @@ class Admin_UI {
 
 		// Add Links.
 		if ( $this->get_upgrade_url( 'plugins' ) ) {
-			$links[] = '<a href="' . esc_attr( $this->get_upgrade_url( 'plugins' ) ) . '" rel="noopener" target="_blank">' . __( 'Upgrade', $this->plugin->name ) . '</a>'; //phpcs:ignore WordPress.WP.I18n
+			$links[] = '<a href="' . esc_attr( $this->get_upgrade_url( 'plugins' ) ) . '" rel="noopener" target="_blank">' . __( 'Upgrade', 'wp-to-buffer' ) . '</a>';
 		}
 
 		/**
@@ -667,7 +661,7 @@ class Admin_UI {
 		// Return review request text.
 		return sprintf(
 			/* translators: %1$s: Plugin Name, %2$s: Five Star Link to Review URL, %3$s: Link to Review URL, %4$s: Plugin Name */
-			__( 'Please rate %1$s %2$s on %3$s to help us grow %4$s. Thanks!', $this->plugin->name ), // phpcs:ignore WordPress.WP.I18n
+			__( 'Please rate %1$s %2$s on %3$s to help us grow %4$s. Thanks!', 'wp-to-buffer' ),
 			'<strong>' . $this->plugin->displayName . '</strong>',
 			'<a href="' . $this->get_review_url() . '" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a>',
 			'<a href="' . $this->get_review_url() . '" target="_blank">WordPress.org</a>',
@@ -869,16 +863,16 @@ class Admin_UI {
 		}
 
 		if ( ! is_array( $_FILES ) ) {
-			$this->error_message = __( 'No file was uploaded', $this->plugin->name ); // phpcs:ignore WordPress.WP.I18n
+			$this->error_message = __( 'No file was uploaded', 'wp-to-buffer' );
 			return;
 		}
 		if ( ! isset( $_FILES['import']['type'] ) || ! isset( $_FILES['import']['tmp_name'] ) || ! isset( $_FILES['import']['size'] ) ) {
-			$this->error_message = __( 'Could not determine file type', $this->plugin->name ); // phpcs:ignore WordPress.WP.I18n
+			$this->error_message = __( 'Could not determine file type', 'wp-to-buffer' );
 			return;
 		}
 
 		if ( isset( $_FILES['import']['error'] ) && $_FILES['import']['error'] !== 0 ) {
-			$this->error_message = __( 'Error when uploading file.', $this->plugin->name ); // phpcs:ignore WordPress.WP.I18n
+			$this->error_message = __( 'Error when uploading file.', 'wp-to-buffer' );
 			return;
 		}
 
@@ -891,7 +885,7 @@ class Admin_UI {
 				// Open ZIP file.
 				$zip = new \ZipArchive();
 				if ( $zip->open( sanitize_text_field( wp_unslash( $_FILES['import']['tmp_name'] ) ) ) !== true ) {
-					$this->error_message = __( 'Could not extract the supplied ZIP file.', $this->plugin->name ); // phpcs:ignore WordPress.WP.I18n
+					$this->error_message = __( 'Could not extract the supplied ZIP file.', 'wp-to-buffer' );
 					return;
 				}
 
@@ -926,7 +920,7 @@ class Admin_UI {
 
 		// Check data is an array.
 		if ( ! is_array( $import ) ) {
-			$this->error_message = __( 'Supplied file is not a valid JSON settings file, or has become corrupt.', $this->plugin->name ); // phpcs:ignore WordPress.WP.I18n
+			$this->error_message = __( 'Supplied file is not a valid JSON settings file, or has become corrupt.', 'wp-to-buffer' );
 			return;
 		}
 
@@ -940,7 +934,7 @@ class Admin_UI {
 			return;
 		}
 
-		$this->message = __( 'Settings imported.', $this->plugin->name ); // phpcs:ignore WordPress.WP.I18n
+		$this->message = __( 'Settings imported.', 'wp-to-buffer' );
 
 	}
 

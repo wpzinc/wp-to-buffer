@@ -12,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div class="wpzinc-about">
-	<h3>Our Products</h3>
+	<h3><?php esc_html_e( 'Our Products', 'wp-to-buffer' ); ?></h3>
 
 	<p class="description">
-		If you found this Plugin useful, you may also like our other products.
+		<?php esc_html_e( 'If you found this Plugin useful, you may also like our other products.', 'wp-to-buffer' ); ?>
 	</p>
 
 	<br />

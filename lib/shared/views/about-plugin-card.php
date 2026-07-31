@@ -28,17 +28,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="plugin-card-bottom">
 		<div class="vers column-rating">
-			from $<?php echo esc_html( $product['price'] ); ?>/year
+			<?php esc_html_e( 'from', 'wp-to-buffer' ); ?> $<?php echo esc_html( $product['price'] ); ?>/<?php esc_html_e( 'year', 'wp-to-buffer' ); ?>
 		</div>
 		<div class="column-updated">
 			<?php
 			if ( array_key_exists( 'install_url', $product ) && ! empty( $product['install_url'] ) ) {
 				?>
-				<a href="<?php echo esc_url( $product['install_url'] ); ?>" class="button button-primary" target="_blank">Install</a>
+				<a href="<?php echo esc_url( $product['install_url'] ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Install', 'wp-to-buffer' ); ?></a>
 				<?php
 			}
 			?>
-			<a href="<?php echo esc_url( $product['url'] ); ?>" class="button button-secondary" target="_blank">Learn More</a>
+			<a href="<?php echo esc_url( $product['url'] ); ?>" class="button button-secondary" target="_blank"><?php esc_html_e( 'Learn More', 'wp-to-buffer' ); ?></a>
 		</div>
 	</div>
 </div>
