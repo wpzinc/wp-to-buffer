@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Validation class
  *
@@ -14,7 +17,7 @@
  * @author  WP Zinc
  * @version 3.8.1
  */
-class WP_To_Social_Pro_Validation {
+class Validation {
 
 	/**
 	 * Holds the base class object.
@@ -67,10 +70,10 @@ class WP_To_Social_Pro_Validation {
 
 		// Fetch the current date and time, to the minute, for each of the timezones.
 		try {
-			$wordpress_date = new DateTime( 'now', new DateTimeZone( $wordpress_timezone ) );
-			$api_date       = new DateTime( 'now', new DateTimeZone( $api_profile_timezone ) );
-		} catch ( Exception $e ) {
-			return new WP_Error( $this->base->plugin->filter_name . '_date_time_zone_error', $e->getMessage() );
+			$wordpress_date = new \DateTime( 'now', new \DateTimeZone( $wordpress_timezone ) );
+			$api_date       = new \DateTime( 'now', new \DateTimeZone( $api_profile_timezone ) );
+		} catch ( \Exception $e ) {
+			return new \WP_Error( $this->base->plugin->filter_name . '_date_time_zone_error', $e->getMessage() );
 		}
 
 		// If the three dates don't match, scheduling won't work as expected.
@@ -78,22 +81,22 @@ class WP_To_Social_Pro_Validation {
 		$api_date       = $api_date->format( 'Y-m-d H:i' );
 
 		if ( $api_date !== $wordpress_date ) {
-			return new WP_Error(
+			return new \WP_Error(
 				$this->base->plugin->filter_name . '_timezones_invalid',
 				sprintf(
 					'%1$s<br /><br />%2$s<br />%3$s %4$s (%5$s) [<a href="%6$s" target="_blank">%7$s</a>]<br />%8$s Profile Timezone: %9$s (%10$s) [<a href="%11$s" target="_blank">%12$s</a>]',
-					__( 'This Profile\'s Timezone does not match your WordPress timezone.  They must be the same, to ensure that statuses can be scheduled, and are scheduled at the correct time.', 'wp-to-buffer' ),
-					__( 'Right now, your timezones are configured as:', 'wp-to-buffer' ),
-					__( 'WordPress Timezone:', 'wp-to-buffer' ),
+					__( 'This Profile\'s Timezone does not match your WordPress timezone.  They must be the same, to ensure that statuses can be scheduled, and are scheduled at the correct time.', 'wpzinc-social' ),
+					__( 'Right now, your timezones are configured as:', 'wpzinc-social' ),
+					__( 'WordPress Timezone:', 'wpzinc-social' ),
 					esc_html( $wordpress_timezone ),
 					esc_html( $wordpress_date ),
 					admin_url( 'options-general.php#timezone_string' ),
-					__( 'Fix', 'wp-to-buffer' ),
+					__( 'Fix', 'wpzinc-social' ),
 					esc_html( $api_profile_name ),
 					esc_html( $api_profile_timezone ),
 					esc_html( $api_date ),
 					esc_html( $api_profile_change_timezone_url ),
-					__( 'Fix', 'wp-to-buffer' )
+					__( 'Fix', 'wpzinc-social' )
 				)
 			);
 		}

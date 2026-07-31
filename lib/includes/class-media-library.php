@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Media Library class.
  *
@@ -13,7 +16,7 @@
  * @author  WP Zinc
  * @version 4.2.0
  */
-class WP_To_Social_Pro_Media_Library {
+class Media_Library {
 
 	/**
 	 * Holds the base object.
@@ -67,10 +70,10 @@ class WP_To_Social_Pro_Media_Library {
 		// Get image type.
 		$type = getimagesize( $source );
 		if ( ! isset( $type['mime'] ) ) {
-			return new WP_Error(
+			return new \WP_Error(
 				sprintf(
 					/* translators: Image Source Path and Filename */
-					__( 'Could not identify MIME type of source image %s. Is this an image?', 'wp-to-buffer' ),
+					__( 'Could not identify MIME type of source image %s. Is this an image?', 'wpzinc-social' ),
 					$source
 				)
 			);
@@ -143,7 +146,7 @@ class WP_To_Social_Pro_Media_Library {
 		);
 
 		// Get all Attachments belonging to the given Post IDs.
-		$attachments = new WP_Query( $args );
+		$attachments = new \WP_Query( $args );
 
 		// If no Attachments found, return false, as there's nothing to delete.
 		if ( count( $attachments->posts ) === 0 ) {

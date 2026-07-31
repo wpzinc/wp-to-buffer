@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php echo esc_html( $this->base->plugin->displayName ); ?>
 
 		<span>
-			<?php esc_html_e( 'Settings', 'wp-to-buffer' ); ?>
+			<?php esc_html_e( 'Settings', 'wpzinc-social' ); ?>
 		</span>
 	</h1>
 </header>
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 									echo esc_html(
 										sprintf(
 										/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite) */
-											__( 'To allow this Plugin to post updates to your social media profiles using %1$s, please authorize %2$s below.', 'wp-to-buffer' ),
+											__( 'To allow this Plugin to post updates to your social media profiles using %1$s, please authorize %2$s below.', 'wpzinc-social' ),
 											$this->base->plugin->account,
 											$this->base->plugin->account
 										)
@@ -49,13 +49,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 									echo esc_html(
 										sprintf(
 										/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite) */
-											__( 'Don\'t have a %1$s account?', 'wp-to-buffer' ),
+											__( 'Don\'t have a %1$s account?', 'wpzinc-social' ),
 											$this->base->plugin->account
 										)
 									);
 									?>
 									<a href="<?php echo esc_attr( $this->base->get_class( 'api' )->get_registration_url() ); ?>" target="_blank" rel="nofollow noopener">
-										<?php esc_html_e( 'Sign up for free', 'wp-to-buffer' ); ?>
+										<?php esc_html_e( 'Sign up for free', 'wpzinc-social' ); ?>
 									</a>
 								</p>
 							</div>

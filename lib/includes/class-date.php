@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Date class.
  *
@@ -14,7 +17,7 @@
  * @author  WP Zinc
  * @version 4.6.9
  */
-class WP_To_Social_Pro_Date {
+class Date {
 
 	/**
 	 * Holds the base class object.

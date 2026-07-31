@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Image class.
  *
@@ -16,7 +19,7 @@
  * @author  WP Zinc
  * @version 4.6.6
  */
-class WP_To_Social_Pro_Image {
+class Image {
 
 	/**
 	 * Holds the base class object.
@@ -53,7 +56,7 @@ class WP_To_Social_Pro_Image {
 	public function get_status_image_options( $network = false, $post_type = false ) {
 
 		// If a Post Type has been specified, get its featured_image label.
-		$label = __( 'Feat. Image', 'wp-to-buffer' );
+		$label = __( 'Feat. Image', 'wpzinc-social' );
 		if ( $post_type !== false && $post_type !== 'bulk' ) {
 			$post_type_object = get_post_type_object( $post_type );
 			$label            = $post_type_object->labels->featured_image;
@@ -181,7 +184,7 @@ class WP_To_Social_Pro_Image {
 				 * @param   string  $service            Social Media Service the image is for. If not defined, just return the large version.
 				 * @param   string  $image_mime_type    Image MIME Type.
 				 */
-				$image_id = apply_filters( 'wp_to_social_pro_image_get_images_sources_convert', $image_id, $source, $service, $image_mime_type );
+				$image_id = apply_filters( $this->base->plugin->filter_name . '_image_get_images_sources_convert', $image_id, $source, $service, $image_mime_type );
 				break;
 		}
 

@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * API class.
  *
@@ -13,7 +16,7 @@
  * @author  WP Zinc
  * @version 1.0.0
  */
-class WP_To_Social_Pro_API {
+class API {
 
 	/**
 	 * Sanitizes API arguments, by removing false or empty
@@ -88,7 +91,7 @@ class WP_To_Social_Pro_API {
 		 *
 		 * @param   int     $timeout    Timeout, in seconds.
 		 */
-		$timeout = apply_filters( 'wp_to_social_pro_api_request_timeout', $timeout );
+		$timeout = apply_filters( $this->base->plugin->filter_name . '_api_request_timeout', $timeout );
 
 		// Send request.
 		$result = $this->request_wordpress( $this->api_endpoint, $cmd, $method, $params, $timeout );
@@ -164,7 +167,7 @@ class WP_To_Social_Pro_API {
 
 		// If the response is empty or missing the data payload, return a generic error.
 		if ( is_null( $result ) || ! isset( $result->data ) ) {
-			return new WP_Error(
+			return new \WP_Error(
 				$http_code,
 				'API Error: HTTP Code ' . $http_code . '. Sorry, we don\'t have any more information about this error. Please try again.'
 			);
@@ -172,7 +175,7 @@ class WP_To_Social_Pro_API {
 
 		// If the response's success flag is false, return the data as an error.
 		if ( ! $result->success ) {
-			return new WP_Error( $http_code, $result->data );
+			return new \WP_Error( $http_code, $result->data );
 		}
 
 		// All OK - return the data.

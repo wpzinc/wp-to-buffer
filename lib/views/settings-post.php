@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<!-- Default Settings -->
 		<li class="wpzinc-nav-tab default">
 			<a href="#profile-default" class="wpzinc-nav-tab-vertical-active">
-				<?php esc_html_e( 'Defaults', 'wp-to-buffer' ); ?>
+				<?php esc_html_e( 'Defaults', 'wpzinc-social' ); ?>
 			</a>
 		</li>
 
@@ -93,7 +93,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( is_wp_error( $profiles ) ) {
 			?>
 			<div>
-				<?php esc_html_e( 'Hmm, we couldn\'t fetch your social media profiles.  Please refresh the Page.', 'wp-to-buffer' ); ?>
+				<?php esc_html_e( 'Hmm, we couldn\'t fetch your social media profiles.  Please refresh the Page.', 'wpzinc-social' ); ?>
 			</div>
 			<?php
 		} else {

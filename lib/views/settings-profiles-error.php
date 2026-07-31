@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			echo esc_html(
 				sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-					__( 'Visit your %s account to resolve this error.', 'wp-to-buffer' ),
+					__( 'Visit your %s account to resolve this error.', 'wpzinc-social' ),
 					$this->base->plugin->account
 				)
 			);
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			echo esc_html(
 				sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-					__( 'Visit %s', 'wp-to-buffer' ),
+					__( 'Visit %s', 'wpzinc-social' ),
 					$this->base->plugin->account
 				)
 			);

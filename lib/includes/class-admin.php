@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Administration class.
  *
@@ -13,7 +16,7 @@
  * @author  WP Zinc
  * @version 3.0.0
  */
-class WP_To_Social_Pro_Admin {
+class Admin {
 
 	/**
 	 * Holds the base class object.
@@ -147,7 +150,7 @@ class WP_To_Social_Pro_Admin {
 		$this->base->get_class( 'notices' )->add_success_notice(
 			sprintf(
 				/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite) */
-				__( 'Thanks! You\'ve connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s', 'wp-to-buffer' ),
+				__( 'Thanks! You\'ve connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s', 'wpzinc-social' ),
 				$this->base->plugin->account,
 				$this->base->plugin->account
 			)
@@ -193,7 +196,7 @@ class WP_To_Social_Pro_Admin {
 					$this->base->get_class( 'notices' )->add_error_notice(
 						sprintf(
 							/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite) */
-							__( 'You did not grant our Plugin access to your %1$s account. We are unable to post to %2$s until you do this. Please click on the Authorize Plugin button.', 'wp-to-buffer' ),
+							__( 'You did not grant our Plugin access to your %1$s account. We are unable to post to %2$s until you do this. Please click on the Authorize Plugin button.', 'wpzinc-social' ),
 							$this->base->plugin->account,
 							$this->base->plugin->account
 						)
@@ -210,11 +213,11 @@ class WP_To_Social_Pro_Admin {
 							'%1$s <a href="%2$s" target="_blank">%3$s</a>',
 							sprintf(
 								/* translators: Social Media Service Name (Buffer, Hootsuite) */
-								__( 'We were unable to complete authentication with %s.  Please try again, or', 'wp-to-buffer' ),
+								__( 'We were unable to complete authentication with %s.  Please try again, or', 'wpzinc-social' ),
 								$this->base->plugin->account
 							),
 							esc_html( $this->base->plugin->support_url ),
-							__( 'contact us for support', 'wp-to-buffer' )
+							__( 'contact us for support', 'wpzinc-social' )
 						)
 					);
 					break;
@@ -227,10 +230,10 @@ class WP_To_Social_Pro_Admin {
 					$this->base->get_class( 'notices' )->add_error_notice(
 						sprintf(
 							'%1$s <a href="%2$s" target="_blank">%3$s</a> %4$s',
-							__( 'The oAuth process has expired.  Please try again, or', 'wp-to-buffer' ),
+							__( 'The oAuth process has expired.  Please try again, or', 'wpzinc-social' ),
 							esc_html( $this->base->plugin->support_url ),
-							__( 'contact us for support', 'wp-to-buffer' ),
-							__( 'if this issue persists.', 'wp-to-buffer' )
+							__( 'contact us for support', 'wpzinc-social' ),
+							__( 'if this issue persists.', 'wpzinc-social' )
 						)
 					);
 					break;
@@ -295,7 +298,7 @@ class WP_To_Social_Pro_Admin {
 			$this->base->get_class( 'notices' )->add_success_notice(
 				sprintf(
 					/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite) */
-					__( 'Thanks! You\'ve connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s', 'wp-to-buffer' ),
+					__( 'Thanks! You\'ve connected our Plugin to %1$s. Now select profiles below to enable, and define your statuses to start sending Posts to %2$s', 'wpzinc-social' ),
 					$this->base->plugin->account,
 					$this->base->plugin->account
 				)
@@ -323,7 +326,7 @@ class WP_To_Social_Pro_Admin {
 			$this->base->get_class( 'notices' )->add_error_notice(
 				sprintf(
 					/* translators: Plugin Name */
-					__( '%s requires the PHP cURL extension to be installed and enabled by your web host.', 'wp-to-buffer' ),
+					__( '%s requires the PHP cURL extension to be installed and enabled by your web host.', 'wpzinc-social' ),
 					$this->base->plugin->displayName
 				)
 			);
@@ -343,13 +346,13 @@ class WP_To_Social_Pro_Admin {
 					'%1$s <a href="%2$s">%3$s</a>',
 					sprintf(
 						/* translators: %1$s: Plugin Name, %2$s, %3$s: Social Media Service Name (Buffer, Hootsuite), %4$s: URL to Authorize Plugin Screen, %5$s: URL to Register Account with Service */
-						esc_html__( '%1$s needs to be authorized with %2$s before you can start sending Posts to %3$s.', 'wp-to-buffer' ),
+						esc_html__( '%1$s needs to be authorized with %2$s before you can start sending Posts to %3$s.', 'wpzinc-social' ),
 						$this->base->plugin->displayName,
 						$this->base->plugin->account,
 						$this->base->plugin->account
 					),
 					admin_url( 'admin.php?page=' . $this->base->plugin->name . '-settings' ),
-					esc_html__( 'Click here to Authorize.', 'wp-to-buffer' )
+					esc_html__( 'Click here to Authorize.', 'wpzinc-social' )
 				)
 			);
 		}
@@ -361,7 +364,7 @@ class WP_To_Social_Pro_Admin {
 				$this->base->get_class( 'notices' )->add_error_notice(
 					sprintf(
 						/* translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite) */
-						__( '%1$s uses a new API. Please click the `Reconnect` button at %2$s Settings > Authentication to reconnect your account. You won\'t need to do this again.', 'wp-to-buffer' ),
+						__( '%1$s uses a new API. Please click the `Reconnect` button at %2$s Settings > Authentication to reconnect your account. You won\'t need to do this again.', 'wpzinc-social' ),
 						$this->base->plugin->displayName,
 						$this->base->plugin->account
 					)
@@ -433,14 +436,14 @@ class WP_To_Social_Pro_Admin {
 			'clear_log_nonce'          => wp_create_nonce( $this->base->plugin->name . '-clear-log' ),
 			'clear_log_completed'      => sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-				__( 'No log entries exist, or no status updates have been sent to %s.', 'wp-to-buffer' ),
+				__( 'No log entries exist, or no status updates have been sent to %s.', 'wpzinc-social' ),
 				$this->base->plugin->account
 			),
 
 			'get_log_nonce'            => wp_create_nonce( $this->base->plugin->name . '-get-log' ),
 
-			'delete_condition_message' => __( 'Are you sure you want to delete this condition?', 'wp-to-buffer' ),
-			'delete_status_message'    => __( 'Are you sure you want to delete this status?', 'wp-to-buffer' ),
+			'delete_condition_message' => __( 'Are you sure you want to delete this condition?', 'wpzinc-social' ),
+			'delete_status_message'    => __( 'Are you sure you want to delete this status?', 'wpzinc-social' ),
 
 			'get_status_row_action'    => $this->base->plugin->filter_name . '_get_status_row',
 			'get_status_row_nonce'     => wp_create_nonce( $this->base->plugin->name . '-get-status-row' ),
@@ -526,8 +529,8 @@ class WP_To_Social_Pro_Admin {
 						$localization['prompt_unsaved_changes'] = true;
 						$localization['save_statuses_action']   = $this->base->plugin->filter_name . '_save_statuses';
 						$localization['save_statuses_modal']    = array(
-							'title'         => __( 'Saving', 'wp-to-buffer' ),
-							'title_success' => __( 'Saved!', 'wp-to-buffer' ),
+							'title'         => __( 'Saving', 'wpzinc-social' ),
+							'title_success' => __( 'Saved!', 'wpzinc-social' ),
 						);
 						$localization['save_statuses_nonce']    = wp_create_nonce( $this->base->plugin->name . '-save-statuses' );
 
@@ -647,7 +650,7 @@ class WP_To_Social_Pro_Admin {
 				),
 				admin_url( 'admin.php' )
 			),
-			__( 'Settings', 'wp-to-buffer' )
+			__( 'Settings', 'wpzinc-social' )
 		);
 
 		// Return.
@@ -687,7 +690,7 @@ class WP_To_Social_Pro_Admin {
 			$this->base->get_class( 'notices' )->add_error_notice( $result->get_error_message() );
 		} elseif ( $result === true ) {
 			// Success notice.
-			$this->base->get_class( 'notices' )->add_success_notice( __( 'Settings saved successfully.', 'wp-to-buffer' ) );
+			$this->base->get_class( 'notices' )->add_success_notice( __( 'Settings saved successfully.', 'wpzinc-social' ) );
 		}
 
 		// If the Plugin isn't connected an account, show the screen to do this now.
@@ -767,12 +770,12 @@ class WP_To_Social_Pro_Admin {
 							'%1$s <a href="%2$s" target="_blank">%3$s</a>',
 							sprintf(
 								/* translators: %1$s: Post Type, %2$s: Social Media Service Name (Buffer, Hootsuite), %3$s: Documentation URL */
-								__( 'To send %1$s to %2$s, at least one action on the Defaults tab must be enabled with a status defined, and at least one social media profile must be enabled below by clicking the applicable profile name and ticking the "Account Enabled" box.', 'wp-to-buffer' ),
+								__( 'To send %1$s to %2$s, at least one action on the Defaults tab must be enabled with a status defined, and at least one social media profile must be enabled below by clicking the applicable profile name and ticking the "Account Enabled" box.', 'wpzinc-social' ),
 								$post_type_object->label,
 								$this->base->plugin->account
 							),
 							$documentation_url,
-							__( 'See Documentation', 'wp-to-buffer' )
+							__( 'See Documentation', 'wpzinc-social' )
 						)
 					);
 				}
@@ -820,7 +823,7 @@ class WP_To_Social_Pro_Admin {
 	public function log_screen() {
 
 		// Init table.
-		$table = new WP_To_Social_Pro_Log_Table( $this->base );
+		$table = new \WPZinc\Social\Log_Table( $this->base );
 		$table->prepare_items();
 
 		// Load View.
@@ -909,7 +912,7 @@ class WP_To_Social_Pro_Admin {
 		$this->base->get_class( 'settings' )->update_account_profile_ids( $account_id, array_keys( $profiles ) );
 
 		$this->base->get_class( 'notices' )->add_success_notice(
-			__( 'Profiles refreshed successfully.', 'wp-to-buffer' )
+			__( 'Profiles refreshed successfully.', 'wpzinc-social' )
 		);
 
 	}
@@ -941,7 +944,7 @@ class WP_To_Social_Pro_Admin {
 		$this->base->get_class( 'notices' )->add_success_notice(
 			sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-				__( '%s account disconnected successfully.', 'wp-to-buffer' ),
+				__( '%s account disconnected successfully.', 'wpzinc-social' ),
 				$this->base->plugin->account
 			)
 		);
@@ -964,17 +967,17 @@ class WP_To_Social_Pro_Admin {
 
 		// Missing nonce.
 		if ( ! isset( $_POST[ $this->base->plugin->name . '_nonce' ] ) ) {
-			return new WP_Error(
+			return new \WP_Error(
 				'wp_to_social_pro_admin_save_settings_error',
-				__( 'Nonce field is missing. Settings NOT saved.', 'wp-to-buffer' )
+				__( 'Nonce field is missing. Settings NOT saved.', 'wpzinc-social' )
 			);
 		}
 
 		// Invalid nonce.
 		if ( ! wp_verify_nonce( sanitize_key( $_POST[ $this->base->plugin->name . '_nonce' ] ), $this->base->plugin->name ) ) {
-			return new WP_Error(
+			return new \WP_Error(
 				'wp_to_social_pro_admin_save_settings_error',
-				__( 'Invalid nonce specified. Settings NOT saved.', 'wp-to-buffer' )
+				__( 'Invalid nonce specified. Settings NOT saved.', 'wpzinc-social' )
 			);
 		}
 
@@ -1022,9 +1025,9 @@ class WP_To_Social_Pro_Admin {
 			 */
 			default:
 				if ( ! isset( $_POST[ $this->base->plugin->name ]['statuses'] ) ) {
-					return new WP_Error(
+					return new \WP_Error(
 						'wp_to_social_pro_admin_save_settings_error',
-						__( 'Statuses field is missing. Settings NOT saved.', 'wp-to-buffer' )
+						__( 'Statuses field is missing. Settings NOT saved.', 'wpzinc-social' )
 					);
 				}
 

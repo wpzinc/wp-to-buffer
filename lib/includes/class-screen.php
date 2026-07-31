@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Screen class
  *
@@ -13,7 +16,7 @@
  * @author  WP Zinc
  * @version 3.9.6
  */
-class WP_To_Social_Pro_Screen {
+class Screen {
 
 	/**
 	 * Holds the base object.

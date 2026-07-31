@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Notices class.
  *
@@ -14,7 +17,7 @@
  * @author    WP Zinc
  * @version   3.9.6
  */
-class WP_To_Social_Pro_Notices {
+class Notices {
 
 	/**
 	 * Holds the base object.

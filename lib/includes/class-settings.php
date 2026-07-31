@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Settings class
  *
@@ -13,7 +16,7 @@
  * @author  WP Zinc
  * @version 3.0.0
  */
-class WP_To_Social_Pro_Settings {
+class Settings {
 
 	/**
 	 * Holds the class object.
@@ -154,20 +157,20 @@ class WP_To_Social_Pro_Settings {
 				// Settings were changed, but could not be saved using update_option.
 				// Check the DB collation.
 				if ( ! $this->base->get_class( 'common' )->is_table_charset_and_collation_correct( 'options', 'utf8mb4' ) ) {
-					return new WP_Error(
+					return new \WP_Error(
 						$this->base->plugin->filter_name . '_settings_update_settings_db_collation_error',
 						sprintf(
 							/* translators: %1$s: Documentation URL */
-							__( 'Unable to save settings due to an invalid database collation and charset on the options table. Please refer to the <a href="%1$s" target="_blank">Documentation</a>.', 'wp-to-buffer' ),
+							__( 'Unable to save settings due to an invalid database collation and charset on the options table. Please refer to the <a href="%1$s" target="_blank">Documentation</a>.', 'wpzinc-social' ),
 							'https://www.wpzinc.com/documentation/wordpress-buffer-pro/debugging-issues/#unable-to-save-settings-due-to-an-invalid-database-collation-and-charset-on-the-options-table'
 						),
 					);
 				}
 
 				// No changes were made to the settings.
-				return new WP_Error(
+				return new \WP_Error(
 					$this->base->plugin->filter_name . '_settings_update_settings_no_changes',
-					__( 'Unable to save settings due to an error. Please try again.', 'wp-to-buffer' )
+					__( 'Unable to save settings due to an error. Please try again.', 'wpzinc-social' )
 				);
 			}
 		}
@@ -178,7 +181,7 @@ class WP_To_Social_Pro_Settings {
 			// Fetch Post Type Name, Profile Name and Action Name.
 			$post_type_object = get_post_type_object( $type );
 			if ( $duplicates['profile_id'] === 'default' ) {
-				$profile = __( 'Defaults', 'wp-to-buffer' );
+				$profile = __( 'Defaults', 'wpzinc-social' );
 			} elseif ( isset( $profiles[ $profile_id ] ) ) {
 				$profile = $profiles[ $profile_id ]['formatted_service'] . ': ' . $profiles[ $profile_id ]['formatted_username'];
 			}
@@ -186,11 +189,11 @@ class WP_To_Social_Pro_Settings {
 			$action       = $post_actions[ $duplicates['action'] ];
 
 			// Return error object.
-			return new WP_Error(
+			return new \WP_Error(
 				$this->base->plugin->filter_name . '_settings_update_settings_duplicates',
 				sprintf(
 					/* translators: %1$s: Post Type Name, Plural, %2$s: Social Media Profile Name, %3$s: Action (Publish, Update, Repost, Bulk Publish), %4$s: Social Media Service Name (Buffer, Hootsuite) */
-					__( 'Two or more statuses defined in %1$s > %2$s > %3$s are the same. Please correct this to ensure each status update is unique, otherwise your status updates will NOT publish to %4$s as they will be seen as duplicates, which violate Facebook and Twitter\'s Terms of Service.', 'wp-to-buffer' ),
+					__( 'Two or more statuses defined in %1$s > %2$s > %3$s are the same. Please correct this to ensure each status update is unique, otherwise your status updates will NOT publish to %4$s as they will be seen as duplicates, which violate Facebook and Twitter\'s Terms of Service.', 'wpzinc-social' ),
 					$post_type_object->label,
 					$profile,
 					$action,

@@ -16,27 +16,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<ul class="wpzinc-nav-tabs wpzinc-js-tabs" data-panels-container="#settings-container" data-panel=".panel" data-active="wpzinc-nav-tab-vertical-active">
 		<li class="wpzinc-nav-tab lock">
 			<a href="#authentication" class="wpzinc-nav-tab-vertical-active" data-documentation="<?php echo esc_attr( $this->base->plugin->documentation_url ); ?>/authentication-settings/">
-				<?php esc_html_e( 'Authentication', 'wp-to-buffer' ); ?>
+				<?php esc_html_e( 'Authentication', 'wpzinc-social' ); ?>
 			</a>
 		</li>
 		<li class="wpzinc-nav-tab default">
 			<a href="#general-settings" data-documentation="<?php echo esc_attr( $this->base->plugin->documentation_url ); ?>/general-settings/">
-				<?php esc_html_e( 'General Settings', 'wp-to-buffer' ); ?>
+				<?php esc_html_e( 'General Settings', 'wpzinc-social' ); ?>
 			</a>
 		</li>
 		<li class="wpzinc-nav-tab image">
 			<a href="#image-settings" data-documentation="<?php echo esc_attr( $this->base->plugin->documentation_url ); ?>/text-to-image-settings/">
-				<?php esc_html_e( 'Text to Image', 'wp-to-buffer' ); ?>
+				<?php esc_html_e( 'Text to Image', 'wpzinc-social' ); ?>
 			</a>
 		</li>
 		<li class="wpzinc-nav-tab file-text">
 			<a href="#log-settings" data-documentation="<?php echo esc_attr( $this->base->plugin->documentation_url ); ?>/log-settings/">
-				<?php esc_html_e( 'Log Settings', 'wp-to-buffer' ); ?>
+				<?php esc_html_e( 'Log Settings', 'wpzinc-social' ); ?>
 			</a>
 		</li>
 		<li class="wpzinc-nav-tab arrow-right-circle">
 			<a href="#repost-settings" data-documentation="<?php echo esc_attr( $this->base->plugin->documentation_url ); ?>/repost-settings/">
-				<?php esc_html_e( 'Repost Settings', 'wp-to-buffer' ); ?>
+				<?php esc_html_e( 'Repost Settings', 'wpzinc-social' ); ?>
 			</a>
 		</li>
 		<?php
@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 			<li class="wpzinc-nav-tab users">
 				<a href="#user-access" data-documentation="<?php echo esc_attr( $this->base->plugin->documentation_url ); ?>/user-access-settings/">
-					<?php esc_html_e( 'User Access', 'wp-to-buffer' ); ?>
+					<?php esc_html_e( 'User Access', 'wpzinc-social' ); ?>
 				</a>
 			</li>
 			<?php
@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 		<li class="wpzinc-nav-tab tag">
 			<a href="#custom-tags" data-documentation="<?php echo esc_attr( $this->base->plugin->documentation_url ); ?>/custom-tags-settings/">
-				<?php esc_html_e( 'Custom Tags', 'wp-to-buffer' ); ?>
+				<?php esc_html_e( 'Custom Tags', 'wpzinc-social' ); ?>
 			</a>
 		</li>
 	</ul>
@@ -64,14 +64,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div id="authentication" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php esc_html_e( 'Connected Accounts', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Connected Accounts', 'wpzinc-social' ); ?></h3>
 
 					<p class="description">
 						<?php
 						echo esc_html(
 							sprintf(
 								/* translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite) */
-								__( 'A list of %1$s accounts/organizations that are connected to %2$s.', 'wp-to-buffer' ),
+								__( 'A list of %1$s accounts/organizations that are connected to %2$s.', 'wpzinc-social' ),
 								$this->base->plugin->account,
 								$this->base->plugin->displayName
 							)
@@ -107,13 +107,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 						<div class="right">
 							<a href="<?php echo esc_url( $refresh_profiles_url ); ?>" class="button button-secondary">
-								<?php esc_html_e( 'Refresh Profiles', 'wp-to-buffer' ); ?>
+								<?php esc_html_e( 'Refresh Profiles', 'wpzinc-social' ); ?>
 							</a>
 							<a href="<?php echo esc_url( $reconnect_url ); ?>" class="button button-secondary">
-								<?php esc_html_e( 'Reconnect', 'wp-to-buffer' ); ?>
+								<?php esc_html_e( 'Reconnect', 'wpzinc-social' ); ?>
 							</a>
 							<a href="<?php echo esc_url( $disconnect_url ); ?>" class="button wpzinc-button-red">
-								<?php esc_html_e( 'Disconnect', 'wp-to-buffer' ); ?>
+								<?php esc_html_e( 'Disconnect', 'wpzinc-social' ); ?>
 							</a>
 						</div>
 					</div>
@@ -127,15 +127,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div id="general-settings" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php esc_html_e( 'General Settings', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'General Settings', 'wpzinc-social' ); ?></h3>
 					<p class="description">
-						<?php esc_html_e( 'Provides options for logging, Post default level settings and whether to use WordPress Cron when publishing or updating Posts.', 'wp-to-buffer' ); ?>
+						<?php esc_html_e( 'Provides options for logging, Post default level settings and whether to use WordPress Cron when publishing or updating Posts.', 'wpzinc-social' ); ?>
 					</p>
 				</header>
 
 				<div class="wpzinc-option">
 					<div class="left">
-						<label for="test_mode"><?php esc_html_e( 'Enable Test Mode', 'wp-to-buffer' ); ?></label>
+						<label for="test_mode"><?php esc_html_e( 'Enable Test Mode', 'wpzinc-social' ); ?></label>
 					</div>
 					<div class="right">
 						<input type="checkbox" name="test_mode" id="test_mode" value="1" <?php checked( $this->get_setting( '', 'test_mode' ), 1 ); ?> />
@@ -145,7 +145,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							echo esc_html(
 								sprintf(
 								/* translators: Social Media Service Name (Buffer, Hootsuite) */
-									__( 'If enabled, status(es) are not sent to %s, but will appear in the Log, if logging is enabled. This is useful to test status text, conditions etc.', 'wp-to-buffer' ),
+									__( 'If enabled, status(es) are not sent to %s, but will appear in the Log, if logging is enabled. This is useful to test status text, conditions etc.', 'wpzinc-social' ),
 									$this->base->plugin->account
 								)
 							);
@@ -156,22 +156,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div class="wpzinc-option">
 					<div class="left">
-						<label for="force_trailing_forwardslash"><?php esc_html_e( 'Force Trailing Forwardslash?', 'wp-to-buffer' ); ?></label>
+						<label for="force_trailing_forwardslash"><?php esc_html_e( 'Force Trailing Forwardslash?', 'wpzinc-social' ); ?></label>
 					</div>
 					<div class="right">
 						<input type="checkbox" name="force_trailing_forwardslash" id="force_trailing_forwardslash" value="1" <?php checked( $this->get_setting( '', 'force_trailing_forwardslash' ), 1 ); ?> />
 
 						<p class="description">
 							<?php
-							esc_html_e( 'If enabled, any URLs in statuses will always end with a forwardslash. This might be required if the wrong image is shared with a status.', 'wp-to-buffer' );
+							esc_html_e( 'If enabled, any URLs in statuses will always end with a forwardslash. This might be required if the wrong image is shared with a status.', 'wpzinc-social' );
 							?>
 							<br />
 							<?php
 							printf(
 								'%1$s <a href="options-permalink.php">%2$s</a> %3$s',
-								esc_html__( 'It\'s better to ensure your', 'wp-to-buffer' ),
-								esc_html__( 'Permalink', 'wp-to-buffer' ),
-								esc_html__( 'settings end with a forwardslash, but this option is a useful fallback if changing Permalink structure isn\'t possible.', 'wp-to-buffer' )
+								esc_html__( 'It\'s better to ensure your', 'wpzinc-social' ),
+								esc_html__( 'Permalink', 'wpzinc-social' ),
+								esc_html__( 'settings end with a forwardslash, but this option is a useful fallback if changing Permalink structure isn\'t possible.', 'wpzinc-social' )
 							);
 							?>
 						</p>
@@ -180,7 +180,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div class="wpzinc-option">
 					<div class="left">
-						<label for="proxy"><?php esc_html_e( 'Use Proxy?', 'wp-to-buffer' ); ?></label>
+						<label for="proxy"><?php esc_html_e( 'Use Proxy?', 'wpzinc-social' ); ?></label>
 					</div>
 					<div class="right">
 						<input type="checkbox" name="proxy" id="proxy" value="1" <?php checked( $this->get_setting( '', 'proxy' ), 1 ); ?> />
@@ -190,14 +190,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 							echo esc_html(
 								sprintf(
 								/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite), %2$s: Social Media Service Name (Buffer, Hootsuite) */
-									__( 'If enabled, statuses sent to %1$s are performed through our proxy. This is useful if your ISP or host\'s country prevents access to %1$s.', 'wp-to-buffer' ),
+									__( 'If enabled, statuses sent to %1$s are performed through our proxy. This is useful if your ISP or host\'s country prevents access to %1$s.', 'wpzinc-social' ),
 									$this->base->plugin->account,
 									$this->base->plugin->account
 								)
 							);
 							?>
 							<br />
-							<?php esc_html_e( 'You may still need to use a VPN for initial Authentication when setting up the Plugin for the first time.', 'wp-to-buffer' ); ?>
+							<?php esc_html_e( 'You may still need to use a VPN for initial Authentication when setting up the Plugin for the first time.', 'wpzinc-social' ); ?>
 						</p>
 					</div>
 				</div>
@@ -208,13 +208,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div id="image-settings" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php esc_html_e( 'Text to Image Settings', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Text to Image Settings', 'wpzinc-social' ); ?></h3>
 					<p class="description">
 						<?php
 						esc_html_e(
 							'Provides options for automatically generating images from text, when a Status\' image option is set to Use Text to Image
                         and a status has Text to Image defined.',
-							'wp-to-buffer'
+							'wpzinc-social'
 						);
 						?>
 					</p>
@@ -224,7 +224,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="full">
 						<h4>
 							<?php
-							esc_html_e( 'Need to automatically generate images?', 'wp-to-buffer' );
+							esc_html_e( 'Need to automatically generate images?', 'wpzinc-social' );
 							?>
 						</h4>
 
@@ -232,13 +232,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php
 							printf(
 								/* translators: Service name (Buffer, Hootsuite) */
-								esc_html__( '%s Pro provides options to generate images based on text, which are them submitted with your status message.', 'wp-to-buffer' ),
+								esc_html__( '%s Pro provides options to generate images based on text, which are them submitted with your status message.', 'wpzinc-social' ),
 								esc_html( $this->base->plugin->displayName )
 							);
 							?>
 						</p>
 
-						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wpzinc-social' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -248,15 +248,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div id="log-settings" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php esc_html_e( 'Log Settings', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Log Settings', 'wpzinc-social' ); ?></h3>
 					<p class="description">
-						<?php esc_html_e( 'Provides options to enable logging, display logs on Posts and how long to keep logs for.', 'wp-to-buffer' ); ?>
+						<?php esc_html_e( 'Provides options to enable logging, display logs on Posts and how long to keep logs for.', 'wpzinc-social' ); ?>
 					</p>
 				</header>
 
 				<div class="wpzinc-option">
 					<div class="left">
-						<label for="log_enabled"><?php esc_html_e( 'Enable Logging?', 'wp-to-buffer' ); ?></label>
+						<label for="log_enabled"><?php esc_html_e( 'Enable Logging?', 'wpzinc-social' ); ?></label>
 					</div>
 					<div class="right">
 						<input type="checkbox" name="log[enabled]" id="log_enabled" value="1" <?php checked( $this->get_setting( 'log', '[enabled]' ), 1 ); ?> data-conditional="enable_logging" />
@@ -265,13 +265,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 							if ( $this->get_setting( 'log', '[enabled]' ) ) {
 								printf(
 									'%1$s <a href="%2$s">%3$s</a> %4$s',
-									esc_html__( 'If enabled, the', 'wp-to-buffer' ),
+									esc_html__( 'If enabled, the', 'wpzinc-social' ),
 									esc_html( admin_url( 'admin.php?page=' . $this->base->plugin->name . '-log' ) ),
-									esc_html__( 'Plugin Logs', 'wp-to-buffer' ),
+									esc_html__( 'Plugin Logs', 'wpzinc-social' ),
 									esc_html(
 										sprintf(
 											/* translators: Social Media Service Name (Buffer, Hootsuite) */
-											__( 'will detail status(es) sent to %s, including any errors or reasons why no status(es) were sent.', 'wp-to-buffer' ),
+											__( 'will detail status(es) sent to %s, including any errors or reasons why no status(es) were sent.', 'wpzinc-social' ),
 											$this->base->plugin->account
 										)
 									)
@@ -281,7 +281,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								echo esc_html(
 									sprintf(
 									/* translators: %1$s: Social Media Service Name (Buffer, Hootsuite) */
-										__( 'If enabled, the Plugin Logs will detail status(es) sent to %1$s, including any errors or reasons why no status(es) were sent.', 'wp-to-buffer' ),
+										__( 'If enabled, the Plugin Logs will detail status(es) sent to %1$s, including any errors or reasons why no status(es) were sent.', 'wpzinc-social' ),
 										$this->base->plugin->account
 									)
 								);
@@ -294,7 +294,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div id="enable_logging">
 					<div class="wpzinc-option">
 						<div class="left">
-							<label for="log_display_on_posts"><?php esc_html_e( 'Display on Posts?', 'wp-to-buffer' ); ?></label>
+							<label for="log_display_on_posts"><?php esc_html_e( 'Display on Posts?', 'wpzinc-social' ); ?></label>
 						</div>
 						<div class="right">
 							<input type="checkbox" name="log[display_on_posts]" id="log_display_on_posts" value="1" <?php checked( $this->get_setting( 'log', '[display_on_posts]' ), 1 ); ?> />
@@ -304,14 +304,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 								if ( $this->get_setting( 'log', '[enabled]' ) ) {
 									printf(
 										'%1$s <a href="%2$s">%3$s</a> %4$s',
-										esc_html__( 'If enabled, a Log will be displayed when editing a Post.  Logs are always available through the', 'wp-to-buffer' ),
+										esc_html__( 'If enabled, a Log will be displayed when editing a Post.  Logs are always available through the', 'wpzinc-social' ),
 										esc_html( admin_url( 'admin.php?page=' . $this->base->plugin->name . '-log' ) ),
-										esc_html__( 'Plugin Logs', 'wp-to-buffer' ),
-										esc_html__( 'screen', 'wp-to-buffer' )
+										esc_html__( 'Plugin Logs', 'wpzinc-social' ),
+										esc_html__( 'screen', 'wpzinc-social' )
 									);
 								} else {
 									// Don't link "Plugin Log" text, as Logs are disabled so it won't show anything.
-									esc_html_e( 'If enabled, a Log will be displayed when editing a Post.  Logs are always available through the Plugin Logs screen.', 'wp-to-buffer' );
+									esc_html_e( 'If enabled, a Log will be displayed when editing a Post.  Logs are always available through the Plugin Logs screen.', 'wpzinc-social' );
 								}
 								?>
 							</p>
@@ -320,7 +320,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<div class="wpzinc-option">
 						<div class="left">
-							<label for="log_level"><?php esc_html_e( 'Log Level', 'wp-to-buffer' ); ?></label>
+							<label for="log_level"><?php esc_html_e( 'Log Level', 'wpzinc-social' ); ?></label>
 						</div>
 						<div class="right">
 							<?php
@@ -355,22 +355,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 							?>
 
 							<p class="description">
-								<?php esc_html_e( 'Defines which log results to save to the Log database. Errors will always be logged.', 'wp-to-buffer' ); ?>
+								<?php esc_html_e( 'Defines which log results to save to the Log database. Errors will always be logged.', 'wpzinc-social' ); ?>
 							</p>
 						</div>
 					</div>
 
 					<div class="wpzinc-option">
 						<div class="left">
-							<label for="log_preserve_days"><?php esc_html_e( 'Preserve Logs', 'wp-to-buffer' ); ?></strong>
+							<label for="log_preserve_days"><?php esc_html_e( 'Preserve Logs', 'wpzinc-social' ); ?></strong>
 						</div>
 						<div class="right">
 							<input type="number" name="log[preserve_days]" id="log_preserve_days" value="<?php echo esc_attr( $this->get_setting( 'log', '[preserve_days]' ) ); ?>" min="0" max="9999" step="1" />
-							<?php esc_html_e( 'days', 'wp-to-buffer' ); ?>
+							<?php esc_html_e( 'days', 'wpzinc-social' ); ?>
 					   
 							<p class="description">
 								<?php
-								esc_html_e( 'The number of days to preserve logs for.  Zero means logs are kept indefinitely.', 'wp-to-buffer' );
+								esc_html_e( 'The number of days to preserve logs for.  Zero means logs are kept indefinitely.', 'wpzinc-social' );
 								?>
 							</p>
 						</div>
@@ -383,13 +383,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div id="repost-settings" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php esc_html_e( 'Repost Settings', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Repost Settings', 'wpzinc-social' ); ?></h3>
 					<p class="description">
-						<?php esc_html_e( 'Provides options for when to run the WordPress Repost Cron Event on this WordPress installation.', 'wp-to-buffer' ); ?><br />
+						<?php esc_html_e( 'Provides options for when to run the WordPress Repost Cron Event on this WordPress installation.', 'wpzinc-social' ); ?><br />
 						<?php
 						printf(
 							/* translators: Service (Buffer, Hootsuite) */
-							esc_html__( 'When Post(s) are scheduled on %s will depend on the Repost Status Settings.', 'wp-to-buffer' ),
+							esc_html__( 'When Post(s) are scheduled on %s will depend on the Repost Status Settings.', 'wpzinc-social' ),
 							esc_html( $this->base->plugin->displayName )
 						);
 						?>
@@ -398,20 +398,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<div class="wpzinc-option highlight">
 					<div class="full">
-						<h4><?php esc_html_e( 'Revive Old Posts with Repost', 'wp-to-buffer' ); ?></h4>
+						<h4><?php esc_html_e( 'Revive Old Posts with Repost', 'wpzinc-social' ); ?></h4>
 
 						<p>
 							<?php
 							printf(
 								/* translators: %1$s: Service (Buffer, Hootsuite), %2$s: Service (Buffer, Hootsuite) */
-								esc_html__( 'Automatically schedule old Posts to %1$s with %2$s Pro.', 'wp-to-buffer' ),
+								esc_html__( 'Automatically schedule old Posts to %1$s with %2$s Pro.', 'wpzinc-social' ),
 								esc_html( $this->base->plugin->displayName ),
 								esc_html( $this->base->plugin->displayName )
 							);
 							?>
 						</p>
 
-						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wpzinc-social' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -421,27 +421,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div id="user-access" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php esc_html_e( 'User Access', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'User Access', 'wpzinc-social' ); ?></h3>
 					<p class="description">
-						<?php esc_html_e( 'Optionally define which of your Post Types and connected social media account(s) should be available for configuration based on various WordPress User Roles.', 'wp-to-buffer' ); ?>
+						<?php esc_html_e( 'Optionally define which of your Post Types and connected social media account(s) should be available for configuration based on various WordPress User Roles.', 'wpzinc-social' ); ?>
 					</p>
 				</header>
 
 				<div class="wpzinc-option highlight">
 					<div class="full">
-						<h4><?php esc_html_e( 'Limit Post Types and Social Profiles by WordPress User Role', 'wp-to-buffer' ); ?></h4>
+						<h4><?php esc_html_e( 'Limit Post Types and Social Profiles by WordPress User Role', 'wpzinc-social' ); ?></h4>
 
 						<p>
 							<?php
 							printf(
 								/* translators: %1$s: Service (Buffer, Hootsuite) */
-								esc_html__( '%s Pro provides options to limit which Post Types to show in the Settings screens, as well as prevent access to specific social media profiles linked to your Buffer account, on a per-WordPress Role basis.', 'wp-to-buffer' ),
+								esc_html__( '%s Pro provides options to limit which Post Types to show in the Settings screens, as well as prevent access to specific social media profiles linked to your Buffer account, on a per-WordPress Role basis.', 'wpzinc-social' ),
 								esc_html( $this->base->plugin->displayName )
 							);
 							?>
 						</p>
 
-						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wpzinc-social' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -451,27 +451,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div id="custom-tags" class="panel">
 			<div class="postbox">
 				<header>
-					<h3><?php esc_html_e( 'Custom Tags', 'wp-to-buffer' ); ?></h3>
+					<h3><?php esc_html_e( 'Custom Tags', 'wpzinc-social' ); ?></h3>
 					<p class="description">
-						<?php esc_html_e( 'If your site uses Custom Fields, ACF or similar, you can specify additional tags to be added to the "Insert Tag" dropdown for each of your Post Types.  These can then be used by Users, instead of having to remember the template tag text to use.', 'wp-to-buffer' ); ?>
+						<?php esc_html_e( 'If your site uses Custom Fields, ACF or similar, you can specify additional tags to be added to the "Insert Tag" dropdown for each of your Post Types.  These can then be used by Users, instead of having to remember the template tag text to use.', 'wpzinc-social' ); ?>
 					</p>
 				</header>
 
 				<div class="wpzinc-option highlight">
 					<div class="full">
-						<h4><?php esc_html_e( 'Need to define your own Tags to use in status messages?', 'wp-to-buffer' ); ?></h4>
+						<h4><?php esc_html_e( 'Need to define your own Tags to use in status messages?', 'wpzinc-social' ); ?></h4>
 
 						<p>
 							<?php
 							printf(
 								/* translators: %1$s: Service (Buffer, Hootsuite) */
-								esc_html__( '%s Pro provides options to define Custom Field / ACF Tags, which will then populate with Post data when used in status messages.  Tags also appear in the Insert Tags dropdown.', 'wp-to-buffer' ),
+								esc_html__( '%s Pro provides options to define Custom Field / ACF Tags, which will then populate with Post data when used in status messages.  Tags also appear in the Insert Tags dropdown.', 'wpzinc-social' ),
 								esc_html( $this->base->plugin->displayName )
 							);
 							?>
 						</p>
 
-						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wpzinc-social' ); ?></a>
 					</div>
 				</div>
 			</div>

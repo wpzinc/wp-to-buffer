@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php echo esc_html( $this->base->plugin->displayName ); ?>
 
 		<span>
-			<?php esc_html_e( 'Settings', 'wp-to-buffer' ); ?>
+			<?php esc_html_e( 'Settings', 'wpzinc-social' ); ?>
 		</span>
 	</h1>
 </header>
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<!-- Tabs -->
 		<h2 class="nav-tab-wrapper wpzinc-horizontal-tabbed-ui">
 			<!-- Settings -->
-			<a href="admin.php?page=<?php echo esc_attr( $this->base->plugin->name ); ?>-settings" class="nav-tab<?php echo esc_attr( $tab === 'auth' ? ' nav-tab-active' : '' ) . ( $this->base->get_class( 'settings' )->account_connected() ? ' enabled' : ' error' ); ?>" title="<?php esc_attr_e( 'Settings', 'wp-to-buffer' ); ?>">
+			<a href="admin.php?page=<?php echo esc_attr( $this->base->plugin->name ); ?>-settings" class="nav-tab<?php echo esc_attr( $tab === 'auth' ? ' nav-tab-active' : '' ) . ( $this->base->get_class( 'settings' )->account_connected() ? ' enabled' : ' error' ); ?>" title="<?php esc_attr_e( 'Settings', 'wpzinc-social' ); ?>">
 				<span class="dashicons dashicons-lock"></span> 
 				<?php
 				if ( $this->base->get_class( 'settings' )->account_connected() ) {
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				}
 				?>
 				<span class="text">
-					<?php esc_html_e( 'Settings', 'wp-to-buffer' ); ?>
+					<?php esc_html_e( 'Settings', 'wpzinc-social' ); ?>
 				</span>
 			</a>
 
@@ -84,12 +84,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 
 			<!-- Documentation -->
-			<a href="<?php echo esc_attr( $documentation_url ); ?>" class="nav-tab last documentation" title="<?php esc_html_e( 'Documentation', 'wp-to-buffer' ); ?>" target="_blank">
+			<a href="<?php echo esc_attr( $documentation_url ); ?>" class="nav-tab last documentation" title="<?php esc_html_e( 'Documentation', 'wpzinc-social' ); ?>" target="_blank">
 				<span class="text">
-					<?php esc_html_e( 'Documentation', 'wp-to-buffer' ); ?>
+					<?php esc_html_e( 'Documentation', 'wpzinc-social' ); ?>
 				</span>
 				<span class="text-mobile">
-					<?php esc_html_e( 'Docs', 'wp-to-buffer' ); ?>
+					<?php esc_html_e( 'Docs', 'wpzinc-social' ); ?>
 				</span>
 				<span class="dashicons dashicons-admin-page"></span>
 			</a>
@@ -118,7 +118,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<!-- Save -->
 							<div>
 								<?php wp_nonce_field( $this->base->plugin->name, $this->base->plugin->name . '_nonce' ); ?>
-								<input type="submit" name="submit" value="<?php esc_attr_e( 'Save', 'wp-to-buffer' ); ?>" class="button button-primary" />
+								<input type="submit" name="submit" value="<?php esc_attr_e( 'Save', 'wpzinc-social' ); ?>" class="button button-primary" />
 							</div>
 							<?php
 						}
@@ -131,16 +131,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div id="postbox-container-1" class="postbox-container">
 					<?php
 					// Define the default upgrade content.
-					$upgrade_title   = __( 'Keep Updated', 'wp-to-buffer' );
-					$upgrade_content = esc_html__( 'Subscribe to the newsletter and receive updates on our WordPress Plugins.', 'wp-to-buffer' ) . '<script async data-uid="' . $this->base->plugin->convertkit_form_uid . '" src="https://dedicated-crafter-4782.ck.page/' . $this->base->plugin->convertkit_form_uid . '/index.js"></script>';
+					$upgrade_title   = __( 'Keep Updated', 'wpzinc-social' );
+					$upgrade_content = esc_html__( 'Subscribe to the newsletter and receive updates on our WordPress Plugins.', 'wpzinc-social' ) . '<script async data-uid="' . $this->base->plugin->convertkit_form_uid . '" src="https://dedicated-crafter-4782.ck.page/' . $this->base->plugin->convertkit_form_uid . '/index.js"></script>';
 
 					// If a free Buffer account is connected, show the switch to Social Post Flow upgrade.
 					foreach ( $accounts as $account ) {
 						if ( $account['plan'] === 'free' ) {
-							$upgrade_title       = esc_html__( 'Switch to Social Post Flow', 'wp-to-buffer' );
-							$upgrade_content     = esc_html__( 'Up to 5 channels for $49/year. Our own scheduling tool replaces Buffer entirely. The same 5 channels on Buffer\'s paid plan would cost around $360/year, so you save over $300 a year and remove the per channel fee for good.', 'wp-to-buffer' );
+							$upgrade_title       = esc_html__( 'Switch to Social Post Flow', 'wpzinc-social' );
+							$upgrade_content     = esc_html__( 'Up to 5 channels for $49/year. Our own scheduling tool replaces Buffer entirely. The same 5 channels on Buffer\'s paid plan would cost around $360/year, so you save over $300 a year and remove the per channel fee for good.', 'wpzinc-social' );
 							$upgrade_url         = 'https://www.socialpostflow.com/?utm_source=wp-to-buffer&utm_medium=settings&utm_campaign=sidebar-upgrade';
-							$upgrade_button_text = esc_html__( 'Try Social Post Flow', 'wp-to-buffer' );
+							$upgrade_button_text = esc_html__( 'Try Social Post Flow', 'wpzinc-social' );
 							break;
 						}
 					}

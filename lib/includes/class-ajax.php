@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * AJAX class.
  *
@@ -14,7 +17,7 @@
  * @author  WP Zinc
  * @version 3.0.0
  */
-class WP_To_Social_Pro_Ajax {
+class Ajax {
 
 	/**
 	 * Holds the base class object.
@@ -58,10 +61,10 @@ class WP_To_Social_Pro_Ajax {
 
 		// Bail if no user ID or username was provided.
 		if ( ! isset( $_REQUEST['user_id'] ) ) {
-			wp_send_json_error( __( 'No user ID was provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No user ID was provided.', 'wpzinc-social' ) );
 		}
 		if ( ! isset( $_REQUEST['username'] ) ) {
-			wp_send_json_error( __( 'No username was provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No username was provided.', 'wpzinc-social' ) );
 		}
 
 		// Sanitize inputs.
@@ -87,10 +90,10 @@ class WP_To_Social_Pro_Ajax {
 
 		// Bail if no post type was provided.
 		if ( ! isset( $_REQUEST['post_type'] ) ) {
-			wp_send_json_error( __( 'No post type was provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No post type was provided.', 'wpzinc-social' ) );
 		}
 		if ( ! isset( $_REQUEST['statuses'] ) ) {
-			wp_send_json_error( __( 'No statuses were provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No statuses were provided.', 'wpzinc-social' ) );
 		}
 
 		// Parse request.
@@ -130,13 +133,13 @@ class WP_To_Social_Pro_Ajax {
 
 		// Bail if expect parameters were not was provided.
 		if ( ! isset( $_REQUEST['status'] ) ) {
-			wp_send_json_error( __( 'No status was provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No status was provided.', 'wpzinc-social' ) );
 		}
 		if ( ! isset( $_REQUEST['post_type'] ) ) {
-			wp_send_json_error( __( 'No post type was provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No post type was provided.', 'wpzinc-social' ) );
 		}
 		if ( ! isset( $_REQUEST['post_action'] ) ) {
-			wp_send_json_error( __( 'No post action was provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No post action was provided.', 'wpzinc-social' ) );
 		}
 
 		// Parse request.
@@ -162,7 +165,7 @@ class WP_To_Social_Pro_Ajax {
 
 		// Bail if no post ID was provided.
 		if ( ! isset( $_REQUEST['post'] ) ) {
-			wp_send_json_error( __( 'No post ID was provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No post ID was provided.', 'wpzinc-social' ) );
 		}
 
 		// Get Post ID.
@@ -185,7 +188,7 @@ class WP_To_Social_Pro_Ajax {
 
 		// Bail if no post ID was provided.
 		if ( ! isset( $_REQUEST['post'] ) ) {
-			wp_send_json_error( __( 'No post ID was provided.', 'wp-to-buffer' ) );
+			wp_send_json_error( __( 'No post ID was provided.', 'wpzinc-social' ) );
 		}
 
 		// Get Post ID.

@@ -224,29 +224,23 @@ class WP_To_Buffer {
 		$this->classes = new stdClass();
 
 		// Initialize required classes.
-		$this->classes->admin         = new WP_To_Social_Pro_Admin( self::$instance );
-		$this->classes->ajax          = new WP_To_Social_Pro_AJAX( self::$instance );
-		$this->classes->api           = new WP_To_Social_Pro_Buffer_API( self::$instance );
-		$this->classes->common        = new WP_To_Social_Pro_Common( self::$instance );
-		$this->classes->cron          = new WP_To_Social_Pro_Cron( self::$instance );
-		$this->classes->date          = new WP_To_Social_Pro_Date( self::$instance );
-		$this->classes->image         = new WP_To_Social_Pro_Image( self::$instance );
-		$this->classes->install       = new WP_To_Social_Pro_Install( self::$instance );
-		$this->classes->log           = new WP_To_Social_Pro_Log( self::$instance );
-		$this->classes->media_library = new WP_To_Social_Pro_Media_Library( self::$instance );
-		$this->classes->notices       = new WP_To_Social_Pro_Notices( self::$instance );
-		$this->classes->post          = new WP_To_Social_Pro_Post( self::$instance );
-		$this->classes->publish       = new WP_To_Social_Pro_Publish( self::$instance );
-		$this->classes->screen        = new WP_To_Social_Pro_Screen( self::$instance );
-		$this->classes->settings      = new WP_To_Social_Pro_Settings( self::$instance );
-		$this->classes->twitter_api   = new WP_To_Social_Pro_Twitter_API( self::$instance );
-		$this->classes->validation    = new WP_To_Social_Pro_Validation( self::$instance );
-
-		// Integrations.
-		$this->classes->aioseo    = new WP_To_Social_Pro_AIOSEO( self::$instance );
-		$this->classes->rank_math = new WP_To_Social_Pro_Rank_Math( self::$instance );
-		$this->classes->seopress  = new WP_To_Social_Pro_SEOPress( self::$instance );
-		$this->classes->yoast_seo = new WP_To_Social_Pro_Yoast_SEO( self::$instance );
+		$this->classes->admin         = new \WPZinc\Social\Admin( self::$instance );
+		$this->classes->ajax          = new \WPZinc\Social\AJAX( self::$instance );
+		$this->classes->api           = new \WPZinc\Social\Buffer_API( self::$instance );
+		$this->classes->common        = new \WPZinc\Social\Common( self::$instance );
+		$this->classes->cron          = new \WPZinc\Social\Cron( self::$instance );
+		$this->classes->date          = new \WPZinc\Social\Date( self::$instance );
+		$this->classes->image         = new \WPZinc\Social\Image( self::$instance );
+		$this->classes->install       = new \WPZinc\Social\Install( self::$instance );
+		$this->classes->log           = new \WPZinc\Social\Log( self::$instance );
+		$this->classes->media_library = new \WPZinc\Social\Media_Library( self::$instance );
+		$this->classes->notices       = new \WPZinc\Social\Notices( self::$instance );
+		$this->classes->post          = new \WPZinc\Social\Post( self::$instance );
+		$this->classes->publish       = new \WPZinc\Social\Publish( self::$instance );
+		$this->classes->screen        = new \WPZinc\Social\Screen( self::$instance );
+		$this->classes->settings      = new \WPZinc\Social\Settings( self::$instance );
+		$this->classes->twitter_api   = new \WPZinc\Social\Twitter_API( self::$instance );
+		$this->classes->validation    = new \WPZinc\Social\Validation( self::$instance );
 
 	}
 

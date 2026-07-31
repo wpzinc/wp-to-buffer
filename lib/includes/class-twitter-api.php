@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * WP Zinc Twitter API class
  *
@@ -14,7 +17,7 @@
  * @author  WP Zinc
  * @version 3.7.3
  */
-class WP_To_Social_Pro_Twitter_API extends WP_To_Social_Pro_API {
+class Twitter_API extends \WPZinc\Social\API {
 
 	/**
 	 * Holds the base class object.

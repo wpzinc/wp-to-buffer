@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Install class.
  *
@@ -13,7 +16,7 @@
  * @author   WP Zinc
  * @version  3.2.5
  */
-class WP_To_Social_Pro_Install {
+class Install {
 
 	/**
 	 * Holds the base class object.

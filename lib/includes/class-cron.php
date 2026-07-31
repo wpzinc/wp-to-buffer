@@ -1,4 +1,7 @@
 <?php
+
+namespace WPZinc\Social;
+
 /**
  * Cron class.
  *
@@ -15,7 +18,7 @@
  * @author   WP Zinc
  * @version  3.7.2
  */
-class WP_To_Social_Pro_Cron {
+class Cron {
 
 	/**
 	 * Holds the base class object.
