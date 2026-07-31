@@ -2,7 +2,7 @@
 /**
  * Outputs a tag dropdown for the status configuration form.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  */
 
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <select size="1" class="left tags" data-textarea="<?php echo esc_attr( $textarea ); ?>">
-	<option value=""><?php esc_attr_e( '--- Insert Tag ---', 'wpzinc-social' ); ?></option>
+	<option value=""><?php esc_attr_e( '--- Insert Tag ---', 'wp-to-buffer' ); ?></option>
 	<?php
 	foreach ( $this->base->get_class( 'common' )->get_tags( $post_type ) as $tag_group => $tag_group_tags ) {
 		?>

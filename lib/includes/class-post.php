@@ -1,18 +1,17 @@
 <?php
+/**
+ * Post class
+ *
+ * @package WPZinc\Social
+ * @author WP Zinc
+ */
 
 namespace WPZinc\Social;
 
 /**
- * Post class
- *
- * @package WP_To_Social_Pro
- * @author WP Zinc
- */
-
-/**
  * Registers status settings on Posts as a metabox.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 3.0.0
  */
@@ -90,7 +89,7 @@ class Post {
 					echo esc_html(
 						sprintf(
 						/* translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite) */
-							__( '%1$s: Post successfully added to %2$s.', 'wpzinc-social' ),
+							__( '%1$s: Post successfully added to %2$s.', 'wp-to-buffer' ),
 							$this->base->plugin->displayName,
 							$this->base->plugin->account
 						)
@@ -113,7 +112,7 @@ class Post {
 					echo esc_html(
 						sprintf(
 						/* translators: %1$s: Plugin Name, %2$s: Social Media Service Name (Buffer, Hootsuite) */
-							__( '%1$s: Some status(es) could not be sent to %2$s', 'wpzinc-social' ),
+							__( '%1$s: Some status(es) could not be sent to %2$s', 'wp-to-buffer' ),
 							$this->base->plugin->displayName,
 							$this->base->plugin->account
 						)

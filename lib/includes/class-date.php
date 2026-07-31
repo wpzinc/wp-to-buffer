@@ -1,19 +1,18 @@
 <?php
-
-namespace WPZinc\Social;
-
 /**
  * Date class.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author WP Zinc
  */
+
+namespace WPZinc\Social;
 
 /**
  * Helper functions for changing dates and returning time offsets
  * based on the WordPress configuration.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 4.6.9
  */

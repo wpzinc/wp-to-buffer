@@ -1,18 +1,17 @@
 <?php
+/**
+ * Install class.
+ *
+ * @package WPZinc\Social
+ * @author WP Zinc
+ */
 
 namespace WPZinc\Social;
 
 /**
- * Install class.
- *
- * @package WP_To_Social_Pro
- * @author WP Zinc
- */
-
-/**
  * Runs any steps required on plugin activation and upgrade.
  *
- * @package  WP_To_Social_Pro
+ * @package  WPZinc\Social
  * @author   WP Zinc
  * @version  3.2.5
  */

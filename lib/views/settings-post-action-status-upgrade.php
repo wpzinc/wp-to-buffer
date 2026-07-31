@@ -3,7 +3,7 @@
  * Outputs an upgrade notice below the table of statuses for an action (publish,update,repost,bulk publish),
  * when the Free version of the Plugin is used.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  */
 
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			echo esc_html(
 				sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-					__( 'Want to %1$s multiple status updates to %2$s?', 'wpzinc-social' ),
+					__( 'Want to %1$s multiple status updates to %2$s?', 'wp-to-buffer' ),
 					$post_action,
 					$this->base->plugin->displayName
 				)
@@ -31,13 +31,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			echo esc_html(
 				sprintf(
 				/* translators: Plugin Name */
-					__( 'Define additional unique statuses, each with publishing conditions and custom scheduling, per social network with %s.', 'wpzinc-social' ),
+					__( 'Define additional unique statuses, each with publishing conditions and custom scheduling, per social network with %s.', 'wp-to-buffer' ),
 					$this->base->plugin->displayName
 				)
 			);
 			?>
 		</p>
 
-		<a href="<?php echo esc_attr( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wpzinc-social' ); ?></a>
+		<a href="<?php echo esc_attr( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
 	</div>
 </div>

@@ -4,7 +4,7 @@
  *
  * @since    3.0.0
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  */
 
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<!-- Default Settings -->
 		<li class="wpzinc-nav-tab default">
 			<a href="#profile-default" class="wpzinc-nav-tab-vertical-active">
-				<?php esc_html_e( 'Defaults', 'wpzinc-social' ); ?>
+				<?php esc_html_e( 'Defaults', 'wp-to-buffer' ); ?>
 			</a>
 		</li>
 
@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				$profile_enabled = $this->get_setting( $post_type, '[' . $profile['id'] . '][enabled]', 0 );
 				?>
 				<li class="wpzinc-nav-tab <?php echo esc_attr( $profile['service'] ); ?>">
-					<a href="#profile-<?php echo esc_attr( $profile['id'] ); ?>"<?php echo ( $profile_enabled ? ' class="enabled"' : '' ); ?> title="<?php echo esc_attr( $profile['formatted_service'] . ': ' . $profile['formatted_username'] ); ?>"<?php echo ( empty( $profile['formatted_username'] ) ? ' data-wp-to-social-pro-twitter-id="' . esc_attr( $profile['social_network_id'] ) . '"' : '' ); ?>>
+					<a href="#profile-<?php echo esc_attr( $profile['id'] ); ?>"<?php echo ( $profile_enabled ? ' class="enabled"' : '' ); ?> title="<?php echo esc_attr( $profile['formatted_service'] . ': ' . $profile['formatted_username'] ); ?>"<?php echo ( empty( $profile['formatted_username'] ) ? ' data-wpzinc-social-twitter-id="' . esc_attr( $profile['social_network_id'] ) . '"' : '' ); ?>>
 						<span class="formatted-username"><?php echo esc_html( $profile['formatted_username'] ); ?></span>
 						<span class="dashicons dashicons-yes"></span>
 					</a>
@@ -93,7 +93,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( is_wp_error( $profiles ) ) {
 			?>
 			<div>
-				<?php esc_html_e( 'Hmm, we couldn\'t fetch your social media profiles.  Please refresh the Page.', 'wpzinc-social' ); ?>
+				<?php esc_html_e( 'Hmm, we couldn\'t fetch your social media profiles.  Please refresh the Page.', 'wp-to-buffer' ); ?>
 			</div>
 			<?php
 		} else {

@@ -1,18 +1,17 @@
 <?php
+/**
+ * API class.
+ *
+ * @package WPZinc\Social
+ * @author WP Zinc
+ */
 
 namespace WPZinc\Social;
 
 /**
- * API class.
- *
- * @package WP_To_Social_Pro
- * @author WP Zinc
- */
-
-/**
  * Used by other classes which interact with APIs to perform POST and GET requests.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 1.0.0
  */

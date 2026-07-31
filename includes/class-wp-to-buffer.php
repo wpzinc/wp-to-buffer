@@ -2,7 +2,7 @@
 /**
  * WP to Buffer class.
  *
- * @package WP_To_Buffer_Pro
+ * @package WP_To_Buffer
  * @author WP Zinc
  */
 
@@ -137,9 +137,10 @@ class WP_To_Buffer {
 
 		// Define translation strings.
 		$this->plugin->review_notice = sprintf(
-			/* translators: Plugin Name */
-			__( 'Thanks for using %s to schedule your social media statuses on Buffer!', 'wp-to-buffer' ),
-			$this->plugin->displayName
+			/* translators: 1: Plugin Name, 2: Social Network */
+			__( 'Thanks for using %1$s to schedule your social media statuses on %2$s!', 'wp-to-buffer' ),
+			$this->plugin->displayName,
+			$this->plugin->account
 		);
 
 		// Upgrade Reasons.

@@ -1,19 +1,18 @@
 <?php
-
-namespace WPZinc\Social;
-
 /**
  * Notices class.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author WP Zinc
  */
+
+namespace WPZinc\Social;
 
 /**
  * Persists success, warning and error messages
  * across Admin Screens.
  *
- * @package   WP_To_Social_Pro
+ * @package   WPZinc\Social
  * @author    WP Zinc
  * @version   3.9.6
  */

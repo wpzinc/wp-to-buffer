@@ -1,13 +1,12 @@
 <?php
-
-namespace WPZinc\Social;
-
 /**
  * Image class.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author WP Zinc
  */
+
+namespace WPZinc\Social;
 
 /**
  * Determines optimal image sizes and aspect ratios for each
@@ -15,7 +14,7 @@ namespace WPZinc\Social;
  * in WordPress and (where possible) resizes and crops
  * images.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 4.6.6
  */
@@ -56,7 +55,7 @@ class Image {
 	public function get_status_image_options( $network = false, $post_type = false ) {
 
 		// If a Post Type has been specified, get its featured_image label.
-		$label = __( 'Feat. Image', 'wpzinc-social' );
+		$label = __( 'Feat. Image', 'wp-to-buffer' );
 		if ( $post_type !== false && $post_type !== 'bulk' ) {
 			$post_type_object = get_post_type_object( $post_type );
 			$label            = $post_type_object->labels->featured_image;
@@ -149,7 +148,7 @@ class Image {
 				}
 
 				// Save to temporary file on disk.
-				$converted_image = $image->save( get_temp_dir() . 'wp-to-social-pro-' . $image_id . '-converted-' . bin2hex( random_bytes( 5 ) ) );
+				$converted_image = $image->save( get_temp_dir() . 'wpzinc-social-' . $image_id . '-converted-' . bin2hex( random_bytes( 5 ) ) );
 
 				// Bail if an error occured.
 				if ( is_wp_error( $converted_image ) ) {

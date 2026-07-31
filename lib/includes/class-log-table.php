@@ -1,18 +1,17 @@
 <?php
+/**
+ * Log Table class.
+ *
+ * @package WPZinc\Social
+ * @author WP Zinc
+ */
 
 namespace WPZinc\Social;
 
 /**
- * Log Table class.
- *
- * @package WP_To_Social_Pro
- * @author WP Zinc
- */
-
-/**
  * Controls the Log WP_List_Table.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 3.9.6
  */
@@ -66,10 +65,10 @@ class Log_Table extends \WP_List_Table {
 		$bulk_actions_name = 'bulk_action' . ( $which !== 'top' ? '2' : '' );
 		?>
 		<label for="bulk-action-selector-<?php echo esc_attr( $which ); ?>" class="screen-reader-text">
-			<?php esc_html_e( 'Select bulk action', 'wpzinc-social' ); ?>
+			<?php esc_html_e( 'Select bulk action', 'wp-to-buffer' ); ?>
 		</label>
 		<select name="<?php echo esc_attr( $bulk_actions_name ); ?>" id="bulk-action-selector-<?php echo esc_attr( $which ); ?>" size="1">
-			<option value="-1"><?php esc_attr_e( 'Bulk Actions', 'wpzinc-social' ); ?></option>
+			<option value="-1"><?php esc_attr_e( 'Bulk Actions', 'wp-to-buffer' ); ?></option>
 
 			<?php
 			foreach ( $this->_actions as $name => $title ) {
@@ -87,7 +86,7 @@ class Log_Table extends \WP_List_Table {
 			?>
 			<!-- Custom Filters -->
 			<select name="action" size="1">
-				<option value=""<?php selected( $this->get_action(), '' ); ?>><?php esc_attr_e( 'Filter by Action', 'wpzinc-social' ); ?></option>
+				<option value=""<?php selected( $this->get_action(), '' ); ?>><?php esc_attr_e( 'Filter by Action', 'wp-to-buffer' ); ?></option>
 				<?php
 				foreach ( $this->base->get_class( 'common' )->get_post_actions() as $action => $label ) {
 					?>
@@ -97,7 +96,7 @@ class Log_Table extends \WP_List_Table {
 				?>
 			</select>
 			<select name="profile_id" size="1">
-				<option value=""<?php selected( $this->get_profile(), '' ); ?>><?php esc_attr_e( 'Filter by Profile', 'wpzinc-social' ); ?></option>
+				<option value=""<?php selected( $this->get_profile(), '' ); ?>><?php esc_attr_e( 'Filter by Profile', 'wp-to-buffer' ); ?></option>
 				<?php
 				foreach ( $profiles as $profile_id => $label ) {
 					?>
@@ -107,7 +106,7 @@ class Log_Table extends \WP_List_Table {
 				?>
 			</select>
 			<select name="result" size="1">
-				<option value=""<?php selected( $this->get_result(), '' ); ?>><?php esc_attr_e( 'Filter by Result', 'wpzinc-social' ); ?></option>
+				<option value=""<?php selected( $this->get_result(), '' ); ?>><?php esc_attr_e( 'Filter by Result', 'wp-to-buffer' ); ?></option>
 				<?php
 				foreach ( $this->base->get_class( 'log' )->get_result_options() as $result_option => $label ) {
 					?>
@@ -125,7 +124,7 @@ class Log_Table extends \WP_List_Table {
 			<?php
 		}
 
-		submit_button( __( 'Apply', 'wpzinc-social' ), 'action', '', false, array( 'id' => 'doaction' ) );
+		submit_button( __( 'Apply', 'wp-to-buffer' ), 'action', '', false, array( 'id' => 'doaction' ) );
 
 		$clear_logs_url = add_query_arg(
 			array(
@@ -137,8 +136,8 @@ class Log_Table extends \WP_List_Table {
 		);
 		?>
 
-		<a href="<?php echo esc_url( $clear_logs_url ); ?>" class="<?php echo esc_attr( $this->base->plugin->name ); ?>-clear-log button wpzinc-button-red" data-message="<?php esc_html_e( 'Are you sure you want to clear ALL logs?', 'wpzinc-social' ); ?>">
-			<?php esc_html_e( 'Clear Log', 'wpzinc-social' ); ?>
+		<a href="<?php echo esc_url( $clear_logs_url ); ?>" class="<?php echo esc_attr( $this->base->plugin->name ); ?>-clear-log button wpzinc-button-red" data-message="<?php esc_html_e( 'Are you sure you want to clear ALL logs?', 'wp-to-buffer' ); ?>">
+			<?php esc_html_e( 'Clear Log', 'wp-to-buffer' ); ?>
 		</a>
 		<?php
 
@@ -151,7 +150,7 @@ class Log_Table extends \WP_List_Table {
 	 */
 	public function no_items() {
 
-		esc_html_e( 'No log entries found based on the given search and filter criteria.', 'wpzinc-social' );
+		esc_html_e( 'No log entries found based on the given search and filter criteria.', 'wp-to-buffer' );
 
 	}
 
@@ -194,7 +193,7 @@ class Log_Table extends \WP_List_Table {
 		?>
 		<p class="search-box">
 			<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_attr( $text ); ?>:</label>
-			<input type="search" id="<?php echo esc_attr( $input_id ); ?>" name="s" value="<?php _admin_search_query(); ?>" placeholder="<?php esc_attr_e( 'Post ID or Title', 'wpzinc-social' ); ?>" />
+			<input type="search" id="<?php echo esc_attr( $input_id ); ?>" name="s" value="<?php _admin_search_query(); ?>" placeholder="<?php esc_attr_e( 'Post ID or Title', 'wp-to-buffer' ); ?>" />
 			<?php submit_button( $text, '', '', false, array( 'id' => 'search-submit' ) ); ?>
 		</p>
 		<?php
@@ -211,21 +210,21 @@ class Log_Table extends \WP_List_Table {
 
 		return array(
 			'cb'                => '<input type="checkbox" class="toggle" />',
-			'post_id'           => __( 'Post ID', 'wpzinc-social' ),
-			'request_sent'      => __( 'Request Sent', 'wpzinc-social' ),
-			'action'            => __( 'Action', 'wpzinc-social' ),
-			'profile_name'      => __( 'Profile', 'wpzinc-social' ),
-			'status_text'       => __( 'Status Text', 'wpzinc-social' ),
-			'result'            => __( 'Result', 'wpzinc-social' ),
-			'result_message'    => __( 'Response', 'wpzinc-social' ),
+			'post_id'           => __( 'Post ID', 'wp-to-buffer' ),
+			'request_sent'      => __( 'Request Sent', 'wp-to-buffer' ),
+			'action'            => __( 'Action', 'wp-to-buffer' ),
+			'profile_name'      => __( 'Profile', 'wp-to-buffer' ),
+			'status_text'       => __( 'Status Text', 'wp-to-buffer' ),
+			'result'            => __( 'Result', 'wp-to-buffer' ),
+			'result_message'    => __( 'Response', 'wp-to-buffer' ),
 			'status_created_at' => sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-				__( '%s: Status Created At', 'wpzinc-social' ),
+				__( '%s: Status Created At', 'wp-to-buffer' ),
 				$this->base->plugin->account
 			),
 			'status_due_at'     => sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-				__( '%s: Status Scheduled For', 'wpzinc-social' ),
+				__( '%s: Status Scheduled For', 'wp-to-buffer' ),
 				$this->base->plugin->account
 			),
 		);
@@ -265,7 +264,7 @@ class Log_Table extends \WP_List_Table {
 	public function get_bulk_actions() {
 
 		return array(
-			'delete' => __( 'Delete', 'wpzinc-social' ),
+			'delete' => __( 'Delete', 'wp-to-buffer' ),
 		);
 
 	}

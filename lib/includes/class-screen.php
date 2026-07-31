@@ -1,18 +1,17 @@
 <?php
+/**
+ * Screen class
+ *
+ * @package WPZinc\Social
+ * @author WP Zinc
+ */
 
 namespace WPZinc\Social;
 
 /**
- * Screen class
- *
- * @package WP_To_Social_Pro
- * @author WP Zinc
- */
-
-/**
  * Determines which Plugin Screen the User is on
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 3.9.6
  */

@@ -4,7 +4,7 @@
  *
  * @since    4.6.9
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  */
 
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			echo esc_html(
 				sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-					__( 'Visit your %s account to resolve this error.', 'wpzinc-social' ),
+					__( 'Visit your %s account to resolve this error.', 'wp-to-buffer' ),
 					$this->base->plugin->account
 				)
 			);
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			echo esc_html(
 				sprintf(
 				/* translators: Social Media Service Name (Buffer, Hootsuite) */
-					__( 'Visit %s', 'wpzinc-social' ),
+					__( 'Visit %s', 'wp-to-buffer' ),
 					$this->base->plugin->account
 				)
 			);

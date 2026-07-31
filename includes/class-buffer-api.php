@@ -1,18 +1,17 @@
 <?php
+/**
+ * Buffer API class
+ *
+ * @package WPZinc\Social
+ * @author  WP Zinc
+ */
 
 namespace WPZinc\Social;
 
 /**
- * Buffer API class
- *
- * @package WP_To_Social_Pro
- * @author  WP Zinc
- */
-
-/**
  * Provides functions for sending statuses and querying Buffer's API.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 3.0.0
  */

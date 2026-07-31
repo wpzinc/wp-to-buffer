@@ -1,19 +1,18 @@
 <?php
-
-namespace WPZinc\Social;
-
 /**
  * WP Zinc Twitter API class
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author WP Zinc
  */
+
+namespace WPZinc\Social;
 
 /**
  * API class to handle returning a Twitter username for a given Twitter User ID,
  * checking the site's transient first before falling back to the WP Zinc API.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 3.7.3
  */

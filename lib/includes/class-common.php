@@ -1,18 +1,17 @@
 <?php
+/**
+ * Common class.
+ *
+ * @package WPZinc\Social
+ * @author WP Zinc
+ */
 
 namespace WPZinc\Social;
 
 /**
- * Common class.
- *
- * @package WP_To_Social_Pro
- * @author WP Zinc
- */
-
-/**
  * Common functions that don't fit into other classes.
  *
- * @package WP_To_Social_Pro
+ * @package WPZinc\Social
  * @author  WP Zinc
  * @version 3.0.0
  */
@@ -52,9 +51,9 @@ class Common {
 
 		// Build status post type options.
 		$status_post_type_options = array(
-			'text'  => __( 'Text', 'wpzinc-social' ),
-			'link'  => __( 'Link', 'wpzinc-social' ),
-			'image' => __( 'Image', 'wpzinc-social' ),
+			'text'  => __( 'Text', 'wp-to-buffer' ),
+			'link'  => __( 'Link', 'wp-to-buffer' ),
+			'image' => __( 'Image', 'wp-to-buffer' ),
 		);
 
 		/**
@@ -84,9 +83,9 @@ class Common {
 
 		// Available schedule option labels, shared across all services.
 		$labels = array(
-			'queue_end' => __( 'Add to End of Queue', 'wpzinc-social' ),
-			'immediate' => __( 'Post Immediately', 'wpzinc-social' ),
-			'now'       => __( 'Post Now', 'wpzinc-social' ),
+			'queue_end' => __( 'Add to End of Queue', 'wp-to-buffer' ),
+			'immediate' => __( 'Post Immediately', 'wp-to-buffer' ),
+			'now'       => __( 'Post Now', 'wp-to-buffer' ),
 		);
 
 		// The free version offers the plugin's single default schedule option.
@@ -123,7 +122,7 @@ class Common {
 
 		// Build schedule options.
 		$schedule = array(
-			'custom' => __( 'Custom Field / Post Meta Value', 'wpzinc-social' ),
+			'custom' => __( 'Custom Field / Post Meta Value', 'wp-to-buffer' ),
 		);
 
 		/**
@@ -152,7 +151,7 @@ class Common {
 
 		// Build schedule options.
 		$schedule = array(
-			'custom' => __( 'Custom Field / Post Meta Value', 'wpzinc-social' ),
+			'custom' => __( 'Custom Field / Post Meta Value', 'wp-to-buffer' ),
 		);
 
 		/**
@@ -360,51 +359,51 @@ class Common {
 		// Build tags array.
 		$tags = array(
 			'post' => array(
-				'{sitename}'              => __( 'Site Name', 'wpzinc-social' ),
-				'{title}'                 => __( 'Post Title', 'wpzinc-social' ),
-				'{excerpt}'               => __( 'Post Excerpt (Full)', 'wpzinc-social' ),
+				'{sitename}'              => __( 'Site Name', 'wp-to-buffer' ),
+				'{title}'                 => __( 'Post Title', 'wp-to-buffer' ),
+				'{excerpt}'               => __( 'Post Excerpt (Full)', 'wp-to-buffer' ),
 				'{excerpt:characters(?)}' => array(
-					'question'      => __( 'Enter the maximum number of characters the Post Excerpt should display.', 'wpzinc-social' ),
+					'question'      => __( 'Enter the maximum number of characters the Post Excerpt should display.', 'wp-to-buffer' ),
 					'default_value' => '150',
 					'replace'       => '?',
-					'label'         => __( 'Post Excerpt (Character Limited)', 'wpzinc-social' ),
+					'label'         => __( 'Post Excerpt (Character Limited)', 'wp-to-buffer' ),
 				),
 				'{excerpt:words(?)}'      => array(
-					'question'      => __( 'Enter the maximum number of words the Post Excerpt should display.', 'wpzinc-social' ),
+					'question'      => __( 'Enter the maximum number of words the Post Excerpt should display.', 'wp-to-buffer' ),
 					'default_value' => '55',
 					'replace'       => '?',
-					'label'         => __( 'Post Excerpt (Word Limited)', 'wpzinc-social' ),
+					'label'         => __( 'Post Excerpt (Word Limited)', 'wp-to-buffer' ),
 				),
 				'{excerpt:sentences(?)}'  => array(
-					'question'      => __( 'Enter the maximum number of sentences the Post Excerpt should display.', 'wpzinc-social' ),
+					'question'      => __( 'Enter the maximum number of sentences the Post Excerpt should display.', 'wp-to-buffer' ),
 					'default_value' => '1',
 					'replace'       => '?',
-					'label'         => __( 'Post Excerpt (Sentence Limited)', 'wpzinc-social' ),
+					'label'         => __( 'Post Excerpt (Sentence Limited)', 'wp-to-buffer' ),
 				),
-				'{content}'               => __( 'Post Content (Full)', 'wpzinc-social' ),
-				'{content_more_tag}'      => __( 'Post Content (Up to More Tag)', 'wpzinc-social' ),
+				'{content}'               => __( 'Post Content (Full)', 'wp-to-buffer' ),
+				'{content_more_tag}'      => __( 'Post Content (Up to More Tag)', 'wp-to-buffer' ),
 				'{content:characters(?)}' => array(
-					'question'      => __( 'Enter the maximum number of characters the Post Content should display.', 'wpzinc-social' ),
+					'question'      => __( 'Enter the maximum number of characters the Post Content should display.', 'wp-to-buffer' ),
 					'default_value' => '150',
 					'replace'       => '?',
-					'label'         => __( 'Post Content (Character Limited)', 'wpzinc-social' ),
+					'label'         => __( 'Post Content (Character Limited)', 'wp-to-buffer' ),
 				),
 				'{content:words(?)}'      => array(
-					'question'      => __( 'Enter the maximum number of words the Post Content should display.', 'wpzinc-social' ),
+					'question'      => __( 'Enter the maximum number of words the Post Content should display.', 'wp-to-buffer' ),
 					'default_value' => '55',
 					'replace'       => '?',
-					'label'         => __( 'Post Content (Word Limited)', 'wpzinc-social' ),
+					'label'         => __( 'Post Content (Word Limited)', 'wp-to-buffer' ),
 				),
 				'{content:sentences(?)}'  => array(
-					'question'      => __( 'Enter the maximum number of sentences the Post Content should display.', 'wpzinc-social' ),
+					'question'      => __( 'Enter the maximum number of sentences the Post Content should display.', 'wp-to-buffer' ),
 					'default_value' => '1',
 					'replace'       => '?',
-					'label'         => __( 'Post Content (Sentence Limited)', 'wpzinc-social' ),
+					'label'         => __( 'Post Content (Sentence Limited)', 'wp-to-buffer' ),
 				),
-				'{date}'                  => __( 'Post Date', 'wpzinc-social' ),
-				'{url}'                   => __( 'Post URL', 'wpzinc-social' ),
-				'{url_short}'             => __( 'Post URL, Shortened', 'wpzinc-social' ),
-				'{id}'                    => __( 'Post ID', 'wpzinc-social' ),
+				'{date}'                  => __( 'Post Date', 'wp-to-buffer' ),
+				'{url}'                   => __( 'Post URL', 'wp-to-buffer' ),
+				'{url_short}'             => __( 'Post URL, Shortened', 'wp-to-buffer' ),
+				'{id}'                    => __( 'Post ID', 'wp-to-buffer' ),
 			),
 		);
 
@@ -424,7 +423,7 @@ class Common {
 			foreach ( $taxonomies as $tax => $details ) {
 				$tags['taxonomy'][ '{taxonomy_' . $tax . '}' ] = sprintf(
 					/* translators: Taxonomy Name, Singular */
-					__( 'Taxonomy: %s: Hashtag Format', 'wpzinc-social' ),
+					__( 'Taxonomy: %s: Hashtag Format', 'wp-to-buffer' ),
 					$details->labels->singular_name
 				);
 			}
@@ -482,8 +481,8 @@ class Common {
 
 		// Build post actions.
 		$actions = array(
-			'publish' => __( 'Publish', 'wpzinc-social' ),
-			'update'  => __( 'Update', 'wpzinc-social' ),
+			'publish' => __( 'Publish', 'wp-to-buffer' ),
+			'update'  => __( 'Update', 'wp-to-buffer' ),
 		);
 
 		/**
@@ -511,8 +510,8 @@ class Common {
 
 		// Build post actions.
 		$actions = array(
-			'publish' => __( 'Published', 'wpzinc-social' ),
-			'update'  => __( 'Updated', 'wpzinc-social' ),
+			'publish' => __( 'Published', 'wp-to-buffer' ),
+			'update'  => __( 'Updated', 'wp-to-buffer' ),
 		);
 
 		/**
