@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.1.2
+Stable tag: 6.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -308,6 +308,11 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.2.0 (2026-08-01) =
+* Added: Namespaced `\WPZinc\Social` (previously `WP_To_Social_*` classes) and `\WPZinc\Shared` (previously WPZincDashboardSubmodule). See Docs: []
+* Updated: Improved WordPress Coding Standards for dates
+* Fix: Authentication: OAuth: Use nonce for improved security when connecting to Buffer
 
 = 6.1.2 (2026-07-10) =
 * Added: Settings: Authentication: Refresh Profiles button. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/manage-account-connections/#refresh-profiles
