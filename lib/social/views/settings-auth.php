@@ -134,6 +134,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 				}
 				?>
+
+				<div class="wpzinc-option highlight">
+					<div class="full">
+						<h4>
+							<?php
+							printf(
+								/* translators: Service name (Buffer, Hootsuite) */
+								esc_html__( 'Need to connect multiple %s accounts?', 'wp-to-buffer' ),
+								esc_html( $this->base->plugin->account )
+							);
+							?>
+						</h4>
+
+						<p>
+							<?php
+							printf(
+								/* translators: Service name (Buffer, Hootsuite) */
+								esc_html__( '%1$s Pro allows you to connect multiple %2$s accounts to a single WordPress installation.', 'wp-to-buffer' ),
+								esc_html( $this->base->plugin->displayName ),
+								esc_html( $this->base->plugin->account )
+							);
+							?>
+						</p>
+
+						<a href="<?php echo esc_url( $this->base->dashboard->get_upgrade_url( 'settings_inline_upgrade' ) ); ?>" class="button button-primary" target="_blank"><?php esc_html_e( 'Upgrade', 'wp-to-buffer' ); ?></a>
+					</div>
+				</div>
 			</div>   
 		</div>
 

@@ -119,7 +119,7 @@ class Cron {
 		}
 
 		// Return formatted date/time.
-		return date( $format, $scheduled ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+		return gmdate( $format, $scheduled );
 	}
 
 	/**
@@ -137,7 +137,7 @@ class Cron {
 		}
 
 		// Define the date cutoff.
-		$date_time = date( 'Y-m-d H:i:s', strtotime( '-' . $preserve_days . ' days' ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+		$date_time = gmdate( 'Y-m-d H:i:s', strtotime( '-' . $preserve_days . ' days' ) );
 		// Delete log entries older than the date.
 		$this->base->get_class( 'log' )->delete_by_request_sent_cutoff( $date_time );
 
@@ -215,7 +215,7 @@ class Cron {
 		}
 
 		// Return formatted date/time.
-		return date( $format, $scheduled ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+		return gmdate( $format, $scheduled );
 	}
 
 }

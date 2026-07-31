@@ -77,7 +77,7 @@ class Date {
 				break;
 		}
 
-		return date( 'Y-m-d H:i:s', $date ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+		return gmdate( 'Y-m-d H:i:s', $date );
 	}
 
 	/**
