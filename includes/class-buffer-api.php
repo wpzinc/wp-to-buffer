@@ -466,19 +466,17 @@ class Buffer_API {
 	 *
 	 * @since   6.0.1
 	 *
-	 * @param   bool $force                      Force API call (false = use WordPress transient).
-	 * @param   int  $transient_expiration_time  Transient Expiration Time, in seconds (default: 12 hours).
+	 * @param   bool $force   Force API call (false = use stored option).
 	 *
 	 * @return  WP_Error|array
 	 */
-	public function organizations( $force = false, $transient_expiration_time = 43200 ) {
+	public function organizations( $force = false ) {
 
-		$organizations = array();
-
-		// Check if our WordPress transient already has this data.
-		// This reduces the number of times we query the API.
-		$organizations = get_transient( $this->base->plugin->name . '_buffer_api_organizations' );
-		if ( $force || false === $organizations ) {
+		// Return stored organizations from the non-autoloaded option, unless
+		// forcing a refresh from the API.
+		$option_name   = $this->base->plugin->name . '-organizations';
+		$organizations = get_option( $option_name );
+		if ( $force || ! is_array( $organizations ) ) {
 			// Build GraphQL query.
 			$query = '
 query {
@@ -503,6 +501,10 @@ query {
 				return $result;
 			}
 
+			// Build the organizations array. Reset to an empty array first, as
+			// get_option() returns false when the option does not exist.
+			$organizations = array();
+
 			foreach ( $result['data']['account']['organizations'] as $organization ) {
 				$organizations[ $organization['id'] ] = array(
 					'id'            => $organization['id'],
@@ -513,8 +515,9 @@ query {
 				);
 			}
 
-			// Store organizations in transient.
-			set_transient( $this->base->plugin->name . '_buffer_api_organizations', $organizations, $transient_expiration_time );
+			// Store organizations in a non-autoloaded option so they persist
+			// across object cache eviction, and don't load on every WP request.
+			update_option( $option_name, $organizations, false );
 		}
 
 		return $organizations;
@@ -531,7 +534,7 @@ query {
 	 */
 	public function account( $account_id = '' ) {
 
-		$organizations = $this->organizations( false, $this->base->get_class( 'common' )->get_transient_expiration_time() );
+		$organizations = $this->organizations( false );
 
 		// Bail if an error occurred.
 		if ( is_wp_error( $organizations ) ) {

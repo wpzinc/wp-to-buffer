@@ -102,10 +102,7 @@ class Admin {
 		$this->base->get_class( 'notices' )->enable_store();
 
 		// Fetch Organizations.
-		$organizations = $this->base->get_class( 'api' )->organizations(
-			true,
-			$this->base->get_class( 'common' )->get_transient_expiration_time()
-		);
+		$organizations = $this->base->get_class( 'api' )->organizations( true );
 
 		// If an error occured, add it to the notices.
 		if ( is_wp_error( $organizations ) ) {
@@ -923,8 +920,33 @@ class Admin {
 			return;
 		}
 
-		// Update the stored profile IDs on the account.
-		$this->base->get_class( 'settings' )->update_account_profile_ids( $account_id, array_keys( $profiles ) );
+		// If the service supports organizations, refresh the stored account
+		// information (name, email, channel limit, plan) alongside the profiles.
+		$organizations = array();
+		$api           = $this->base->get_class( 'api' );
+		if ( method_exists( $api, 'organizations' ) ) {
+			$organizations = $api->organizations( true );
+
+			// Display error and bail.
+			if ( is_wp_error( $organizations ) ) {
+				$this->base->get_class( 'notices' )->add_error_notice( $organizations->get_error_message() );
+				return;
+			}
+		}
+
+		// Update the stored account information (where available) and profile IDs.
+		if ( isset( $organizations[ $account_id ] ) ) {
+			$this->base->get_class( 'settings' )->update_account_information(
+				$account_id,
+				$organizations[ $account_id ]['name'],
+				$organizations[ $account_id ]['email'],
+				$organizations[ $account_id ]['channel_limit'],
+				$organizations[ $account_id ]['plan'],
+				array_keys( $profiles )
+			);
+		} else {
+			$this->base->get_class( 'settings' )->update_account_profile_ids( $account_id, array_keys( $profiles ) );
+		}
 
 		$this->base->get_class( 'notices' )->add_success_notice(
 			__( 'Profiles refreshed successfully.', 'wp-to-buffer' )
