@@ -107,7 +107,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div id="normal-sortables" class="meta-box-sortables ui-sortable publishing-defaults">  
 							<?php
 							// Load sub view.
-							require_once $this->base->plugin->folder . 'lib/views/settings-' . $tab . '.php';
+							require_once $this->base->plugin->folder . 'lib/social/views/settings-' . $tab . '.php';
 							?>
 						</div>
 						<!-- /normal-sortables -->
@@ -145,7 +145,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						}
 					}
 
-					require $this->base->plugin->folder . '/_modules/dashboard/views/sidebar-upgrade.php';
+					require $this->base->plugin->folder . '/lib/shared/views/sidebar-upgrade.php';
 					?>
 				</div>
 				<!-- /Sidebar -->
@@ -156,7 +156,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="metabox-holder columns-1">
 			<div id="post-body-content">
 				<?php
-				require $this->base->plugin->folder . '/_modules/dashboard/views/footer-upgrade.php';
+				require $this->base->plugin->folder . '/lib/shared/views/footer-upgrade.php';
 
 				do_action( 'wpzinc_settings_footer_upgrade' );
 				?>

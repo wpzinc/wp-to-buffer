@@ -2,7 +2,7 @@
 /**
  * Outputs a Plugin Card.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
 

@@ -2,7 +2,7 @@
 /**
  * Outputs a fixed overlay toast-style notification.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
 

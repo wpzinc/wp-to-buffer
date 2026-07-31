@@ -2,7 +2,7 @@
 /**
  * Outputs the About section, comprising of other Plugins.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
 

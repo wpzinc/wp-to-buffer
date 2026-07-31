@@ -411,7 +411,7 @@ class Admin {
 		$screen = $this->base->get_class( 'screen' )->get_current_screen();
 
 		// CSS - always load.
-		wp_enqueue_style( $this->base->plugin->name, $this->base->plugin->url . 'lib/assets/css/admin.css', array(), $this->base->plugin->version );
+		wp_enqueue_style( $this->base->plugin->name, $this->base->plugin->url . 'lib/social/assets/css/admin.css', array(), $this->base->plugin->version );
 
 		// Define CSS variables for design.
 		wp_register_style( $this->base->plugin->name . '-vars', false, array(), $this->base->plugin->version );
@@ -438,8 +438,8 @@ class Admin {
 		$minified = $this->base->dashboard->should_load_minified_js();
 
 		// Define JS and localization.
-		wp_register_script( $this->base->plugin->name . '-log', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'log' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
-		wp_register_script( $this->base->plugin->name . '-statuses', $this->base->plugin->url . 'lib/assets/js/' . ( $minified ? 'min/' : '' ) . 'statuses' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
+		wp_register_script( $this->base->plugin->name . '-log', $this->base->plugin->url . 'lib/social/assets/js/' . ( $minified ? 'min/' : '' ) . 'log' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
+		wp_register_script( $this->base->plugin->name . '-statuses', $this->base->plugin->url . 'lib/social/assets/js/' . ( $minified ? 'min/' : '' ) . 'statuses' . ( $minified ? '-min' : '' ) . '.js', array( 'jquery' ), $this->base->plugin->version, true );
 
 		// Define localization for statuses.
 		$localization = array(
@@ -795,7 +795,7 @@ class Admin {
 		}
 
 		// Load View.
-		include_once $this->base->plugin->folder . 'lib/views/settings.php';
+		include_once $this->base->plugin->folder . 'lib/social/views/settings.php';
 
 		// Add footer action to output overlay modal markup.
 		add_action( 'admin_footer', array( $this, 'output_modal' ) );
@@ -811,7 +811,7 @@ class Admin {
 	public function auth_screen() {
 
 		// Load View.
-		include_once $this->base->plugin->folder . 'lib/views/settings-auth-required.php';
+		include_once $this->base->plugin->folder . 'lib/social/views/settings-auth-required.php';
 
 	}
 
@@ -823,7 +823,7 @@ class Admin {
 	public function output_modal() {
 
 		// Load view.
-		require_once $this->base->plugin->folder . '_modules/dashboard/views/modal.php';
+		require_once $this->base->plugin->folder . 'lib/shared/views/modal.php';
 
 	}
 
@@ -839,7 +839,7 @@ class Admin {
 		$table->prepare_items();
 
 		// Load View.
-		include_once $this->base->plugin->folder . 'lib/views/log.php';
+		include_once $this->base->plugin->folder . 'lib/social/views/log.php';
 
 	}
 

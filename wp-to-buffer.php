@@ -43,25 +43,38 @@ define( 'WP_TO_BUFFER_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
  */
 function wp_to_buffer_autoloader( $class_name ) {
 
-	// Namespaced shared library classes: WPZinc\Social and WPZinc\Social\Pro.
-	// Maps e.g. WPZinc\Social\Log_Table to class-log-table.php.
-	if ( strpos( $class_name, 'WPZinc\\Social\\' ) === 0 ) {
-		$class_parts = explode( '\\', $class_name );
-		$short_name  = end( $class_parts );
-		$file_name   = 'class-' . str_replace( '_', '-', strtolower( $short_name ) ) . '.php';
-
-		$include_paths = array(
-			WP_TO_BUFFER_PLUGIN_PATH . 'lib/includes',
-			WP_TO_BUFFER_PLUGIN_PATH . 'includes',
-		);
-		foreach ( $include_paths as $path ) {
-			if ( file_exists( $path . '/' . $file_name ) ) {
-				require_once $path . '/' . $file_name;
-				return;
-			}
-		}
-
+	// Only handle this vendor's namespaced classes.
+	if ( strpos( $class_name, 'WPZinc\\' ) !== 0 ) {
 		return;
+	}
+
+	// Build the file name from the class' short name.
+	// e.g. WPZinc\Social\Log_Table -> class-log-table.php.
+	$class_parts = explode( '\\', $class_name );
+	$short_name  = end( $class_parts );
+	$file_name   = 'class-' . str_replace( '_', '-', strtolower( $short_name ) ) . '.php';
+
+	// Map the sub-namespace to the directories to search.
+	$namespace_paths = array(
+		'Social' => array(
+			WP_TO_BUFFER_PLUGIN_PATH . 'lib/social/includes',
+			WP_TO_BUFFER_PLUGIN_PATH . 'includes',
+		),
+		'Shared' => array(
+			WP_TO_BUFFER_PLUGIN_PATH . 'lib/shared',
+		),
+	);
+
+	$sub_namespace = isset( $class_parts[1] ) ? $class_parts[1] : '';
+	if ( ! isset( $namespace_paths[ $sub_namespace ] ) ) {
+		return;
+	}
+
+	foreach ( $namespace_paths[ $sub_namespace ] as $path ) {
+		if ( file_exists( $path . '/' . $file_name ) ) {
+			require_once $path . '/' . $file_name;
+			return;
+		}
 	}
 
 }

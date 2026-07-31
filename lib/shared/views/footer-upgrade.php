@@ -2,7 +2,7 @@
 /**
  * Outputs the Upgrade section to upgrade to a Pro product.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
 

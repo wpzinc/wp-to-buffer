@@ -5,9 +5,11 @@
  * Historically named dashboard, as it used to provide a widget
  * on the WordPress Admin Dashboard.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
+
+namespace WPZinc\Shared;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Historically named dashboard, as it used to provide a widget
  * on the WordPress Admin Dashboard.
  */
-class WPZincDashboardWidget {
+class Admin_UI {
 
 	/**
 	 * Holds the plugin object
@@ -887,7 +889,7 @@ class WPZincDashboardWidget {
 			 */
 			case 'application/zip':
 				// Open ZIP file.
-				$zip = new ZipArchive();
+				$zip = new \ZipArchive();
 				if ( $zip->open( sanitize_text_field( wp_unslash( $_FILES['import']['tmp_name'] ) ) ) !== true ) {
 					$this->error_message = __( 'Could not extract the supplied ZIP file.', $this->plugin->name ); // phpcs:ignore WordPress.WP.I18n
 					return;
@@ -1111,11 +1113,11 @@ class WPZincDashboardWidget {
 	public function force_zip_file_download( $json, $filename = 'export' ) {
 
 		// Create new ZIP file.
-		$zip      = new ZipArchive();
+		$zip      = new \ZipArchive();
 		$filename = $filename . '.zip';
 
 		// Bail if ZIP file couldn't be created.
-		if ( $zip->open( $filename, ZipArchive::CREATE ) !== true ) {
+		if ( $zip->open( $filename, \ZipArchive::CREATE ) !== true ) {
 			return;
 		}
 

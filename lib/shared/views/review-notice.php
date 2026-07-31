@@ -2,7 +2,7 @@
 /**
  * Outputs the review request notification.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
 

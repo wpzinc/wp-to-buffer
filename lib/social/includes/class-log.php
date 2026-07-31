@@ -385,7 +385,7 @@ class Log {
 		);
 
 		// Load View.
-		include_once $this->base->plugin->folder . 'lib/views/post-log.php';
+		include_once $this->base->plugin->folder . 'lib/social/views/post-log.php';
 
 	}
 

@@ -78,7 +78,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					?>
 					<div id="profile-<?php echo esc_attr( $profile_id ); ?>-<?php echo esc_attr( $post_action ); ?>" class="action">
 						<?php
-						require $this->base->plugin->folder . 'lib/views/settings-post-action.php';
+						require $this->base->plugin->folder . 'lib/social/views/settings-post-action.php';
 						?>
 					</div>
 					<?php
@@ -102,7 +102,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				?>
 				<div id="profile-<?php echo esc_attr( $profile_id ); ?>" class="profile <?php echo esc_attr( $profile['service'] ); ?>">
 					<?php
-					require $this->base->plugin->folder . 'lib/views/settings-post-actionheader.php';
+					require $this->base->plugin->folder . 'lib/social/views/settings-post-actionheader.php';
 					?>
 				</div>
 				<?php
@@ -113,7 +113,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<!-- Status Editor -->
 		<?php
-		require $this->base->plugin->folder . 'lib/views/settings-post-action-status.php';
+		require $this->base->plugin->folder . 'lib/social/views/settings-post-action-status.php';
 		?>
 
 		<!-- Submitted Form Data -->

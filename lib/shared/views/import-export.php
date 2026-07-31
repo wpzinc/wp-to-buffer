@@ -2,7 +2,7 @@
 /**
  * Outputs the Import and Export screen.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
 

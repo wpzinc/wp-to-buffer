@@ -2,7 +2,7 @@
 /**
  * Modal window view.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
 

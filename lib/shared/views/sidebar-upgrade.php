@@ -3,7 +3,7 @@
  * Outputs settings screen sidebar for free plugins with
  * an email newsletter form.
  *
- * @package WPZincDashboardWidget
+ * @package WPZinc\Shared
  * @author WP Zinc
  */
 

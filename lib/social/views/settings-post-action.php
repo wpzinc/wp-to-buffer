@@ -85,7 +85,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							$row    = $this->base->get_class( 'settings' )->get_status_row( $status, $post_type, $post_action );
 
 							// Load sub view.
-							require $this->base->plugin->folder . 'lib/views/settings-post-action-status-row.php';
+							require $this->base->plugin->folder . 'lib/social/views/settings-post-action-status-row.php';
 						}
 						?>
 						<tr class="hidden status-form-container"><td colspan="6"></td></tr>
@@ -97,7 +97,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php
 		// Upgrade Notice.
 		if ( class_exists( 'WP_To_Buffer' ) || class_exists( 'WP_To_Hootsuite' ) ) {
-			require $this->base->plugin->folder . 'lib/views/settings-post-action-status-upgrade.php';
+			require $this->base->plugin->folder . 'lib/social/views/settings-post-action-status-upgrade.php';
 		}
 		?>
 	</div>
