@@ -657,6 +657,21 @@ body.wpzinc {
 			color: #fff;
 		}
 	}
+
+	/**
+	* Newsletter Form (Kit)
+	*
+	* Kit's embedded form stylesheet adds padding-top: 56px to the "clean"
+	* form style, which looks oversized in the narrow sidebar. Reset it to the
+	* form's base 10px padding. !important overrides Kit's inline stylesheet,
+	* which is more specific and loaded after ours.
+	*/
+	.formkit-form {
+
+		[data-style="clean"] {
+			padding-top: 10px !important;
+		}
+	}
 }
 
 /**
