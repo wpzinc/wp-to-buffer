@@ -76,6 +76,16 @@ class Admin {
 			return;
 		}
 
+		// Bail if nonce is not valid, to prevent OAuth callback CSRF.
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_REQUEST['_wpnonce'] ) ), $this->base->plugin->filter_name . '_oauth' ) ) {
+			return;
+		}
+
+		// Bail if the current user cannot manage the plugin's settings.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		// Setup notices class.
 		$this->base->get_class( 'notices' )->set_key_prefix( $this->base->plugin->filter_name . '_' . wp_get_current_user()->ID );
 
@@ -176,6 +186,16 @@ class Admin {
 
 		// Setup notices class.
 		$this->base->get_class( 'notices' )->set_key_prefix( $this->base->plugin->filter_name . '_' . wp_get_current_user()->ID );
+
+		// Bail if nonce is not valid, to prevent OAuth callback CSRF.
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_REQUEST['_wpnonce'] ) ), $this->base->plugin->filter_name . '_oauth' ) ) {
+			return;
+		}
+
+		// Bail if the current user cannot manage the plugin's settings.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
 
 		/**
 		 * Perform any pre-oAuth actions now, such as starting the oAuth process

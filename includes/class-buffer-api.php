@@ -254,8 +254,12 @@ class Buffer_API {
 		$code_verifier  = $this->generate_and_store_code_verifier();
 		$code_challenge = $this->generate_code_challenge( $code_verifier );
 
-		// Generate return URL.
-		$return_url = admin_url( 'admin.php?page=' . $this->base->plugin->name . '-settings' );
+		// Generate return URL, including a nonce to protect against OAuth callback CSRF.
+		$return_url = add_query_arg(
+			'_wpnonce',
+			wp_create_nonce( $this->base->plugin->filter_name . '_oauth' ),
+			admin_url( 'admin.php?page=' . $this->base->plugin->name . '-settings' )
+		);
 		if ( ! empty( $account_id ) ) {
 			$return_url = add_query_arg(
 				array(
