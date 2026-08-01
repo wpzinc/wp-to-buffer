@@ -92,7 +92,7 @@ class WP_To_Buffer {
 		$this->plugin->convertkit_form_uid = '71346c6086';
 
 		// Default Settings.
-		$this->plugin->default_schedule = 'queue_end';
+		$this->plugin->default_schedule = 'immediate';
 
 		// Defer loading of Plugin Classes.
 		add_action( 'init', array( $this, 'initialize' ), 1 );
@@ -101,7 +101,7 @@ class WP_To_Buffer {
 		// Admin Menus.
 		add_action( $this->plugin->filter_name . '_admin_admin_menu', array( $this, 'admin_menus' ) );
 
-		// Schedule options available for statuses in this Plugin.
+		// Add queue_end Schedule Option.
 		add_filter( $this->plugin->filter_name . '_get_schedule_options', array( $this, 'get_schedule_options' ) );
 
 	}

@@ -110,9 +110,9 @@ Unlike direct posting plugins (WP to Facebook, WP to Twitter clones), this plugi
 
 **Default Buffer Schedule** - Buffer automatically spaces posts throughout the day based on your time zone preferences
 
-**Custom Posting Schedule** (Pro) - Define specific days and times in Buffer when posts should publish to each social network
+**Immediate Posting** - Override the queue and post immediately to social media
 
-**Immediate Posting** (Pro) - Override the queue and post immediately to social media
+**Custom Posting Schedule** (Pro) - Define specific days and times in Buffer when posts should publish to each social network
 
 **Scheduled Publishing** (Pro) - Set exact date and time for each social media post
 
@@ -310,7 +310,7 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 == Changelog ==
 
 = 6.2.0 (2026-08-01) =
-* Added: Namespaced `\WPZinc\Social` (previously `WP_To_Social_*` classes) and `\WPZinc\Shared` (previously WPZincDashboardSubmodule). See Docs: []
+* Added: Namespaced `WPZinc\Social` (previously `WP_To_Social_*` classes) and `WPZinc\Shared` (previously WPZincDashboardSubmodule). See Docs: []
 * Added: Status: Scheduling: Post Immediately option
 * Updated: Improved WordPress Coding Standards for dates
 * Fix: Authentication: OAuth: Use nonce for improved security when connecting to Buffer

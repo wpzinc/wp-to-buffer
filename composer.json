@@ -1,5 +1,5 @@
 {
-    "name": "n7studios/wp-to-buffer",
+    "name": "wpzinc/wp-to-buffer",
     "description": "WordPress to Buffer Plugin",
     "type": "project",
     "require-dev": {
