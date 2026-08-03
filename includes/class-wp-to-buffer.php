@@ -257,7 +257,6 @@ class WP_To_Buffer {
 		$this->classes->publish       = new \WPZinc\Social\Publish( self::$instance );
 		$this->classes->screen        = new \WPZinc\Social\Screen( self::$instance );
 		$this->classes->settings      = new \WPZinc\Social\Settings( self::$instance );
-		$this->classes->twitter_api   = new \WPZinc\Social\Twitter_API( self::$instance );
 		$this->classes->validation    = new \WPZinc\Social\Validation( self::$instance );
 
 	}
