@@ -310,7 +310,7 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 == Changelog ==
 
 = 6.2.0 (2026-08-05) =
-* Added: Namespaced `WPZinc\Social` (previously `WP_To_Social_*` classes) and `WPZinc\Shared` (previously WPZincDashboardSubmodule). See Docs: []
+* Added: Namespaced `WPZinc\Social` (previously `WP_To_Social_*` classes) and `WPZinc\Shared` (previously WPZincDashboardSubmodule)
 * Added: Status: Scheduling: Post Immediately option
 * Updated: Improved WordPress Coding Standards for dates
 * Fix: Authentication: OAuth: Use nonce for improved security when connecting to Buffer

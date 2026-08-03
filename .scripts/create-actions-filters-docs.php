@@ -47,7 +47,5 @@ $action_docs = $read_actions_filters->run(
 $html = '<h1>Filters</h1>' . $filter_docs;
 $html .= '<h1>Actions</h1>' . $action_docs;
 
-echo $html;
-
 // Write to file.
 file_put_contents( '../ACTIONS-FILTERS.md', $html );
