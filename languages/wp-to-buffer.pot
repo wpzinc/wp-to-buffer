@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-31T12:32:42+00:00\n"
+"POT-Creation-Date: 2026-08-19T08:26:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-to-buffer\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: wp-to-buffer.php
-msgid "http://www.wpzinc.com/plugins/wp-to-buffer-pro"
+msgid "https://www.wpzinc.com/plugins/wordpress-to-buffer-pro"
 msgstr ""
 
 #. Description of the plugin
@@ -36,7 +36,7 @@ msgstr ""
 
 #. Author URI of the plugin
 #: wp-to-buffer.php
-msgid "http://www.wpzinc.com"
+msgid "https://www.wpzinc.com"
 msgstr ""
 
 #: includes/class-buffer-api.php:129
@@ -59,7 +59,11 @@ msgstr ""
 msgid "%1$s uses a new API. Please click the `Reconnect` button at %2$s Settings > Authentication to reconnect your account. You won't need to do this again."
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:119
+#: includes/class-wp-to-buffer.php:120
+msgid "Add to End of Queue"
+msgstr ""
+
+#: includes/class-wp-to-buffer.php:139
 #: lib/social/includes/class-admin.php:665
 #: lib/social/views/settings-auth-required.php:19
 #: lib/social/views/settings.php:18
@@ -68,14 +72,13 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:123
+#: includes/class-wp-to-buffer.php:143
 #: lib/social/views/log.php:18
 msgid "Logs"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:127
-#: lib/shared/class-admin-ui.php:523
-#: lib/shared/class-admin-ui.php:570
+#: includes/class-wp-to-buffer.php:147
+#: lib/shared/class-admin-ui.php:481
 #: lib/social/views/settings-auth.php:161
 #: lib/social/views/settings-auth.php:282
 #: lib/social/views/settings-auth.php:455
@@ -88,195 +91,195 @@ msgid "Upgrade"
 msgstr ""
 
 #. translators: 1: Plugin Name, 2: Social Network
-#: includes/class-wp-to-buffer.php:141
+#: includes/class-wp-to-buffer.php:161
 #, php-format
 msgid "Thanks for using %1$s to schedule your social media statuses on %2$s!"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:149
+#: includes/class-wp-to-buffer.php:169
 msgid "Post to Instagram and Pinterest"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:150
+#: includes/class-wp-to-buffer.php:170
 msgid "Pro supports Direct Posting to Instagram Business Profiles and Pinterest Boards"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:153
+#: includes/class-wp-to-buffer.php:173
 msgid "Multiple Buffer Account Support"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:154
+#: includes/class-wp-to-buffer.php:174
 msgid "Pro supports connecting multiple Buffer accounts to a single WordPress site"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:157
+#: includes/class-wp-to-buffer.php:177
 msgid "Multiple, Customisable Status Messages"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:158
+#: includes/class-wp-to-buffer.php:178
 msgid "Each Post Type and Social Network can have multiple, unique status message and settings"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:161
+#: includes/class-wp-to-buffer.php:181
 msgid "Conditionally send Status Messages"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:162
+#: includes/class-wp-to-buffer.php:182
 msgid "Only send status(es) to Buffer based on Post Author(s), Taxonomy Term(s) and/or Custom Field Values"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:165
+#: includes/class-wp-to-buffer.php:185
 msgid "More Scheduling Options"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:166
+#: includes/class-wp-to-buffer.php:186
 msgid "Each status update can be added to the start/end of your Buffer queue, posted immediately or scheduled at a specific time"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:169
+#: includes/class-wp-to-buffer.php:189
 msgid "Dynamic Status Tags"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:170
+#: includes/class-wp-to-buffer.php:190
 msgid "Dynamically build status updates with data from the Post Author and Custom Fields"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:173
+#: includes/class-wp-to-buffer.php:193
 msgid "Separate Statuses per Social Network"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:174
+#: includes/class-wp-to-buffer.php:194
 msgid "Define different statuses for each Post Type and Social Network"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:177
+#: includes/class-wp-to-buffer.php:197
 msgid "Per-Post Settings"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:178
+#: includes/class-wp-to-buffer.php:198
 msgid "Override Settings on Individual Posts: Each Post can have its own Buffer settings"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:181
+#: includes/class-wp-to-buffer.php:201
 msgid "Repost Old Posts"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:182
+#: includes/class-wp-to-buffer.php:202
 msgid "Automatically Revive Old Posts that haven't been updated in a while, choosing the number of days, weeks or years to re-share content on social media."
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:185
+#: includes/class-wp-to-buffer.php:205
 msgid "Bulk Publish Old Posts"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:186
+#: includes/class-wp-to-buffer.php:206
 msgid "Manually re-share evergreen WordPress content and revive old posts with the Bulk Publish option"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:189
+#: includes/class-wp-to-buffer.php:209
 msgid "The Events Calendar, Event Manager and Modern Events Calendar Integration"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:190
+#: includes/class-wp-to-buffer.php:210
 msgid "Schedule Posts to Buffer based on your Event's Start or End date, and display Event-specific details in your status updates"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:193
+#: includes/class-wp-to-buffer.php:213
 msgid "SEO Integration"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:194
+#: includes/class-wp-to-buffer.php:214
 msgid "Display SEO-specific information in your status updates from All-In-One SEO Pack, Rank Math, SEOPress and Yoast SEO"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:197
+#: includes/class-wp-to-buffer.php:217
 msgid "WooCommerce Integration"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:198
+#: includes/class-wp-to-buffer.php:218
 msgid "Display Product-specific information in your status updates"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:201
+#: includes/class-wp-to-buffer.php:221
 msgid "Autoblogging and Frontend Post Submission Integration"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:202
+#: includes/class-wp-to-buffer.php:222
 msgid "Pro supports autoblogging and frontend post submission Plugins, including User Submitted Posts, WP Property Feed, WPeMatico and WP Job Manager"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:205
+#: includes/class-wp-to-buffer.php:225
 msgid "Shortcode Support"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:206
+#: includes/class-wp-to-buffer.php:226
 msgid "Use shortcodes in status updates"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:209
+#: includes/class-wp-to-buffer.php:229
 msgid "Full Image Control"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:210
+#: includes/class-wp-to-buffer.php:230
 msgid "Choose to display one or more images in your status updates, from the Post's Featured Image, the Media Gallery, the Post Content or an Advanced Custom Fields Image or Gallery."
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:213
+#: includes/class-wp-to-buffer.php:233
 msgid "WP-Cron and WP-CLI Compatible"
 msgstr ""
 
-#: includes/class-wp-to-buffer.php:214
+#: includes/class-wp-to-buffer.php:234
 msgid "Optionally enable WP-Cron to send status updates via Cron, speeding up UI performance and/or choose to use WP-CLI for reposting old posts"
 msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s: PHP class name
-#: includes/class-wp-to-buffer.php:274
+#: includes/class-wp-to-buffer.php:293
 #, php-format
 msgid "%1$s: Error: Could not load Plugin class %2$s"
 msgstr ""
 
 #. translators: Plugin Name
-#: includes/class-wp-to-buffer.php:287
+#: includes/class-wp-to-buffer.php:306
 #, php-format
 msgid "%s: Error"
 msgstr ""
 
-#: lib/shared/class-admin-ui.php:461
+#: lib/shared/class-admin-ui.php:429
 msgid "Import & Export"
 msgstr ""
 
-#: lib/shared/class-admin-ui.php:492
+#: lib/shared/class-admin-ui.php:460
 #: lib/shared/views/footer-upgrade-embedded.php:25
 msgid "Support"
 msgstr ""
 
 #. translators: %1$s: Plugin Name, %2$s: Five Star Link to Review URL, %3$s: Link to Review URL, %4$s: Plugin Name
-#: lib/shared/class-admin-ui.php:664
+#: lib/shared/class-admin-ui.php:575
 #, php-format
 msgid "Please rate %1$s %2$s on %3$s to help us grow %4$s. Thanks!"
 msgstr ""
 
-#: lib/shared/class-admin-ui.php:866
+#: lib/shared/class-admin-ui.php:777
 msgid "No file was uploaded"
 msgstr ""
 
-#: lib/shared/class-admin-ui.php:870
+#: lib/shared/class-admin-ui.php:781
 msgid "Could not determine file type"
 msgstr ""
 
-#: lib/shared/class-admin-ui.php:875
+#: lib/shared/class-admin-ui.php:786
 msgid "Error when uploading file."
 msgstr ""
 
-#: lib/shared/class-admin-ui.php:888
+#: lib/shared/class-admin-ui.php:799
 msgid "Could not extract the supplied ZIP file."
 msgstr ""
 
-#: lib/shared/class-admin-ui.php:923
+#: lib/shared/class-admin-ui.php:834
 msgid "Supplied file is not a valid JSON settings file, or has become corrupt."
 msgstr ""
 
-#: lib/shared/class-admin-ui.php:937
+#: lib/shared/class-admin-ui.php:848
 msgid "Settings imported."
 msgstr ""
 
@@ -516,25 +519,25 @@ msgstr ""
 msgid "See Documentation"
 msgstr ""
 
-#: lib/social/includes/class-admin.php:952
+#: lib/social/includes/class-admin.php:955
 msgid "Profiles refreshed successfully."
 msgstr ""
 
 #. translators: Social Media Service Name (Buffer, Hootsuite)
-#: lib/social/includes/class-admin.php:984
+#: lib/social/includes/class-admin.php:987
 #, php-format
 msgid "%s account disconnected successfully."
 msgstr ""
 
-#: lib/social/includes/class-admin.php:1009
+#: lib/social/includes/class-admin.php:1012
 msgid "Nonce field is missing. Settings NOT saved."
 msgstr ""
 
-#: lib/social/includes/class-admin.php:1017
+#: lib/social/includes/class-admin.php:1020
 msgid "Invalid nonce specified. Settings NOT saved."
 msgstr ""
 
-#: lib/social/includes/class-admin.php:1067
+#: lib/social/includes/class-admin.php:1070
 msgid "Statuses field is missing. Settings NOT saved."
 msgstr ""
 
@@ -585,126 +588,118 @@ msgid "Image"
 msgstr ""
 
 #: lib/social/includes/class-common.php:86
-msgid "Add to End of Queue"
-msgstr ""
-
-#: lib/social/includes/class-common.php:87
 msgid "Post Immediately"
 msgstr ""
 
-#: lib/social/includes/class-common.php:88
-msgid "Post Now"
-msgstr ""
-
-#: lib/social/includes/class-common.php:125
-#: lib/social/includes/class-common.php:154
+#: lib/social/includes/class-common.php:117
+#: lib/social/includes/class-common.php:146
 msgid "Custom Field / Post Meta Value"
 msgstr ""
 
-#: lib/social/includes/class-common.php:362
+#: lib/social/includes/class-common.php:354
 msgid "Site Name"
 msgstr ""
 
-#: lib/social/includes/class-common.php:363
+#: lib/social/includes/class-common.php:355
 msgid "Post Title"
 msgstr ""
 
-#: lib/social/includes/class-common.php:364
+#: lib/social/includes/class-common.php:356
 msgid "Post Excerpt (Full)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:366
+#: lib/social/includes/class-common.php:358
 msgid "Enter the maximum number of characters the Post Excerpt should display."
 msgstr ""
 
-#: lib/social/includes/class-common.php:369
+#: lib/social/includes/class-common.php:361
 msgid "Post Excerpt (Character Limited)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:372
+#: lib/social/includes/class-common.php:364
 msgid "Enter the maximum number of words the Post Excerpt should display."
 msgstr ""
 
-#: lib/social/includes/class-common.php:375
+#: lib/social/includes/class-common.php:367
 msgid "Post Excerpt (Word Limited)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:378
+#: lib/social/includes/class-common.php:370
 msgid "Enter the maximum number of sentences the Post Excerpt should display."
 msgstr ""
 
-#: lib/social/includes/class-common.php:381
+#: lib/social/includes/class-common.php:373
 msgid "Post Excerpt (Sentence Limited)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:383
+#: lib/social/includes/class-common.php:375
 msgid "Post Content (Full)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:384
+#: lib/social/includes/class-common.php:376
 msgid "Post Content (Up to More Tag)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:386
+#: lib/social/includes/class-common.php:378
 msgid "Enter the maximum number of characters the Post Content should display."
 msgstr ""
 
-#: lib/social/includes/class-common.php:389
+#: lib/social/includes/class-common.php:381
 msgid "Post Content (Character Limited)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:392
+#: lib/social/includes/class-common.php:384
 msgid "Enter the maximum number of words the Post Content should display."
 msgstr ""
 
-#: lib/social/includes/class-common.php:395
+#: lib/social/includes/class-common.php:387
 msgid "Post Content (Word Limited)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:398
+#: lib/social/includes/class-common.php:390
 msgid "Enter the maximum number of sentences the Post Content should display."
 msgstr ""
 
-#: lib/social/includes/class-common.php:401
+#: lib/social/includes/class-common.php:393
 msgid "Post Content (Sentence Limited)"
 msgstr ""
 
-#: lib/social/includes/class-common.php:403
+#: lib/social/includes/class-common.php:395
 msgid "Post Date"
 msgstr ""
 
-#: lib/social/includes/class-common.php:404
+#: lib/social/includes/class-common.php:396
 msgid "Post URL"
 msgstr ""
 
-#: lib/social/includes/class-common.php:405
+#: lib/social/includes/class-common.php:397
 msgid "Post URL, Shortened"
 msgstr ""
 
-#: lib/social/includes/class-common.php:406
+#: lib/social/includes/class-common.php:398
 #: lib/social/includes/class-log-table.php:213
 msgid "Post ID"
 msgstr ""
 
 #. translators: Taxonomy Name, Singular
-#: lib/social/includes/class-common.php:426
+#: lib/social/includes/class-common.php:418
 #, php-format
 msgid "Taxonomy: %s: Hashtag Format"
 msgstr ""
 
-#: lib/social/includes/class-common.php:484
+#: lib/social/includes/class-common.php:476
 msgid "Publish"
 msgstr ""
 
-#: lib/social/includes/class-common.php:485
+#: lib/social/includes/class-common.php:477
 msgid "Update"
 msgstr ""
 
-#: lib/social/includes/class-common.php:513
+#: lib/social/includes/class-common.php:505
 msgid "Published"
 msgstr ""
 
-#: lib/social/includes/class-common.php:514
+#: lib/social/includes/class-common.php:506
 msgid "Updated"
 msgstr ""
 

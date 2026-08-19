@@ -403,7 +403,7 @@ class Buffer_API {
 		// will fail.
 		if ( empty( $this->refresh_token ) ) {
 			return new \WP_Error(
-				'wp_to_buffer_pro_api_refresh_token_error',
+				$this->base->plugin->filter_name . '_api_refresh_token_error',
 				__( 'No refresh token available; cannot refresh access token.', 'wp-to-buffer' )
 			);
 		}
@@ -429,7 +429,7 @@ class Buffer_API {
 			 * @param   string    $access_token  Access Token.
 			 * @param   string    $refresh_token Refresh Token.
 			 */
-			do_action( $this->base->plugin->filter_name . '_pro_api_refresh_token_error', $result, $this->client_id, $this->access_token, $this->refresh_token );
+			do_action( $this->base->plugin->filter_name . '_api_refresh_token_error', $result, $this->client_id, $this->access_token, $this->refresh_token );
 
 			return $result;
 		}
@@ -451,7 +451,7 @@ class Buffer_API {
 		 * @param   string  $previous_access_token   Existing Access Token.
 		 * @param   string  $previous_refresh_token  Existing Refresh Token.
 		 */
-		do_action( $this->base->plugin->filter_name . '_pro_api_refresh_token', $result, $this->client_id, $this->access_token, $this->refresh_token );
+		do_action( $this->base->plugin->filter_name . '_api_refresh_token', $result, $this->client_id, $this->access_token, $this->refresh_token );
 
 		// Update the access and refresh tokens in this class.
 		$this->set_tokens( $result['access_token'], $result['refresh_token'], $result['token_expires'] );

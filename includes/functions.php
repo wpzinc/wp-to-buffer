@@ -42,4 +42,21 @@ function wp_to_buffer_update_credentials( $result, $client_id, $existing_access_
 }
 
 // Update Access Token when refreshed by the API class.
-add_action( 'wp_to_buffer_pro_api_refresh_token', 'wp_to_buffer_update_credentials', 10, 3 );
+add_action( 'wp_to_buffer_api_refresh_token', 'wp_to_buffer_update_credentials', 10, 3 );
+
+/**
+ * Schedules the WordPress Cron event to refresh the access token before it expires.
+ *
+ * Runs whenever an access token is refreshed, so that each token schedules the
+ * refresh of its successor.
+ *
+ * @since   6.2.0
+ */
+function wp_to_buffer_schedule_refresh_token_event() {
+
+	WP_To_Buffer::get_instance()->get_class( 'cron' )->reschedule_refresh_token_event();
+
+}
+
+// Schedule the next token refresh whenever a token is refreshed.
+add_action( 'wp_to_buffer_api_refresh_token', 'wp_to_buffer_schedule_refresh_token_event', 20 );

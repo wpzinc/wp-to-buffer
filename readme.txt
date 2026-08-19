@@ -314,6 +314,7 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 * Added: Status: Scheduling: Post Immediately option
 * Updated: Improved WordPress Coding Standards for dates
 * Fix: Authentication: OAuth: Use nonce for improved security when connecting to Buffer
+* Fix: Authentication: Schedule refreshing tokens to prevent "grant request is invalid" errors
 
 = 6.1.2 (2026-07-10) =
 * Added: Settings: Authentication: Refresh Profiles button. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/manage-account-connections/#refresh-profiles

@@ -117,6 +117,12 @@
 						<td><a href="#wp_to_buffer_common_convert_wordpress_gmt_offset_to_offset_value"><code>wp_to_buffer_common_convert_wordpress_gmt_offset_to_offset_value</code></a></td>
 						<td>Converts WordPress' GMT Offset (e.g. -5, +3.3) to an offset value compatible with WordPress' DateTime object (e.g. -0500, +0330)</td>
 					</tr><tr>
+						<td colspan="3">../lib/social/includes/class-cron.php</td>
+					</tr><tr>
+						<td>&nbsp;</td>
+						<td><a href="#wp_to_buffer_cron_refresh_token_seconds_before_expiry"><code>wp_to_buffer_cron_refresh_token_seconds_before_expiry</code></a></td>
+						<td>The number of seconds before an access token expires to refresh it.</td>
+					</tr><tr>
 						<td colspan="3">../lib/social/includes/class-publish.php</td>
 					</tr><tr>
 						<td>&nbsp;</td>
@@ -283,7 +289,7 @@ add_filter( 'wp_to_buffer_get_status_post_type_options', function( $status_post_
 </pre>
 <h3 id="wp_to_buffer_get_schedule_options">
 						wp_to_buffer_get_schedule_options
-						<code>lib/social/includes/class-common.php::105</code>
+						<code>lib/social/includes/class-common.php::97</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the available schedule options for each individual status.</p><h4>Parameters</h4>
 					<table>
@@ -318,7 +324,7 @@ add_filter( 'wp_to_buffer_get_schedule_options', function( $schedule, $post_type
 </pre>
 <h3 id="wp_to_buffer_get_google_business_start_date_options">
 						wp_to_buffer_get_google_business_start_date_options
-						<code>lib/social/includes/class-common.php::134</code>
+						<code>lib/social/includes/class-common.php::126</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the available start date options for a Google Business Profile status.</p><h4>Parameters</h4>
 					<table>
@@ -345,7 +351,7 @@ add_filter( 'wp_to_buffer_get_google_business_start_date_options', function( $sc
 </pre>
 <h3 id="wp_to_buffer_get_google_business_end_date_options">
 						wp_to_buffer_get_google_business_end_date_options
-						<code>lib/social/includes/class-common.php::163</code>
+						<code>lib/social/includes/class-common.php::155</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the available start date options for a Google Business Profile status.</p><h4>Parameters</h4>
 					<table>
@@ -372,7 +378,7 @@ add_filter( 'wp_to_buffer_get_google_business_end_date_options', function( $sche
 </pre>
 <h3 id="wp_to_buffer_get_post_types">
 						wp_to_buffer_get_post_types
-						<code>lib/social/includes/class-common.php::202</code>
+						<code>lib/social/includes/class-common.php::194</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the available Post Type Objects that can have statues defined and be sent to social media.</p><h4>Parameters</h4>
 					<table>
@@ -399,7 +405,7 @@ add_filter( 'wp_to_buffer_get_post_types', function( $types ) {
 </pre>
 <h3 id="wp_to_buffer_get_excluded_post_types">
 						wp_to_buffer_get_excluded_post_types
-						<code>lib/social/includes/class-common.php::233</code>
+						<code>lib/social/includes/class-common.php::225</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the Post Type Objects that cannot have statues defined and not be sent to social media.</p><h4>Parameters</h4>
 					<table>
@@ -426,7 +432,7 @@ add_filter( 'wp_to_buffer_get_excluded_post_types', function( $types ) {
 </pre>
 <h3 id="wp_to_buffer_get_excluded_taxonomies">
 						wp_to_buffer_get_excluded_taxonomies
-						<code>lib/social/includes/class-common.php::262</code>
+						<code>lib/social/includes/class-common.php::254</code>
 					</h3><h4>Overview</h4>
 						<p>Defines taxonomies to exclude from the Conditions: Taxonomies dropdowns for each individual status.</p><h4>Parameters</h4>
 					<table>
@@ -453,7 +459,7 @@ add_filter( 'wp_to_buffer_get_excluded_taxonomies', function( $taxonomies ) {
 </pre>
 <h3 id="wp_to_buffer_get_taxonomies">
 						wp_to_buffer_get_taxonomies
-						<code>lib/social/includes/class-common.php::301</code>
+						<code>lib/social/includes/class-common.php::293</code>
 					</h3><h4>Overview</h4>
 						<p>Defines available taxonomies for the given Post Type, which are used in the Conditions: Taxonomies dropdowns for each individual status.</p><h4>Parameters</h4>
 					<table>
@@ -484,7 +490,7 @@ add_filter( 'wp_to_buffer_get_taxonomies', function( $taxonomies, $post_type ) {
 </pre>
 <h3 id="wp_to_buffer_get_all_taxonomies">
 						wp_to_buffer_get_all_taxonomies
-						<code>lib/social/includes/class-common.php::338</code>
+						<code>lib/social/includes/class-common.php::330</code>
 					</h3><h4>Overview</h4>
 						<p>Defines available taxonomies, regardless of Post Type, which are used in the Conditions: Taxonomies dropdowns for each individual status.</p><h4>Parameters</h4>
 					<table>
@@ -511,7 +517,7 @@ add_filter( 'wp_to_buffer_get_all_taxonomies', function( $taxonomies ) {
 </pre>
 <h3 id="wp_to_buffer_get_tags">
 						wp_to_buffer_get_tags
-						<code>lib/social/includes/class-common.php::440</code>
+						<code>lib/social/includes/class-common.php::432</code>
 					</h3><h4>Overview</h4>
 						<p>Defines Dynamic Status Tags that can be inserted into status(es) for the given Post Type. These tags are also added to any 'Insert Tag' dropdowns.</p><h4>Parameters</h4>
 					<table>
@@ -542,7 +548,7 @@ add_filter( 'wp_to_buffer_get_tags', function( $tags, $post_type ) {
 </pre>
 <h3 id="wp_to_buffer_get_post_actions">
 						wp_to_buffer_get_post_actions
-						<code>lib/social/includes/class-common.php::494</code>
+						<code>lib/social/includes/class-common.php::486</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the Post actions which trigger status(es) to be sent to social media.</p><h4>Parameters</h4>
 					<table>
@@ -569,7 +575,7 @@ add_filter( 'wp_to_buffer_get_post_actions', function( $actions ) {
 </pre>
 <h3 id="wp_to_buffer_get_post_actions_past_tense">
 						wp_to_buffer_get_post_actions_past_tense
-						<code>lib/social/includes/class-common.php::524</code>
+						<code>lib/social/includes/class-common.php::516</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the Post actions which trigger status(es) to be sent to social media, with labels set to the past tense.</p><h4>Parameters</h4>
 					<table>
@@ -596,7 +602,7 @@ add_filter( 'wp_to_buffer_get_post_actions_past_tense', function( $actions ) {
 </pre>
 <h3 id="wp_to_buffer_get_tags_excluded_from_character_limit">
 						wp_to_buffer_get_tags_excluded_from_character_limit
-						<code>lib/social/includes/class-common.php::556</code>
+						<code>lib/social/includes/class-common.php::548</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the tags that cannot have a character limit applied to them, as doing so would wrongly concatenate data (e.g. a URL would become malformed).</p><h4>Parameters</h4>
 					<table>
@@ -623,7 +629,7 @@ add_filter( 'wp_to_buffer_get_tags_excluded_from_character_limit', function( $ta
 </pre>
 <h3 id="wp_to_buffer_get_transient_expiration_time">
 						wp_to_buffer_get_transient_expiration_time
-						<code>lib/social/includes/class-common.php::582</code>
+						<code>lib/social/includes/class-common.php::574</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the number of seconds before expiring transients.</p><h4>Parameters</h4>
 					<table>
@@ -650,7 +656,7 @@ add_filter( 'wp_to_buffer_get_transient_expiration_time', function( $expiration_
 </pre>
 <h3 id="wp_to_buffer_get_log_filters">
 						wp_to_buffer_get_log_filters
-						<code>lib/social/includes/class-common.php::616</code>
+						<code>lib/social/includes/class-common.php::608</code>
 					</h3><h4>Overview</h4>
 						<p>Defines the registered filters that can be used on the Log WP_List_Tables.</p><h4>Parameters</h4>
 					<table>
@@ -979,6 +985,33 @@ add_filter( 'wp_to_buffer_common_convert_wordpress_gmt_offset_to_offset_value', 
 	// ... your code here
 	// Return value
 	return $gmt_offset;
+}, 10, 1 );
+</pre>
+<h3 id="wp_to_buffer_cron_refresh_token_seconds_before_expiry">
+						wp_to_buffer_cron_refresh_token_seconds_before_expiry
+						<code>lib/social/includes/class-cron.php::390</code>
+					</h3><h4>Overview</h4>
+						<p>The number of seconds before an access token expires to refresh it.</p><h4>Parameters</h4>
+					<table>
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Type</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody><tr>
+							<td>$seconds</td>
+							<td>int</td>
+							<td>Seconds before expiry.</td>
+						</tr>
+						</tbody>
+					</table><h4>Usage</h4>
+<pre>
+add_filter( 'wp_to_buffer_cron_refresh_token_seconds_before_expiry', function( $seconds ) {
+	// ... your code here
+	// Return value
+	return $seconds;
 }, 10, 1 );
 </pre>
 <h3 id="wp_to_buffer_publish_statuses">
@@ -1800,7 +1833,7 @@ add_filter( 'wp_to_buffer_settings_get_default_status', function( $status ) {
 </pre>
 <h3 id="wp_to_buffer_settings_validate_status">
 						wp_to_buffer_settings_validate_status
-						<code>lib/social/includes/class-settings.php::618</code>
+						<code>lib/social/includes/class-settings.php::607</code>
 					</h3><h4>Overview</h4>
 						<p>Filters status settings during validation, allowing them to be changed.</p><h4>Parameters</h4>
 					<table>
@@ -1827,7 +1860,7 @@ add_filter( 'wp_to_buffer_settings_validate_status', function( $status ) {
 </pre>
 <h3 id="wp_to_buffer_update_option">
 						wp_to_buffer_update_option
-						<code>lib/social/includes/class-settings.php::967</code>
+						<code>lib/social/includes/class-settings.php::956</code>
 					</h3><h4>Overview</h4>
 						<p>Filters the key and value pair before saving to the options table.</p><h4>Parameters</h4>
 					<table>
@@ -2050,11 +2083,11 @@ add_filter( 'wp_to_buffer_pro_api_get_timeout', function( $timeout ) {
 						<td colspan="3">../includes/class-buffer-api.php</td>
 					</tr><tr>
 						<td>&nbsp;</td>
-						<td><a href="#wp_to_buffer_pro_api_refresh_token_error"><code>wp_to_buffer_pro_api_refresh_token_error</code></a></td>
+						<td><a href="#wp_to_buffer_api_refresh_token_error"><code>wp_to_buffer_api_refresh_token_error</code></a></td>
 						<td>Perform any actions when refreshing an expired access token fails.</td>
 					</tr><tr>
 						<td>&nbsp;</td>
-						<td><a href="#wp_to_buffer_pro_api_refresh_token"><code>wp_to_buffer_pro_api_refresh_token</code></a></td>
+						<td><a href="#wp_to_buffer_api_refresh_token"><code>wp_to_buffer_api_refresh_token</code></a></td>
 						<td>Perform any actions with the new access token, such as saving it.</td>
 					</tr><tr>
 						<td colspan="3">/settings-auth-required.php</td>
@@ -2129,8 +2162,8 @@ do_action( 'wp_to_buffer_notices_delete_notices', function(  ) {
 	// ... your code here
 }, 10, 0 );
 </pre>
-<h3 id="wp_to_buffer_pro_api_refresh_token_error">
-						wp_to_buffer_pro_api_refresh_token_error
+<h3 id="wp_to_buffer_api_refresh_token_error">
+						wp_to_buffer_api_refresh_token_error
 						<code>includes/class-buffer-api.php::431</code>
 					</h3><h4>Overview</h4>
 						<p>Perform any actions when refreshing an expired access token fails.</p><h4>Parameters</h4>
@@ -2162,12 +2195,12 @@ do_action( 'wp_to_buffer_notices_delete_notices', function(  ) {
 						</tbody>
 					</table><h4>Usage</h4>
 <pre>
-do_action( 'wp_to_buffer_pro_api_refresh_token_error', function( $result, $client_id, $access_token, $refresh_token ) {
+do_action( 'wp_to_buffer_api_refresh_token_error', function( $result, $client_id, $access_token, $refresh_token ) {
 	// ... your code here
 }, 10, 4 );
 </pre>
-<h3 id="wp_to_buffer_pro_api_refresh_token">
-						wp_to_buffer_pro_api_refresh_token
+<h3 id="wp_to_buffer_api_refresh_token">
+						wp_to_buffer_api_refresh_token
 						<code>includes/class-buffer-api.php::453</code>
 					</h3><h4>Overview</h4>
 						<p>Perform any actions with the new access token, such as saving it.</p><h4>Parameters</h4>
@@ -2199,7 +2232,7 @@ do_action( 'wp_to_buffer_pro_api_refresh_token_error', function( $result, $clien
 						</tbody>
 					</table><h4>Usage</h4>
 <pre>
-do_action( 'wp_to_buffer_pro_api_refresh_token', function( $result, $client_id, $access_token, $refresh_token ) {
+do_action( 'wp_to_buffer_api_refresh_token', function( $result, $client_id, $access_token, $refresh_token ) {
 	// ... your code here
 }, 10, 4 );
 </pre>
