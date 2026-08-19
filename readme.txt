@@ -3,7 +3,7 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: social media automation, auto post, buffer, social media scheduler, auto publish
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 6.2.0
 License: GPLv3 or later
@@ -309,7 +309,7 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 
 == Changelog ==
 
-= 6.2.0 (2026-08-05) =
+= 6.2.0 (2026-08-19) =
 * Added: Namespaced `WPZinc\Social` (previously `WP_To_Social_*` classes) and `WPZinc\Shared` (previously WPZincDashboardSubmodule)
 * Added: Status: Scheduling: Post Immediately option
 * Updated: Improved WordPress Coding Standards for dates
