@@ -2,7 +2,7 @@
 /**
  * WP to Buffer class.
  *
- * @package WP_To_Buffer_Pro
+ * @package WP_To_Buffer
  * @author WP Zinc
  */
 
@@ -75,7 +75,7 @@ class WP_To_Buffer {
 		$this->plugin->upgrade_url       = 'https://www.wpzinc.com/plugins/wordpress-to-buffer-pro';
 
 		// Logo.
-		$this->plugin->logo                        = WP_TO_BUFFER_PLUGIN_URL . 'lib/assets/images/icons/buffer-dark.svg';
+		$this->plugin->logo                        = WP_TO_BUFFER_PLUGIN_URL . 'lib/social/assets/images/icons/buffer-dark.svg';
 		$this->plugin->header_background_color     = '#ffffff';
 		$this->plugin->header_primary_text_color   = '#3d3d3d';
 		$this->plugin->header_secondary_text_color = '#6e6e6e';
@@ -92,7 +92,7 @@ class WP_To_Buffer {
 		$this->plugin->convertkit_form_uid = '71346c6086';
 
 		// Default Settings.
-		$this->plugin->default_schedule = 'queue_end';
+		$this->plugin->default_schedule = 'immediate';
 
 		// Defer loading of Plugin Classes.
 		add_action( 'init', array( $this, 'initialize' ), 1 );
@@ -100,6 +100,26 @@ class WP_To_Buffer {
 
 		// Admin Menus.
 		add_action( $this->plugin->filter_name . '_admin_admin_menu', array( $this, 'admin_menus' ) );
+
+		// Add queue_end Schedule Option.
+		add_filter( $this->plugin->filter_name . '_get_schedule_options', array( $this, 'get_schedule_options' ) );
+
+	}
+
+	/**
+	 * Defines the schedule options available for statuses in WP to Buffer (Free).
+	 *
+	 * @since   6.2.0
+	 *
+	 * @param   array $schedule   Schedule Options.
+	 * @return  array               Schedule Options
+	 */
+	public function get_schedule_options( $schedule ) {
+
+		// Buffer supports a queue, in addition to the always-available immediate option.
+		$schedule['queue_end'] = __( 'Add to End of Queue', 'wp-to-buffer' );
+
+		return $schedule;
 
 	}
 
@@ -113,7 +133,7 @@ class WP_To_Buffer {
 	public function admin_menus( $minimum_capability ) {
 
 		// Menus.
-		add_menu_page( $this->plugin->displayName, $this->plugin->displayName, $minimum_capability, $this->plugin->name . '-settings', array( $this->get_class( 'admin' ), 'settings_screen' ), $this->plugin->url . 'lib/assets/images/icons/' . strtolower( $this->plugin->account ) . '-light.svg' );
+		add_menu_page( $this->plugin->displayName, $this->plugin->displayName, $minimum_capability, $this->plugin->name . '-settings', array( $this->get_class( 'admin' ), 'settings_screen' ), $this->plugin->url . 'lib/social/assets/images/icons/' . strtolower( $this->plugin->account ) . '-light.svg' );
 
 		// Register Submenu Pages.
 		$settings_page = add_submenu_page( $this->plugin->name . '-settings', __( 'Settings', 'wp-to-buffer' ), __( 'Settings', 'wp-to-buffer' ), $minimum_capability, $this->plugin->name . '-settings', array( $this->get_class( 'admin' ), 'settings_screen' ) );
@@ -137,9 +157,10 @@ class WP_To_Buffer {
 
 		// Define translation strings.
 		$this->plugin->review_notice = sprintf(
-			/* translators: Plugin Name */
-			__( 'Thanks for using %s to schedule your social media statuses on Buffer!', 'wp-to-buffer' ),
-			$this->plugin->displayName
+			/* translators: 1: Plugin Name, 2: Social Network */
+			__( 'Thanks for using %1$s to schedule your social media statuses on %2$s!', 'wp-to-buffer' ),
+			$this->plugin->displayName,
+			$this->plugin->account
 		);
 
 		// Upgrade Reasons.
@@ -214,39 +235,29 @@ class WP_To_Buffer {
 			),
 		);
 
-		// Dashboard Submodule.
-		if ( ! class_exists( 'WPZincDashboardWidget' ) ) {
-			require_once $this->plugin->folder . '_modules/dashboard/class-wpzincdashboardwidget.php';
-		}
-		$this->dashboard = new WPZincDashboardWidget( $this->plugin, 'https://www.wpzinc.com/wp-content/plugins/lum-deactivation' );
+		// Shared admin module (autoloaded from lib/shared).
+		$this->dashboard = new \WPZinc\Shared\Admin_UI( $this->plugin );
 
 		// Initialize Plugin classes.
 		$this->classes = new stdClass();
 
 		// Initialize required classes.
-		$this->classes->admin         = new WP_To_Social_Pro_Admin( self::$instance );
-		$this->classes->ajax          = new WP_To_Social_Pro_AJAX( self::$instance );
-		$this->classes->api           = new WP_To_Social_Pro_Buffer_API( self::$instance );
-		$this->classes->common        = new WP_To_Social_Pro_Common( self::$instance );
-		$this->classes->cron          = new WP_To_Social_Pro_Cron( self::$instance );
-		$this->classes->date          = new WP_To_Social_Pro_Date( self::$instance );
-		$this->classes->image         = new WP_To_Social_Pro_Image( self::$instance );
-		$this->classes->install       = new WP_To_Social_Pro_Install( self::$instance );
-		$this->classes->log           = new WP_To_Social_Pro_Log( self::$instance );
-		$this->classes->media_library = new WP_To_Social_Pro_Media_Library( self::$instance );
-		$this->classes->notices       = new WP_To_Social_Pro_Notices( self::$instance );
-		$this->classes->post          = new WP_To_Social_Pro_Post( self::$instance );
-		$this->classes->publish       = new WP_To_Social_Pro_Publish( self::$instance );
-		$this->classes->screen        = new WP_To_Social_Pro_Screen( self::$instance );
-		$this->classes->settings      = new WP_To_Social_Pro_Settings( self::$instance );
-		$this->classes->twitter_api   = new WP_To_Social_Pro_Twitter_API( self::$instance );
-		$this->classes->validation    = new WP_To_Social_Pro_Validation( self::$instance );
-
-		// Integrations.
-		$this->classes->aioseo    = new WP_To_Social_Pro_AIOSEO( self::$instance );
-		$this->classes->rank_math = new WP_To_Social_Pro_Rank_Math( self::$instance );
-		$this->classes->seopress  = new WP_To_Social_Pro_SEOPress( self::$instance );
-		$this->classes->yoast_seo = new WP_To_Social_Pro_Yoast_SEO( self::$instance );
+		$this->classes->admin         = new \WPZinc\Social\Admin( self::$instance );
+		$this->classes->ajax          = new \WPZinc\Social\AJAX( self::$instance );
+		$this->classes->api           = new \WPZinc\Social\Buffer_API( self::$instance );
+		$this->classes->common        = new \WPZinc\Social\Common( self::$instance );
+		$this->classes->cron          = new \WPZinc\Social\Cron( self::$instance );
+		$this->classes->date          = new \WPZinc\Social\Date( self::$instance );
+		$this->classes->image         = new \WPZinc\Social\Image( self::$instance );
+		$this->classes->install       = new \WPZinc\Social\Install( self::$instance );
+		$this->classes->log           = new \WPZinc\Social\Log( self::$instance );
+		$this->classes->media_library = new \WPZinc\Social\Media_Library( self::$instance );
+		$this->classes->notices       = new \WPZinc\Social\Notices( self::$instance );
+		$this->classes->post          = new \WPZinc\Social\Post( self::$instance );
+		$this->classes->publish       = new \WPZinc\Social\Publish( self::$instance );
+		$this->classes->screen        = new \WPZinc\Social\Screen( self::$instance );
+		$this->classes->settings      = new \WPZinc\Social\Settings( self::$instance );
+		$this->classes->validation    = new \WPZinc\Social\Validation( self::$instance );
 
 	}
 

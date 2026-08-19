@@ -3,9 +3,9 @@ Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
 Tags: social media automation, auto post, buffer, social media scheduler, auto publish
 Requires at least: 5.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 6.1.2
+Stable tag: 6.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -110,9 +110,9 @@ Unlike direct posting plugins (WP to Facebook, WP to Twitter clones), this plugi
 
 **Default Buffer Schedule** - Buffer automatically spaces posts throughout the day based on your time zone preferences
 
-**Custom Posting Schedule** (Pro) - Define specific days and times in Buffer when posts should publish to each social network
+**Immediate Posting** - Override the queue and post immediately to social media
 
-**Immediate Posting** (Pro) - Override the queue and post immediately to social media
+**Custom Posting Schedule** (Pro) - Define specific days and times in Buffer when posts should publish to each social network
 
 **Scheduled Publishing** (Pro) - Set exact date and time for each social media post
 
@@ -308,6 +308,12 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.2.0 (2026-08-19) =
+* Added: Namespaced `WPZinc\Social` (previously `WP_To_Social_*` classes) and `WPZinc\Shared` (previously WPZincDashboardSubmodule)
+* Added: Status: Scheduling: Post Immediately option
+* Updated: Improved WordPress Coding Standards for dates
+* Fix: Authentication: OAuth: Use nonce for improved security when connecting to Buffer
 
 = 6.1.2 (2026-07-10) =
 * Added: Settings: Authentication: Refresh Profiles button. See Docs: https://www.wpzinc.com/documentation/wordpress-buffer-pro/manage-account-connections/#refresh-profiles
