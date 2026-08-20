@@ -964,6 +964,11 @@ query GetChannels($organizationId: OrganizationId!) {
 				// Build assets array.
 				$assets = array();
 				foreach ( $params['media_urls'] as $media ) {
+					// Skip anything that isn't an image, so we never send null asset data.
+					if ( ! is_array( $media ) || empty( $media['image'] ) ) {
+						continue;
+					}
+
 					$assets[] = array(
 						'image' => array(
 							'url'          => $media['image'],
