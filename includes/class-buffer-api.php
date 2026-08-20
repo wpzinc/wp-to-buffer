@@ -22,7 +22,7 @@ class Buffer_API {
 	 *
 	 * @since   3.4.7
 	 *
-	 * @var     object.
+	 * @var     object
 	 */
 	public $base;
 
@@ -31,7 +31,7 @@ class Buffer_API {
 	 *
 	 * @since   3.3.3
 	 *
-	 * @var     string.
+	 * @var     string
 	 */
 	private $client_id = 'd1Lk26lma4iEgb-20v1BWmdKrlopiGwP9pu9ri7JG0e';
 
@@ -40,7 +40,7 @@ class Buffer_API {
 	 *
 	 * @since   6.0.0
 	 *
-	 * @var     string.
+	 * @var     string
 	 */
 	private $oauth_authorize_url = 'https://auth.buffer.com/';
 
@@ -49,25 +49,16 @@ class Buffer_API {
 	 *
 	 * @since   3.3.3
 	 *
-	 * @var     string.
+	 * @var     string
 	 */
 	private $redirect_uri = 'https://www.wpzinc.com/?oauth=bufferv2';
-
-	/**
-	 * Holds the Proxy endpoint, which might be used to pass requests through
-	 *
-	 * @since   4.2.1
-	 *
-	 * @var     string.
-	 */
-	private $proxy_endpoint = 'https://proxy.wpzinc.net/';
 
 	/**
 	 * Holds the API endpoint
 	 *
 	 * @since   3.4.7
 	 *
-	 * @var     string.
+	 * @var     string
 	 */
 	private $api_endpoint = 'https://api.buffer.com/';
 
@@ -94,7 +85,7 @@ class Buffer_API {
 	 *
 	 * @since   3.5.0
 	 *
-	 * @var     int
+	 * @var     int|false
 	 */
 	public $token_expires = false;
 
@@ -353,7 +344,7 @@ class Buffer_API {
 	 * @since   6.0.0
 	 *
 	 * @param   string $authorization_code     Authorization Code, returned from get_oauth_url() flow.
-	 * @return  WP_Error|array
+	 * @return  \WP_Error|array
 	 */
 	public function get_access_token( $authorization_code ) {
 
@@ -424,7 +415,7 @@ class Buffer_API {
 			 *
 			 * @since   6.0.0
 			 *
-			 * @param   WP_Error  $result        Error from API.
+			 * @param   \WP_Error  $result        Error from API.
 			 * @param   string    $client_id     OAuth Client ID.
 			 * @param   string    $access_token  Access Token.
 			 * @param   string    $refresh_token Refresh Token.
@@ -468,7 +459,7 @@ class Buffer_API {
 	 *
 	 * @param   bool $force   Force API call (false = use stored option).
 	 *
-	 * @return  WP_Error|array
+	 * @return  \WP_Error|array
 	 */
 	public function organizations( $force = false ) {
 
@@ -530,7 +521,7 @@ query {
 	 * @since   6.0.0
 	 *
 	 * @param   string $account_id     Account ID.
-	 * @return  WP_Error|array
+	 * @return  \WP_Error|array
 	 */
 	public function account( $account_id = '' ) {
 
@@ -561,7 +552,7 @@ query {
 	 *
 	 * @param   bool   $force        Force API call (false = use stored option).
 	 * @param   string $account_id   Account ID.
-	 * @return  WP_Error|array
+	 * @return  \WP_Error|array
 	 */
 	public function profiles( $force = false, $account_id = 'default' ) {
 
@@ -648,7 +639,7 @@ query GetChannels($organizationId: OrganizationId!) {
 	 * @since   6.0.0
 	 *
 	 * @param   string $post_id    Post ID.
-	 * @return  WP_Error|array
+	 * @return  \WP_Error|array
 	 */
 	public function get_post( $post_id ) {
 
@@ -694,7 +685,7 @@ query GetChannels($organizationId: OrganizationId!) {
 	 *
 	 * @param   array  $params     Params.
 	 * @param   string $service    Service.
-	 * @return  WP_Error|array
+	 * @return  \WP_Error|array
 	 */
 	public function updates_create( $params, $service ) {
 
@@ -1062,7 +1053,7 @@ mutation CreatePost(
 	 *
 	 * @param   string $url     URL.
 	 * @param   array  $params  Parameters (optional).
-	 * @return  WP_Error|array
+	 * @return  \WP_Error|array
 	 */
 	private function oauth_request( $url, $params = array() ) {
 
@@ -1102,7 +1093,7 @@ mutation CreatePost(
 	 * @param   string $query         GraphQL Query.
 	 * @param   array  $variables     GraphQL Variables.
 	 * @param   bool   $is_retry      Whether this is a retry following a token refresh.
-	 * @return  WP_Error|array
+	 * @return  \WP_Error|array
 	 */
 	private function graphql_query( $query, $variables = array(), $is_retry = false ) {
 
@@ -1246,13 +1237,13 @@ mutation CreatePost(
 	}
 
 	/**
-	 * Parses the response body, returning a WP_Error
+	 * Parses the response body, returning a \WP_Error
 	 * if the response body contains an error.
 	 *
 	 * @since   3.9.8
 	 *
-	 * @param   string $response   Response Body.
-	 * @return  WP_Error|array
+	 * @param   array|\WP_Error $response   HTTP Response.
+	 * @return  \WP_Error|array
 	 */
 	private function parse_response( $response ) {
 
