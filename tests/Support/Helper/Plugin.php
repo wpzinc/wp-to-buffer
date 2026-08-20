@@ -18,9 +18,9 @@ class Plugin extends \Codeception\Module
 	 *
 	 * @param   AcceptanceTester $I  Tester.
 	 */
-	public function activateWPToBufferPlugin($I)
+	public function activateWPToBufferProPlugin($I)
 	{
-		$I->activateThirdPartyPlugin($I, 'wp-to-buffer');
+		$I->activateThirdPartyPlugin($I, 'wp-to-buffer-pro');
 	}
 
 	/**
@@ -31,20 +31,20 @@ class Plugin extends \Codeception\Module
 	 *
 	 * @param   AcceptanceTester $I  Tester.
 	 */
-	public function deactivateWPToBufferPlugin($I)
+	public function deactivateWPToBufferProPlugin($I)
 	{
-		$I->deactivateThirdPartyPlugin($I, 'wp-to-buffer');
+		$I->deactivateThirdPartyPlugin($I, 'wp-to-buffer-pro');
 	}
 
-		/**
-		 * Helper method to activate a third party Plugin, checking
-		 * it activated and no errors were output.
-		 *
-		 * @since   3.8.4
-		 *
-		 * @param   EndToEndTester $I                       EndToEndTester.
-		 * @param   string         $name                    Plugin Slug.
-		 */
+	/**
+	 * Helper method to activate a third party Plugin, checking
+	 * it activated and no errors were output.
+	 *
+	 * @since   3.8.4
+	 *
+	 * @param   EndToEndTester $I                       EndToEndTester.
+	 * @param   string         $name                    Plugin Slug.
+	 */
 	public function activateThirdPartyPlugin($I, $name)
 	{
 		// Login as the Administrator, if we're not already logged in.
@@ -59,7 +59,7 @@ class Plugin extends \Codeception\Module
 		$I->waitForElementVisible('body.plugins-php');
 
 		// Activate the Plugin.
-		$I->checkOption('//*[@data-slug="' . $name . '"]/th/input');
+		$I->checkOption('//*[@data-slug="' . $name . '"]//input[@type="checkbox"]');
 		$I->selectOption('action', 'activate-selected');
 		$I->click('#doaction');
 
@@ -93,7 +93,7 @@ class Plugin extends \Codeception\Module
 		$I->waitForElementVisible('body.plugins-php');
 
 		// Deactivate the Plugin.
-		$I->checkOption('//*[@data-slug="' . $name . '"]/th/input');
+		$I->checkOption('//*[@data-slug="' . $name . '"]//input[@type="checkbox"]');
 		$I->selectOption('action', 'deactivate-selected');
 		$I->click('#doaction');
 	}
