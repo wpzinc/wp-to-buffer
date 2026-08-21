@@ -85,7 +85,7 @@ class Buffer_API {
 	 *
 	 * @since   3.5.0
 	 *
-	 * @var     int|false
+	 * @var     int|bool
 	 */
 	public $token_expires = false;
 
@@ -751,6 +751,11 @@ query GetChannels($organizationId: OrganizationId!) {
 				if ( ! empty( $params['first_comment'] ) ) {
 					$metadata['firstComment'] = $params['first_comment'];
 				}
+
+				// Shop Grid Link.
+				if ( ! empty( $params['url'] ) ) {
+					$metadata['link'] = $params['url'];
+				}
 				break;
 
 			case 'facebook':
@@ -941,7 +946,7 @@ query GetChannels($organizationId: OrganizationId!) {
 							'url'          => $media['image'],
 							'thumbnailUrl' => $media['thumbnail'],
 							'metadata'     => array(
-								'altText'    => $media['alt_text'],
+								'altText' => $media['alt_text'],
 							),
 						),
 					);

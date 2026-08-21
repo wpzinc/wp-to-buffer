@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 6.2.2
+Stable tag: 6.2.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -308,6 +308,10 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.2.3 (2026-08-24) =
+* Updated: API: Link Posts: Use `metadata.{service}.linkAttachment.url` instead of `AssetInput.link.url`, per Buffer's changelog: https://developers.buffer.com/changelog.html#update-2026-08-17
+* Removed: API: Image Posts: Removed `assets[].image.metadata.dimensions`, per Buffer's changelog: https://developers.buffer.com/changelog.html#update-2026-07-27
 
 = 6.2.2 (2026-08-21) =
 * Added: PHPStan static analysis improvements
