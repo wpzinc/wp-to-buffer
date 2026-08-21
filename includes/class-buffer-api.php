@@ -774,12 +774,8 @@ query GetChannels($organizationId: OrganizationId!) {
 
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$assets = array(
-						array(
-							'link' => array(
-								'url' => $params['url'],
-							),
-						),
+					$metadata['linkAttachment'] = array(
+						'url' => $params['url'],
 					);
 				}
 
@@ -797,12 +793,8 @@ query GetChannels($organizationId: OrganizationId!) {
 
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$assets = array(
-						array(
-							'link' => array(
-								'url' => $params['url'],
-							),
-						),
+					$metadata['linkAttachment'] = array(
+						'url' => $params['url'],
 					);
 				}
 
@@ -815,11 +807,9 @@ query GetChannels($organizationId: OrganizationId!) {
 			case 'twitter':
 				// First Comment.
 				if ( ! empty( $params['first_comment'] ) ) {
-					$metadata = array(
-						'thread' => array(
-							array(
-								'text' => $params['first_comment'],
-							),
+					$metadata['thread'] = array(
+						array(
+							'text' => $params['first_comment'],
 						),
 					);
 				}
@@ -879,22 +869,16 @@ query GetChannels($organizationId: OrganizationId!) {
 			case 'threads':
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$assets = array(
-						array(
-							'link' => array(
-								'url' => $params['url'],
-							),
-						),
+					$metadata['linkAttachment'] = array(
+						'url' => $params['url'],
 					);
 				}
 
 				// First Comment.
 				if ( ! empty( $params['first_comment'] ) ) {
-					$metadata = array(
-						'thread' => array(
-							array(
-								'text' => $params['first_comment'],
-							),
+					$metadata['thread'] = array(
+						array(
+							'text' => $params['first_comment'],
 						),
 					);
 				}
@@ -903,22 +887,16 @@ query GetChannels($organizationId: OrganizationId!) {
 			case 'bluesky':
 				// OpenGraph / Link Attachment.
 				if ( $params['post_type'] === 'link' && ! empty( $params['url'] ) ) {
-					$assets = array(
-						array(
-							'link' => array(
-								'url' => $params['url'],
-							),
-						),
+					$metadata['linkAttachment'] = array(
+						'url' => $params['url'],
 					);
 				}
 
 				// First Comment.
 				if ( ! empty( $params['first_comment'] ) ) {
-					$metadata = array(
-						'thread' => array(
-							array(
-								'text' => $params['first_comment'],
-							),
+					$metadata['thread'] = array(
+						array(
+							'text' => $params['first_comment'],
 						),
 					);
 				}
@@ -927,11 +905,9 @@ query GetChannels($organizationId: OrganizationId!) {
 			case 'mastodon':
 				// First Comment.
 				if ( ! empty( $params['first_comment'] ) ) {
-					$metadata = array(
-						'thread' => array(
-							array(
-								'text' => $params['first_comment'],
-							),
+					$metadata['thread'] = array(
+						array(
+							'text' => $params['first_comment'],
 						),
 					);
 				}
@@ -975,10 +951,6 @@ query GetChannels($organizationId: OrganizationId!) {
 							'thumbnailUrl' => $media['thumbnail'],
 							'metadata'     => array(
 								'altText'    => $media['alt_text'],
-								'dimensions' => array(
-									'width'  => $media['width'],
-									'height' => $media['height'],
-								),
 							),
 						),
 					);
