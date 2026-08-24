@@ -389,16 +389,17 @@ class Buffer_API {
 	 */
 	public function refresh_token() {
 
-		// Bail if no refresh token is available to use, otherwise we'll
-		// send a request to Buffer with an empty refresh_token, which
-		// will fail.
+		// Bail if we don't have a refresh token.
 		if ( empty( $this->refresh_token ) ) {
-			return new \WP_Error(
-				$this->base->plugin->filter_name . '_api_refresh_token_error',
-				__( 'No refresh token available; cannot refresh access token.', 'wp-to-buffer' )
-			);
+			return new \WP_Error( 'missing_refresh_token', __( 'No refresh token exists', 'wp-to-buffer' ) );
 		}
 
+		// Bail if the access token hasn't yet expired.
+		if ( strtotime( '+15 minutes' ) < $this->token_expires ) {
+			return false;
+		}
+
+		// Send request.
 		$result = $this->oauth_request(
 			$this->oauth_authorize_url . 'token',
 			array(
@@ -415,7 +416,7 @@ class Buffer_API {
 			 *
 			 * @since   6.0.0
 			 *
-			 * @param   \WP_Error  $result        Error from API.
+			 * @param   \WP_Error  $result       Error from API.
 			 * @param   string    $client_id     OAuth Client ID.
 			 * @param   string    $access_token  Access Token.
 			 * @param   string    $refresh_token Refresh Token.
@@ -1069,10 +1070,22 @@ mutation CreatePost(
 	 *
 	 * @param   string $query         GraphQL Query.
 	 * @param   array  $variables     GraphQL Variables.
-	 * @param   bool   $is_retry      Whether this is a retry following a token refresh.
 	 * @return  \WP_Error|array
 	 */
-	private function graphql_query( $query, $variables = array(), $is_retry = false ) {
+	private function graphql_query( $query, $variables = array() ) {
+
+		// Check required parameters exist.
+		if ( empty( $this->access_token ) ) {
+			return new \WP_Error( 'missing_access_token', __( 'No access token was specified', 'wp-to-buffer' ) );
+		}
+
+		// Fetch a new access token and refresh token.
+		$result = $this->refresh_token();
+
+		// Bail if something went wrong.
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
 
 		// Build body.
 		$body = array( 'query' => $query );
@@ -1096,35 +1109,8 @@ mutation CreatePost(
 			return $result;
 		}
 
-		// Parse result.
-		$response = $this->parse_response( $result );
-
-		// If this is a retry, return the parsed response.
-		// This prevents an infinite loop of retries when a token refresh fails.
-		if ( $is_retry ) {
-			return $response;
-		}
-
-		// If the request was successful, return the response.
-		if ( ! is_wp_error( $response ) ) {
-			return $response;
-		}
-
-		// If the error isn't an unauthenticated error, return it.
-		if ( strtolower( $response->get_error_code() ) !== 'unauthenticated' ) {
-			return $response;
-		}
-
-		// Attempt to refresh the token.
-		$refresh_result = $this->refresh_token();
-
-		// Bail if the refresh token attempt failed.
-		if ( is_wp_error( $refresh_result ) ) {
-			return $refresh_result;
-		}
-
-		// Attempt the request again, now we have a new access token.
-		return $this->graphql_query( $query, $variables, true );
+		// Parse and return the response.
+		return $this->parse_response( $result );
 
 	}
 
