@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 6.2.3
+Stable tag: 6.2.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -308,6 +308,10 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.2.4 (2026-09-15) =
+* Fix: Logs: Show connection errors
+* Fix: Logs: Create table if it doesn't exist on Plugin version upgrade
 
 = 6.2.3 (2026-08-24) =
 * Fix: Authentication: Refresh token before API request to avoid connection expiry

@@ -117,7 +117,7 @@ class Buffer_API {
 		<div class="wpzinc-option">
 			<div class="full">
 				<a href="<?php echo esc_attr( $this->get_oauth_url() ); ?>" class="button button-primary">
-					<?php esc_html_e( 'Connect a Buffer Account', 'wp-to-buffer' ); ?>
+					<?php esc_html_e( 'Connect an additional Buffer Account', 'wp-to-buffer' ); ?>
 				</a>
 			</div>
 		</div>
@@ -332,6 +332,11 @@ class Buffer_API {
 	 */
 	public function set_tokens( $access_token = '', $refresh_token = '', $token_expires = false ) {
 
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): Started.' );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): access_token = ' . $access_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): refresh_token = ' . $refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): token_expires = ' . $token_expires );
+
 		$this->access_token  = $access_token;
 		$this->refresh_token = $refresh_token;
 		$this->token_expires = $token_expires;
@@ -389,15 +394,26 @@ class Buffer_API {
 	 */
 	public function refresh_token() {
 
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Started.' );
+
 		// Bail if we don't have a refresh token.
 		if ( empty( $this->refresh_token ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Error: No refresh token available; cannot refresh.' );
 			return new \WP_Error( 'missing_refresh_token', __( 'No refresh token exists', 'wp-to-buffer' ) );
 		}
 
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): access_token = ' . $this->access_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): token_expires = ' . $this->token_expires );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
+
 		// Bail if the access token hasn't yet expired.
 		if ( strtotime( '+15 minutes' ) < $this->token_expires ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Skipped: Access token not yet within the 15 minute refresh window.' );
 			return false;
 		}
+
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Requesting new access token.' );
 
 		// Send request.
 		$result = $this->oauth_request(
@@ -411,6 +427,8 @@ class Buffer_API {
 
 		// If an error occured, log and return it now.
 		if ( is_wp_error( $result ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: refresh_token(): Error: [%s] %s', $result->get_error_code(), $result->get_error_message() ) );
+
 			/**
 			 * Perform any actions when refreshing an expired access token fails.
 			 *
@@ -432,6 +450,12 @@ class Buffer_API {
 			'refresh_token' => $result['refresh_token'],
 			'token_expires' => strtotime( '+' . $result['expires_in'] . ' seconds' ),
 		);
+
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Success' );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New access_token = ' . $result['access_token'] );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New refresh_token = ' . $result['refresh_token'] );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New token_expires = ' . $result['token_expires'] );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New token_expires = ' . ( $result['token_expires'] && time() > (int) $result['token_expires'] ? 'expired ' . ( time() - (int) $result['token_expires'] ) . 's ago' : 'expires in ' . ( (int) $result['token_expires'] - time() ) . 's' ) );
 
 		/**
 		 * Perform any actions with the new access token, such as saving it.
@@ -561,8 +585,11 @@ query {
 		$option_name = $this->base->plugin->name . '-profiles-' . $account_id;
 		$profiles    = get_option( $option_name );
 		if ( ! $force && is_array( $profiles ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: profiles(): account=%s: returning %d cached profile(s).', $account_id, count( $profiles ) ) );
 			return $profiles;
 		}
+
+		$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: profiles(): account=%s: fetching profiles from Buffer (force=%s).', $account_id, $force ? 'yes' : 'no' ) );
 
 		// Build GraphQL query.
 		$query = '
@@ -596,6 +623,7 @@ query GetChannels($organizationId: OrganizationId!) {
 
 		// Check for errors.
 		if ( is_wp_error( $results ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: profiles(): account=%s: FAILED to fetch profiles: [%s] %s', $account_id, $results->get_error_code(), $results->get_error_message() ) );
 			return $results;
 		}
 
@@ -744,7 +772,7 @@ query GetChannels($organizationId: OrganizationId!) {
 
 			case 'instagram':
 				$metadata = array(
-					'type'              => $params['post_type'] === 'story' ? 'story' : 'post',
+					'type'              => in_array( $params['post_type'], array( 'story', 'video_story' ), true ) ? 'story' : 'post',
 					'shouldShareToFeed' => true,
 				);
 
@@ -953,6 +981,23 @@ query GetChannels($organizationId: OrganizationId!) {
 					);
 				}
 				break;
+
+			case 'video':
+			case 'video_story':
+				// Bail if no video URL is defined.
+				if ( empty( $params['video_url'] ) ) {
+					break;
+				}
+
+				// Buffer fetches the video from a public URL, so we only send the URL.
+				$assets = array(
+					array(
+						'video' => array(
+							'url' => $params['video_url'],
+						),
+					),
+				);
+				break;
 		}
 
 		// Include assets. Always overwrites the default empty array
@@ -1074,8 +1119,17 @@ mutation CreatePost(
 	 */
 	private function graphql_query( $query, $variables = array() ) {
 
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): Started.' );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): query = ' . $query );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): variables = ' . print_r( $variables, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): access_token = ' . $this->access_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . $this->token_expires );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
+
 		// Check required parameters exist.
 		if ( empty( $this->access_token ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): Error: No access token was specified' );
 			return new \WP_Error( 'missing_access_token', __( 'No access token was specified', 'wp-to-buffer' ) );
 		}
 
@@ -1084,8 +1138,14 @@ mutation CreatePost(
 
 		// Bail if something went wrong.
 		if ( is_wp_error( $result ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): Error: ' . $result->get_error_message() );
 			return $result;
 		}
+
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): access_token = ' . $this->access_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . $this->token_expires );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
 
 		// Build body.
 		$body = array( 'query' => $query );
@@ -1106,11 +1166,19 @@ mutation CreatePost(
 
 		// If an error occured, return it now.
 		if ( is_wp_error( $result ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: graphql_query(): Error: [%s] %s', $result->get_error_code(), $result->get_error_message() ) );
 			return $result;
 		}
 
-		// Parse and return the response.
-		return $this->parse_response( $result );
+		// Parse the response.
+		$response = $this->parse_response( $result );
+
+		// Log any API error, so failures that would otherwise be silent are captured.
+		if ( is_wp_error( $response ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: graphql_query(): API returned error: [%s] %s', $response->get_error_code(), $response->get_error_message() ) );
+		}
+
+		return $response;
 
 	}
 
@@ -1223,8 +1291,18 @@ mutation CreatePost(
 				);
 		}
 
+		// Retain-and-retry on server errors: return without touching stored tokens.
+		if ( $http_code >= 500 ) {
+			return new \WP_Error( 'buffer_api_server_error', $http_code . ' server error' );
+		}
+
 		// Decode response.
 		$body = json_decode( $http_body, true );
+
+		// Bail if the response isn't valid JSON.
+		if ( ! is_array( $body ) ) {
+			return new \WP_Error( 'buffer_api_invalid_response', 'Invalid API response' );
+		}
 
 		// If an error is detected, return it.
 		if ( array_key_exists( 'error', $body ) ) {
