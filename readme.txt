@@ -309,6 +309,9 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 
 == Changelog ==
 
+= 6.2.5 (2026-09-18) =
+* Fix: Delete tokens when refreshing a token results in an invalid grant
+
 = 6.2.4 (2026-09-15) =
 * Fix: Logs: Show connection errors
 * Fix: Logs: Create table if it doesn't exist on Plugin version upgrade
