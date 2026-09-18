@@ -43,3 +43,27 @@ function wp_to_buffer_update_credentials( $result, $client_id, $existing_access_
 
 // Update Access Token when refreshed by the API class.
 add_action( 'wp_to_buffer_api_refresh_token', 'wp_to_buffer_update_credentials', 10, 3 );
+
+/**
+ * Clears stored credentials when a refresh returns invalid_grant, which is terminal.
+ *
+ * @since   6.2.5
+ *
+ * @param   \WP_Error $result                   Error from API.
+ * @param   string    $client_id                OAuth Client ID.
+ * @param   string    $existing_access_token    Existing Access Token.
+ * @param   string    $existing_refresh_token   Existing Refresh Token.
+ */
+function wp_to_buffer_revoke_credentials( $result, $client_id, $existing_access_token, $existing_refresh_token ) {
+
+	// Don't revoke credentials if the error is not invalid_grant.
+	if ( $result->get_error_code() !== 'invalid_grant' ) {
+		return;
+	}
+
+	// Revoke credentials by removing them from the account.
+	$wp_to_buffer = WP_To_Buffer::get_instance();
+	$wp_to_buffer->get_class( 'settings' )->clear_account_credentials_by_refresh_token( $existing_refresh_token );
+
+}
+add_action( 'wp_to_buffer_api_refresh_token_error', 'wp_to_buffer_revoke_credentials', 10, 4 );
