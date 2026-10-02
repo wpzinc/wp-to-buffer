@@ -1233,16 +1233,20 @@ mutation CreatePost(
 	 */
 	private function get_timeout() {
 
-		$timeout = 10;
+		// Buffer's createPost can take longer than 10 seconds when fetching images.
+		$timeout = 30;
 
 		/**
 		 * Defines the maximum time to allow the API request to run.
 		 *
-		 * @since   1.0.0
+		 * @since   6.2.6
 		 *
 		 * @param   int     $timeout    Timeout, in seconds.
 		 */
-		$timeout = apply_filters( $this->base->plugin->filter_name . '_pro_api_get_timeout', $timeout );
+		$timeout = apply_filters( $this->base->plugin->filter_name . '_api_get_timeout', $timeout );
+
+		// Backward compat for the previous, misnamed filter.
+		$timeout = apply_filters_deprecated( $this->base->plugin->filter_name . '_pro_api_get_timeout', array( $timeout ), '6.2.6', $this->base->plugin->filter_name . '_api_get_timeout' );
 
 		return $timeout;
 

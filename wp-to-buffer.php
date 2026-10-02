@@ -8,7 +8,7 @@
  * @wordpress-plugin
  * Plugin Name: WP to Buffer
  * Plugin URI: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
- * Version: 6.2.5
+ * Version: 6.2.6
  * Author: WP Zinc
  * Author URI: https://www.wpzinc.com
  * Description: Send WordPress Pages, Posts or Custom Post Types to your Buffer (buffer.com) account for scheduled publishing to social networks.
@@ -27,7 +27,7 @@ if ( class_exists( 'WP_To_Buffer' ) ) {
 }
 
 // Define Plugin version and build date.
-define( 'WP_TO_BUFFER_PLUGIN_VERSION', '6.2.5' );
+define( 'WP_TO_BUFFER_PLUGIN_VERSION', '6.2.6' );
 define( 'WP_TO_BUFFER_PLUGIN_BUILD_DATE', '2026-09-18 18:00:00' );
 
 // Define Plugin paths.
