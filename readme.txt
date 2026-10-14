@@ -1,7 +1,7 @@
 === Social Media Auto Poster - Schedule & Publish to Buffer ===
 Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
-Tags: social media automation, auto post, buffer, social media scheduler, auto publish
+Tags: social media automation, auto post, social media scheduling, social media scheduler, auto publish
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -9,17 +9,19 @@ Stable tag: 6.2.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Automatically post and schedule your WordPress content to Facebook, X/Twitter, LinkedIn, Threads, Bluesky, and more social networks using Buffer.
+Social media scheduling and auto publish for WordPress. Auto post to Facebook, X/Twitter, LinkedIn, Threads, Bluesky and more using Buffer.
 
 == Description ==
 
-Social Media Auto Poster connects your WordPress site to Buffer, enabling automatic social media publishing whenever you create or update content. Share your blog posts, pages, and custom post types to multiple social networks without manual posting.
+Social Media Auto Poster connects your WordPress site to Buffer, enabling automatic social media publishing whenever you create or update content. Share your blog posts, pages, and custom post types to multiple social networks without manual posting. Use it for social media scheduling and social publishing from one place, with auto publish to every connected network.
 
 === Why Choose This Social Media Automation Plugin? ===
 
 This plugin eliminates repetitive social media posting by automatically adding your WordPress content to your Buffer queue. Buffer then intelligently schedules posts to your connected social networks at optimal times for maximum engagement.
 
 **Automatic Social Media Publishing** - Set it once and your content automatically shares to social media when published or updated.
+
+**Social Media Scheduling and Auto Publish** - Combine social media scheduling with auto publish: new and updated posts are added to your Buffer queue and published to your social networks on schedule.
 
 **Smart Scheduling with Buffer** - Buffer's queue system prevents spam by spacing out posts according to your schedule. Your social media profiles stay active without overwhelming followers.
 
@@ -106,7 +108,7 @@ Unlike direct posting plugins (WP to Facebook, WP to Twitter clones), this plugi
 >
 > [Upgrade to Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
-=== How to Schedule Social Media Posts ===
+=== Social Media Scheduling: How to Schedule Social Media Posts ===
 
 **Default Buffer Schedule** - Buffer automatically spaces posts throughout the day based on your time zone preferences
 
@@ -180,6 +182,14 @@ The free version supports:
 * TikTok
 
 [Pro version](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) adds Instagram and Pinterest support.
+
+= Does this plugin support social media scheduling? =
+
+Yes. Social media scheduling is handled through your Buffer queue. When you publish or update a WordPress post, the plugin adds it to Buffer, and Buffer publishes it to your connected social networks according to your posting schedule. This makes the plugin a simple social media scheduler for WordPress.
+
+= Can I auto publish my WordPress posts to social media? =
+
+Yes. Once you have authorized your Buffer account and chosen your post types, the plugin can auto publish new and updated WordPress content to your social media profiles for social publishing without manual posting.
 
 = Do I need a paid Buffer account? =
 
