@@ -332,10 +332,10 @@ class Buffer_API {
 	 */
 	public function set_tokens( $access_token = '', $refresh_token = '', $token_expires = false ) {
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): Started.' );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): access_token = ' . $access_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): refresh_token = ' . $refresh_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): token_expires = ' . $token_expires );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: set_tokens(): Started.' );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: set_tokens(): access_token = ' . $access_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: set_tokens(): refresh_token = ' . $refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: set_tokens(): token_expires = ' . $token_expires );
 
 		$this->access_token  = $access_token;
 		$this->refresh_token = $refresh_token;
@@ -394,26 +394,26 @@ class Buffer_API {
 	 */
 	public function refresh_token() {
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Started.' );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): Started.' );
 
 		// Bail if we don't have a refresh token.
 		if ( empty( $this->refresh_token ) ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Error: No refresh token available; cannot refresh.' );
+			$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): Error: No refresh token available; cannot refresh.' );
 			return new \WP_Error( 'missing_refresh_token', __( 'No refresh token exists', 'wp-to-buffer' ) );
 		}
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): access_token = ' . $this->access_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): refresh_token = ' . $this->refresh_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): token_expires = ' . $this->token_expires );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): access_token = ' . $this->access_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): token_expires = ' . $this->token_expires );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
 
 		// Bail if the access token hasn't yet expired.
 		if ( strtotime( '+15 minutes' ) < $this->token_expires ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Skipped: Access token not yet within the 15 minute refresh window.' );
+			$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): Skipped: Access token not yet within the 15 minute refresh window.' );
 			return false;
 		}
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Requesting new access token.' );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): Requesting new access token.' );
 
 		// Send request.
 		$result = $this->oauth_request(
@@ -427,7 +427,7 @@ class Buffer_API {
 
 		// If an error occured, log and return it now.
 		if ( is_wp_error( $result ) ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: refresh_token(): Error: [%s] %s', $result->get_error_code(), $result->get_error_message() ) );
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): Error: [%s] %s', $result->get_error_code(), $result->get_error_message() ) );
 
 			/**
 			 * Perform any actions when refreshing an expired access token fails.
@@ -451,11 +451,11 @@ class Buffer_API {
 			'token_expires' => strtotime( '+' . $result['expires_in'] . ' seconds' ),
 		);
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Success' );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New access_token = ' . $result['access_token'] );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New refresh_token = ' . $result['refresh_token'] );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New token_expires = ' . $result['token_expires'] );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New token_expires = ' . ( $result['token_expires'] && time() > (int) $result['token_expires'] ? 'expired ' . ( time() - (int) $result['token_expires'] ) . 's ago' : 'expires in ' . ( (int) $result['token_expires'] - time() ) . 's' ) );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): Success' );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): New access_token = ' . $result['access_token'] );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): New refresh_token = ' . $result['refresh_token'] );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): New token_expires = ' . $result['token_expires'] );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: refresh_token(): New token_expires = ' . ( $result['token_expires'] && time() > (int) $result['token_expires'] ? 'expired ' . ( time() - (int) $result['token_expires'] ) . 's ago' : 'expires in ' . ( (int) $result['token_expires'] - time() ) . 's' ) );
 
 		/**
 		 * Perform any actions with the new access token, such as saving it.
@@ -585,11 +585,11 @@ query {
 		$option_name = $this->base->plugin->name . '-profiles-' . $account_id;
 		$profiles    = get_option( $option_name );
 		if ( ! $force && is_array( $profiles ) ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: profiles(): account=%s: returning %d cached profile(s).', $account_id, count( $profiles ) ) );
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: profiles(): account=%s: returning %d cached profile(s).', $account_id, count( $profiles ) ) );
 			return $profiles;
 		}
 
-		$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: profiles(): account=%s: fetching profiles from Buffer (force=%s).', $account_id, $force ? 'yes' : 'no' ) );
+		$this->base->get_class( 'log' )->add_to_debug_log( sprintf( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: profiles(): account=%s: fetching profiles from Buffer (force=%s).', $account_id, $force ? 'yes' : 'no' ) );
 
 		// Build GraphQL query.
 		$query = '
@@ -623,7 +623,7 @@ query GetChannels($organizationId: OrganizationId!) {
 
 		// Check for errors.
 		if ( is_wp_error( $results ) ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: profiles(): account=%s: FAILED to fetch profiles: [%s] %s', $account_id, $results->get_error_code(), $results->get_error_message() ) );
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: profiles(): account=%s: FAILED to fetch profiles: [%s] %s', $account_id, $results->get_error_code(), $results->get_error_message() ) );
 			return $results;
 		}
 
@@ -1052,6 +1052,14 @@ mutation CreatePost(
 			return $result;
 		}
 
+		// Bail if Buffer accepted the post but failed to publish it to the social network.
+		if ( isset( $result['data']['createPost']['post']['status'] ) && $result['data']['createPost']['post']['status'] === 'error' ) {
+			return new \WP_Error(
+				$this->base->plugin->filter_name . '_api_create_post_status_error',
+				__( 'Buffer accepted the status, but failed to publish it to the social network. Log in to Buffer and view the failed post for the reason.', 'wp-to-buffer' )
+			);
+		}
+
 		// Return array of just the data we need to send to the Plugin.
 		return array(
 			'profile_id'        => $params['profile_ids'][0], // API doesn't return the Profile ID.
@@ -1119,17 +1127,17 @@ mutation CreatePost(
 	 */
 	private function graphql_query( $query, $variables = array() ) {
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): Started.' );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): query = ' . $query );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): variables = ' . print_r( $variables, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): access_token = ' . $this->access_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ' . $this->refresh_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . $this->token_expires );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): Started.' );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): query = ' . $query );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): variables = ' . print_r( $variables, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): access_token = ' . $this->access_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): token_expires = ' . $this->token_expires );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
 
 		// Check required parameters exist.
 		if ( empty( $this->access_token ) ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): Error: No access token was specified' );
+			$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): Error: No access token was specified' );
 			return new \WP_Error( 'missing_access_token', __( 'No access token was specified', 'wp-to-buffer' ) );
 		}
 
@@ -1138,14 +1146,14 @@ mutation CreatePost(
 
 		// Bail if something went wrong.
 		if ( is_wp_error( $result ) ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): Error: ' . $result->get_error_message() );
+			$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): Error: ' . $result->get_error_message() );
 			return $result;
 		}
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): access_token = ' . $this->access_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ' . $this->refresh_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . $this->token_expires );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): access_token = ' . $this->access_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): token_expires = ' . $this->token_expires );
+		$this->base->get_class( 'log' )->add_to_debug_log( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
 
 		// Build body.
 		$body = array( 'query' => $query );
@@ -1166,7 +1174,7 @@ mutation CreatePost(
 
 		// If an error occured, return it now.
 		if ( is_wp_error( $result ) ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: graphql_query(): Error: [%s] %s', $result->get_error_code(), $result->get_error_message() ) );
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): Error: [%s] %s', $result->get_error_code(), $result->get_error_message() ) );
 			return $result;
 		}
 
@@ -1175,7 +1183,7 @@ mutation CreatePost(
 
 		// Log any API error, so failures that would otherwise be silent are captured.
 		if ( is_wp_error( $response ) ) {
-			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: graphql_query(): API returned error: [%s] %s', $response->get_error_code(), $response->get_error_message() ) );
+			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( $this->base->plugin->displayName . ': Buffer API [PID ' . getmypid() . ']: graphql_query(): API returned error: [%s] %s', $response->get_error_code(), $response->get_error_message() ) );
 		}
 
 		return $response;
