@@ -311,7 +311,6 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 
 = 6.2.8 (2026-10-24) =
 * Fix: Logs: Show an error when Buffer accepts a status but fails to publish it to the social network
-* Added: Debug Log: Prefix Buffer API entries with the Plugin name and process ID
 
 = 6.2.7 (2026-10-09) =
 * Fix: Images: Don't create duplicate converted and resized images in the Media Library when publishing
