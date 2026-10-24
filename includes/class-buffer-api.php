@@ -1052,6 +1052,14 @@ mutation CreatePost(
 			return $result;
 		}
 
+		// Bail if Buffer accepted the post but failed to publish it to the social network.
+		if ( isset( $result['data']['createPost']['post']['status'] ) && $result['data']['createPost']['post']['status'] === 'error' ) {
+			return new \WP_Error(
+				$this->base->plugin->filter_name . '_api_create_post_status_error',
+				__( 'Buffer accepted the status, but failed to publish it to the social network. Log in to Buffer and view the failed post for the reason.', 'wp-to-buffer' )
+			);
+		}
+
 		// Return array of just the data we need to send to the Plugin.
 		return array(
 			'profile_id'        => $params['profile_ids'][0], // API doesn't return the Profile ID.

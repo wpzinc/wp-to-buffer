@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 6.2.7
+Stable tag: 6.2.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -308,6 +308,9 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.2.8 (2026-10-24) =
+* Fix: Logs: Show an error when Buffer accepts a status but fails to publish it to the social network
 
 = 6.2.7 (2026-10-09) =
 * Fix: Images: Don't create duplicate converted and resized images in the Media Library when publishing
