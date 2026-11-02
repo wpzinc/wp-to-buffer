@@ -1,7 +1,7 @@
-=== Social Media Auto Poster - Schedule & Publish to Buffer ===
+=== Buffer – Social Media Auto Post, Social Media Scheduling, Automation & Auto Publish ===
 Contributors: n7studios,wpzinc
 Donate link: https://www.wpzinc.com/plugins/wordpress-to-buffer-pro
-Tags: social media automation, auto post, buffer, social media scheduler, auto publish
+Tags: buffer, social media auto post, social media scheduler, social media automation, auto publish
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
@@ -9,90 +9,116 @@ Stable tag: 6.2.8
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Automatically post and schedule your WordPress content to Facebook, X/Twitter, LinkedIn, Threads, Bluesky, and more social networks using Buffer.
+Social media auto post and social media scheduling for WordPress. Use Buffer for social media posting to Facebook, X/Twitter, LinkedIn and Threads.
 
 == Description ==
 
-Social Media Auto Poster connects your WordPress site to Buffer, enabling automatic social media publishing whenever you create or update content. Share your blog posts, pages, and custom post types to multiple social networks without manual posting.
+WP to Buffer is a social media auto post plugin that connects your WordPress site to Buffer. Social media posting happens automatically whenever you create or update content, so you can share blog posts, pages, and custom post types to multiple social networks without manual work. Use social media auto posting to keep every network active, and let Buffer handle the schedule.
+
+Social publishing from WordPress is simple: publish your post, and the plugin adds a social post for each connected network to your Buffer queue. Social media scheduling then happens in Buffer, so your profiles stay active without daily effort.
 
 === Why Choose This Social Media Automation Plugin? ===
 
-This plugin eliminates repetitive social media posting by automatically adding your WordPress content to your Buffer queue. Buffer then intelligently schedules posts to your connected social networks at optimal times for maximum engagement.
+This social media automation plugin adds your WordPress content to your Buffer queue instead of sending everything at once. Buffer then handles social media scheduling and sends each update to your connected networks at the times your audience is most active. Steady social media automation like this keeps audience interest high without overwhelming followers.
 
-**Automatic Social Media Publishing** - Set it once and your content automatically shares to social media when published or updated.
+**Social Media Auto Post and Auto Publish** - Set it once and every new WordPress post becomes a social media auto post when you auto publish. Updated content can be shared too.
 
-**Smart Scheduling with Buffer** - Buffer's queue system prevents spam by spacing out posts according to your schedule. Your social media profiles stay active without overwhelming followers.
+**Social Media Scheduling with Buffer** - Buffer's queue system prevents spam by spacing out each social post according to your schedule. Your social media profiles stay active without overwhelming followers.
 
-**Compatible Social Networks** - Auto post to Facebook Pages, Twitter (X), LinkedIn Pages and Profiles, Threads, Google Business Profile, Mastodon, Bluesky, and TikTok.
+**Social Publishing to Every Network** - Reach Facebook, X/Twitter, and more through one Buffer connection, including LinkedIn and Threads.
 
-**Dynamic Content Templates** - Customize each social media post using template tags that pull your post title, excerpt, content, featured image, categories, tags, and custom fields.
+**Dynamic Content Templates** - Customize each social post using template tags that pull your post title, excerpt, content, featured image, categories, tags, and custom fields.
 
 Don't have a Buffer account? [Sign up for free](https://join.buffer.com/wpzinc)
 
 [youtube https://www.youtube.com/watch?v=GESEMwKSSQg]
 
-=== How to Auto Post to Social Media with Buffer ===
+=== Who Uses Social Publishing and Social Media Auto Posting? ===
+
+* Bloggers who want a social media auto post for every new article, with no copying and pasting.
+* Online stores that auto publish new WooCommerce products to social media through Buffer.
+* Marketing teams that want social media automation and social media scheduling managed in one Buffer queue.
+* Publishers who use social publishing to share news on LinkedIn and X/Twitter.
+* News sites that keep a Threads profile active with every new article.
+* B2B companies that auto publish thought leadership articles to LinkedIn.
+* Local businesses that share updates on Google Business Profile and Facebook Pages.
+* Designers and photographers who use Pinterest auto posting in Pro to reach people with an interest in their work.
+* Agencies that run social media posting for clients through Buffer, including LinkedIn updates.
+
+=== How to Set Up Social Media Auto Post with Buffer ===
+
+Social publishing setup takes only a few minutes:
 
 1. **Connect Your Buffer Account** - Simple one-click authorization, no API keys or technical setup required
-2. **Link Your Social Networks** - Connect Facebook, X/Twitter, LinkedIn, and other profiles through Buffer's interface
-3. **Configure Post Settings** - Choose which post types to share and customize your social media message templates
-4. **Publish Content** - Your WordPress posts automatically share to social media according to your Buffer schedule
+2. **Link Your Social Networks** - Connect Facebook, X/Twitter, LinkedIn, Threads, and other profiles through Buffer's interface
+3. **Configure Social Media Automation** - Choose which post types to auto publish and customize your social media posting templates
+4. **Auto Publish Your Content** - Your WordPress posts automatically share to social media, and Buffer's social media scheduling sets the timing, so each one becomes a social media auto post
 
-=== Social Media Networks Supported ===
+=== Social Media Networks Supported for Social Media Auto Posting ===
 
-**Facebook Auto Posting** - Share to Facebook Pages automatically when you publish WordPress content.
+Social media posting and social publishing through Buffer cover these networks:
+
+**Facebook Auto Posting** - Facebook social media posting happens automatically for your Facebook Pages when you publish WordPress content.
 
 **X/Twitter Auto Posting** - Still works! Buffer is [not impacted](https://x.com/buffer/status/1652659063073783808) by X/Twitter API changes. Auto post to Twitter (X) reliably.
 
-**LinkedIn Auto Posting** - Publish to LinkedIn Company Pages and personal LinkedIn Profiles to grow your professional network.
+**LinkedIn Auto Posting** - Publish to LinkedIn Company Pages and personal profiles. Each LinkedIn social media auto post helps grow your professional network.
 
-**Instagram & Pinterest** (Pro) - Direct posting to Instagram Business Profiles (Feed and Stories) and Pinterest Boards available in [Pro version](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/).
+**Threads Auto Posting** - Auto post to Threads from WordPress. Your Threads profile stays active without manual work.
 
-**Additional Networks** - Threads, Google Business Profile, Mastodon, Bluesky, and TikTok support included.
+**Google Business Profile** - Share updates to your Google Business Profile as soon as you publish. A Google Business update helps local customers see your latest news.
 
-=== Dynamic Template Tags for Customized Posts ===
+**Instagram & Pinterest** (Pro) - Direct posting to Instagram Business Profiles (Feed and Stories) and Pinterest Boards is available in the [Pro version](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/). Pinterest auto posting suits boards built around a topic of interest.
 
-Create unique social media messages using template tags:
+**Telegram** - Not supported. Telegram channels need a separate tool, because this plugin only posts to the networks Buffer connects.
+
+**Additional Networks** - Mastodon, Bluesky, and TikTok support included.
+
+=== Dynamic Template Tags for Each Social Media Auto Post ===
+
+Create a unique social media auto post for each network, matched to the interests of your audience, using template tags:
 
 * **{title}** - Your post title
 * **{excerpt}** - Post excerpt (with character/word limits)
 * **{content}** - Post content (with character/word limits)
 * **{url}** - Post permalink
 * **{date}** - Publication date
+* **{author}** - Author name
 * **{taxonomy_post_tag}** - Tags as hashtags
-* **{taxoomy_category}** - Categories as hashtags
+* **{taxonomy_category}** - Categories as hashtags
 
-=== Better Than Traditional Auto Posting Plugins ===
+=== Better Than Traditional Social Media Auto Post Plugins ===
 
-Unlike direct posting plugins (WP to Facebook, WP to Twitter clones), this plugin uses Buffer's smart queue system. Benefits include:
+Unlike plugins that post directly to each network, this plugin uses Buffer's smart queue system for social media auto posting. Social publishing through a queue brings these benefits:
 
-**Prevents Social Media Penalties** - Buffer spaces posts naturally, avoiding spam flags from posting too frequently
-**Optimized Timing** - Schedule posts for when your audience is most active
-**Cross-Network Management** - Manage all social networks from one Buffer dashboard
-**No API Complications** - Buffer handles all social network API connections and changes
-**Duplicate Prevention** - Built-in protection ensures you never post the same content twice
+* **Prevents Social Media Penalties** - Buffer spaces each social post naturally, avoiding spam flags from posting too frequently
+* **Optimized Timing** - Schedule social media posting for when your audience is most active
+* **Cross-Network Management** - Manage social media scheduling and social publishing for all social networks from one Buffer dashboard
+* **Consistent Social Media Automation** - A steady queue keeps social media posting regular, so followers see updates on topics of interest
+* **No API Complications** - Buffer handles all social network API connections and changes
+* **Duplicate Prevention** - Built-in protection ensures you never send the same social media auto post twice when you auto publish
 
-=== Pro Version Features ===
+=== Pro Version Features for Social Media Automation ===
 
-> <a href="https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/" rel="friend" title="WordPress to Buffer Pro">WordPress to Buffer Pro</a> includes advanced social media automation features:<br />
+> [WordPress to Buffer Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) includes advanced social media automation and social publishing features:
 >
-> **Instagram and Pinterest Support** - Direct posting to Instagram Business Profiles (Feed and Stories) and Pinterest Boards
+> **Instagram and Pinterest Support** - Direct social media posting to Instagram Business Profiles (Feed and Stories) and Pinterest Boards
 >
-> **Multiple Buffer Accounts** - Connect multiple Buffer accounts to one WordPress site
+> **Multiple Buffer Accounts** - Connect multiple Buffer accounts to one WordPress site, which suits agencies that run social media automation for several clients
 >
-> **Advanced Scheduling Options** - Post immediately, add to start/end of Buffer queue, or schedule for specific times
+> **Advanced Social Media Scheduling Options** - Post immediately, add to start/end of Buffer queue, or schedule for specific times
 >
-> **Conditional Publishing** - Send posts to social media based on author, category, tags, or custom field values
+> **Conditional Publishing** - Send each social media post based on author, category, tags, or custom field values
 >
 > **Multiple Status Templates** - Create different messages for each social network with unique templates per post type
 >
-> **Repost Old Posts** - Automatically reshare evergreen content on social media at scheduled intervals
+> **Repost Old Posts** - Automatically reshare evergreen content with social media auto posts at scheduled intervals
 >
-> **Bulk Publish Feature** - Manually select and republish multiple posts to social media at once
+> **Bulk Publish Feature** - Manually select and republish multiple posts for social publishing at once
 >
-> **Event Calendar Integration** - Schedule social posts based on event dates from The Events Calendar, Event Manager, and Modern Events Calendar
+> **Event Calendar Integration** - Schedule a social post based on event dates from The Events Calendar, Event Manager, and Modern Events Calendar
 >
-> **WooCommerce Integration** - Display product prices, SKUs, and other WooCommerce data in social media posts
+> **WooCommerce Integration** - Display product prices, SKUs, and other WooCommerce data in social posts
 >
 > **SEO Plugin Integration** - Use SEO titles, descriptions, and meta data from Yoast SEO, Rank Math, All-In-One SEO Pack, and SEOPress
 >
@@ -106,21 +132,20 @@ Unlike direct posting plugins (WP to Facebook, WP to Twitter clones), this plugi
 >
 > [Upgrade to Pro](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/)
 
-=== How to Schedule Social Media Posts ===
+=== Social Media Scheduling Options for Every Social Post ===
 
-**Default Buffer Schedule** - Buffer automatically spaces posts throughout the day based on your time zone preferences
+Choose how social media scheduling works for each social post:
 
-**Immediate Posting** - Override the queue and post immediately to social media
-
-**Custom Posting Schedule** (Pro) - Define specific days and times in Buffer when posts should publish to each social network
-
-**Scheduled Publishing** (Pro) - Set exact date and time for each social media post
+* **Default Buffer Schedule** - Buffer automatically spaces social media posting throughout the day based on your time zone preferences
+* **Immediate Posting** - Override the queue and auto publish immediately to social media
+* **Custom Posting Schedule** (Pro) - Define specific days and times in Buffer when posts should publish to each social network
+* **Scheduled Publishing** (Pro) - Set exact date and time for each social media auto post
 
 === Support for Free Version ===
 
-We provide community support through the <a href="https://wordpress.org/support/plugin/wp-to-buffer/">WordPress support forums</a>.
+We provide community support for social publishing and social media posting questions through the [WordPress support forums](https://wordpress.org/support/plugin/wp-to-buffer/).
 
-For priority email support, comprehensive documentation, and faster response times, consider <a href="http://www.wpzinc.com/plugins/wordpress-to-buffer-pro" rel="friend">upgrading to Pro</a>.
+For priority email support, comprehensive documentation, and faster response times, consider [upgrading to Pro](http://www.wpzinc.com/plugins/wordpress-to-buffer-pro).
 
 === Privacy and Data Usage ===
 
@@ -163,86 +188,108 @@ We **never** store any information on our web site or API during this process.
 
 == Frequently Asked Questions ==
 
+= What is social publishing with Buffer? =
+
+Social publishing means sending your WordPress content to your social networks without copying it by hand. This plugin adds each new post to your Buffer queue, so social media scheduling and social media auto posting happen from one place.
+
+= What is social media automation, and do I need it? =
+
+Social media automation means your updates go out without you logging in to each network. With this plugin, social media automation covers every network connected to Buffer, so one blog post becomes a social post on each of them.
+
+= How does social media auto post work with Buffer? =
+
+When you publish or update a post, the plugin sends a social media auto post to your Buffer queue. Buffer then publishes it to your connected social networks on your schedule, so social media posting needs no daily work.
+
 = Can I still auto post to Twitter / X with this plugin? =
 
 Yes! Buffer is [not impacted](https://x.com/buffer/status/1652659063073783808) by Twitter's 2023 API changes. You can continue using this plugin to auto post to Twitter (now called X) without interruption.
 
-= Which social media platforms are supported for auto posting? =
+= Which social media platforms are supported for social media auto posting? =
 
-The free version supports:
-* Facebook Pages
-* Twitter (X)
-* LinkedIn Pages and Profiles  
-* Threads
-* Google Business Profile
-* Mastodon
-* Bluesky
-* TikTok
+The free version supports social media auto posting to Facebook Pages, Twitter (X), LinkedIn Pages and Profiles, and Mastodon. It also supports Threads, Google Business Profile, Bluesky, and TikTok. The [Pro version](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) adds Instagram and Pinterest support.
 
-[Pro version](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) adds Instagram and Pinterest support.
+= Can I auto publish to LinkedIn? =
 
-= Do I need a paid Buffer account? =
+Yes. Connect your LinkedIn Pages and Profiles in Buffer, and the plugin will auto publish each new WordPress post to them. A LinkedIn social media auto post follows your Buffer schedule like any other network.
+
+= Can I auto post to Threads? =
+
+Yes. Connect your Threads account in Buffer and choose it in the plugin settings. Each Threads social post then follows your Buffer schedule, so your profile stays active without extra work.
+
+= How many LinkedIn and Threads accounts can I connect? =
+
+You can connect as many LinkedIn and Threads accounts as your Buffer plan allows, then choose which ones receive each post.
+
+= Can I auto publish to Google Business Profile? =
+
+Yes. Connect your Google Business Profile in Buffer and select it in the plugin settings. A Google Business update is a good way to share offers and news with nearby customers, and it works with the free version.
+
+= Can I auto post to Pinterest? =
+
+Yes, with the Pro version. Pinterest auto posting sends your post image to the board you choose, which helps reach people with an interest in your topic. It works best for visual content such as recipes, crafts, and products.
+
+= Can I auto post to Telegram? =
+
+No. Telegram is not one of the networks this plugin supports through Buffer, so it cannot send a social post to a Telegram channel. If you need Telegram, use a separate tool alongside this plugin for social publishing to every other network. Check the supported networks list above to see where this plugin can post.
+
+= Do I need a paid Buffer account for social publishing? =
 
 No. Buffer offers a free plan that works with this plugin. However, Buffer's free plan has limitations on the number of scheduled posts and connected social profiles. You can upgrade your Buffer plan at any time for additional features.
 
-= How does this differ from other auto posting plugins? =
+= How does this differ from other social media auto post plugins? =
 
-Unlike plugins that post directly to social networks, we integrate with Buffer's smart scheduling system. This provides several advantages:
+Unlike plugins that post directly to social networks, we integrate with Buffer's smart scheduling system, which prevents social media penalties and handles social network API changes for you. See the Better Than Traditional Social Media Auto Post Plugins section above for the full list of benefits.
 
-**Spam Prevention** - Buffer spaces posts naturally to avoid social media penalties
-**Flexible Scheduling** - Control when posts publish with Buffer's schedule settings
-**API Reliability** - Buffer handles all social network API complexities and updates
-**Cross-Platform Management** - Manage all networks from Buffer's unified dashboard
+= Can I customize each social post for LinkedIn or Threads? =
 
-= Can I customize the social media message for each post? =
+Yes. Use the template tags listed in the description to build each social post, including {title}, {excerpt}, {content}, {url}, {date}, and {author}. Use {tags} and {categories} to add hashtags. The Pro version allows different templates per social network and per post type, for example one for LinkedIn and another for Threads.
 
-Yes. Use template tags to dynamically build messages:
+= How does social media scheduling work with Buffer? =
 
-* {title} - Post title
-* {excerpt} - Post excerpt
-* {content} - Post content
-* {url} - Post URL
-* {date} - Publication date
-* {author} - Author name
-* {tags} - Post tags as hashtags
-* {categories} - Categories as hashtags
+Posts are added to your Buffer queue, which publishes according to your Buffer schedule. You control social media scheduling and social media posting times within your Buffer dashboard.
 
-Pro version allows different templates per social network and per post type.
+The Pro version adds options to post immediately, add to start/end of queue, or schedule for a specific date and time.
 
-= Can I schedule posts to publish at specific times? =
+= Can I set different social media scheduling for each network? =
 
-Posts are added to your Buffer queue, which publishes according to your Buffer schedule. You control the schedule within your Buffer dashboard.
+Yes. Buffer keeps a separate posting schedule for each connected channel, so your LinkedIn times can differ from your Threads times. Edit the schedule in Buffer at any time and your social media scheduling applies to every new post.
 
-Pro version adds options to post immediately, add to start/end of queue, or schedule for specific date/time.
+= Will social media auto posting work with the Gutenberg block editor? =
 
-= Will this work with the Gutenberg block editor? =
+Yes. Social publishing and social media posting both work with Gutenberg (WordPress block editor), Classic Editor, and most page builders including Elementor, Divi, and Beaver Builder.
 
-Yes. The plugin is fully compatible with Gutenberg (WordPress block editor), Classic Editor, and most page builders including Elementor, Divi, and Beaver Builder.
+= Can I use social media auto post for WooCommerce products? =
 
-= Can I auto post WooCommerce products to social media? =
+Yes. WooCommerce products are custom post types that can be shared to social media. Use the plugin to auto post WooCommerce products as soon as you publish them, and auto publish updates when you edit them.
 
-Yes. WooCommerce products are custom post types that can be shared to social media. 
+The Pro version includes special WooCommerce template tags to display product price, sale price, SKU, stock status, and other product data in social posts.
 
-Pro version includes special WooCommerce template tags to display product price, sale price, SKU, stock status, and other product data in social media messages.
+= How do I include images in a social post? =
 
-= How do I include images in social media posts? =
+Enable "Use Featured Image" in the plugin settings. The post's featured image will automatically attach to the social post.
 
-Enable "Use Featured Image" in the plugin settings. The post's featured image will automatically attach to the social media update.
-
-Pro version provides advanced image options:
+The Pro version provides advanced image options:
 * Multiple images per post
 * Images from Media Gallery
 * Images from post content
 * Advanced Custom Fields images
 * Custom image selection
 
-= Does this work with scheduled WordPress posts? =
+= Does social media auto post work with scheduled WordPress posts? =
 
-Yes. When a scheduled WordPress post publishes automatically, the plugin detects the publication and adds the content to your Buffer queue.
+Yes. When a scheduled WordPress post publishes automatically, the plugin detects the publication and adds the content to your Buffer queue as a social media auto post, so scheduled posts auto publish to your networks too.
+
+= Can I edit a social media auto post before it is sent? =
+
+Yes. Each social media auto post waits in your Buffer queue, where you can edit, reorder, or delete it before it goes out.
+
+= Does a social media auto post include a link back to my site? =
+
+Yes. Add the {url} template tag to each social media auto post so followers can click through to your WordPress post.
 
 = Can I repost old content to social media? =
 
-Pro version includes automatic evergreen content reposting. Configure how often to reshare old posts (days, weeks, or months), and the plugin automatically adds them back to your Buffer queue. Perfect for driving traffic to your best content.
+The Pro version includes automatic evergreen content reposting. Configure how often to reshare old posts (days, weeks, or months), and the plugin automatically adds them back to your Buffer queue. This is perfect for driving traffic to your best content.
 
 = What happens if my Buffer queue is full? =
 
@@ -252,13 +299,13 @@ You'll see an error in the plugin log indicating the queue is full. Solutions:
 2. Manually publish or remove queued items from Buffer
 3. Adjust how frequently content is added to Buffer
 
-= Can I test without actually posting to social media? =
+= Can I test social media automation without posting live? =
 
-Yes. Enable "Test Mode" in General Settings. This logs what would be sent to Buffer without actually creating posts. Perfect for testing your message templates and settings.
+Yes. Enable "Test Mode" in General Settings. This logs what would be sent to Buffer without actually creating posts. It is perfect for testing your social media posting templates and settings.
 
-= How do I see what was posted to Buffer? =
+= How do I review my social media posting log? =
 
-The plugin includes a logging system. View logs by:
+The plugin includes a logging system for social media posting. View logs by:
 
 1. Go to WordPress to Buffer > Logs in your admin menu
 2. View logs for all posts or filter by specific posts
@@ -266,38 +313,48 @@ The plugin includes a logging system. View logs by:
 
 Enable logging in WordPress to Buffer > Settings > Log Settings.
 
-= Does this work with custom post types? =
+= Does social media auto post work with custom post types? =
 
-Yes. The plugin supports all public custom post types including:
+Yes. The plugin supports social publishing for all public custom post types including:
 * WooCommerce Products
 * Events (The Events Calendar, Event Manager, Modern Events Calendar with Pro)
 * Portfolio items
 * Testimonials
 * Any custom post type registered by themes or plugins
 
-= Can I exclude specific posts from auto posting? =
+Choose which post types auto publish, and set social media posting options for each type.
 
-Pro version includes conditional publishing based on:
+= Can I exclude specific posts from auto publish? =
+
+The Pro version includes conditional publishing based on:
 * Post author
 * Categories and tags
 * Custom field values
 * Custom taxonomies
 
-You can also override settings on individual posts to disable auto posting selectively.
+You can also override settings on individual posts to turn off auto publish and social media auto posting selectively.
 
-= Will this slow down my website? =
+= How can I keep followers' interest with automated posts? =
 
-No. The plugin uses WordPress's standard HTTP API for communication with Buffer. For high-traffic sites, Pro version includes WP-Cron support to queue posts in the background without impacting page load times.
+Spread updates through your Buffer queue instead of sending them together, and write a template for each post type so every social post feels relevant. With the Pro version you can use different templates for each social network, which helps match each audience's interest.
+
+= Will social media automation flood my followers with posts? =
+
+No. Buffer spaces each update through your queue, so social media automation sends posts on your schedule instead of all at once.
+
+= Will social media automation slow down my website? =
+
+No. The plugin uses WordPress's standard HTTP API for communication with Buffer. For high-traffic sites, the Pro version includes WP-Cron support to queue social media posts in the background without impacting page load times.
 
 = What if I need help setting up the plugin? =
 
 Free version support is available through the [WordPress support forums](https://wordpress.org/support/plugin/wp-to-buffer/).
 
-Pro version includes priority email support with detailed documentation and setup assistance.
+The Pro version includes priority email support with detailed documentation and setup assistance.
 
 = How do I upgrade to Pro? =
 
-Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to purchase Pro. After purchase, you'll receive a license key and download link. Install Pro alongside Free (it will automatically deactivate Free), enter your license key, and import your existing settings.
+Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to purchase Pro and add more social publishing options. After purchase, you'll receive a license key and download link. Install Pro alongside Free (it will automatically deactivate Free), enter your license key, and import your existing settings.
 
 
 == Screenshots ==
@@ -925,4 +982,3 @@ because the user hasn't carefully checked the access token).
 * First release.
 
 == Upgrade Notice ==
-
