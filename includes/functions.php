@@ -56,8 +56,8 @@ add_action( 'wp_to_buffer_api_refresh_token', 'wp_to_buffer_update_credentials',
  */
 function wp_to_buffer_revoke_credentials( $result, $client_id, $existing_access_token, $existing_refresh_token ) {
 
-	// Don't revoke credentials if the error is not invalid_grant.
-	if ( $result->get_error_code() !== 'invalid_grant' ) {
+	// Don't revoke credentials unless the grant was rejected, or the refresh outcome is uncertain.
+	if ( ! in_array( $result->get_error_code(), array( 'invalid_grant', 'buffer_api_refresh_uncertain' ), true ) ) {
 		return;
 	}
 
