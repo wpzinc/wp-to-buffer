@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 6.2.8
+Stable tag: 6.2.9
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -308,6 +308,12 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.2.9 (2026-11-11) =
+* Added: API: Pause requests until Buffer's Retry-After time when Buffer's rate limit is reached
+* Fix: Authentication: Clear the connection when a token refresh times out or fails, as Buffer may have already rotated the token
+* Fix: Authentication: Prevent two requests refreshing the Buffer connection at the same time, which caused Buffer to revoke the connection
+* Fix: Authentication: Allow up to 60 seconds for token requests, filterable with `wp_to_buffer_api_get_oauth_timeout`
 
 = 6.2.8 (2026-10-24) =
 * Fix: Logs: Show an error when Buffer accepts a status but fails to publish it to the social network

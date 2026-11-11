@@ -413,6 +413,36 @@ class Buffer_API {
 			return false;
 		}
 
+		// Only one request may refresh at a time, as Buffer revokes the connection if a refresh token is used twice.
+		$account_id = $this->get_account_id_by_refresh_token( $this->refresh_token );
+		$locked     = $this->acquire_refresh_lock();
+		for ( $i = 0; ! $locked && $i < 10; $i++ ) {
+			sleep( 1 );
+			$locked = $this->acquire_refresh_lock();
+		}
+
+		// Don't refresh without the lock, as another request may be mid-refresh with the same token.
+		if ( ! $locked ) {
+			return new \WP_Error( 'buffer_api_refresh_locked', __( 'Another request is refreshing the Buffer connection. Please try again.', 'wp-to-buffer' ) );
+		}
+
+		// If another request has already refreshed or cleared the tokens, don't send this refresh token again.
+		$account = $this->get_fresh_account( $account_id );
+		if ( ! $account || empty( $account['refresh_token'] ) ) {
+			$this->release_refresh_lock();
+			return new \WP_Error( 'missing_refresh_token', __( 'No refresh token exists', 'wp-to-buffer' ) );
+		}
+		if ( $account['refresh_token'] !== $this->refresh_token ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Skipped: Tokens already refreshed by another request.' );
+			$this->release_refresh_lock();
+			$this->set_tokens( $account['access_token'], $account['refresh_token'], $account['token_expires'] );
+			return array(
+				'access_token'  => $account['access_token'],
+				'refresh_token' => $account['refresh_token'],
+				'token_expires' => $account['token_expires'],
+			);
+		}
+
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Requesting new access token.' );
 
 		// Send request.
@@ -429,6 +459,19 @@ class Buffer_API {
 		if ( is_wp_error( $result ) ) {
 			$this->base->get_class( 'log' )->add_to_debug_log( sprintf( 'Buffer API: refresh_token(): Error: [%s] %s', $result->get_error_code(), $result->get_error_message() ) );
 
+			// Buffer may have rotated the token before the timeout or server error, so the stored refresh token must not be sent again.
+			if ( in_array( $result->get_error_code(), array( 'http_request_failed', 'buffer_api_server_error', 'buffer_api_invalid_response' ), true ) ) {
+				$result = new \WP_Error(
+					'buffer_api_refresh_uncertain',
+					sprintf(
+						/* translators: %1$s: Error message, %2$s: Plugin Name */
+						__( 'Buffer did not respond when refreshing the connection (%1$s). As recommended by Buffer, the connection has been cleared to prevent it being revoked. Click Reconnect at %2$s > Settings > Authentication.', 'wp-to-buffer' ),
+						$result->get_error_message(),
+						$this->base->plugin->displayName
+					)
+				);
+			}
+
 			/**
 			 * Perform any actions when refreshing an expired access token fails.
 			 *
@@ -440,6 +483,8 @@ class Buffer_API {
 			 * @param   string    $refresh_token Refresh Token.
 			 */
 			do_action( $this->base->plugin->filter_name . '_api_refresh_token_error', $result, $this->client_id, $this->access_token, $this->refresh_token );
+
+			$this->release_refresh_lock();
 
 			return $result;
 		}
@@ -469,11 +514,102 @@ class Buffer_API {
 		 */
 		do_action( $this->base->plugin->filter_name . '_api_refresh_token', $result, $this->client_id, $this->access_token, $this->refresh_token );
 
+		$this->release_refresh_lock();
+
 		// Update the access and refresh tokens in this class.
 		$this->set_tokens( $result['access_token'], $result['refresh_token'], $result['token_expires'] );
 
 		// Return new access token, refresh token and expiry timestamp.
 		return $result;
+
+	}
+
+	/**
+	 * Returns the account ID holding the given refresh token.
+	 *
+	 * @since   6.2.9
+	 *
+	 * @param   string $refresh_token  Refresh Token.
+	 * @return  bool|string
+	 */
+	private function get_account_id_by_refresh_token( $refresh_token ) {
+
+		$accounts = $this->base->get_class( 'settings' )->get_accounts();
+		foreach ( $accounts as $account_id => $account ) {
+			if ( isset( $account['refresh_token'] ) && $account['refresh_token'] === $refresh_token ) {
+				return $account_id;
+			}
+		}
+
+		// The token may already have been rotated by another request; with a single account, it's that account.
+		if ( count( $accounts ) === 1 ) {
+			return array_key_first( $accounts );
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * Returns the given account from the database, bypassing the cache, so tokens saved by another request are seen.
+	 *
+	 * @since   6.2.9
+	 *
+	 * @param   bool|string $account_id    Account ID.
+	 * @return  bool|array
+	 */
+	private function get_fresh_account( $account_id ) {
+
+		if ( ! $account_id ) {
+			return false;
+		}
+
+		wp_cache_delete( $this->base->plugin->settingsName . '-accounts', 'options' );
+		$accounts = $this->base->get_class( 'settings' )->get_accounts();
+
+		return isset( $accounts[ $account_id ] ) ? $accounts[ $account_id ] : false;
+
+	}
+
+	/**
+	 * Acquires the refresh lock, taking it over if it's older than the token request timeout plus 30 seconds.
+	 *
+	 * @since   6.2.9
+	 *
+	 * @return  bool    Lock acquired.
+	 */
+	private function acquire_refresh_lock() {
+
+		global $wpdb;
+
+		$name = $this->base->plugin->settingsName . '-refresh-lock';
+
+		// INSERT IGNORE is atomic, so only one request can create the lock row.
+		if ( $wpdb->query( $wpdb->prepare( "INSERT IGNORE INTO {$wpdb->options} (option_name, option_value, autoload) VALUES (%s, %s, 'no')", $name, time() ) ) ) { // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			return true;
+		}
+
+		// Take over a stale lock left by a request that failed before releasing it, allowing for the longest possible refresh.
+		$locked_at = (int) $wpdb->get_var( $wpdb->prepare( "SELECT option_value FROM {$wpdb->options} WHERE option_name = %s", $name ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		if ( $locked_at && time() - $locked_at > $this->get_oauth_timeout() + 30 ) {
+			$this->release_refresh_lock();
+			return (bool) $wpdb->query( $wpdb->prepare( "INSERT IGNORE INTO {$wpdb->options} (option_name, option_value, autoload) VALUES (%s, %s, 'no')", $name, time() ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		}
+
+		return false;
+
+	}
+
+	/**
+	 * Releases the refresh lock.
+	 *
+	 * @since   6.2.9
+	 */
+	private function release_refresh_lock() {
+
+		global $wpdb;
+
+		$wpdb->delete( $wpdb->options, array( 'option_name' => $this->base->plugin->settingsName . '-refresh-lock' ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 
 	}
 
@@ -1088,6 +1224,12 @@ mutation CreatePost(
 	 */
 	private function oauth_request( $url, $params = array() ) {
 
+		// Bail if Buffer's rate limit was recently reached.
+		$rate_limit_error = $this->get_rate_limit_error();
+		if ( is_wp_error( $rate_limit_error ) ) {
+			return $rate_limit_error;
+		}
+
 		// Send request.
 		$result = wp_remote_post(
 			$url,
@@ -1097,7 +1239,7 @@ mutation CreatePost(
 					'Content-Type' => 'application/x-www-form-urlencoded',
 				),
 				'body'       => $this->get_body( $params, 'application/x-www-form-urlencoded' ),
-				'timeout'    => $this->get_timeout(),
+				'timeout'    => $this->get_oauth_timeout(),
 				'user-agent' => $this->get_user_agent(),
 			)
 		);
@@ -1134,6 +1276,13 @@ mutation CreatePost(
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ' . $this->refresh_token );
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . $this->token_expires );
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
+
+		// Bail if Buffer's rate limit was recently reached.
+		$rate_limit_error = $this->get_rate_limit_error();
+		if ( is_wp_error( $rate_limit_error ) ) {
+			$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): Error: ' . $rate_limit_error->get_error_message() );
+			return $rate_limit_error;
+		}
 
 		// Check required parameters exist.
 		if ( empty( $this->access_token ) ) {
@@ -1261,6 +1410,74 @@ mutation CreatePost(
 	}
 
 	/**
+	 * Returns the maximum amount of time to wait for a response when
+	 * requesting or refreshing tokens.
+	 *
+	 * @since   6.2.9
+	 *
+	 * @return  int     Timeout, in seconds.
+	 */
+	private function get_oauth_timeout() {
+
+		/**
+		 * Defines the maximum time to allow a token request to run.
+		 *
+		 * @since   6.2.9
+		 *
+		 * @param   int     $timeout    Timeout, in seconds.
+		 */
+		return apply_filters( $this->base->plugin->filter_name . '_api_get_oauth_timeout', 60 );
+
+	}
+
+	/**
+	 * Stores the time until which API requests are paused, based on Buffer's Retry-After header.
+	 *
+	 * @since   6.2.9
+	 *
+	 * @param   string $retry_after    Retry-After header value (seconds or HTTP date).
+	 * @return  \WP_Error
+	 */
+	private function set_rate_limit( $retry_after ) {
+
+		// Retry-After can be a number of seconds or an HTTP date; default to 60 seconds if missing.
+		$seconds = is_numeric( $retry_after ) ? (int) $retry_after : ( strtotime( (string) $retry_after ) ? strtotime( (string) $retry_after ) - time() : 60 );
+		$seconds = max( 1, $seconds );
+
+		set_transient( $this->base->plugin->settingsName . '-rate-limited', time() + $seconds, $seconds );
+
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_rate_limit(): Paused requests for ' . $seconds . 's' );
+
+		return $this->get_rate_limit_error();
+
+	}
+
+	/**
+	 * Returns an error if Buffer's rate limit was recently reached.
+	 *
+	 * @since   6.2.9
+	 *
+	 * @return  bool|\WP_Error
+	 */
+	private function get_rate_limit_error() {
+
+		$until = (int) get_transient( $this->base->plugin->settingsName . '-rate-limited' );
+		if ( $until <= time() ) {
+			return false;
+		}
+
+		return new \WP_Error(
+			'buffer_api_rate_limited',
+			sprintf(
+				/* translators: Time when requests can be retried */
+				__( 'Buffer\'s rate limit was reached. Try again after %s.', 'wp-to-buffer' ),
+				wp_date( get_option( 'time_format' ), $until )
+			)
+		);
+
+	}
+
+	/**
 	 * Gets a customized version of the WordPress default user agent.
 	 *
 	 * @since   6.0.0
@@ -1301,6 +1518,11 @@ mutation CreatePost(
 					'buffer_api_error',
 					'403 Forbidden'
 				);
+		}
+
+		// Rate limited: pause API requests until Buffer's Retry-After time.
+		if ( $http_code === 429 ) {
+			return $this->set_rate_limit( wp_remote_retrieve_header( $response, 'retry-after' ) );
 		}
 
 		// Retain-and-retry on server errors: return without touching stored tokens.
