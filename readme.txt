@@ -311,6 +311,7 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 
 = 6.3.0 (2026-11-20) =
 * Fix: Security: Check the user can edit the Post before viewing or clearing its Log, and can access the Plugin's settings before saving them
+* Fix: Security: Escape status text, profile names and API responses when displaying Logs
 
 = 6.2.9 (2026-11-11) =
 * Added: API: Pause requests until Buffer's Retry-After time when Buffer's rate limit is reached
