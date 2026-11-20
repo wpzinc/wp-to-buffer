@@ -5,7 +5,7 @@ Tags: social media automation, auto post, buffer, social media scheduler, auto p
 Requires at least: 5.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 6.2.9
+Stable tag: 6.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -308,6 +308,10 @@ Visit [our website](https://www.wpzinc.com/plugins/wordpress-to-buffer-pro/) to 
 4. Post-level Logging.
 
 == Changelog ==
+
+= 6.3.0 (2026-11-20) =
+* Fix: Security: Check the user can edit the Post before viewing or clearing its Log, and can access the Plugin's settings before saving them
+* Fix: Security: Escape status text, profile names and API responses when displaying Logs
 
 = 6.2.9 (2026-11-11) =
 * Added: API: Pause requests until Buffer's Retry-After time when Buffer's rate limit is reached
