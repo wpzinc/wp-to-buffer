@@ -333,8 +333,8 @@ class Buffer_API {
 	public function set_tokens( $access_token = '', $refresh_token = '', $token_expires = false ) {
 
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): Started.' );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): access_token = ' . $access_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): refresh_token = ' . $refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): access_token = ...' . substr( (string) $access_token, -6 ) ); // Only log the end of the token.
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): refresh_token = ...' . substr( (string) $refresh_token, -6 ) ); // Only log the end of the token.
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: set_tokens(): token_expires = ' . $token_expires );
 
 		$this->access_token  = $access_token;
@@ -402,8 +402,8 @@ class Buffer_API {
 			return new \WP_Error( 'missing_refresh_token', __( 'No refresh token exists', 'wp-to-buffer' ) );
 		}
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): access_token = ' . $this->access_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): access_token = ...' . substr( (string) $this->access_token, -6 ) ); // Only log the end of the token.
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): refresh_token = ...' . substr( (string) $this->refresh_token, -6 ) ); // Only log the end of the token.
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): token_expires = ' . $this->token_expires );
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
 
@@ -497,8 +497,8 @@ class Buffer_API {
 		);
 
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): Success' );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New access_token = ' . $result['access_token'] );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New refresh_token = ' . $result['refresh_token'] );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New access_token = ...' . substr( (string) $result['access_token'], -6 ) ); // Only log the end of the token.
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New refresh_token = ...' . substr( (string) $result['refresh_token'], -6 ) ); // Only log the end of the token.
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New token_expires = ' . $result['token_expires'] );
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: refresh_token(): New token_expires = ' . ( $result['token_expires'] && time() > (int) $result['token_expires'] ? 'expired ' . ( time() - (int) $result['token_expires'] ) . 's ago' : 'expires in ' . ( (int) $result['token_expires'] - time() ) . 's' ) );
 
@@ -1272,8 +1272,8 @@ mutation CreatePost(
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): Started.' );
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): query = ' . $query );
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): variables = ' . print_r( $variables, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): access_token = ' . $this->access_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): access_token = ...' . substr( (string) $this->access_token, -6 ) ); // Only log the end of the token.
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ...' . substr( (string) $this->refresh_token, -6 ) ); // Only log the end of the token.
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . $this->token_expires );
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
 
@@ -1299,8 +1299,8 @@ mutation CreatePost(
 			return $result;
 		}
 
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): access_token = ' . $this->access_token );
-		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ' . $this->refresh_token );
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): access_token = ...' . substr( (string) $this->access_token, -6 ) ); // Only log the end of the token.
+		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): refresh_token = ...' . substr( (string) $this->refresh_token, -6 ) ); // Only log the end of the token.
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . $this->token_expires );
 		$this->base->get_class( 'log' )->add_to_debug_log( 'Buffer API: graphql_query(): token_expires = ' . ( $this->token_expires && time() > (int) $this->token_expires ? 'expired ' . ( time() - (int) $this->token_expires ) . 's ago' : 'expires in ' . ( (int) $this->token_expires - time() ) . 's' ) );
 
